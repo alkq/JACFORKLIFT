@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Products | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="styles.css" />
 <script>
 tailwind.config = {
   theme: {
@@ -129,7 +129,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 <!-- NAVBAR -->
 <header class="sticky top-0 inset-x-0 z-[9999] glass-nav transition-all">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20 gap-4">
-    
     <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
       <div class="w-11 h-11 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-1.5">
         <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
@@ -140,7 +139,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       </div>
     </a>
 
-    <!-- Center Nav -->
     <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
       <a href="products.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
         PRODUCTS
@@ -152,7 +150,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
 
-    <!-- Right Actions -->
     <div class="hidden lg:flex items-center gap-3 shrink-0">
       <div class="relative">
         <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
@@ -175,7 +172,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       </a>
     </div>
 
-    <!-- Mobile Button -->
     <div class="lg:hidden flex items-center gap-2">
       <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
         <svg class="w-5 h-5"><use href="#icon-search"/></svg>
@@ -232,13 +228,13 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <button class="filter-btn" data-filter="other">Tractor & Platforms (3)</button>
     </div>
 
-    <!-- Product Cards Grid -->
+    <!-- Product Cards Grid with Exact Folder Filenames -->
     <div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- HE Series -->
       <a href="product-spec.html?id=he-series" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/HE%20Series%202.5%20%E2%80%93%203.8T.png" alt="HE Series" class="w-full h-full" />
+          <img src="images/HE-Series-2.5-3.8T.png" alt="HE Series" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">LITHIUM FORKLIFT</span>
         </div>
         <div class="p-7">
@@ -261,7 +257,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- L Series -->
       <a href="product-spec.html?id=l-series" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/L%20Series%201.5%20%E2%80%93%203.5T.png" alt="L Series" class="w-full h-full" />
+          <img src="images/L-Series-1.5-3.5T.png" alt="L Series" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">LITHIUM FORKLIFT</span>
         </div>
         <div class="p-7">
@@ -284,7 +280,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- JE Series -->
       <a href="product-spec.html?id=je-series" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/JE%20Series%204.5%20%E2%80%93%205.0T.png" alt="JE Series" class="w-full h-full" />
+          <img src="images/JE-Series-4.5-5.0T.png" alt="JE Series" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">HEAVY ELECTRIC</span>
         </div>
         <div class="p-7">
@@ -307,7 +303,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Three Wheel -->
       <a href="product-spec.html?id=three-wheel" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Three%20Wheel%201.5%20%E2%80%93%202.0T.png" alt="Three Wheel" class="w-full h-full" />
+          <img src="images/Three-Wheel-1.5-2.0T.png" alt="Three Wheel" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">COMPACT FORKLIFT</span>
         </div>
         <div class="p-7">
@@ -330,7 +326,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Stand Type Reach -->
       <a href="product-spec.html?id=reach-truck-stand" class="product-card rounded-3xl overflow-hidden group" data-category="reach">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Stand%20type%20Reach%20Truck%201.5T.png" alt="Stand Type Reach Truck" class="w-full h-full" />
+          <img src="images/Stand-type-Reach-Truck-1.5T.png" alt="Stand Type Reach Truck" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-full">REACH TRUCK</span>
         </div>
         <div class="p-7">
@@ -353,7 +349,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Sit Type Reach -->
       <a href="product-spec.html?id=reach-truck-sit" class="product-card rounded-3xl overflow-hidden group" data-category="reach">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Sit%20type%20Reach%20Truck%201.5%20-2.0T.png" alt="Sit Type Reach Truck" class="w-full h-full" />
+          <img src="images/Sit-type-Reach-Truck-1.5-2.0T.png" alt="Sit Type Reach Truck" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-full">REACH TRUCK</span>
         </div>
         <div class="p-7">
@@ -376,7 +372,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Walkie Pallet -->
       <a href="product-spec.html?id=walkie-pallet" class="product-card rounded-3xl overflow-hidden group" data-category="pallet">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Walkie%20Pallet%20Truck%20with%20Lithium%20Battery%201.5%20%E2%80%93%202.0T.png" alt="Walkie Pallet Truck" class="w-full h-full" />
+          <img src="images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png" alt="Walkie Pallet Truck" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PALLET TRUCK</span>
         </div>
         <div class="p-7">
@@ -399,7 +395,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Rider Pallet -->
       <a href="product-spec.html?id=rider-pallet" class="product-card rounded-3xl overflow-hidden group" data-category="pallet">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Rider%20Pallet%20Truck%202.0%20%E2%80%93%203.0T.png" alt="Rider Pallet Truck" class="w-full h-full" />
+          <img src="images/Rider-Pallet-Truck-2.0–3.0T.png" alt="Rider Pallet Truck" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PALLET TRUCK</span>
         </div>
         <div class="p-7">
@@ -422,7 +418,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Straddle Stacker -->
       <a href="product-spec.html?id=straddle-stacker" class="product-card rounded-3xl overflow-hidden group" data-category="stacker">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Straddle-type%20Rider%20Electric%20Stacker%201.0%20%E2%80%93%201.5T.png" alt="Straddle Stacker" class="w-full h-full" />
+          <img src="images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png" alt="Straddle Stacker" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">STACKER</span>
         </div>
         <div class="p-7">
@@ -445,7 +441,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Electric Stacker -->
       <a href="product-spec.html?id=electric-stacker" class="product-card rounded-3xl overflow-hidden group" data-category="stacker">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Electric%20Rider%20Stacker%201.0%20%E2%80%93%202.0T.png" alt="Electric Rider Stacker" class="w-full h-full" />
+          <img src="images/Electric-Rider-Stacker1.0-2.0T.png" alt="Electric Rider Stacker" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">STACKER</span>
         </div>
         <div class="p-7">
@@ -468,7 +464,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Electric Tractor -->
       <a href="product-spec.html?id=electric-tractor" class="product-card rounded-3xl overflow-hidden group" data-category="other">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Electric%20Tractor.png" alt="Electric Tractor" class="w-full h-full" />
+          <img src="images/Electric-Tractor.png" alt="Electric Tractor" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">TOWING</span>
         </div>
         <div class="p-7">
@@ -491,7 +487,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Electric Platform -->
       <a href="product-spec.html?id=electric-platform" class="product-card rounded-3xl overflow-hidden group" data-category="other">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Electric%20Platform%20Truck.png" alt="Electric Platform" class="w-full h-full" />
+          <img src="images/Electric-Platform-Truck.png" alt="Electric Platform" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PLATFORM</span>
         </div>
         <div class="p-7">
@@ -514,7 +510,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- Stacking AGV -->
       <a href="product-spec.html?id=stacking-agv" class="product-card rounded-3xl overflow-hidden group" data-category="other">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/stacking%20agv.png" alt="Stacking AGV" class="w-full h-full" />
+          <img src="images/stacking-agv.png" alt="Stacking AGV" class="w-full h-full" />
           <span class="absolute top-4 left-4 bg-gold text-obsidian text-[11px] font-bold px-3 py-1 rounded-full">ROBOTICS</span>
         </div>
         <div class="p-7">
@@ -535,49 +531,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       </a>
 
     </div>
-  </div>
-</section>
-
-<!-- BOTTOM QUICK INQUIRY FORM -->
-<section class="py-24 bg-white border-t border-slate-200 text-center">
-  <div class="max-w-4xl mx-auto px-6 lg:px-10">
-    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">
-      Unsure Which Model Fits Your Warehouse?
-    </h2>
-    <p class="text-slate-500 text-sm font-light mb-10 max-w-2xl mx-auto leading-relaxed">
-      Our technical engineers can evaluate your aisle dimensions, load weights, and shift cycles to provide a custom proposal.
-    </p>
-
-    <!-- Inline Selection Form -->
-    <form id="quickInquiryForm" class="bg-primary-50 p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
-      <div class="sm:col-span-5 relative">
-        <select id="quickEquipSelect" name="equipment" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
-          <option value="">Select Equipment Category</option>
-          <option value="forklift">Electric Counterbalance Forklift (1.5 - 5.0T)</option>
-          <option value="reach">Lithium Reach Trucks (Up to 10M Lift)</option>
-          <option value="pallet">Pallet Transporters & Walkies</option>
-          <option value="stacker">Electric Rider & Straddle Stackers</option>
-          <option value="agv">Autonomous Stacking AGVs</option>
-          <option value="rental">Long-Term Fleet Equipment Rental</option>
-        </select>
-      </div>
-
-      <div class="sm:col-span-4 relative">
-        <select id="quickLocSelect" name="location" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
-          <option value="">Select Singapore Location</option>
-          <option value="west">West · Jurong / Tuas Industrial Hub</option>
-          <option value="east">East · Changi / Airport Logistics Park</option>
-          <option value="north">North · Woodlands Industrial Corridor</option>
-          <option value="central">Central · City / Mezzanine Facilities</option>
-        </select>
-      </div>
-
-      <div class="sm:col-span-3">
-        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
-          INQUIRY →
-        </button>
-      </div>
-    </form>
   </div>
 </section>
 
@@ -635,7 +588,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 </footer>
 
 <script>
-// Search Toggle
 const searchToggle = document.getElementById('searchToggle');
 const searchBox = document.getElementById('searchBox');
 if (searchToggle && searchBox) {
@@ -663,7 +615,6 @@ document.getElementById('menuBtn')?.addEventListener('click', () => {
   document.getElementById('mobileMenu')?.classList.toggle('hidden');
 });
 
-// Category Filter
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -674,33 +625,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     });
   });
 });
-
-// Quick Inquiry Submission Handler to contact.html
-function handleQuickInquiry(e) {
-  if (e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  const equip = document.getElementById('quickEquipSelect')?.value || '';
-  const loc = document.getElementById('quickLocSelect')?.value || '';
-
-  try {
-    sessionStorage.setItem('pending_equip', equip);
-    sessionStorage.setItem('pending_loc', loc);
-  } catch(err) {}
-
-  const params = new URLSearchParams();
-  if (equip) params.set('equipment', equip);
-  if (loc) params.set('location', loc);
-
-  const queryStr = params.toString() ? '?' + params.toString() : '';
-  window.location.href = 'contact.html' + queryStr;
-}
 </script>
-
-<!-- Scripts -->
 <script src="search.js"></script>
-  <script src="ai-chat.js"></script>
-  <script src="form-handler.js"></script>
+<script src="ai-chat.js"></script>
+<script src="form-handler.js"></script>
 </body>
 </html>

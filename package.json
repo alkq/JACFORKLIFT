@@ -1,0 +1,26 @@
+{
+  "name": "jac-deep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ai-chat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -i ./input.css -o ./styles.css --minify",
+    "watch": "tailwindcss -i ./input.css -o ./styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alkq/JACFORKLIFT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alkq/JACFORKLIFT/issues"
+  },
+  "homepage": "https://github.com/alkq/JACFORKLIFT#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
