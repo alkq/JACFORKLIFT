@@ -4,179 +4,384 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Equipment Rental | JAC Forklift Singapore</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{
-  colors:{navy:{DEFAULT:'#050B14',light:'#0E1A2B',dark:'#02060C'},lithium:{DEFAULT:'#00D4FF',dark:'#00A8E8'},gold:{DEFAULT:'#D4AF37',light:'#F4D03F'},grey:{DEFAULT:'#F8FAFC'}},
-  fontFamily:{heading:['Montserrat','sans-serif'],body:['Inter','sans-serif']},
-  boxShadow:{premium:'0 20px 40px -10px rgba(0,0,0,0.5)',glow:'0 0 30px rgba(0,212,255,0.25)'}
-}}};
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
+        brand: { light: '#FF3B47', DEFAULT: '#E11D2A', dark: '#B8141F' },
+        obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
+        gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
+      },
+      fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+      boxShadow: {
+        'soft-glow': '0 12px 30px -8px rgba(225, 29, 42, 0.25)',
+        'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
+        'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
+      }
+    }
+  }
+};
 </script>
 <style>
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background-color:#050B14;color:#E2E8F0}
-h1,h2,h3,h4{font-family:'Montserrat',sans-serif;letter-spacing:-0.02em}
-.glass-panel{background:rgba(14,26,43,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.06)}
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-.premium-card{transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
-.premium-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -15px rgba(0,0,0,0.6),0 0 30px rgba(0,212,255,0.15);border-color:rgba(0,212,255,0.3)}
-.premium-card:hover .icon-container{transform:scale(1.08)}
-.icon-container{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
-.page-hero-bg{background-image:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;background-attachment:fixed}
-.gradient-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,11,20,0.85) 0%,rgba(5,11,20,0.7) 40%,rgba(5,11,20,0.95) 100%),linear-gradient(90deg,rgba(5,11,20,0.9) 0%,rgba(5,11,20,0.3) 50%,rgba(5,11,20,0.9) 100%)}
-.gradient-overlay-heavy{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,12,0.95) 0%,rgba(5,11,20,0.85) 50%,rgba(2,6,12,0.98) 100%),radial-gradient(circle at 30% 50%,rgba(0,212,255,0.08) 0%,transparent 60%)}
-.input-field{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;padding:1rem 1.25rem;color:#fff;font-size:0.95rem;transition:all 0.3s;outline:none}
-.input-field::placeholder{color:rgba(255,255,255,0.3)}
-.input-field:focus{border-color:#00D4FF;background:rgba(0,212,255,0.05);box-shadow:0 0 0 3px rgba(0,212,255,0.1)}
-select.input-field option{color:#050B14;background:#fff}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #334155; }
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em; }
+
+.glass-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.page-hero-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.35) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.glass-card-light {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-light:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.1);
+}
 </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
-  <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7L12 19"/></symbol>
-  <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7 7-12a7 7 0 10-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-  <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-7"/></symbol>
-  <symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 105.6 5.6L21 21l-2 2-9.1-9.1a4 4 0 01-5.6-5.6L6.5 6l3 3"/></symbol>
-  <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-7"/></symbol>
+  <symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 105.6 5.6L21 21l-2 2-9.1-9.1a4 4 0 01-5.6-5.6L6.5 6l3 3"/></symbol>
+  <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
 </svg>
 
-<header class="fixed top-0 inset-x-0 z-50 bg-navy/70 backdrop-blur-xl border-b border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-24">
-    <a href="index.html" class="flex items-center gap-3">
-      <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center shadow-glow overflow-hidden"><img src="images/jac-logo.png" alt="JAC Logo" class="w-10 h-auto object-contain" /></div>
-      <div class="text-white leading-tight"><div class="font-heading font-bold tracking-wider text-base">JAC FORKLIFT</div><div class="text-[9px] text-lithium tracking-[0.25em] mt-0.5">SINGAPORE</div></div>
-    </a>
-    <nav class="hidden lg:flex items-center gap-8">
-      <a href="products.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">PRODUCTS</a>
-      <a href="lithium-ion.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">JAC LITHIUM-ION</a>
-      <a href="equipment-rental.html" class="relative text-lithium text-sm font-medium tracking-wide">
-        EQUIPMENT RENTAL
-        <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-lithium rounded-full"></span>
-        </a>
-      <a href="about.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">ABOUT</a>
-      <a href="contact.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">CONTACT US</a>
-    </nav>
-    <div class="hidden lg:flex items-center gap-6">
-      <a href="tel:+65" class="flex items-center gap-2 text-white/70 hover:text-lithium text-sm font-medium"><svg class="w-4 h-4"><use href="#icon-phone"/></svg>+65 XXXX XXXX</a>
-      <a href="contact.html" class="bg-lithium hover:bg-lithium-dark text-navy font-bold text-sm py-3 px-6 rounded-xl transition-all shadow-glow hover:scale-105 whitespace-nowrap">VIC CONSULTATION</a>
+<!-- TOP UTILITY BANNER -->
+<div class="bg-obsidian text-slate-300 text-[11px] font-medium tracking-wide border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-2.5 flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <span class="inline-flex items-center gap-1.5 text-brand font-bold">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+        SINGAPORE OFFICIAL DISTRIBUTOR
+      </span>
+      <span class="hidden md:inline text-slate-500">|</span>
+      <span class="hidden md:inline text-slate-400">Next-Gen Lithium-Ion Material Handling Equipment</span>
     </div>
-    <button id="menuBtn" class="lg:hidden text-white text-2xl">☰</button>
+    <div class="flex items-center gap-6">
+      <a href="tel:+65" class="hover:text-white transition-colors">Direct Desk: +65 6XXX XXXX</a>
+      <a href="vic.html" class="text-gold font-semibold hover:text-white transition-colors">VIC Portal →</a>
+    </div>
   </div>
-  <div id="mobileMenu" class="hidden lg:hidden bg-navy-light border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-6">
-      <a href="products.html" class="text-white/70 hover:text-lithium font-medium">PRODUCTS</a>
-      <a href="lithium-ion.html" class="text-white/70 hover:text-lithium font-medium">JAC LITHIUM-ION</a>
-      <a href="equipment-rental.html" class="text-lithium font-medium">EQUIPMENT RENTAL</a>
-      <a href="about.html" class="text-white/70 hover:text-lithium font-medium">ABOUT</a>
-      <a href="contact.html" class="text-white/70 hover:text-lithium font-medium">CONTACT US</a>
-      <a href="contact.html" class="bg-lithium text-navy font-bold text-center py-4 rounded-xl">VIC CONSULTATION</a>
+</div>
+
+<!-- NAVBAR -->
+<header class="sticky top-0 inset-x-0 z-[9999] glass-nav transition-all">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20 gap-4">
+    <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+      <div class="w-11 h-11 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-1.5">
+        <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
+      </div>
+      <div class="leading-none">
+        <div class="font-heading font-extrabold tracking-wider text-obsidian text-lg">JAC FORKLIFT</div>
+        <div class="text-[9px] font-bold text-brand tracking-[0.25em] mt-1">SINGAPORE</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
+      <a href="products.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">PRODUCTS</a>
+      <a href="solution.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">SOLUTIONS</a>
+      <a href="lithium-ion.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">JAC LITHIUM-ION</a>
+      <a href="equipment-rental.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
+        EQUIPMENT RENTAL
+        <span class="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand rounded-full"></span>
+      </a>
+      <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
+    </nav>
+    <div class="hidden lg:flex items-center gap-3 shrink-0">
+      <div class="relative">
+        <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
+          <svg class="w-4 h-4"><use href="#icon-search"/></svg>
+        </button>
+        <div id="searchBox" class="hidden absolute right-0 top-full mt-3 w-80 z-50">
+          <div class="bg-white border border-slate-200 rounded-xl p-2 shadow-luxe">
+            <form action="products.html" method="get" class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+              <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-2 focus:outline-none" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 hover:border-brand hover:text-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm hover:scale-[1.02] whitespace-nowrap">
+        INQUIRY
+      </a>
+      <a href="dealer-enquiry.html" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs tracking-wider uppercase py-3 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
+        DEALER ENQUIRY
+      </a>
+    </div>
+
+    <div class="lg:hidden flex items-center gap-2">
+      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
+        <svg class="w-5 h-5"><use href="#icon-search"/></svg>
+      </button>
+      <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
+    </div>
+  </div>
+
+  <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
+    <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
+      <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+      <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-1.5 focus:outline-none" />
+    </form>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 shadow-xl space-y-4">
+    <a href="products.html" class="block font-bold text-slate-800 text-sm">PRODUCTS</a>
+    <a href="solution.html" class="block font-bold text-slate-800 text-sm">SOLUTIONS</a>
+    <a href="lithium-ion.html" class="block font-bold text-slate-800 text-sm">JAC LITHIUM-ION</a>
+    <a href="equipment-rental.html" class="block font-bold text-brand text-sm">EQUIPMENT RENTAL</a>
+    <a href="about.html" class="block font-bold text-slate-800 text-sm">ABOUT US</a>
+    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+      <a href="contact.html" class="block text-center border border-slate-300 text-obsidian font-bold py-3 rounded-xl">INQUIRY</a>
+      <a href="dealer-enquiry.html" class="block text-center bg-brand text-white font-bold py-3 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
   </div>
 </header>
 
-<section class="page-hero-bg relative pt-48 pb-32 overflow-hidden">
-  <div class="gradient-overlay"></div>
-  <div class="absolute top-1/3 -right-40 w-[600px] h-[600px] bg-lithium/10 rounded-full blur-[140px] pointer-events-none"></div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 fade-up">
-    <div class="text-lithium text-sm font-semibold tracking-[0.2em] uppercase mb-6">Equipment Rental</div>
-    <h1 class="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 max-w-3xl">Zero Hassle. <span class="text-transparent bg-clip-text bg-gradient-to-r from-lithium to-lithium-dark">Zero Downtime.</span></h1>
-    <p class="text-white/60 text-xl font-light max-w-2xl">Upgrade to advanced lithium-ion technology without the upfront capital expenditure.</p>
+<!-- HERO -->
+<section class="page-hero-bg py-24 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+    <div class="inline-flex items-center gap-2 bg-white/95 border border-slate-200 px-4 py-1.5 rounded-full text-xs font-bold text-brand tracking-widest uppercase mb-6 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span> Zero Hassle · Predictable OPEX
+    </div>
+    <h1 class="text-obsidian text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 max-w-3xl">
+      Long-Term <span class="text-brand">Equipment</span> Rental
+    </h1>
+    <p class="text-slate-600 text-lg sm:text-xl font-light max-w-2xl">
+      Modernize your entire warehouse operation with zero upfront capital expenditure. Complete routine servicing, warranty, and technician coverage included.
+    </p>
   </div>
 </section>
 
-<section class="py-32 bg-navy fade-up">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-20 items-center">
-    <div class="aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 shadow-premium"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Rental"/></div>
+<!-- RENTAL OVERVIEW -->
+<section class="py-24 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 shadow-luxe relative bg-slate-100">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Equipment Operations" />
+    </div>
+
     <div>
-      <div class="inline-block px-3 py-1 bg-lithium/10 border border-lithium/30 rounded-full text-lithium text-xs font-semibold tracking-wider mb-6">ZERO HASSLE</div>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-8">Lithium-Ion Rental</h2>
-      <p class="text-white/60 font-light leading-relaxed mb-8">Upgrade your material handling fleet to advanced lithium-ion technology without the upfront capital expenditure. Our long-term rental solutions are designed to shift your costs from CAPEX to a predictable OPEX, drastically lower daily running costs, and eliminate equipment downtime.</p>
+      <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">OPEX Efficiency</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight mb-6">Preserve Working Capital. Eliminate Repair Volatility.</h2>
+      <p class="text-slate-600 text-sm leading-relaxed font-light mb-8">
+        Shift your material handling from unpredictable repairs to one fixed monthly expense. JAC Singapore provides comprehensive long-term rental plans that include factory-backed scheduled maintenance, certified technicians, and genuine replacement parts.
+      </p>
+
       <div class="space-y-6">
-        <div class="flex gap-5"><div class="icon-container w-12 h-12 shrink-0 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-chart"/></svg></div><div><h3 class="font-heading font-bold text-white mb-2">Preserve Capital</h3><p class="text-white/50 text-sm font-light">Switch from diesel or aging equipment to electric models with one fixed monthly operating expense.</p></div></div>
-        <div class="flex gap-5"><div class="icon-container w-12 h-12 shrink-0 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-tool"/></svg></div><div><h3 class="font-heading font-bold text-white mb-2">Zero Maintenance Hassle</h3><p class="text-white/50 text-sm font-light">All scheduled servicing, labor, and standard replacement parts are fully covered by our team.</p></div></div>
-        <div class="flex gap-5"><div class="icon-container w-12 h-12 shrink-0 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-phone"/></svg></div><div><h3 class="font-heading font-bold text-white mb-2">On-Site Support</h3><p class="text-white/50 text-sm font-light">We provide direct technical support and guarantee immediate spare parts availability in Singapore.</p></div></div>
-        <div class="flex gap-5"><div class="icon-container w-12 h-12 shrink-0 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-bolt"/></svg></div><div><h3 class="font-heading font-bold text-white mb-2">Maximum Efficiency</h3><p class="text-white/50 text-sm font-light">Benefit from lithium-ion technology — fast charging, zero daily battery maintenance, and no emissions.</p></div></div>
+        <div class="flex gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-xl bg-red-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-chart"/></svg></div>
+          <div><h4 class="font-heading font-bold text-obsidian text-sm mb-1">Predictable Fixed Monthly Rate</h4><p class="text-slate-500 text-xs font-light">Zero surprise invoices. Full routine preventative maintenance and labour included.</p></div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-xl bg-red-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-tool"/></svg></div>
+          <div><h4 class="font-heading font-bold text-obsidian text-sm mb-1">Zero Maintenance Hassles</h4><p class="text-slate-500 text-xs font-light">All periodic servicing and wearable components managed by our Singapore engineering hub.</p></div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-xl bg-red-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-bolt"/></svg></div>
+          <div><h4 class="font-heading font-bold text-obsidian text-sm mb-1">Latest Lithium Technology</h4><p class="text-slate-500 text-xs font-light">Always operate modern CATL/LFP battery units with high uptime and rapid 1.5h charging.</p></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="py-32 bg-navy-light/30 fade-up">
+<!-- 3-STEP TIMELINE -->
+<section class="py-24 bg-primary-50 border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <div class="text-lithium text-sm font-semibold tracking-[0.2em] uppercase mb-4">How It Works</div>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">Focus on your warehouse operations. Let us handle the equipment.</h2>
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">Straightforward Process</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian">How Equipment Rental Works</h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-8 mb-16">
-      <div class="premium-card glass-panel rounded-3xl p-10"><div class="text-lithium font-heading font-bold text-4xl mb-6">01.</div><h3 class="font-heading font-bold text-xl text-white mb-4">Consult Your Needs</h3><p class="text-white/50 leading-relaxed font-light">Share your operation requirements, working environment, load capacity, and rental duration with our team.</p></div>
-      <div class="premium-card glass-panel rounded-3xl p-10"><div class="text-lithium font-heading font-bold text-4xl mb-6">02.</div><h3 class="font-heading font-bold text-xl text-white mb-4">Select Your Fleet</h3><p class="text-white/50 leading-relaxed font-light">Choose the right lithium-ion forklift or material handling equipment based on your daily workflow.</p></div>
-      <div class="premium-card glass-panel rounded-3xl p-10"><div class="text-lithium font-heading font-bold text-4xl mb-6">03.</div><h3 class="font-heading font-bold text-xl text-white mb-4">Deliver & Support</h3><p class="text-white/50 leading-relaxed font-light">We deliver the equipment, provide setup guidance, and support you with servicing, spare parts, and technical assistance.</p></div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="glass-card-light rounded-3xl p-8">
+        <div class="text-brand font-heading font-extrabold text-4xl mb-4">01.</div>
+        <h3 class="font-heading font-bold text-lg text-obsidian mb-2">Equipment Assessment</h3>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">Share your aisle dimensions, pallet weights, and shift rotations. We formulate your ideal unit specifications.</p>
+      </div>
+      <div class="glass-card-light rounded-3xl p-8">
+        <div class="text-brand font-heading font-extrabold text-4xl mb-4">02.</div>
+        <h3 class="font-heading font-bold text-lg text-obsidian mb-2">Flexible Term Selection</h3>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">Select from 12, 24, 36, or 60-month rental contracts with transparent monthly terms and zero hidden fees.</p>
+      </div>
+      <div class="glass-card-light rounded-3xl p-8">
+        <div class="text-brand font-heading font-extrabold text-4xl mb-4">03.</div>
+        <h3 class="font-heading font-bold text-lg text-obsidian mb-2">Direct Deployment & Care</h3>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">We deliver equipment to your facility, commission fast chargers, and provide ongoing 24h technical support.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="py-32 bg-navy fade-up">
-  <div class="max-w-3xl mx-auto px-6 lg:px-10">
-    <div class="text-center mb-16">
-      <div class="text-lithium text-sm font-semibold tracking-[0.2em] uppercase mb-4">Enquiry</div>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">Request a Rental Quote</h2>
-      <p class="text-white/50 text-lg font-light">Fill in your details below and our team will get in touch to discuss rental opportunities, requirements, and next steps.</p>
-    </div>
-    <form class="glass-panel rounded-3xl p-10 lg:p-12 space-y-6" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
-      <div class="grid md:grid-cols-2 gap-6"><input type="text" placeholder="Contact Name" class="input-field" required /><input type="text" placeholder="Contact Number" class="input-field" required /></div>
-      <input type="email" placeholder="Email Address" class="input-field" required />
-      <select class="input-field" required>
-        <option value="">-- Enquiry Products --</option>
-        <option>Lithium-Ion Forklifts</option>
-        <option>Lithium Reach Trucks</option>
-        <option>Lithium Warehouse Trucks</option>
-        <option>Others</option>
-      </select>
-      <textarea placeholder="Tell us more about your enquiry" rows="5" class="input-field" required></textarea>
-      <label class="flex items-start gap-3 text-sm text-white/50 font-light cursor-pointer"><input type="checkbox" required class="mt-1 accent-lithium" /><span>I hereby acknowledge that I have read and understood this <a href="#" class="text-lithium hover:underline">Privacy & Cookies Policy</a>.</span></label>
-      <button type="submit" class="w-full bg-lithium hover:bg-lithium-dark text-navy font-bold py-4 rounded-xl transition-all shadow-glow hover:scale-[1.02] text-base">SUBMIT FORM</button>
+<!-- INLINE EQUIPMENT & LOCATION FORM -->
+<section class="py-24 bg-white border-b border-slate-200 text-center">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">Direct Enquiry</div>
+    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">
+      Request an Equipment Rental Quote
+    </h2>
+    <p class="text-slate-500 text-sm font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+      Select your required equipment category and operating zone for instant custom rental quotations and flexible lease terms.
+    </p>
+
+    <!-- Inline Selection Form -->
+    <form id="quickInquiryForm" class="bg-primary-50 p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
+      <div class="sm:col-span-5 relative">
+        <select id="quickEquipSelect" name="equipment" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Equipment Category</option>
+          <option value="forklift">Electric Counterbalance Forklift (1.5 - 5.0T)</option>
+          <option value="reach">Lithium Reach Trucks (Up to 10M Lift)</option>
+          <option value="pallet">Pallet Transporters & Walkies</option>
+          <option value="stacker">Electric Rider & Straddle Stackers</option>
+          <option value="agv">Autonomous Stacking AGVs</option>
+          <option value="rental" selected>Long-Term Fleet Equipment Rental</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-4 relative">
+        <select id="quickLocSelect" name="location" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Singapore Location</option>
+          <option value="west">West · Jurong / Tuas Industrial Hub</option>
+          <option value="east">East · Changi / Airport Logistics Park</option>
+          <option value="north">North · Woodlands Industrial Corridor</option>
+          <option value="central">Central · City / Mezzanine Facilities</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-3">
+        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
+          INQUIRY →
+        </button>
+      </div>
     </form>
   </div>
 </section>
 
-<section class="py-32 bg-navy-dark relative overflow-hidden fade-up">
-  <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-lithium/10 rounded-full blur-[150px] pointer-events-none"></div>
-  <div class="max-w-4xl mx-auto px-6 lg:px-10 relative z-10 text-center">
-    <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-8">Ready to Get Started?</h2>
-    <p class="text-white/60 text-xl mb-12 font-light">Talk to our VIC team about your rental needs.</p>
-    <a href="contact.html" class="group inline-flex items-center gap-3 bg-lithium hover:bg-lithium-dark text-navy font-bold px-10 py-5 rounded-xl transition-all shadow-glow hover:scale-105 text-lg">Request a VIC Consultation <span class="group-hover:translate-x-1">→</span></a>
-  </div>
-</section>
-
-<footer class="bg-navy-dark text-white/50 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 grid lg:grid-cols-5 gap-12">
+<!-- FOOTER -->
+<footer class="bg-obsidian text-slate-400 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
     <div class="lg:col-span-2">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-glow overflow-hidden"><img src="images/jac-logo.png" alt="JAC Logo" class="w-9 h-auto object-contain" /></div>
-        <div class="text-white leading-tight"><div class="font-heading font-bold tracking-wider">JAC FORKLIFT</div><div class="text-[10px] text-lithium tracking-[0.2em]">SINGAPORE</div></div>
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm">
+          <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
+        </div>
+        <div class="text-white leading-none">
+          <div class="font-heading font-extrabold tracking-wider text-base">JAC FORKLIFT</div>
+          <div class="text-[9px] text-brand font-bold tracking-[0.2em] mt-1">SINGAPORE</div>
+        </div>
       </div>
-      <p class="text-sm leading-relaxed max-w-sm mb-8 font-light">Exclusive JAC electric forklift provider in Singapore. Lithium-powered, ESG-compliant material handling solutions.</p>
-      <div class="space-y-3 text-sm font-light"><div class="flex items-center gap-2"><svg class="w-4 h-4 text-lithium"><use href="#icon-phone"/></svg> +65 XXXX XXXX</div><div class="flex items-center gap-2"><svg class="w-4 h-4 text-lithium"><use href="#icon-link"/></svg> sg@jacforklift.com</div><div class="flex items-center gap-2"><svg class="w-4 h-4 text-lithium"><use href="#icon-pin"/></svg> Singapore Office</div></div>
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">Exclusive JAC electric forklift distributor in Singapore. High-performance, lithium-powered, ESG-compliant material handling solutions.</p>
+      <p class="text-xs text-slate-400 font-light">Email: sg@jacforklift.com | Phone: +65 XXXX XXXX</p>
     </div>
-    <div><h4 class="font-heading font-bold text-white mb-6 text-sm tracking-wide">PRODUCTS</h4><ul class="space-y-3 text-sm font-light"><li><a href="product-spec.html?id=he-series" class="hover:text-lithium">HE Series</a></li><li><a href="product-spec.html?id=l-series" class="hover:text-lithium">L Series</a></li><li><a href="product-spec.html?id=je-series" class="hover:text-lithium">JE Series</a></li><li><a href="products.html" class="hover:text-lithium">All Products</a></li></ul></div>
-    <div><h4 class="font-heading font-bold text-white mb-6 text-sm tracking-wide">SERVICES</h4><ul class="space-y-3 text-sm font-light"><li><a href="lithium-ion.html" class="hover:text-lithium">Lithium-Ion Tech</a></li><li><a href="rental.html" class="hover:text-lithium">Equipment Rental</a></li><li><a href="resources.html" class="hover:text-lithium">Resources</a></li><li><a href="#" class="hover:text-lithium">Spare Parts</a></li></ul></div>
-    <div><h4 class="font-heading font-bold text-white mb-6 text-sm tracking-wide">COMPANY</h4><ul class="space-y-3 text-sm font-light"><li><a href="about.html" class="hover:text-lithium">About JAC</a></li><li><a href="vic.html" class="hover:text-lithium">VIC Portal</a></li><li><a href="contact.html" class="hover:text-lithium">Dealer Program</a></li><li><a href="contact.html" class="hover:text-lithium">Contact</a></li></ul></div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Products</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Forklifts</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Reach Trucks</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Services</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
+        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">Lithium-Ion Tech</a></li>
+        <li><a href="solution.html" class="hover:text-white transition-colors">Material Solutions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Company</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="dealer-enquiry.html" class="hover:text-white transition-colors">Dealer Enquiry</a></li>
+        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="border-t border-white/5"><div class="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-light"><div>© 2026 JAC Material Handling Singapore. All rights reserved.</div><div class="flex gap-8"><a href="#" class="hover:text-lithium">Privacy Policy</a><a href="#" class="hover:text-lithium">Terms of Service</a></div></div></div>
+  <div class="border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex justify-between items-center text-xs text-slate-500 font-light">
+      <div>Copyright © 2026 JAC Material Handling. All Rights Reserved.</div>
+    </div>
+  </div>
 </footer>
 
 <script>
-document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
-document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('hidden')));
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+// Search Toggles
+const searchToggle = document.getElementById('searchToggle');
+const searchBox = document.getElementById('searchBox');
+if (searchToggle && searchBox) {
+  searchToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    searchBox.classList.toggle('hidden');
+    if (!searchBox.classList.contains('hidden')) {
+      setTimeout(() => searchBox.querySelector('input')?.focus(), 50);
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
+      searchBox.classList.add('hidden');
+    }
+  });
+}
+const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+const mobileSearchBox = document.getElementById('mobileSearchBox');
+if (mobileSearchToggle && mobileSearchBox) {
+  mobileSearchToggle.addEventListener('click', () => {
+    mobileSearchBox.classList.toggle('hidden');
+  });
+}
+document.getElementById('menuBtn')?.addEventListener('click', () => {
+  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+});
+
+// Quick Inquiry Submission Handler to contact.html
+function handleQuickInquiry(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const equip = document.getElementById('quickEquipSelect')?.value || '';
+  const loc = document.getElementById('quickLocSelect')?.value || '';
+
+  try {
+    sessionStorage.setItem('pending_equip', equip);
+    sessionStorage.setItem('pending_loc', loc);
+  } catch(err) {}
+
+  const params = new URLSearchParams();
+  if (equip) params.set('equipment', equip);
+  if (loc) params.set('location', loc);
+
+  const queryStr = params.toString() ? '?' + params.toString() : '';
+  window.location.href = 'contact.html' + queryStr;
+}
 </script>
 
-<script src="form-handler.js"></script>
-
+<script src="search.js"></script>
+  <script src="form-handler.js"></script>
 </body>
 </html>

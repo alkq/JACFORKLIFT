@@ -3,218 +3,373 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VIC Portal | JAC Forklift Singapore</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>VIC Partner Portal | JAC Forklift Singapore</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{
-  colors:{navy:{DEFAULT:'#050B14',light:'#0E1A2B',dark:'#02060C'},lithium:{DEFAULT:'#00D4FF',dark:'#00A8E8'},gold:{DEFAULT:'#D4AF37',light:'#F4D03F'},grey:{DEFAULT:'#F8FAFC'}},
-  fontFamily:{heading:['Montserrat','sans-serif'],body:['Inter','sans-serif']},
-  boxShadow:{premium:'0 20px 40px -10px rgba(0,0,0,0.5)',glow:'0 0 30px rgba(0,212,255,0.25)'}
-}}};
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
+        brand: { light: '#FF3B47', DEFAULT: '#E11D2A', dark: '#B8141F' },
+        obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
+        gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
+      },
+      fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+      boxShadow: {
+        'soft-glow': '0 12px 30px -8px rgba(225, 29, 42, 0.25)',
+        'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
+        'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
+      }
+    }
+  }
+};
 </script>
 <style>
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background-color:#050B14;color:#E2E8F0}
-h1,h2,h3,h4{font-family:'Montserrat',sans-serif;letter-spacing:-0.02em}
-.glass-panel{background:rgba(14,26,43,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.06)}
-.premium-card{transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
-.premium-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -15px rgba(0,0,0,0.6),0 0 30px rgba(0,212,255,0.15);border-color:rgba(0,212,255,0.3)}
-.premium-card:hover .icon-container{transform:scale(1.08)}
-.icon-container{transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
-.input-field{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;padding:1rem 1.25rem;color:#fff;font-size:0.95rem;transition:all 0.3s;outline:none;font-family:'Inter',sans-serif}
-.input-field::placeholder{color:rgba(255,255,255,0.3)}
-.input-field:focus{border-color:#00D4FF;background:rgba(0,212,255,0.05);box-shadow:0 0 0 3px rgba(0,212,255,0.1)}
-.portal-bg{background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;background-attachment:fixed}
-.gradient-overlay-heavy{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,12,0.95) 0%,rgba(5,11,20,0.9) 50%,rgba(2,6,12,0.98) 100%),radial-gradient(circle at 30% 50%,rgba(0,212,255,0.08) 0%,transparent 60%)}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #334155; }
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em; }
+
+.glass-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.portal-login-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.4) 80%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 40%, rgba(255, 255, 255, 0.45) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.input-field {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1.25rem;
+  color: #0B0F17;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s;
+}
+.input-field:focus {
+  border-color: #E11D2A;
+  box-shadow: 0 0 0 3px rgba(225, 29, 42, 0.1);
+}
+
+.glass-card-light {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-light:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.1);
+}
 </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
+<!-- ICON LIBRARY -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="icon-forklift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h10V9H7l-4 4v4z"/><circle cx="7" cy="19" r="2"/><circle cx="15" cy="19" r="2"/><path d="M17 17V5M21 8h-4M21 12h-4M21 16h-4"/></symbol>
-  <symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 105.6 5.6L21 21l-2 2-9.1-9.1a4 4 0 01-5.6-5.6L6.5 6l3 3"/></symbol>
-  <symbol id="icon-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></symbol>
-  <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
-  <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></symbol>
-  <symbol id="icon-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z"/><path d="M14 3v6h6"/></symbol>
-  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
-  <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7L12 19"/></symbol>
-  <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-7"/></symbol>
-  <symbol id="icon-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></symbol>
-  <symbol id="icon-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4V8z"/></symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="icon-forklift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h10V9H7l-4 4v4z"/><circle cx="7" cy="19" r="2"/><circle cx="15" cy="19" r="2"/><path d="M17 17V5M21 8h-4M21 12h-4M21 16h-4"/></symbol>
+  <symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 105.6 5.6L21 21l-2 2-9.1-9.1a4 4 0 01-5.6-5.6L6.5 6l3 3"/></symbol>
+  <symbol id="icon-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></symbol>
+  <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
 </svg>
 
-<!-- LOGIN STATE -->
-<div id="loginState" class="portal-bg relative min-h-screen flex items-center justify-center">
-  <div class="gradient-overlay-heavy"></div>
-  <div class="absolute top-1/4 -left-40 w-[600px] h-[600px] bg-lithium/10 rounded-full blur-[140px] pointer-events-none"></div>
-  <div class="absolute bottom-1/4 -right-40 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[140px] pointer-events-none"></div>
+<!-- STANDARDIZED TOP UTILITY BANNER -->
+<div class="bg-obsidian text-slate-300 text-[11px] font-medium tracking-wide border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-2.5 flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <span class="inline-flex items-center gap-1.5 text-brand font-bold">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+        SINGAPORE OFFICIAL DISTRIBUTOR
+      </span>
+      <span class="hidden md:inline text-slate-500">|</span>
+      <span class="hidden md:inline text-slate-400">Next-Gen Lithium-Ion Material Handling Equipment</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="tel:+65" class="hover:text-white transition-colors">Direct Desk: +65 6XXX XXXX</a>
+      <a href="vic.html" class="text-gold font-semibold hover:text-white transition-colors">VIC Portal →</a>
+    </div>
+  </div>
+</div>
 
-  <div class="relative z-10 max-w-md w-full mx-6">
-    <div class="text-center mb-10">
-      <a href="index.html" class="inline-flex items-center gap-3 mb-6">
-        <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-glow overflow-hidden p-2">
-          <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
+<!-- NAVBAR -->
+<header class="sticky top-0 inset-x-0 z-[9999] glass-nav transition-all">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20 gap-4">
+    <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+      <div class="w-11 h-11 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-1.5">
+        <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
+      </div>
+      <div class="leading-none">
+        <div class="font-heading font-extrabold tracking-wider text-obsidian text-lg">JAC FORKLIFT</div>
+        <div class="text-[9px] font-bold text-brand tracking-[0.25em] mt-1">SINGAPORE</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
+      <a href="products.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">PRODUCTS</a>
+      <a href="solution.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">SOLUTIONS</a>
+      <a href="lithium-ion.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">JAC LITHIUM-ION</a>
+      <a href="equipment-rental.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">EQUIPMENT RENTAL</a>
+      <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
+    </nav>
+    <div class="hidden lg:flex items-center gap-3 shrink-0">
+      <div class="relative">
+        <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
+          <svg class="w-4 h-4"><use href="#icon-search"/></svg>
+        </button>
+        <div id="searchBox" class="hidden absolute right-0 top-full mt-3 w-80 z-50">
+          <div class="bg-white border border-slate-200 rounded-xl p-2 shadow-luxe">
+            <form action="products.html" method="get" class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+              <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-2 focus:outline-none" />
+            </form>
+          </div>
         </div>
+      </div>
+      <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 hover:border-brand hover:text-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm hover:scale-[1.02] whitespace-nowrap">
+        INQUIRY
       </a>
-      <div class="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-3">VIC Exclusive Access</div>
-      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Welcome Back, VIC Partner</h1>
-      <p class="text-white/50 text-sm font-light">Your dedicated portal for priority support, resources, and account management.</p>
+      <a href="dealer-enquiry.html" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs tracking-wider uppercase py-3 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
+        DEALER ENQUIRY
+      </a>
     </div>
 
-    <form onsubmit="event.preventDefault(); document.getElementById('loginState').style.display='none'; document.getElementById('dashboardState').style.display='block'; window.scrollTo(0,0);" class="glass-panel rounded-3xl p-8 lg:p-10 space-y-5">
+    <div class="lg:hidden flex items-center gap-2">
+      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
+        <svg class="w-5 h-5"><use href="#icon-search"/></svg>
+      </button>
+      <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
+    </div>
+  </div>
+
+  <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
+    <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
+      <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+      <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-1.5 focus:outline-none" />
+    </form>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 shadow-xl space-y-4">
+    <a href="products.html" class="block font-bold text-slate-800 text-sm">PRODUCTS</a>
+    <a href="solution.html" class="block font-bold text-slate-800 text-sm">SOLUTIONS</a>
+    <a href="lithium-ion.html" class="block font-bold text-slate-800 text-sm">JAC LITHIUM-ION</a>
+    <a href="equipment-rental.html" class="block font-bold text-slate-800 text-sm">EQUIPMENT RENTAL</a>
+    <a href="about.html" class="block font-bold text-slate-800 text-sm">ABOUT US</a>
+    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+      <a href="contact.html" class="block text-center border border-slate-300 text-obsidian font-bold py-3 rounded-xl">INQUIRY</a>
+      <a href="dealer-enquiry.html" class="block text-center bg-brand text-white font-bold py-3 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
+    </div>
+  </div>
+</header>
+
+<!-- 1. LOGIN STATE -->
+<div id="loginState" class="portal-login-bg min-h-[85vh] flex items-center justify-center p-6">
+  <div class="max-w-md w-full">
+    <div class="text-center mb-8">
+      <div class="text-gold text-xs font-bold tracking-widest uppercase mb-1">VIP & Enterprise Tier</div>
+      <h1 class="text-3xl font-extrabold text-obsidian mb-2">VIC Partner Access</h1>
+      <p class="text-slate-500 text-xs font-light">Dedicated executive portal for equipment telemetry, priority dispatch, and account management.</p>
+    </div>
+
+    <form onsubmit="event.preventDefault(); document.getElementById('loginState').style.display='none'; document.getElementById('dashboardState').style.display='block'; window.scrollTo(0,0);" class="bg-white rounded-3xl p-8 lg:p-10 border border-slate-200 shadow-luxe space-y-4">
       <div>
-        <label class="text-xs text-white/40 uppercase tracking-widest mb-2 block">Email</label>
-        <input type="email" placeholder="you@company.com" class="input-field" required />
+        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Corporate Email</label>
+        <input type="email" value="partner@logistics.com.sg" class="input-field" required />
       </div>
       <div>
-        <label class="text-xs text-white/40 uppercase tracking-widest mb-2 block">Password</label>
-        <input type="password" placeholder="••••••••" class="input-field" required />
+        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Access Password</label>
+        <input type="password" value="••••••••••••" class="input-field" required />
       </div>
-      <div class="flex items-center justify-between text-sm">
-        <label class="flex items-center gap-2 text-white/50 cursor-pointer"><input type="checkbox" class="accent-lithium" /> Remember me</label>
-        <a href="#" class="text-lithium hover:underline">Forgot password?</a>
-      </div>
-      <button type="submit" class="w-full bg-lithium hover:bg-lithium-dark text-navy font-bold py-4 rounded-xl transition-all shadow-glow hover:scale-[1.02]">Log In →</button>
-      <div class="text-center text-sm text-white/40 pt-4 border-t border-white/5">
-        New to JAC? <a href="contact.html" class="text-lithium hover:underline font-semibold">Apply for VIC Access →</a>
+      <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-soft-glow transition-all hover:scale-[1.01]">
+        Log In to VIC Portal →
+      </button>
+      <div class="text-center text-xs text-slate-400 pt-3 border-t border-slate-100">
+        New Corporate Equipment Partner? <a href="contact.html" class="text-brand font-bold hover:underline">Apply for VIC Access</a>
       </div>
     </form>
   </div>
 </div>
 
-<!-- DASHBOARD STATE -->
-<div id="dashboardState" style="display:none" class="min-h-screen bg-navy">
-
-  <header class="bg-navy/70 backdrop-blur-xl border-b border-white/5 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
-      <a href="index.html" class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-glow overflow-hidden p-1.5">
-          <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
-        </div>
-        <div class="text-white leading-tight">
-          <div class="font-heading font-bold tracking-wider text-sm">JAC VIC PORTAL</div>
-          <div class="text-[9px] text-lithium tracking-[0.2em]">SINGAPORE</div>
-        </div>
-      </a>
-      <div class="flex items-center gap-4">
-        <div class="hidden md:flex items-center gap-2 glass-panel rounded-xl px-4 py-2">
-          <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-          <span class="text-xs text-white/60">System Online</span>
-        </div>
-        <div class="w-10 h-10 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center text-gold font-bold">JD</div>
-        <button onclick="document.getElementById('loginState').style.display='flex'; document.getElementById('dashboardState').style.display='none';" class="text-white/50 hover:text-lithium text-sm">Logout</button>
+<!-- 2. DASHBOARD STATE -->
+<div id="dashboardState" style="display:none" class="min-h-screen bg-primary-50">
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
+      <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1 text-emerald-700 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Telemetry Active · Real-Time Link
       </div>
+      <button onclick="document.getElementById('loginState').style.display='flex'; document.getElementById('dashboardState').style.display='none';" class="text-xs font-bold text-slate-500 hover:text-brand">Logout</button>
     </div>
-  </header>
+  </div>
 
   <main class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
-    <div class="mb-12">
-      <div class="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-3">Welcome Back</div>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">Hello, John</h1>
-      <p class="text-white/50 font-light">Here's your operational snapshot for today.</p>
+    <div class="mb-10">
+      <div class="text-gold text-xs font-bold tracking-widest uppercase mb-1">Executive Equipment Dashboard</div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-obsidian">Welcome Back, Enterprise Partner</h1>
+      <p class="text-slate-500 text-sm font-light">Operational status across your Jurong Logistics Facility.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-      <div class="premium-card glass-panel rounded-3xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-forklift"/></svg></div>
-          <div class="text-xs text-white/40 uppercase tracking-widest">Fleet</div>
+    <!-- Stat Metrics -->
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+      <div class="glass-card-light rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-forklift"/></svg></div>
+          <span class="text-xs text-slate-400 font-bold uppercase">Active Equipment</span>
         </div>
-        <div class="text-4xl font-heading font-extrabold text-white mb-2">5</div>
-        <div class="text-sm text-white/50 font-light">Active units in operation</div>
+        <div class="text-3xl font-heading font-extrabold text-obsidian mb-1">5 Units</div>
+        <div class="text-xs text-slate-500">100% Operational Status</div>
       </div>
-      <div class="premium-card glass-panel rounded-3xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-tool"/></svg></div>
-          <div class="text-xs text-white/40 uppercase tracking-widest">Service</div>
+      <div class="glass-card-light rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-tool"/></svg></div>
+          <span class="text-xs text-slate-400 font-bold uppercase">Open Request</span>
         </div>
-        <div class="text-4xl font-heading font-extrabold text-lithium mb-2">1</div>
-        <div class="text-sm text-white/50 font-light">Open service request</div>
+        <div class="text-3xl font-heading font-extrabold text-brand mb-1">1 Item</div>
+        <div class="text-xs text-slate-500">Routine 250h Service</div>
       </div>
-      <div class="premium-card glass-panel rounded-3xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-package"/></svg></div>
-          <div class="text-xs text-white/40 uppercase tracking-widest">Orders</div>
+      <div class="glass-card-light rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-package"/></svg></div>
+          <span class="text-xs text-slate-400 font-bold uppercase">Parts Order</span>
         </div>
-        <div class="text-4xl font-heading font-extrabold text-white mb-2">2</div>
-        <div class="text-sm text-white/50 font-light">Pending shipments</div>
+        <div class="text-3xl font-heading font-extrabold text-obsidian mb-1">2 Sets</div>
+        <div class="text-xs text-slate-500">Polyurethane Drive Tires</div>
       </div>
-      <div class="premium-card glass-panel rounded-3xl p-8 border-gold/20">
-        <div class="flex items-center justify-between mb-4">
-          <div class="icon-container w-11 h-11 rounded-xl bg-gold/10 border border-gold/20 text-gold flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-calendar"/></svg></div>
-          <div class="text-xs text-gold uppercase tracking-widest">Next Service</div>
+      <div class="glass-card-light rounded-2xl p-6 border-gold/30">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-gold flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-calendar"/></svg></div>
+          <span class="text-xs text-gold font-bold uppercase">Next Inspection</span>
         </div>
-        <div class="text-4xl font-heading font-extrabold text-gold mb-2">15</div>
-        <div class="text-sm text-white/50 font-light">Oct 2026 · Scheduled</div>
-      </div>
-    </div>
-
-    <div class="mb-12">
-      <h2 class="font-heading font-bold text-white text-xl mb-6">Quick Actions</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 flex items-center gap-4 hover:border-lithium/30"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-tool"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Book a Service</div><div class="text-xs text-white/40">Schedule maintenance</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 flex items-center gap-4 hover:border-lithium/30"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-package"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Order Spare Parts</div><div class="text-xs text-white/40">Browse catalogue</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 flex items-center gap-4 hover:border-lithium/30"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-user"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Contact Manager</div><div class="text-xs text-white/40">Direct line</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 flex items-center gap-4 hover:border-lithium/30"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-doc"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Download Invoices</div><div class="text-xs text-white/40">Billing history</div></div></a>
+        <div class="text-3xl font-heading font-extrabold text-gold mb-1">15 Oct</div>
+        <div class="text-xs text-slate-500">Scheduled On-Site</div>
       </div>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-6 mb-12">
-      <div class="lg:col-span-2 glass-panel rounded-3xl p-8 border-gold/20">
-        <div class="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-4">Your Dedicated Manager</div>
-        <div class="flex items-start gap-6">
-          <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-gold to-gold/40 flex items-center justify-center text-navy font-heading font-bold text-2xl">SL</div>
-          <div>
-            <h3 class="font-heading font-bold text-white text-xl mb-1">Sarah Lim</h3>
-            <p class="text-white/50 text-sm mb-4">Senior VIC Account Manager</p>
-            <div class="flex flex-wrap gap-4 text-sm">
-              <a href="tel:+65" class="flex items-center gap-2 text-white/70 hover:text-lithium"><svg class="w-4 h-4"><use href="#icon-phone"/></svg> +65 9XXX XXXX</a>
-              <a href="mailto:sarah@jacforklift.com.sg" class="flex items-center gap-2 text-white/70 hover:text-lithium"><svg class="w-4 h-4"><use href="#icon-link"/></svg> sarah@jacforklift.com.sg</a>
-            </div>
-          </div>
+    <!-- Account Director Card -->
+    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-luxe mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <div>
+        <div class="text-gold text-xs font-bold uppercase tracking-widest mb-1">Your Dedicated Account Director</div>
+        <h3 class="font-heading font-bold text-xl text-obsidian">Sarah Lim · Senior Technical Account Specialist</h3>
+        <p class="text-slate-500 text-xs font-light mt-1">Direct Line: +65 9XXX XXXX | Email: sarah@jacforklift.com.sg</p>
+      </div>
+      <a href="tel:+65" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl shadow-soft-glow transition-all">
+        Call 24/7 Priority Hotline →
+      </a>
+    </div>
+
+    <!-- Recent Logs -->
+    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-luxe">
+      <h3 class="font-heading font-bold text-lg text-obsidian mb-6">Recent Equipment Telemetry & Service Logs</h3>
+      <div class="space-y-4 text-xs">
+        <div class="flex justify-between pb-3 border-b border-slate-100">
+          <span class="font-semibold text-obsidian">Unit #HE-0892: Full 100% Opportunity Charge Cycle Complete</span>
+          <span class="text-slate-400">10:45 AM Today</span>
         </div>
-      </div>
-      <div class="premium-card glass-panel rounded-3xl p-8 border-lithium/20">
-        <div class="text-lithium text-xs font-semibold tracking-[0.3em] uppercase mb-4">24/7 Priority Line</div>
-        <div class="text-2xl font-heading font-extrabold text-white mb-4">+65 6XXX XXXX</div>
-        <p class="text-white/50 text-sm font-light mb-6">Emergency breakdown support for VIC partners. Guaranteed 24-hour response.</p>
-        <a href="tel:+65" class="inline-flex items-center gap-2 bg-lithium hover:bg-lithium-dark text-navy font-bold px-5 py-3 rounded-xl transition-all shadow-glow hover:scale-105 text-sm">Call Now →</a>
-      </div>
-    </div>
-
-    <div class="glass-panel rounded-3xl p-8 mb-12">
-      <h2 class="font-heading font-bold text-white text-xl mb-6">Recent Activity</h2>
-      <div class="space-y-4">
-        <div class="flex items-start gap-4 pb-4 border-b border-white/5"><div class="w-10 h-10 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center shrink-0"><svg class="w-4 h-4"><use href="#icon-tool"/></svg></div><div class="flex-1"><div class="text-white text-sm mb-1">Service request #SR-2026-0892 completed</div><div class="text-xs text-white/40">10 Sep 2026 · Forklift HE20 · On-site technician</div></div></div>
-        <div class="flex items-start gap-4 pb-4 border-b border-white/5"><div class="w-10 h-10 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center shrink-0"><svg class="w-4 h-4"><use href="#icon-package"/></svg></div><div class="flex-1"><div class="text-white text-sm mb-1">Order #ORD-2026-1123 shipped</div><div class="text-xs text-white/40">Arriving 12 Sep 2026 · 3x Lithium battery packs</div></div></div>
-        <div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/20 text-gold flex items-center justify-center shrink-0"><svg class="w-4 h-4"><use href="#icon-doc"/></svg></div><div class="flex-1"><div class="text-white text-sm mb-1">New product catalogue available</div><div class="text-xs text-white/40">Updated 05 Sep 2026 · Download from Resources</div></div></div>
-      </div>
-    </div>
-
-    <div>
-      <h2 class="font-heading font-bold text-white text-xl mb-6">VIC Resources</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 hover:border-lithium/30 flex items-center gap-4"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-doc"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Product Catalogues</div><div class="text-xs text-white/40">PDF downloads</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 hover:border-lithium/30 flex items-center gap-4"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-video"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Training Videos</div><div class="text-xs text-white/40">Operator guides</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 hover:border-lithium/30 flex items-center gap-4"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-chart"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Maintenance Checklists</div><div class="text-xs text-white/40">Daily inspections</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 hover:border-lithium/30 flex items-center gap-4"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-chart"/></svg></div><div><div class="font-heading font-bold text-white text-sm">ROI Calculator</div><div class="text-xs text-white/40">Estimate savings</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 hover:border-lithium/30 flex items-center gap-4"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-doc"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Warranty Docs</div><div class="text-xs text-white/40">Coverage details</div></div></a>
-        <a href="#" class="premium-card glass-panel rounded-2xl p-6 hover:border-lithium/30 flex items-center gap-4"><div class="icon-container w-11 h-11 rounded-xl bg-lithium/10 border border-lithium/20 text-lithium flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-bell"/></svg></div><div><div class="font-heading font-bold text-white text-sm">Service History</div><div class="text-xs text-white/40">Past repairs log</div></div></a>
+        <div class="flex justify-between pb-3 border-b border-slate-100">
+          <span class="font-semibold text-obsidian">Unit #RT-0112: 500-Hour Hydraulic Pressure Certification Passed</span>
+          <span class="text-slate-400">Yesterday</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-semibold text-obsidian">Singapore Central Spares Hub: 48-Hour Dispatch Scheduled</span>
+          <span class="text-slate-400">3 Days Ago</span>
+        </div>
       </div>
     </div>
   </main>
-
-  <footer class="border-t border-white/5 py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/40 font-light">
-      <div>© 2026 JAC Material Handling Singapore · VIC Portal</div>
-      <div class="flex gap-6"><a href="#" class="hover:text-lithium">Privacy</a><a href="#" class="hover:text-lithium">Terms</a></div>
-    </div>
-  </footer>
 </div>
 
-<script src="form-handler.js"></script>
+<!-- FOOTER -->
+<footer class="bg-obsidian text-slate-400 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm">
+          <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
+        </div>
+        <div class="text-white leading-none">
+          <div class="font-heading font-extrabold tracking-wider text-base">JAC FORKLIFT</div>
+          <div class="text-[9px] text-brand font-bold tracking-[0.2em] mt-1">SINGAPORE</div>
+        </div>
+      </div>
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">Exclusive JAC electric forklift distributor in Singapore. High-performance, lithium-powered, ESG-compliant material handling solutions.</p>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Products</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Forklifts</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Reach Trucks</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Services</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
+        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">Lithium-Ion Tech</a></li>
+        <li><a href="solution.html" class="hover:text-white transition-colors">Material Solutions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Company</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="dealer-enquiry.html" class="hover:text-white transition-colors">Dealer Enquiry</a></li>
+        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex justify-between items-center text-xs text-slate-500 font-light">
+      <div>Copyright © 2026 JAC Material Handling. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
 
+<script>
+const searchToggle = document.getElementById('searchToggle');
+const searchBox = document.getElementById('searchBox');
+if (searchToggle && searchBox) {
+  searchToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    searchBox.classList.toggle('hidden');
+    if (!searchBox.classList.contains('hidden')) {
+      setTimeout(() => searchBox.querySelector('input')?.focus(), 50);
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
+      searchBox.classList.add('hidden');
+    }
+  });
+}
+const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+const mobileSearchBox = document.getElementById('mobileSearchBox');
+if (mobileSearchToggle && mobileSearchBox) {
+  mobileSearchToggle.addEventListener('click', () => {
+    mobileSearchBox.classList.toggle('hidden');
+  });
+}
+document.getElementById('menuBtn')?.addEventListener('click', () => {
+  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+});
+</script>
+
+<script src="search.js"></script>
+  <script src="form-handler.js"></script>
 </body>
 </html>

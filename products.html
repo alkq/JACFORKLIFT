@@ -4,240 +4,622 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Products | JAC Forklift Singapore</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{
-  colors:{navy:{DEFAULT:'#050B14',light:'#0E1A2B',dark:'#02060C'},lithium:{DEFAULT:'#00D4FF',dark:'#00A8E8'},gold:{DEFAULT:'#D4AF37',light:'#F4D03F'},grey:{DEFAULT:'#F8FAFC'}},
-  fontFamily:{heading:['Montserrat','sans-serif'],body:['Inter','sans-serif']},
-  boxShadow:{premium:'0 20px 40px -10px rgba(0,0,0,0.5)',glow:'0 0 30px rgba(0,212,255,0.25)'}
-}}};
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
+        brand: { light: '#FF3B47', DEFAULT: '#E11D2A', dark: '#B8141F' },
+        obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
+        gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
+      },
+      fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+      boxShadow: {
+        'soft-glow': '0 12px 30px -8px rgba(225, 29, 42, 0.25)',
+        'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
+        'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
+      }
+    }
+  }
+};
 </script>
 <style>
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background-color:#050B14;color:#E2E8F0}
-h1,h2,h3,h4{font-family:'Montserrat',sans-serif;letter-spacing:-0.02em}
-.glass-panel{background:rgba(14,26,43,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.06)}
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-.premium-card{transition:all 0.5s cubic-bezier(0.16,1,0.3,1);cursor:pointer;display:block;text-decoration:none}
-.premium-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -15px rgba(0,0,0,0.6),0 0 30px rgba(0,212,255,0.15);border-color:rgba(0,212,255,0.3)}
-.page-hero-bg{background-image:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;background-attachment:fixed}
-.gradient-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,11,20,0.85) 0%,rgba(5,11,20,0.7) 40%,rgba(5,11,20,0.95) 100%),linear-gradient(90deg,rgba(5,11,20,0.9) 0%,rgba(5,11,20,0.3) 50%,rgba(5,11,20,0.9) 100%)}
-.filter-btn{padding:0.75rem 1.5rem;border-radius:0.75rem;font-size:0.875rem;font-weight:500;transition:all 0.3s;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);background:transparent;cursor:pointer}
-.filter-btn:hover{border-color:rgba(0,212,255,0.4);color:#00D4FF}
-.filter-btn.active{background:#00D4FF;color:#050B14;font-weight:700;border-color:#00D4FF}
-.product-img{background:linear-gradient(135deg,#F0F4F8 0%,#E2E8F0 100%)}
-.product-img img{object-fit:contain;padding:1.5rem}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #334155; }
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em; }
+
+.glass-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.product-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  text-decoration: none;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: #CBD5E1;
+  box-shadow: 0 24px 50px -8px rgba(15, 23, 42, 0.14);
+}
+
+.page-hero-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.35) 70%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.filter-btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border: 1px solid #E2E8F0;
+  color: #475569;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+.filter-btn:hover {
+  border-color: #E11D2A;
+  color: #E11D2A;
+}
+.filter-btn.active {
+  background: #E11D2A;
+  color: #FFFFFF;
+  border-color: #E11D2A;
+  box-shadow: 0 10px 25px -5px rgba(225, 29, 42, 0.3);
+}
+
+.product-stage {
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+}
+.product-stage img {
+  object-fit: contain;
+  padding: 1.5rem;
+  transition: transform 0.5s ease;
+}
+.product-card:hover .product-stage img {
+  transform: scale(1.05);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+</svg>
+
+<!-- TOP UTILITY BANNER -->
+<div class="bg-obsidian text-slate-300 text-[11px] font-medium tracking-wide border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-2.5 flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <span class="inline-flex items-center gap-1.5 text-brand font-bold">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+        SINGAPORE OFFICIAL DISTRIBUTOR
+      </span>
+      <span class="hidden md:inline text-slate-500">|</span>
+      <span class="hidden md:inline text-slate-400">13 Factory Certified Electric Models</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="tel:+65" class="hover:text-white transition-colors">Direct Desk: +65 6XXX XXXX</a>
+      <a href="vic.html" class="text-gold font-semibold hover:text-white transition-colors">VIC Portal →</a>
+    </div>
+  </div>
+</div>
 
 <!-- NAVBAR -->
-<header class="fixed top-0 inset-x-0 z-50 bg-navy/70 backdrop-blur-xl border-b border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-24">
-    <a href="index.html" class="flex items-center gap-3">
-      <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center shadow-glow overflow-hidden"><img src="images/jac-logo.png" alt="JAC Logo" class="w-10 h-auto object-contain" /></div>
-      <div class="text-white leading-tight"><div class="font-heading font-bold tracking-wider text-base">JAC FORKLIFT</div><div class="text-[9px] text-lithium tracking-[0.25em] mt-0.5">SINGAPORE</div></div>
+<header class="sticky top-0 inset-x-0 z-[9999] glass-nav transition-all">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20 gap-4">
+    <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+      <div class="w-11 h-11 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-1.5">
+        <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
+      </div>
+      <div class="leading-none">
+        <div class="font-heading font-extrabold tracking-wider text-obsidian text-lg">JAC FORKLIFT</div>
+        <div class="text-[9px] font-bold text-brand tracking-[0.25em] mt-1">SINGAPORE</div>
+      </div>
     </a>
-    <nav class="hidden lg:flex items-center gap-8">
-      <a href="products.html" class="relative text-lithium text-sm font-medium tracking-wide">
+
+    <!-- Center Nav -->
+    <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
+      <a href="products.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
         PRODUCTS
-        <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-lithium rounded-full"></span>
-        </a>
-      <a href="lithium-ion.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">JAC LITHIUM-ION</a>
-      <a href="equipment-rental.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">EQUIPMENT RENTAL</a>
-      <a href="about.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">ABOUT</a>
-      <a href="contact.html" class="text-white/70 hover:text-lithium text-sm font-medium tracking-wide transition-colors">CONTACT US</a>
+        <span class="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand rounded-full"></span>
+      </a>
+      <a href="solution.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">SOLUTIONS</a>
+      <a href="lithium-ion.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">JAC LITHIUM-ION</a>
+      <a href="equipment-rental.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">EQUIPMENT RENTAL</a>
+      <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
-    <div class="hidden lg:flex items-center gap-6">
-      <a href="tel:+65" class="flex items-center gap-2 text-white/70 hover:text-lithium text-sm font-medium"><svg class="w-4 h-4"><use href="#icon-phone"/></svg>+65 XXXX XXXX</a>
-      <a href="contact.html" class="bg-lithium hover:bg-lithium-dark text-navy font-bold text-sm py-3 px-6 rounded-xl transition-all shadow-glow hover:scale-105 whitespace-nowrap">VIC CONSULTATION</a>
+
+    <!-- Right Actions -->
+    <div class="hidden lg:flex items-center gap-3 shrink-0">
+      <div class="relative">
+        <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
+          <svg class="w-4 h-4"><use href="#icon-search"/></svg>
+        </button>
+        <div id="searchBox" class="hidden absolute right-0 top-full mt-3 w-80 z-50">
+          <div class="bg-white border border-slate-200 rounded-xl p-2 shadow-luxe">
+            <form action="products.html" method="get" class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+              <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-2 focus:outline-none" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 hover:border-brand hover:text-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm hover:scale-[1.02] whitespace-nowrap">
+        INQUIRY
+      </a>
+      <a href="dealer-enquiry.html" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs tracking-wider uppercase py-3 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
+        DEALER ENQUIRY
+      </a>
     </div>
-    <button id="menuBtn" class="lg:hidden text-white text-2xl">☰</button>
+
+    <!-- Mobile Button -->
+    <div class="lg:hidden flex items-center gap-2">
+      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
+        <svg class="w-5 h-5"><use href="#icon-search"/></svg>
+      </button>
+      <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
+    </div>
   </div>
-  <div id="mobileMenu" class="hidden lg:hidden bg-navy-light border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-6">
-      <a href="products.html" class="text-lithium font-medium">PRODUCTS</a>
-      <a href="lithium-ion.html" class="text-white/70 hover:text-lithium font-medium">JAC LITHIUM-ION</a>
-      <a href="equipment-rental.html" class="text-white/70 hover:text-lithium font-medium">EQUIPMENT RENTAL</a>
-      <a href="about.html" class="text-white/70 hover:text-lithium font-medium">ABOUT</a>
-      <a href="contact.html" class="text-white/70 hover:text-lithium font-medium">CONTACT US</a>
-      <a href="contact.html" class="bg-lithium text-navy font-bold text-center py-4 rounded-xl">VIC CONSULTATION</a>
+
+  <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
+    <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
+      <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+      <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-1.5 focus:outline-none" />
+    </form>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 shadow-xl space-y-4">
+    <a href="products.html" class="block font-bold text-brand text-sm">PRODUCTS</a>
+    <a href="solution.html" class="block font-bold text-slate-800 text-sm">SOLUTIONS</a>
+    <a href="lithium-ion.html" class="block font-bold text-slate-800 text-sm">JAC LITHIUM-ION</a>
+    <a href="equipment-rental.html" class="block font-bold text-slate-800 text-sm">EQUIPMENT RENTAL</a>
+    <a href="about.html" class="block font-bold text-slate-800 text-sm">ABOUT US</a>
+    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+      <a href="contact.html" class="block text-center border border-slate-300 text-obsidian font-bold py-3 rounded-xl">INQUIRY</a>
+      <a href="dealer-enquiry.html" class="block text-center bg-brand text-white font-bold py-3 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
   </div>
 </header>
 
-<!-- PAGE HERO -->
-<section class="page-hero-bg relative pt-48 pb-32 overflow-hidden">
-  <div class="gradient-overlay"></div>
-  <div class="absolute top-1/3 -right-40 w-[600px] h-[600px] bg-lithium/10 rounded-full blur-[140px] pointer-events-none"></div>
+<!-- HERO -->
+<section class="page-hero-bg py-24 border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 fade-up">
-    <div class="text-lithium text-sm font-semibold tracking-[0.2em] uppercase mb-6">Our Fleet</div>
-    <h1 class="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 max-w-3xl">Premium <span class="text-transparent bg-clip-text bg-gradient-to-r from-lithium to-lithium-dark">Lithium-Ion</span> Equipment</h1>
-    <p class="text-white/60 text-xl font-light max-w-2xl">Thirteen models across six categories — each engineered for zero-emission performance and maximum uptime.</p>
+    <div class="inline-flex items-center gap-2 bg-white/95 border border-slate-200 px-4 py-1.5 rounded-full text-xs font-bold text-brand tracking-widest uppercase mb-6 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span> Zero-Emission Lineup
+    </div>
+    <h1 class="text-obsidian text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 max-w-3xl">
+      Premium <span class="text-brand">Lithium-Ion</span> Equipment
+    </h1>
+    <p class="text-slate-600 text-lg sm:text-xl font-light max-w-2xl">
+      Thirteen high-performance models across six operational categories — engineered for zero-emission compliance, rapid charging, and continuous industrial uptime.
+    </p>
   </div>
 </section>
 
 <!-- FILTER + GRID -->
-<section class="py-24 bg-navy fade-up">
+<section class="py-20 bg-primary-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="flex flex-wrap gap-3 mb-16">
-      <button class="filter-btn active" data-filter="all">All Products (13)</button>
+    <div class="flex flex-wrap gap-2.5 mb-14">
+      <button class="filter-btn active" data-filter="all">All Equipment (13)</button>
       <button class="filter-btn" data-filter="forklifts">Lithium Forklifts (4)</button>
       <button class="filter-btn" data-filter="reach">Reach Trucks (2)</button>
       <button class="filter-btn" data-filter="pallet">Pallet Trucks (2)</button>
-      <button class="filter-btn" data-filter="stacker">Stackers (3)</button>
-      <button class="filter-btn" data-filter="other">Tractor & Others (2)</button>
+      <button class="filter-btn" data-filter="stacker">Stackers (2)</button>
+      <button class="filter-btn" data-filter="other">Tractor & Platforms (3)</button>
     </div>
 
+    <!-- Product Cards Grid -->
     <div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <a href="product-spec.html?id=he-series" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="forklifts">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/HE%20Series%202.5%20%E2%80%93%203.8T.png" alt="HE Series 2.5 – 3.8T" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">LITHIUM FORKLIFT</div>
+      <!-- HE Series -->
+      <a href="product-spec.html?id=he-series" class="product-card rounded-3xl overflow-hidden" data-category="forklifts">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/HE%20Series%202.5%20%E2%80%93%203.8T.png" alt="HE Series" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">LITHIUM FORKLIFT</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">HE Series</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">2.5 – 3.8 TON</p><p class="text-white/50 text-sm font-light mb-5">Heavy-duty lithium forklift engineered to replace diesel trucks with zero emissions.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">2.5 – 3.8 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">HE Series</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Heavy-duty lithium forklift engineered to replace diesel yard trucks with zero emissions.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Charge: 1.5h</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=l-series" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="forklifts">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/L%20Series%201.5%20%E2%80%93%203.5T.png" alt="L Series 1.5 – 3.5T" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">LITHIUM FORKLIFT</div>
+      <!-- L Series -->
+      <a href="product-spec.html?id=l-series" class="product-card rounded-3xl overflow-hidden" data-category="forklifts">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/L%20Series%201.5%20%E2%80%93%203.5T.png" alt="L Series" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">LITHIUM FORKLIFT</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">L Series</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">1.5 – 3.5 TON</p><p class="text-white/50 text-sm font-light mb-5">The ultimate smart warehouse solution for versatile indoor and outdoor work.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 3.5 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">L Series</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">The ultimate smart warehouse forklift for versatile indoor handling and yard staging.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Charge: 1.5h</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=je-series" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="forklifts">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/JE%20Series%204.5%20%E2%80%93%205.0T.png" alt="JE Series 4.5 – 5.0T" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">LITHIUM FORKLIFT</div>
+      <!-- JE Series -->
+      <a href="product-spec.html?id=je-series" class="product-card rounded-3xl overflow-hidden" data-category="forklifts">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/JE%20Series%204.5%20%E2%80%93%205.0T.png" alt="JE Series" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">HEAVY ELECTRIC</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">JE Series</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">4.5 – 5.0 TON</p><p class="text-white/50 text-sm font-light mb-5">Heavy-duty electric forklift for the most demanding industrial operations.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">4.5 – 5.0 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">JE Series</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">High-capacity electric forklift designed for heavy industrial and manufacturing logistics.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Charge: 2.0h</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=three-wheel" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="forklifts">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/Three%20Wheel%201.5%20%E2%80%93%202.0T.png" alt="Three Wheel 1.5 – 2.0T" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">LITHIUM FORKLIFT</div>
+      <!-- Three Wheel -->
+      <a href="product-spec.html?id=three-wheel" class="product-card rounded-3xl overflow-hidden" data-category="forklifts">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/Three%20Wheel%201.5%20%E2%80%93%202.0T.png" alt="Three Wheel" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">COMPACT FORKLIFT</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Three Wheel</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">1.5 – 2.0 TON</p><p class="text-white/50 text-sm font-light mb-5">Compact lithium forklift for tight spaces and precision handling.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 2.0 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Three Wheel Forklift</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Ultra-tight turning radius for narrow container stuffing, racking, and confined spaces.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Radius: 1.7m</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=reach-truck-stand" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="reach">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/Stand%20type%20Reach%20Truck%201.5T.png" alt="Stand type Reach Truck 1.5T" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-lithium text-navy text-xs font-bold tracking-wider rounded-full shadow-lg shadow-lithium/30">REACH TRUCK</div>
+      <!-- Stand Type Reach -->
+      <a href="product-spec.html?id=reach-truck-stand" class="product-card rounded-3xl overflow-hidden" data-category="reach">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/Stand%20type%20Reach%20Truck%201.5T.png" alt="Stand Type Reach Truck" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-full">REACH TRUCK</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Stand Type Reach Truck</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">1.5 TON</p><p class="text-white/50 text-sm font-light mb-5">Maximise your vertical storage space without sacrificing aisle width.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 TON · 10M LIFT</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Stand Type Reach Truck</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Maximise vertical cubic storage without expanding aisle widths in high-bay setups.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Aisle: 1.8m</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=reach-truck-sit" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="reach">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/Sit%20type%20Reach%20Truck%201.5%20-2.0T.png" alt="Sit type Reach Truck 1.5 -2.0T" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-lithium text-navy text-xs font-bold tracking-wider rounded-full shadow-lg shadow-lithium/30">REACH TRUCK</div>
+      <!-- Sit Type Reach -->
+      <a href="product-spec.html?id=reach-truck-sit" class="product-card rounded-3xl overflow-hidden" data-category="reach">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/Sit%20type%20Reach%20Truck%201.5%20-2.0T.png" alt="Sit Type Reach Truck" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-full">REACH TRUCK</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Sit Type Reach Truck</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">1.5 – 2.0 TON</p><p class="text-white/50 text-sm font-light mb-5">Designed for intensive, long-shift warehouse operations. Sit-down comfort, all-day productivity.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 2.0 TON · 10M LIFT</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Sit Type Reach Truck</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Designed for intensive, long-shift warehouse operations with full ergonomic seating.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Sit-Down Ergonomics</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=walkie-pallet" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="pallet">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
+      <!-- Walkie Pallet -->
+      <a href="product-spec.html?id=walkie-pallet" class="product-card rounded-3xl overflow-hidden" data-category="pallet">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
           <img src="images/Walkie%20Pallet%20Truck%20with%20Lithium%20Battery%201.5%20%E2%80%93%202.0T.png" alt="Walkie Pallet Truck" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy-light text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">PALLET TRUCK</div>
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PALLET TRUCK</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Walkie Pallet Truck</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">1.5 – 2.0 TON</p><p class="text-white/50 text-sm font-light mb-5">Compact and efficient lithium-powered pallet truck for tight-space operations.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 2.0 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Walkie Pallet Truck</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Compact, lightweight lithium pallet truck engineered for fast retail and dock unloading.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Fast Charge: 1h</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=rider-pallet" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="pallet">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
+      <!-- Rider Pallet -->
+      <a href="product-spec.html?id=rider-pallet" class="product-card rounded-3xl overflow-hidden" data-category="pallet">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
           <img src="images/Rider%20Pallet%20Truck%202.0%20%E2%80%93%203.0T.png" alt="Rider Pallet Truck" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy-light text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">PALLET TRUCK</div>
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PALLET TRUCK</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Rider Pallet Truck</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">2.0 – 3.0 TON</p><p class="text-white/50 text-sm font-light mb-5">Accelerate your cross-warehouse transportation. Built for heavier loads and long distances.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">2.0 – 3.0 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Rider Pallet Truck</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Accelerate long-distance transport with an ergonomic fold-down suspension platform.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Platform Deck</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=straddle-stacker" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="stacker">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/Straddle-type%20Rider%20Electric%20Stacker%201.0%20%E2%80%93%201.5T.png" alt="Straddle-type Rider Electric Stacker" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-gold/15 text-gold text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-gold/20">ELECTRIC STACKER</div>
+      <!-- Straddle Stacker -->
+      <a href="product-spec.html?id=straddle-stacker" class="product-card rounded-3xl overflow-hidden" data-category="stacker">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/Straddle-type%20Rider%20Electric%20Stacker%201.0%20%E2%80%93%201.5T.png" alt="Straddle Stacker" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">STACKER</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Straddle-type Rider Electric Stacker</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">1.0 – 1.5 TON</p><p class="text-white/50 text-sm font-light mb-5">Straddle-type design for enhanced stability and heavy-duty stacking efficiency.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.0 – 1.5 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Straddle Rider Stacker</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Straddle design for perimeter pallet handling with enhanced stability at height.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Lift: 5.5m</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=electric-stacker" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="stacker">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
+      <!-- Electric Stacker -->
+      <a href="product-spec.html?id=electric-stacker" class="product-card rounded-3xl overflow-hidden" data-category="stacker">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
           <img src="images/Electric%20Rider%20Stacker%201.0%20%E2%80%93%202.0T.png" alt="Electric Rider Stacker" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-gold/15 text-gold text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-gold/20">ELECTRIC STACKER</div>
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">STACKER</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Electric Rider Stacker</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">1.0 – 2.0 TON</p><p class="text-white/50 text-sm font-light mb-5">Boost your medium-level stacking efficiency with this standard electric stacker.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.0 – 2.0 TON</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Electric Rider Stacker</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Standard medium-level electric stacker for fast mezzanine and racking replenishment.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Lift: 4.5m</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=electric-tractor" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="other">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
+      <!-- Electric Tractor -->
+      <a href="product-spec.html?id=electric-tractor" class="product-card rounded-3xl overflow-hidden" data-category="other">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
           <img src="images/Electric%20Tractor.png" alt="Electric Tractor" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">ELECTRIC TRACTOR</div>
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">TOWING</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Electric Tractor</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">TOWING SOLUTION</p><p class="text-white/50 text-sm font-light mb-5">Zero-emission towing solution for logistics and manufacturing floors.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">TOWING SOLUTION</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Electric Tow Tractor</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Zero-emission industrial tugger for manufacturing assembly lines and airport baggage.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Tow: 3,000 kg</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=electric-platform" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="other">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
-          <img src="images/Electric%20Platform%20Truck.png" alt="Electric Platform Truck" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-navy text-lithium text-xs font-semibold tracking-wider rounded-full shadow-lg shadow-navy/30">PLATFORM TRUCK</div>
+      <!-- Electric Platform -->
+      <a href="product-spec.html?id=electric-platform" class="product-card rounded-3xl overflow-hidden" data-category="other">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="images/Electric%20Platform%20Truck.png" alt="Electric Platform" class="w-full h-full" />
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PLATFORM</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Electric Platform Truck</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">FLATBED PLATFORM</p><p class="text-white/50 text-sm font-light mb-5">Versatile electric platform for efficient material movement across facilities.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">FLATBED UTILITY</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Electric Platform Truck</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Heavy flatbed utility transporter for bulk cross-warehouse and plant equipment moves.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Payload: 2,000 kg</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
 
-      <a href="product-spec.html?id=stacking-agv" class="product-card premium-card glass-panel rounded-3xl overflow-hidden" data-category="other">
-        <div class="aspect-[4/3] product-img relative overflow-hidden">
+      <!-- Stacking AGV -->
+      <a href="product-spec.html?id=stacking-agv" class="product-card rounded-3xl overflow-hidden" data-category="other">
+        <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
           <img src="images/stacking%20agv.png" alt="Stacking AGV" class="w-full h-full" />
-          <div class="absolute top-4 left-4 px-3 py-1 bg-gold text-navy text-xs font-bold tracking-wider rounded-full shadow-lg shadow-gold/30">AUTOMATION</div>
+          <span class="absolute top-4 left-4 bg-gold text-obsidian text-[11px] font-bold px-3 py-1 rounded-full">ROBOTICS</span>
         </div>
-        <div class="p-8"><h3 class="font-heading font-bold text-xl text-white mb-2">Stacking AGV</h3><p class="text-lithium text-sm mb-4 font-medium tracking-wide">AUTONOMOUS GUIDED VEHICLE</p><p class="text-white/50 text-sm font-light mb-5">Autonomous guided vehicle for advanced warehouse automation and 24/7 operation.</p><span class="text-lithium font-semibold text-sm inline-flex items-center gap-2">View Specifications →</span></div>
+        <div class="p-7">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">AUTOMATION</div>
+          <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Stacking AGV</h3>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">LiDAR SLAM guided autonomous vehicle for automated, 24/7 dark warehouse stacking.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>24/7 Operation</span>
+            <span class="text-brand">View Specifications →</span>
+          </div>
+        </div>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="py-32 bg-navy-dark relative overflow-hidden fade-up">
-  <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-lithium/10 rounded-full blur-[150px] pointer-events-none"></div>
-  <div class="max-w-4xl mx-auto px-6 lg:px-10 relative z-10 text-center">
-    <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-8">Need Help Choosing?</h2>
-    <p class="text-white/60 text-xl mb-12 font-light">Our VIC team will map your operational needs to the perfect model.</p>
-    <a href="contact.html" class="group inline-flex items-center gap-3 bg-lithium hover:bg-lithium-dark text-navy font-bold px-10 py-5 rounded-xl transition-all shadow-glow hover:scale-105 text-lg">Request a VIC Consultation <span class="group-hover:translate-x-1">→</span></a>
+<!-- INLINE INQUIRY FORM -->
+<section class="py-24 bg-white border-t border-slate-200 text-center">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">
+      Unsure Which Model Fits Your Warehouse?
+    </h2>
+    <p class="text-slate-500 text-sm font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+      Our technical engineers can evaluate your aisle dimensions, load weights, and shift cycles to provide a custom proposal.
+    </p>
+
+    <form id="quickInquiryForm" class="bg-primary-50 p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
+      <div class="sm:col-span-5 relative">
+        <select id="quickEquipSelect" name="equipment" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Equipment Category</option>
+          <option value="forklift">Electric Counterbalance Forklift (1.5 - 5.0T)</option>
+          <option value="reach">Lithium Reach Trucks (Up to 10M Lift)</option>
+          <option value="pallet">Pallet Transporters & Walkies</option>
+          <option value="stacker">Electric Rider & Straddle Stackers</option>
+          <option value="agv">Autonomous Stacking AGVs</option>
+          <option value="rental">Long-Term Fleet Equipment Rental</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-4 relative">
+        <select id="quickLocSelect" name="location" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Singapore Location</option>
+          <option value="west">West · Jurong / Tuas Industrial Hub</option>
+          <option value="east">East · Changi / Airport Logistics Park</option>
+          <option value="north">North · Woodlands Industrial Corridor</option>
+          <option value="central">Central · City / Mezzanine Facilities</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-3">
+        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
+          INQUIRY →
+        </button>
+      </div>
+    </form>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-navy-dark text-white/50 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 grid lg:grid-cols-5 gap-12">
+<footer class="bg-obsidian text-slate-400 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
     <div class="lg:col-span-2">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-glow overflow-hidden"><img src="images/jac-logo.png" alt="JAC Logo" class="w-9 h-auto object-contain" /></div>
-        <div class="text-white leading-tight"><div class="font-heading font-bold tracking-wider">JAC FORKLIFT</div><div class="text-[10px] text-lithium tracking-[0.2em]">SINGAPORE</div></div>
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm">
+          <img src="images/jac-logo.png" alt="JAC Logo" class="w-full h-auto object-contain" />
+        </div>
+        <div class="text-white leading-none">
+          <div class="font-heading font-extrabold tracking-wider text-base">JAC FORKLIFT</div>
+          <div class="text-[9px] text-brand font-bold tracking-[0.2em] mt-1">SINGAPORE</div>
+        </div>
       </div>
-      <p class="text-sm leading-relaxed max-w-sm mb-8 font-light">Exclusive JAC electric forklift provider in Singapore. Lithium-powered, ESG-compliant material handling solutions.</p>
-      <div class="space-y-3 text-sm font-light"><div class="flex items-center gap-2"><svg class="w-4 h-4 text-lithium"><use href="#icon-phone"/></svg> +65 XXXX XXXX</div><div class="flex items-center gap-2"><svg class="w-4 h-4 text-lithium"><use href="#icon-link"/></svg> sg@jacforklift.com</div><div class="flex items-center gap-2"><svg class="w-4 h-4 text-lithium"><use href="#icon-pin"/></svg> Singapore Office</div></div>
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">Exclusive JAC electric forklift distributor in Singapore. High-performance, lithium-powered, ESG-compliant material handling solutions.</p>
+      <p class="text-xs text-slate-400 font-light">Email: sg@jacforklift.com | Phone: +65 XXXX XXXX</p>
     </div>
-    <div><h4 class="font-heading font-bold text-white mb-6 text-sm tracking-wide">PRODUCTS</h4><ul class="space-y-3 text-sm font-light"><li><a href="product-spec.html?id=he-series" class="hover:text-lithium">HE Series</a></li><li><a href="product-spec.html?id=l-series" class="hover:text-lithium">L Series</a></li><li><a href="product-spec.html?id=je-series" class="hover:text-lithium">JE Series</a></li><li><a href="products.html" class="hover:text-lithium">All Products</a></li></ul></div>
-    <div><h4 class="font-heading font-bold text-white mb-6 text-sm tracking-wide">SERVICES</h4><ul class="space-y-3 text-sm font-light"><li><a href="lithium-ion.html" class="hover:text-lithium">Lithium-Ion Tech</a></li><li><a href="rental.html" class="hover:text-lithium">Equipment Rental</a></li><li><a href="resources.html" class="hover:text-lithium">Resources</a></li><li><a href="#" class="hover:text-lithium">Spare Parts</a></li></ul></div>
-    <div><h4 class="font-heading font-bold text-white mb-6 text-sm tracking-wide">COMPANY</h4><ul class="space-y-3 text-sm font-light"><li><a href="about.html" class="hover:text-lithium">About JAC</a></li><li><a href="vic.html" class="hover:text-lithium">VIC Portal</a></li><li><a href="contact.html" class="hover:text-lithium">Dealer Program</a></li><li><a href="contact.html" class="hover:text-lithium">Contact</a></li></ul></div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Products</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="product-spec.html?id=he-series" class="hover:text-white transition-colors">HE Series Forklifts</a></li>
+        <li><a href="product-spec.html?id=l-series" class="hover:text-white transition-colors">L Series Electric</a></li>
+        <li><a href="product-spec.html?id=je-series" class="hover:text-white transition-colors">JE Heavy Electric</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">All 13 Models</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Services</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
+        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">Lithium-Ion Tech</a></li>
+        <li><a href="solution.html" class="hover:text-white transition-colors">Material Solutions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Company</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="dealer-enquiry.html" class="hover:text-white transition-colors">Dealer Enquiry</a></li>
+        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="border-t border-white/5"><div class="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-light"><div>© 2026 JAC Material Handling Singapore. All rights reserved.</div><div class="flex gap-8"><a href="#" class="hover:text-lithium">Privacy Policy</a><a href="#" class="hover:text-lithium">Terms of Service</a></div></div></div>
+  <div class="border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
+      <div>Copyright © 2026 JAC Material Handling. All Rights Reserved.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
-document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
-document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('hidden')));
-document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.product-card').forEach(card=>{card.style.display=(f==='all'||card.dataset.category===f)?'block':'none';});});});
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+const searchToggle = document.getElementById('searchToggle');
+const searchBox = document.getElementById('searchBox');
+if (searchToggle && searchBox) {
+  searchToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    searchBox.classList.toggle('hidden');
+    if (!searchBox.classList.contains('hidden')) {
+      setTimeout(() => searchBox.querySelector('input')?.focus(), 50);
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
+      searchBox.classList.add('hidden');
+    }
+  });
+}
+const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+const mobileSearchBox = document.getElementById('mobileSearchBox');
+if (mobileSearchToggle && mobileSearchBox) {
+  mobileSearchToggle.addEventListener('click', () => {
+    mobileSearchBox.classList.toggle('hidden');
+  });
+}
+document.getElementById('menuBtn')?.addEventListener('click', () => {
+  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.display = (f === 'all' || card.dataset.category === f) ? 'block' : 'none';
+    });
+  });
+});
+
+function handleQuickInquiry(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const equip = document.getElementById('quickEquipSelect')?.value || '';
+  const loc = document.getElementById('quickLocSelect')?.value || '';
+
+  try {
+    sessionStorage.setItem('pending_equip', equip);
+    sessionStorage.setItem('pending_loc', loc);
+  } catch(err) {}
+
+  const params = new URLSearchParams();
+  if (equip) params.set('equipment', equip);
+  if (loc) params.set('location', loc);
+
+  const queryStr = params.toString() ? '?' + params.toString() : '';
+  window.location.href = 'contact.html' + queryStr;
+}
 </script>
 
-<script src="form-handler.js"></script>
-
+<script src="search.js"></script>
+  <script src="form-handler.js"></script>
 </body>
 </html>

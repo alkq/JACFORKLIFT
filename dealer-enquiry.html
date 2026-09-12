@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>JAC Lithium-Ion Technology | JAC Forklift Singapore</title>
+<title>Dealer Enquiry | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -44,21 +44,27 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 .page-hero-bg {
   background-color: #FFFFFF;
   background-image: 
-    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, #FFFFFF 100%),
-    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.35) 75%, #FFFFFF 100%),
-    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 22%, rgba(255, 255, 255, 0) 78%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.82) 35%, rgba(255, 255, 255, 0.35) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2070&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
 }
 
-.section-vivid-bg {
-  background-color: #FFFFFF;
-  background-image: 
-    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.35) 20%, rgba(255, 255, 255, 0.35) 80%, #FFFFFF 100%),
-    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0.35) 80%, #FFFFFF 100%),
-    url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center;
+.input-field {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1.25rem;
+  color: #0B0F17;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  outline: none;
+}
+.input-field:focus {
+  border-color: #E11D2A;
+  box-shadow: 0 0 0 3px rgba(225, 29, 42, 0.1);
 }
 
 .glass-card-light {
@@ -76,14 +82,17 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
+<!-- ICON LIBRARY -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
-  <symbol id="icon-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2"/><path d="M6 11v2M10 11v2M14 11v2"/></symbol>
-  <symbol id="icon-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/><rect x="10" y="10" width="4" height="4"/></symbol>
-  <symbol id="icon-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
+  <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-7"/></symbol>
+  <symbol id="icon-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></symbol>
+  <symbol id="icon-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
 </svg>
 
-<!-- TOP UTILITY BANNER -->
+<!-- STANDARDIZED TOP UTILITY BANNER -->
 <div class="bg-obsidian text-slate-300 text-[11px] font-medium tracking-wide border-b border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-2.5 flex justify-between items-center">
     <div class="flex items-center gap-4">
@@ -113,16 +122,17 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
         <div class="text-[9px] font-bold text-brand tracking-[0.25em] mt-1">SINGAPORE</div>
       </div>
     </a>
+
+    <!-- Center Navigation -->
     <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
       <a href="products.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">PRODUCTS</a>
       <a href="solution.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">SOLUTIONS</a>
-      <a href="lithium-ion.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
-        JAC LITHIUM-ION
-        <span class="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand rounded-full"></span>
-      </a>
+      <a href="lithium-ion.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">JAC LITHIUM-ION</a>
       <a href="equipment-rental.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">EQUIPMENT RENTAL</a>
       <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
+
+    <!-- Right Side Buttons -->
     <div class="hidden lg:flex items-center gap-3 shrink-0">
       <div class="relative">
         <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
@@ -137,14 +147,19 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           </div>
         </div>
       </div>
+      
+      <!-- INQUIRY Button -->
       <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 hover:border-brand hover:text-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm hover:scale-[1.02] whitespace-nowrap">
         INQUIRY
       </a>
+
+      <!-- DEALER ENQUIRY Active Button -->
       <a href="dealer-enquiry.html" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs tracking-wider uppercase py-3 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
         DEALER ENQUIRY
       </a>
     </div>
 
+    <!-- Mobile Controls -->
     <div class="lg:hidden flex items-center gap-2">
       <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
         <svg class="w-5 h-5"><use href="#icon-search"/></svg>
@@ -163,7 +178,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 shadow-xl space-y-4">
     <a href="products.html" class="block font-bold text-slate-800 text-sm">PRODUCTS</a>
     <a href="solution.html" class="block font-bold text-slate-800 text-sm">SOLUTIONS</a>
-    <a href="lithium-ion.html" class="block font-bold text-brand text-sm">JAC LITHIUM-ION</a>
+    <a href="lithium-ion.html" class="block font-bold text-slate-800 text-sm">JAC LITHIUM-ION</a>
     <a href="equipment-rental.html" class="block font-bold text-slate-800 text-sm">EQUIPMENT RENTAL</a>
     <a href="about.html" class="block font-bold text-slate-800 text-sm">ABOUT US</a>
     <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
@@ -175,98 +190,112 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 
 <!-- HERO -->
 <section class="page-hero-bg py-24 border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 text-center">
     <div class="inline-flex items-center gap-2 bg-white/95 border border-slate-200 px-4 py-1.5 rounded-full text-xs font-bold text-brand tracking-widest uppercase mb-6 shadow-sm">
-      <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span> Powertrain Architecture
+      <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span> B2B Dealership Network
     </div>
-    <h1 class="text-obsidian text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 max-w-3xl">
-      Intelligent Power. <br/><span class="text-brand">Precision Engineering.</span>
+    <h1 class="text-obsidian text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+      Dealer Enquiry
     </h1>
-    <p class="text-slate-600 text-lg sm:text-xl font-light max-w-2xl">
-      At the heart of every JAC electric forklift is an advanced Lithium Iron Phosphate (LiFePO4) cell chemistry managed by intelligent real-time microcontrollers.
+    <p class="text-slate-600 text-base sm:text-lg font-light max-w-2xl mx-auto">
+      Partner with the official JAC electric material handling network across Singapore and Southeast Asia.
     </p>
   </div>
 </section>
 
-<!-- PHILOSOPHY -->
-<section class="py-20 bg-primary-50 border-b border-slate-200 text-center">
-  <div class="max-w-4xl mx-auto px-6">
-    <p class="text-slate-700 text-xl sm:text-2xl font-light leading-relaxed mb-6">
-      Integrated seamlessly with intelligent CAN-bus controllers, our lithium-ion technology delivers constant lifting torque and uncompromised duty cycles, eliminating the battery degradation typical of legacy lead-acid systems.
-    </p>
-    <div class="w-16 h-1 bg-brand mx-auto rounded-full"></div>
+<!-- BECOME A JAC DEALER PARTNER CARD -->
+<section class="py-20 bg-primary-50 border-b border-slate-200">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    
+    <div class="bg-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-slate-200 shadow-luxe">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-obsidian mb-4">
+          Become a JAC <span class="text-brand">Dealer Partner</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
+          Interested in partnering with JAC? Fill in your details below and our team will get in touch to discuss dealership opportunities, requirements, and next steps.
+        </p>
+      </div>
+
+      <!-- Dealer Enquiry Form -->
+      <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you for your dealership enquiry. Our corporate dealer management team will contact you shortly.');">
+        
+        <!-- Row 1: Contact Name | Company Name -->
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contact Name</label>
+            <input type="text" placeholder="Contact Name" class="input-field" required />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1.5">Company Name</label>
+            <input type="text" placeholder="Company Name" class="input-field" required />
+          </div>
+        </div>
+
+        <!-- Row 2: Contact Number -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contact Number</label>
+          <input type="text" placeholder="Contact Number" class="input-field" required />
+        </div>
+
+        <!-- Row 3: Email Address -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Email Address</label>
+          <input type="email" placeholder="Email Address" class="input-field" required />
+        </div>
+
+        <!-- Row 4: Tell us more about your enquiry -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Tell us more about your enquiry</label>
+          <textarea placeholder="Tell us more about your enquiry" rows="5" class="input-field" required></textarea>
+        </div>
+
+        <!-- Checkbox Acknowledgement -->
+        <label class="flex items-start gap-3 text-xs text-slate-500 font-light cursor-pointer pt-1">
+          <input type="checkbox" required class="mt-1 accent-brand" />
+          <span>I hereby acknowledge that I have read and understood this <a href="#" class="text-brand font-semibold underline">Privacy & Cookies Policy</a>.</span>
+        </label>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-soft-glow transition-all hover:scale-[1.01]">
+          ENQUIRY NOW
+        </button>
+      </form>
+
+    </div>
+
   </div>
 </section>
 
-<!-- 3 COMPONENTS -->
+<!-- DEALERSHIP ADVANTAGES -->
 <section class="py-24 bg-white border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="max-w-3xl mb-16">
-      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-2">Global Component Standard</div>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight">Engineered With Tier-1 Global Components</h2>
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">Franchise Program</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian">Accredited Dealer Benefits</h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="glass-card-light rounded-3xl p-8">
-        <div class="w-12 h-12 rounded-xl bg-red-50 text-brand flex items-center justify-center mb-6"><svg class="w-6 h-6"><use href="#icon-battery"/></svg></div>
-        <h3 class="font-heading font-bold text-xl text-obsidian mb-3">LFP Cell Chemistry</h3>
-        <p class="text-slate-500 text-xs leading-relaxed font-light">We exclusively deploy Lithium Iron Phosphate (LiFePO4) cells, providing the highest thermal runaway resistance, zero toxic gassing, and 3,000+ deep charge cycles.</p>
-      </div>
-      <div class="glass-card-light rounded-3xl p-8">
-        <div class="w-12 h-12 rounded-xl bg-red-50 text-brand flex items-center justify-center mb-6"><svg class="w-6 h-6"><use href="#icon-chip"/></svg></div>
-        <h3 class="font-heading font-bold text-xl text-obsidian mb-3">Advanced Microcontrollers</h3>
-        <p class="text-slate-500 text-xs leading-relaxed font-light">High-speed intelligent motor controllers regulate hydraulic flow and regenerative braking to ensure millimetre precision during sensitive pallet placing.</p>
-      </div>
-      <div class="glass-card-light rounded-3xl p-8">
-        <div class="w-12 h-12 rounded-xl bg-red-50 text-brand flex items-center justify-center mb-6"><svg class="w-6 h-6"><use href="#icon-cog"/></svg></div>
-        <h3 class="font-heading font-bold text-xl text-obsidian mb-3">Intelligent 24/7 BMS</h3>
-        <p class="text-slate-500 text-xs leading-relaxed font-light">Our integrated Battery Management System continuously monitors individual cell voltages, pack temperatures, and current draws, safeguarding your investment.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- BATTERY SHOWCASE -->
-<section class="section-vivid-bg py-24 border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
-    <div class="aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 shadow-luxe bg-white">
-      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Battery Assembly" />
-    </div>
-    <div class="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-12 border border-slate-200 shadow-luxe">
-      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-2">High-Density Pack</div>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight mb-6">Lithium-Ion Battery Systems</h2>
-      <p class="text-slate-600 text-sm font-light leading-relaxed mb-4">
-        Unlike traditional fuel or lead-acid trucks, JAC lithium systems maintain steady output throughout the entire discharge curve. Voltage does not sag when battery state-of-charge drops, ensuring your operators have 100% full lift speed from start to end of shift.
-      </p>
-      <p class="text-slate-600 text-sm font-light leading-relaxed">
-        With zero water topping, zero equalization charges, and rapid opportunity charging, logistics facilities frequently reclaim 15–20 hours of maintenance labor per truck every month.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- 4 BUSINESS REASONS -->
-<section class="py-24 bg-primary-50 border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="max-w-3xl mb-16">
-      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-2">Operational Rationale</div>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight">Strategic Advantages of Going Electric</h2>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">01</div>
-        <div><h3 class="font-heading font-bold text-lg text-obsidian mb-2">Superior Energy ROI</h3><p class="text-slate-500 text-xs font-light leading-relaxed">Electricity costs per kilowatt-hour yield up to 65% operational savings compared to industrial diesel and LPG tank refills.</p></div>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="glass-card-light rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-red-50 text-brand flex items-center justify-center mb-5"><svg class="w-6 h-6"><use href="#icon-chart"/></svg></div>
+        <h4 class="font-heading font-bold text-obsidian text-base mb-2">Tiered Margins</h4>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">Silver, Gold, and Platinum partner levels with competitive equipment commissions and demo units.</p>
       </div>
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">02</div>
-        <div><h3 class="font-heading font-bold text-lg text-obsidian mb-2">Rapid Opportunity Charging</h3><p class="text-slate-500 text-xs font-light leading-relaxed">Top up during 15-minute tea breaks or 45-minute shift handovers. Multi-shift operations run seamlessly on a single battery.</p></div>
+      <div class="glass-card-light rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-red-50 text-brand flex items-center justify-center mb-5"><svg class="w-6 h-6"><use href="#icon-cap"/></svg></div>
+        <h4 class="font-heading font-bold text-obsidian text-base mb-2">Certified Training</h4>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">Technical CAN-bus diagnostics and sales certification provided directly by JAC factory engineers.</p>
       </div>
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">03</div>
-        <div><h3 class="font-heading font-bold text-lg text-obsidian mb-2">Maintenance-Free Powertrain</h3><p class="text-slate-500 text-xs font-light leading-relaxed">Zero engine belts, spark plugs, injectors, radiators, or oil filters. Greatly reduces unexpected mechanical breakdown risks.</p></div>
+      <div class="glass-card-light rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-red-50 text-brand flex items-center justify-center mb-5"><svg class="w-6 h-6"><use href="#icon-dashboard"/></svg></div>
+        <h4 class="font-heading font-bold text-obsidian text-base mb-2">Dealer Portal</h4>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">Live inventory tracking, automated spare parts ordering, and direct warranty claim processing.</p>
       </div>
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">04</div>
-        <div><h3 class="font-heading font-bold text-lg text-obsidian mb-2">ESG & Carbon Compliance</h3><p class="text-slate-500 text-xs font-light leading-relaxed">Meet Singapore Green Plan 2030 corporate targets, reduce indoor sound pressure below 70dB, and protect operator lung health.</p></div>
+      <div class="glass-card-light rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-red-50 text-brand flex items-center justify-center mb-5"><svg class="w-6 h-6"><use href="#icon-shield"/></svg></div>
+        <h4 class="font-heading font-bold text-obsidian text-base mb-2">Marketing Co-Ops</h4>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">Co-branded industrial advertising, exhibition machinery support, and qualified inbound leads.</p>
       </div>
     </div>
   </div>
@@ -292,6 +321,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <ul class="space-y-2 text-xs font-light">
         <li><a href="products.html" class="hover:text-white transition-colors">Lithium Forklifts</a></li>
         <li><a href="products.html" class="hover:text-white transition-colors">Reach Trucks</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Pallet Trucks</a></li>
       </ul>
     </div>
     <div>
@@ -319,6 +349,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 </footer>
 
 <script>
+// Search Toggles
 const searchToggle = document.getElementById('searchToggle');
 const searchBox = document.getElementById('searchBox');
 if (searchToggle && searchBox) {

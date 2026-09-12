@@ -1,21 +1,12 @@
 // form-handler.js
 document.querySelectorAll('form').forEach(form => {
-  // 1. Skip search forms, GET forms, and login form
-  if (
-    form.method.toLowerCase() === 'get' ||
-    form.closest('#searchBox') ||
-    form.closest('#mobileSearchBox') ||
-    form.closest('#loginState')
-  ) {
-    return;
-  }
+  // Skip login form (VIC portal)
+  if (form.closest('#loginState')) return;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const submitBtn = form.querySelector('button[type="submit"]');
-    if (!submitBtn) return; // Safeguard if button doesn't exist
-
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
