@@ -66,17 +66,18 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 }
 
 .filter-btn {
-  padding: 0.65rem 1.25rem;
-  border-radius: 0.75rem;
+  padding: 0.60rem 1.25rem;
+  border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: all 0.3s;
+  transition: all 0.25s ease;
   border: 1px solid #E2E8F0;
   color: #475569;
   background: #FFFFFF;
   cursor: pointer;
+  white-space: nowrap;
 }
 .filter-btn:hover {
   border-color: #E11D2A;
@@ -106,6 +107,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="icon-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
 </svg>
 
 <!-- TOP UTILITY BANNER -->
@@ -215,20 +217,41 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
+<!-- STICKY DROPDOWN & ROLL-UP FILTER BAR -->
+<section id="productFilterSection" class="py-3.5 bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-20 z-30 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    
+    <!-- Dropdown Toggle Bar Trigger -->
+    <div class="flex items-center justify-between">
+      <button id="filterDropdownToggle" onclick="toggleProductDropdown()" class="flex items-center justify-between w-full lg:w-auto bg-slate-50 hover:bg-slate-100 border border-slate-200 text-obsidian px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all mx-auto lg:mx-0">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-brand"><use href="#icon-filter"/></svg>
+          Filter Equipment: <span id="activeProductFilterText" class="text-brand">All Equipment (13)</span>
+        </span>
+        <svg id="productDropdownChevron" class="w-4 h-4 transition-transform duration-300 ml-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+    </div>
+
+    <!-- Expandable Filter Menu Options -->
+    <div id="productDropdownMenu" class="hidden max-w-7xl mx-auto pt-3 pb-1 transition-all duration-300 border-t border-slate-100 mt-3">
+      <div class="flex flex-wrap gap-2.5 items-center justify-start lg:justify-center">
+        <button class="filter-btn active" data-filter="all">All Equipment (13)</button>
+        <button class="filter-btn" data-filter="forklifts">Lithium Forklifts (4)</button>
+        <button class="filter-btn" data-filter="reach">Reach Trucks (2)</button>
+        <button class="filter-btn" data-filter="pallet">Pallet Trucks (2)</button>
+        <button class="filter-btn" data-filter="stacker">Stackers (2)</button>
+        <button class="filter-btn" data-filter="other">Tractor & Platforms (3)</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- FILTER + GRID -->
 <section class="py-20 bg-primary-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     
-    <div class="flex flex-wrap gap-2.5 mb-14">
-      <button class="filter-btn active" data-filter="all">All Equipment (13)</button>
-      <button class="filter-btn" data-filter="forklifts">Lithium Forklifts (4)</button>
-      <button class="filter-btn" data-filter="reach">Reach Trucks (2)</button>
-      <button class="filter-btn" data-filter="pallet">Pallet Trucks (2)</button>
-      <button class="filter-btn" data-filter="stacker">Stackers (2)</button>
-      <button class="filter-btn" data-filter="other">Tractor & Platforms (3)</button>
-    </div>
-
-    <!-- Product Cards Grid with Exact Folder Filenames -->
+    <!-- Product Cards Grid -->
     <div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- HE Series -->
@@ -534,6 +557,48 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
+<!-- BOTTOM QUICK INQUIRY FORM -->
+<section class="py-24 bg-white border-t border-slate-200 text-center">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">
+      Unsure Which Model Fits Your Warehouse?
+    </h2>
+    <p class="text-slate-500 text-sm font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+      Our technical engineers can evaluate your aisle dimensions, load weights, and shift cycles to provide a custom proposal.
+    </p>
+
+    <form id="quickInquiryForm" class="bg-primary-50 p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
+      <div class="sm:col-span-5 relative">
+        <select id="quickEquipSelect" name="equipment" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Equipment Category</option>
+          <option value="forklift">Electric Counterbalance Forklift (1.5 - 5.0T)</option>
+          <option value="reach">Lithium Reach Trucks (Up to 10M Lift)</option>
+          <option value="pallet">Pallet Transporters & Walkies</option>
+          <option value="stacker">Electric Rider & Straddle Stackers</option>
+          <option value="agv">Autonomous Stacking AGVs</option>
+          <option value="rental">Long-Term Fleet Equipment Rental</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-4 relative">
+        <select id="quickLocSelect" name="location" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Singapore Location</option>
+          <option value="west">West · Jurong / Tuas Industrial Hub</option>
+          <option value="east">East · Changi / Airport Logistics Park</option>
+          <option value="north">North · Woodlands Industrial Corridor</option>
+          <option value="central">Central · City / Mezzanine Facilities</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-3">
+        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
+          INQUIRY →
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
@@ -615,17 +680,77 @@ document.getElementById('menuBtn')?.addEventListener('click', () => {
   document.getElementById('mobileMenu')?.classList.toggle('hidden');
 });
 
+// Toggle Dropdown Menu visibility on click
+function toggleProductDropdown() {
+  const menu = document.getElementById('productDropdownMenu');
+  const chevron = document.getElementById('productDropdownChevron');
+  menu.classList.toggle('hidden');
+  chevron.classList.toggle('rotate-180');
+}
+
+// Category Filter action
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    
+    // Update active label text
+    document.getElementById('activeProductFilterText').textContent = btn.textContent;
+
+    // Auto-hide menu after selection
+    document.getElementById('productDropdownMenu').classList.add('hidden');
+    document.getElementById('productDropdownChevron').classList.remove('rotate-180');
+
     const f = btn.dataset.filter;
     document.querySelectorAll('.product-card').forEach(card => {
       card.style.display = (f === 'all' || card.dataset.category === f) ? 'block' : 'none';
     });
   });
 });
+
+// Roll-up / Roll-down behavior on scroll for products filter bar
+let lastProductScroll = 0;
+const productDropdownMenu = document.getElementById('productDropdownMenu');
+const productChevron = document.getElementById('productDropdownChevron');
+
+window.addEventListener('scroll', function() {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  
+  if (currentScroll > 200) {
+    if (currentScroll > lastProductScroll) {
+      // Scrolling DOWN -> Collapse dropdown options list
+      if(!productDropdownMenu.classList.contains('hidden')) {
+        productDropdownMenu.classList.add('hidden');
+        productChevron.classList.remove('rotate-180');
+      }
+    }
+  }
+  lastProductScroll = currentScroll <= 0 ? 0 : currentScroll;
+}, { passive: true });
+
+// Quick Inquiry Submission Handler to contact.html
+function handleQuickInquiry(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const equip = document.getElementById('quickEquipSelect')?.value || '';
+  const loc = document.getElementById('quickLocSelect')?.value || '';
+
+  try {
+    sessionStorage.setItem('pending_equip', equip);
+    sessionStorage.setItem('pending_loc', loc);
+  } catch(err) {}
+
+  const params = new URLSearchParams();
+  if (equip) params.set('equipment', equip);
+  if (loc) params.set('location', loc);
+
+  const queryStr = params.toString() ? '?' + params.toString() : '';
+  window.location.href = 'contact.html' + queryStr;
+}
 </script>
+
 <script src="search.js"></script>
 <script src="ai-chat.js"></script>
 <script src="form-handler.js"></script>

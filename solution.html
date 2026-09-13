@@ -52,7 +52,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 }
 
 .filter-btn {
-  padding: 0.65rem 1.25rem;
+  padding: 0.60rem 1.25rem;
   border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 700;
@@ -112,6 +112,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   <symbol id="icon-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
   <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></symbol>
   <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="icon-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
 </svg>
 
 <!-- STANDARDIZED TOP UTILITY BANNER -->
@@ -145,7 +146,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       </div>
     </a>
 
-    <!-- Center Nav -->
     <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
       <a href="products.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">PRODUCTS</a>
       <a href="solution.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
@@ -157,7 +157,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
 
-    <!-- Right Actions -->
     <div class="hidden lg:flex items-center gap-3 shrink-0">
       <div class="relative">
         <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
@@ -223,16 +222,34 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
-<!-- SINGLE CLEAN FILTER BAR -->
-<section class="py-6 bg-white border-b border-slate-200 sticky top-20 z-30 shadow-sm">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-wrap gap-2.5 items-center justify-start lg:justify-center overflow-x-auto">
-    <button class="filter-btn active" data-filter="all">All Solutions (6)</button>
-    <button class="filter-btn" data-filter="coldchain">Cold Chain & Food</button>
-    <button class="filter-btn" data-filter="heavy">Steel & Metal</button>
-    <button class="filter-btn" data-filter="stone">Stone & Ceramic</button>
-    <button class="filter-btn" data-filter="dusty">Paper & Recycling</button>
-    <button class="filter-btn" data-filter="chemical">Chemical & Cleanroom</button>
-    <button class="filter-btn" data-filter="logistics">High-Bay 3PL</button>
+<!-- DROPDOWN & ROLL-UP FILTER BAR -->
+<section id="solutionFilterSection" class="py-3.5 bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-20 z-30 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    
+    <!-- Dropdown Toggle Bar Trigger -->
+    <div class="flex items-center justify-between">
+      <button id="filterDropdownToggle" onclick="toggleDropdownMenu()" class="flex items-center justify-between w-full lg:w-auto bg-slate-50 hover:bg-slate-100 border border-slate-200 text-obsidian px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all mx-auto lg:mx-0">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-brand"><use href="#icon-filter"/></svg>
+          Filter Solution: <span id="activeFilterText" class="text-brand">All Solutions (6)</span>
+        </span>
+        <svg id="dropdownChevron" class="w-4 h-4 transition-transform duration-300 ml-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+    </div>
+
+    <!-- Expandable Filter Menu Options -->
+    <div id="filterDropdownMenu" class="hidden max-w-7xl mx-auto pt-3 pb-1 transition-all duration-300 border-t border-slate-100 mt-3">
+      <div class="flex flex-wrap gap-2.5 items-center justify-start lg:justify-center">
+        <button class="filter-btn active" data-filter="all">All Solutions (6)</button>
+        <button class="filter-btn" data-filter="coldchain">Cold Chain & Food</button>
+        <button class="filter-btn" data-filter="heavy">Steel & Metal</button>
+        <button class="filter-btn" data-filter="stone">Stone & Ceramic</button>
+        <button class="filter-btn" data-filter="dusty">Paper & Recycling</button>
+        <button class="filter-btn" data-filter="chemical">Chemical & Cleanroom</button>
+        <button class="filter-btn" data-filter="logistics">High-Bay 3PL</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -435,7 +452,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <!-- 6. HIGH-BAY 3PL & AGV -->
       <div onclick="openModal('agv')" onkeydown="if(event.key==='Enter')openModal('agv')" role="button" tabindex="0" class="solution-card rounded-3xl overflow-hidden group" data-category="logistics">
         <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-          <img src="images/Stand%20type%20Reach%20Truck%201.5T.png" class="card-img w-full h-full object-contain p-6 transition-transform duration-500" alt="3PL High-Bay Racking" />
+          <img src="images/Stand-type-Reach-Truck-1.5T.png" class="card-img w-full h-full object-contain p-6 transition-transform duration-500" alt="3PL High-Bay Racking" />
           <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200 transition-colors shadow-sm">HIGH-BAY 3PL & AGV</span>
         </div>
         <div class="p-8 flex-1 flex flex-col justify-between">
@@ -478,7 +495,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 <!-- INTERACTIVE MODAL -->
 <div id="detailModal" class="fixed inset-0 z-[99999] bg-obsidian/70 backdrop-blur-sm hidden items-center justify-center p-4 sm:p-6">
   <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-200 shadow-2xl relative">
-    
     <button onclick="closeModal()" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors z-10" aria-label="Close">
       <svg class="w-5 h-5"><use href="#icon-close"/></svg>
     </button>
@@ -522,7 +538,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -538,7 +553,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       </p>
     </div>
 
-    <!-- Handles navigation with selected parameters to contact.html -->
     <form id="quickInquiryForm" class="max-w-4xl mx-auto grid md:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
       <div class="md:col-span-5 relative">
         <select id="quickEquipSelect" name="equipment" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none shadow-sm cursor-pointer">
@@ -648,6 +662,14 @@ document.getElementById('menuBtn')?.addEventListener('click', () => {
   document.getElementById('mobileMenu')?.classList.toggle('hidden');
 });
 
+// Dropdown Menu Toggle Control
+function toggleDropdownMenu() {
+  const menu = document.getElementById('filterDropdownMenu');
+  const chevron = document.getElementById('dropdownChevron');
+  menu.classList.toggle('hidden');
+  chevron.classList.toggle('rotate-180');
+}
+
 // Single-Filter Logic
 function setFilter(filterVal, updateHistory = true) {
   const targetBtn = document.querySelector(`.filter-btn[data-filter="${filterVal}"]`) || document.querySelector('.filter-btn[data-filter="all"]');
@@ -655,6 +677,15 @@ function setFilter(filterVal, updateHistory = true) {
 
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   targetBtn.classList.add('active');
+  
+  // Update active label on the dropdown trigger button
+  document.getElementById('activeFilterText').textContent = targetBtn.textContent;
+
+  // Auto hide the menu after selecting an option
+  const menu = document.getElementById('filterDropdownMenu');
+  const chevron = document.getElementById('dropdownChevron');
+  menu.classList.add('hidden');
+  chevron.classList.remove('rotate-180');
 
   document.querySelectorAll('.solution-card').forEach(card => {
     card.style.display = (filterVal === 'all' || card.dataset.category === filterVal) ? 'flex' : 'none';
@@ -787,10 +818,31 @@ function closeModal() {
 document.getElementById('detailModal')?.addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
+
+// Roll-up / Roll-down behavior on scroll for the Dropdown Bar
+let lastScrollTop = 0;
+const filterDropdownMenu = document.getElementById('filterDropdownMenu');
+const dropdownChevron = document.getElementById('dropdownChevron');
+const solSection = document.getElementById('solutionFilterSection');
+
+window.addEventListener('scroll', function() {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  
+  if (currentScroll > 200) {
+    if (currentScroll > lastScrollTop) {
+      // Scrolling DOWN -> Automatically hide expanded options dropdown list
+      if(!filterDropdownMenu.classList.contains('hidden')) {
+        filterDropdownMenu.classList.add('hidden');
+        dropdownChevron.classList.remove('rotate-180');
+      }
+    }
+  }
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}, { passive: true });
 </script>
 
 <script src="search.js"></script>
-  <script src="ai-chat.js"></script>
-  <script src="form-handler.js"></script>
+<script src="ai-chat.js"></script>
+<script src="form-handler.js"></script>
 </body>
 </html>
