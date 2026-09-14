@@ -122,100 +122,95 @@ const SEARCH_DATABASE = [
   }
 ];
 
-// Initialize Search System when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  initNavbarSearch('searchBox');        // Desktop
-  initNavbarSearch('mobileSearchBox');  // Mobile
-  initProductsPageFilter();             // If currently on products.html
-});
-
 /**
- * Attaches Live Autocomplete & "No Result" states to navbar inputs
+Global Search Functionality with Image Fallback & Quick Navigation
  */
-function initNavbarSearch(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+document.addEventListener('DOMContentLoaded', () => {
+  // Global search implementation across all pages
+  const searchInputs = document.querySelectorAll('input[name="search"]');
+  
+  searchInputs.forEach(input => {
+    // Create a dynamic results dropdown container right below each search input if not present
+    let wrapper = input.closest('form');
+    if (!wrapper) return;
+    
+    // Ensure wrapper is relative for absolute positioning of results
+    wrapper.style.position = 'relative';
+    
+    let dropdown = document.createElement('div');
+    dropdown.className = 'search-autocomplete-dropdown hidden absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl border border-slate-200 shadow-2xl z-[99999] overflow-hidden';
+    wrapper.appendChild(dropdown);
 
-  const form = container.querySelector('form');
-  const input = container.querySelector('input[name="search"]');
-  if (!form || !input) return;
+    // Simulated equipment database for search suggestions matching product-spec.html
+    const searchDatabase = [
+      { name: "HE Series Heavy-Duty Forklift", tonnage: "2.5 – 3.8 TON", category: "Lithium Forklift", url: "product-spec.html?id=he-series", img: "images/HE-Series-2.5-3.8T.png" },
+      { name: "L Series Smart Warehouse Forklift", tonnage: "1.5 – 3.5 TON", category: "Lithium Forklift", url: "product-spec.html?id=l-series", img: "images/L-Series-1.5-3.5T.png" },
+      { name: "JE Series Heavy Electric Forklift", tonnage: "4.5 – 5.0 TON", category: "Heavy Electric", url: "product-spec.html?id=je-series", img: "images/JE-Series-4.5-5.0T.png" },
+      { name: "Three Wheel Compact Forklift", tonnage: "1.5 – 2.0 TON", category: "Compact Forklift", url: "product-spec.html?id=three-wheel", img: "images/Three-Wheel-1.5-2.0T.png" },
+      { name: "Stand Type Reach Truck", tonnage: "1.5 TON", category: "Reach Truck", url: "product-spec.html?id=reach-truck-stand", img: "images/Stand-type-Reach-Truck-1.5T.png" },
+      { name: "Sit Type Reach Truck", tonnage: "1.5 – 2.0 TON", category: "Reach Truck", url: "product-spec.html?id=reach-truck-sit", img: "images/Sit-type-Reach-Truck-1.5-2.0T.png" },
+      { name: "Walkie Pallet Truck", tonnage: "1.5 – 2.0 TON", category: "Pallet Truck", url: "product-spec.html?id=walkie-pallet", img: "images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png" },
+      { name: "Rider Pallet Truck", tonnage: "2.0 – 3.0 TON", category: "Pallet Truck", url: "product-spec.html?id=rider-pallet", img: "images/Rider-Pallet-Truck-2.0–3.0T.png" },
+      { name: "Straddle Rider Stacker", tonnage: "1.0 – 1.5 TON", category: "Stacker", url: "product-spec.html?id=straddle-stacker", img: "images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png" },
+      { name: "Electric Rider Stacker", tonnage: "1.0 – 2.0 TON", category: "Stacker", url: "product-spec.html?id=electric-stacker", img: "images/Electric-Rider-Stacker1.0-2.0T.png" },
+      { name: "Electric Tow Tractor", tonnage: "TOWING SOLUTION", category: "Towing", url: "product-spec.html?id=electric-tractor", img: "images/Electric-Tractor.png" },
+      { name: "Electric Platform Truck", tonnage: "FLATBED PLATFORM", category: "Platform", url: "product-spec.html?id=electric-platform", img: "images/Electric-Platform-Truck.png" },
+      { name: "Stacking AGV", tonnage: "AUTONOMOUS", category: "Robotics", url: "product-spec.html?id=stacking-agv", img: "images/stacking-agv.png" }
+    ];
 
-  // Create suggestion box dynamically if not already present
-  let suggestionBox = container.querySelector('.search-suggestions');
-  if (!suggestionBox) {
-    suggestionBox = document.createElement('div');
-    suggestionBox.className = 'search-suggestions hidden bg-white border-t border-slate-100 mt-2 max-h-72 overflow-y-auto divide-y divide-slate-100 rounded-b-xl shadow-inner';
-    form.parentNode.appendChild(suggestionBox);
-  }
+    input.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      if (query.length === 0) {
+        dropdown.classList.add('hidden');
+        dropdown.innerHTML = '';
+        return;
+      }
 
-  // Live Input Event
-  input.addEventListener('input', (e) => {
-    const query = e.target.value.trim().toLowerCase();
+      const matches = searchDatabase.filter(item => 
+        item.name.toLowerCase().includes(query) || 
+        item.category.toLowerCase().includes(query) || 
+        item.tonnage.toLowerCase().includes(query)
+      );
 
-    if (query.length === 0) {
-      suggestionBox.innerHTML = '';
-      suggestionBox.classList.add('hidden');
-      return;
-    }
-
-    const matches = SEARCH_DATABASE.filter(item => {
-      return item.name.toLowerCase().includes(query) ||
-             item.tonnage.toLowerCase().includes(query) ||
-             item.category.toLowerCase().includes(query) ||
-             item.keywords.toLowerCase().includes(query);
+      if (matches.length > 0) {
+        dropdown.innerHTML = `
+          <div class="px-4 py-2.5 bg-slate-50 border-b border-slate-100 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+            Matching Equipment (${matches.length})
+          </div>
+          <div class="max-h-72 overflow-y-auto divide-y divide-slate-100">
+            ${matches.map(m => `
+              <a href="${m.url}" class="flex items-center gap-3.5 px-4 py-3 hover:bg-slate-50 transition-colors group">
+                <div class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 overflow-hidden p-1">
+                  <img src="${m.img}" alt="${m.name}" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23E11D2A\' stroke-width=\'1.5\'><path d=\'M3 17h10V9H7l-4 4v4z\'/><circle cx=\'7\' cy=\'19\' r=\'2\'/><circle cx=\'15\' cy=\'19\' r=\'2\'/><path d=\'M17 17V5M21 8h-4M21 12h-4M21 16h-4\'/></svg>';" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-heading font-bold text-xs text-obsidian group-hover:text-brand transition-colors truncate">${m.name}</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">${m.tonnage} · <span class="text-brand font-medium">${m.category}</span></div>
+                </div>
+                <span class="text-slate-300 group-hover:text-brand group-hover:translate-x-0.5 transition-all text-xs">→</span>
+              </a>
+            `).join('')}
+          </div>
+        `;
+        dropdown.classList.remove('hidden');
+      } else {
+        dropdown.innerHTML = `
+          <div class="px-4 py-6 text-center text-xs text-slate-400 font-light">
+            No matching equipment found for "<span class="font-medium text-slate-700">${query}</span>". Try searching for "HE", "Reach", or "Pallet".
+          </div>
+        `;
+        dropdown.classList.remove('hidden');
+      }
     });
 
-    if (matches.length > 0) {
-      suggestionBox.innerHTML = `
-        <div class="px-3 py-1.5 bg-slate-50 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-          Matching Equipment (${matches.length})
-        </div>
-        ${matches.map(m => `
-          <a href="${m.url}" class="flex items-center gap-3 p-2.5 hover:bg-red-50/60 transition-colors group">
-            <div class="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 p-1 flex items-center justify-center shrink-0">
-              <img src="${m.img}" alt="${m.name}" class="w-full h-full object-contain group-hover:scale-110 transition-transform">
-            </div>
-            <div class="flex-1 min-w-0 text-left">
-              <div class="text-xs font-bold text-obsidian group-hover:text-brand truncate">${m.name}</div>
-              <div class="text-[10px] text-slate-400 flex items-center gap-2">
-                <span>${m.tonnage}</span>
-                <span>•</span>
-                <span class="text-brand font-semibold">${m.category}</span>
-              </div>
-            </div>
-            <span class="text-xs text-slate-400 group-hover:text-brand group-hover:translate-x-0.5 transition-all">→</span>
-          </a>
-        `).join('')}
-      `;
-      suggestionBox.classList.remove('hidden');
-    } else {
-      // Automatic "NO RESULT" feedback
-      suggestionBox.innerHTML = `
-        <div class="p-4 text-center">
-          <div class="w-8 h-8 rounded-full bg-red-50 text-brand flex items-center justify-center mx-auto mb-2 text-xs font-bold">✕</div>
-          <div class="text-xs font-bold text-obsidian mb-0.5">No results found</div>
-          <div class="text-[11px] text-slate-400">No equipment matches "<span class="text-brand font-medium">${escapeHTML(query)}</span>"</div>
-        </div>
-      `;
-      suggestionBox.classList.remove('hidden');
-    }
+    // Close search dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!wrapper.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
   });
-
-  // Handle Enter Key / Form Submission
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const query = input.value.trim();
-    if (!query) return;
-    window.location.href = `products.html?search=${encodeURIComponent(query)}`;
-  });
-
-  // Close suggestions when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!container.contains(e.target)) {
-      suggestionBox.classList.add('hidden');
-    }
-  });
-}
+});
 
 /**
  * Handles filtering on products.html when loaded with ?search=...
