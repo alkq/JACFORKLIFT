@@ -5,20 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Products | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="global.css" />
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
       colors: {
         primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#FF3B47', DEFAULT: '#E11D2A', dark: '#B8141F' },
+        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' }, // Deep Forest Emerald
         obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
         gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
       },
       fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
       boxShadow: {
-        'soft-glow': '0 12px 30px -8px rgba(225, 29, 42, 0.25)',
+        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.35)',
         'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
         'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
       }
@@ -26,88 +27,13 @@ tailwind.config = {
   }
 };
 </script>
-<style>
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #334155; }
-h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em; }
-
-.glass-nav {
-  position: sticky;
-  top: 0;
-  z-index: 9999 !important;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-.product-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: block;
-  text-decoration: none;
-}
-.product-card:hover {
-  transform: translateY(-6px);
-  border-color: #CBD5E1;
-  box-shadow: 0 24px 50px -8px rgba(15, 23, 42, 0.14);
-}
-
-.page-hero-bg {
-  background-color: #FFFFFF;
-  background-image: 
-    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.8) 80%, #FFFFFF 100%),
-    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.35) 70%, #FFFFFF 100%),
-    url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center;
-}
-
-.filter-btn {
-  padding: 0.60rem 1.25rem;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: all 0.25s ease;
-  border: 1px solid #E2E8F0;
-  color: #475569;
-  background: #FFFFFF;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.filter-btn:hover {
-  border-color: #E11D2A;
-  color: #E11D2A;
-}
-.filter-btn.active {
-  background: #E11D2A;
-  color: #FFFFFF;
-  border-color: #E11D2A;
-  box-shadow: 0 10px 25px -5px rgba(225, 29, 42, 0.3);
-}
-
-.product-stage {
-  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-}
-.product-stage img {
-  object-fit: contain;
-  padding: 1.5rem;
-  transition: transform 0.5s ease;
-}
-.product-card:hover .product-stage img {
-  transform: scale(1.05);
-}
-</style>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
   <symbol id="icon-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
 </svg>
 
 <!-- TOP UTILITY BANNER -->
@@ -140,7 +66,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
         <div class="text-[9px] font-bold text-brand tracking-[0.25em] mt-1">SINGAPORE</div>
       </div>
     </a>
-
     <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
       <a href="products.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
         PRODUCTS
@@ -151,7 +76,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <a href="equipment-rental.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">EQUIPMENT RENTAL</a>
       <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
-
     <div class="hidden lg:flex items-center gap-3 shrink-0">
       <div class="relative">
         <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
@@ -166,18 +90,11 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           </div>
         </div>
       </div>
-      <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 hover:border-brand hover:text-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm hover:scale-[1.02] whitespace-nowrap">
-        INQUIRY
-      </a>
-      <a href="dealer-enquiry.html" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs tracking-wider uppercase py-3 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
-        DEALER ENQUIRY
-      </a>
+      <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 font-heading font-bold text-xs uppercase py-3 px-5 rounded-xl shadow-sm">INQUIRY</a>
+      <a href="dealer-enquiry.html" class="bg-brand text-white font-heading font-bold text-xs uppercase py-3 px-6 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
-
     <div class="lg:hidden flex items-center gap-2">
-      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
-        <svg class="w-5 h-5"><use href="#icon-search"/></svg>
-      </button>
+      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search"><svg class="w-5 h-5"><use href="#icon-search"/></svg></button>
       <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
     </div>
   </div>
@@ -185,7 +102,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
     <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
       <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
-      <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-1.5 focus:outline-none" />
+      <input type="text" name="search" placeholder="Search equipment..." class="flex-1 bg-transparent border-0 text-slate-800 text-sm px-2 py-1.5 focus:outline-none" />
     </form>
   </div>
 
@@ -217,13 +134,11 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
-<!-- STICKY DROPDOWN & ROLL-UP FILTER BAR -->
+<!-- FILTER BAR -->
 <section id="productFilterSection" class="py-3.5 bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-20 z-30 shadow-sm transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    
-    <!-- Dropdown Toggle Bar Trigger -->
     <div class="flex items-center justify-between">
-      <button id="filterDropdownToggle" onclick="toggleProductDropdown()" class="flex items-center justify-between w-full lg:w-auto bg-slate-50 hover:bg-slate-100 border border-slate-200 text-obsidian px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all mx-auto lg:mx-0">
+      <button id="filterDropdownToggle" onclick="toggleProductDropdown()" class="flex items-center justify-between w-full lg:w-auto bg-slate-50 hover:bg-slate-100 border border-slate-200 text-obsidian px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all mx-auto lg:mx-0 cursor-pointer">
         <span class="flex items-center gap-2">
           <svg class="w-4 h-4 text-brand"><use href="#icon-filter"/></svg>
           Filter Equipment: <span id="activeProductFilterText" class="text-brand">All Equipment (13)</span>
@@ -232,7 +147,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       </button>
     </div>
 
-    <!-- Expandable Filter Menu Options -->
     <div id="productDropdownMenu" class="hidden max-w-7xl mx-auto pt-3 pb-1 transition-all duration-300 border-t border-slate-100 mt-3">
       <div class="flex flex-wrap gap-2.5 items-center justify-start lg:justify-center">
         <button class="filter-btn active" data-filter="all">All Equipment (13)</button>
@@ -243,312 +157,231 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
         <button class="filter-btn" data-filter="other">Tractor & Platforms (3)</button>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- FILTER + GRID -->
+<!-- PRODUCTS GRID (ALL 13 MODELS) -->
 <section class="py-20 bg-primary-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    
-    <!-- Product Cards Grid -->
     <div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- HE Series -->
+      
+      <!-- 1. HE Series -->
       <a href="product-spec.html?id=he-series" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/HE-Series-2.5-3.8T.png" alt="HE Series" class="w-full h-full" />
+          <img src="images/HE-Series-2.5-3.8T.png" alt="HE Series" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">LITHIUM FORKLIFT</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">2.5 – 3.8 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">HE Series</h3>
           <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Heavy-duty lithium forklift engineered to replace diesel yard trucks with zero emissions.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Charge: 1.5h</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Charge: 1.5h</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- L Series -->
+      <!-- 2. L Series -->
       <a href="product-spec.html?id=l-series" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/L-Series-1.5-3.5T.png" alt="L Series" class="w-full h-full" />
+          <img src="images/L-Series-1.5-3.5T.png" alt="L Series" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">LITHIUM FORKLIFT</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 3.5 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">L Series</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">The ultimate smart warehouse forklift for versatile indoor handling and yard staging.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Charge: 1.5h</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Smart warehouse forklift for versatile indoor and outdoor work.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Charge: 1.5h</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- JE Series -->
+      <!-- 3. JE Series -->
       <a href="product-spec.html?id=je-series" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/JE-Series-4.5-5.0T.png" alt="JE Series" class="w-full h-full" />
+          <img src="images/JE-Series-4.5-5.0T.png" alt="JE Series" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">HEAVY ELECTRIC</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">4.5 – 5.0 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">JE Series</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">High-capacity electric forklift designed for heavy industrial and manufacturing logistics.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Charge: 2.0h</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">High-capacity electric forklift designed for heavy industrial logistics.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Charge: 2.0h</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Three Wheel -->
+      <!-- 4. Three Wheel -->
       <a href="product-spec.html?id=three-wheel" class="product-card rounded-3xl overflow-hidden group" data-category="forklifts">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Three-Wheel-1.5-2.0T.png" alt="Three Wheel" class="w-full h-full" />
+          <img src="images/Three-Wheel-1.5-2.0T.png" alt="Three Wheel" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">COMPACT FORKLIFT</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 2.0 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Three Wheel Forklift</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Ultra-tight turning radius for narrow container stuffing, racking, and confined spaces.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Radius: 1.7m</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Compact lithium forklift for tight spaces and precision handling.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Radius: 1.7m</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Stand Type Reach -->
+      <!-- 5. Stand Reach -->
       <a href="product-spec.html?id=reach-truck-stand" class="product-card rounded-3xl overflow-hidden group" data-category="reach">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Stand-type-Reach-Truck-1.5T.png" alt="Stand Type Reach Truck" class="w-full h-full" />
+          <img src="images/Stand-type-Reach-Truck-1.5T.png" alt="Stand Reach" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-full">REACH TRUCK</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 TON · 10M LIFT</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Stand Type Reach Truck</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Maximise vertical cubic storage without expanding aisle widths in high-bay setups.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Aisle: 1.8m</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Maximise vertical storage space without expanding aisle widths.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Aisle: 1.8m</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Sit Type Reach -->
+      <!-- 6. Sit Reach -->
       <a href="product-spec.html?id=reach-truck-sit" class="product-card rounded-3xl overflow-hidden group" data-category="reach">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Sit-type-Reach-Truck-1.5-2.0T.png" alt="Sit Type Reach Truck" class="w-full h-full" />
+          <img src="images/Sit-type-Reach-Truck-1.5-2.0T.png" alt="Sit Reach" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-full">REACH TRUCK</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 2.0 TON · 10M LIFT</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Sit Type Reach Truck</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Designed for intensive, long-shift warehouse operations with full ergonomic seating.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Sit-Down Ergonomics</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Designed for intensive, long-shift warehouse operations with seating comfort.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Sit-Down Ergonomics</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Walkie Pallet -->
+      <!-- 7. Walkie Pallet -->
       <a href="product-spec.html?id=walkie-pallet" class="product-card rounded-3xl overflow-hidden group" data-category="pallet">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png" alt="Walkie Pallet Truck" class="w-full h-full" />
+          <img src="images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png" alt="Walkie" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PALLET TRUCK</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.5 – 2.0 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Walkie Pallet Truck</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Compact, lightweight lithium pallet truck engineered for fast retail and dock unloading.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Fast Charge: 1h</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Compact and efficient lithium-powered pallet truck for tight spaces.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Fast Charge: 1h</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Rider Pallet -->
+      <!-- 8. Rider Pallet -->
       <a href="product-spec.html?id=rider-pallet" class="product-card rounded-3xl overflow-hidden group" data-category="pallet">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Rider-Pallet-Truck-2.0–3.0T.png" alt="Rider Pallet Truck" class="w-full h-full" />
+          <img src="images/Rider-Pallet-Truck-2.0–3.0T.png" alt="Rider Pallet" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PALLET TRUCK</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">2.0 – 3.0 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Rider Pallet Truck</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Accelerate long-distance transport with an ergonomic fold-down suspension platform.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Platform Deck</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Accelerate cross-warehouse transportation with a fold-down platform.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Platform Deck</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Straddle Stacker -->
+      <!-- 9. Straddle Stacker -->
       <a href="product-spec.html?id=straddle-stacker" class="product-card rounded-3xl overflow-hidden group" data-category="stacker">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png" alt="Straddle Stacker" class="w-full h-full" />
+          <img src="images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png" alt="Straddle Stacker" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">STACKER</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.0 – 1.5 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Straddle Rider Stacker</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Straddle design for perimeter pallet handling with enhanced stability at height.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Lift: 5.5m</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Straddle design for enhanced stability and heavy-duty stacking.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Lift: 5.5m</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Electric Stacker -->
+      <!-- 10. Electric Stacker -->
       <a href="product-spec.html?id=electric-stacker" class="product-card rounded-3xl overflow-hidden group" data-category="stacker">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Electric-Rider-Stacker1.0-2.0T.png" alt="Electric Rider Stacker" class="w-full h-full" />
+          <img src="images/Electric-Rider-Stacker1.0-2.0T.png" alt="Electric Stacker" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">STACKER</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">1.0 – 2.0 TON</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Electric Rider Stacker</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Standard medium-level electric stacker for fast mezzanine and racking replenishment.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Lift: 4.5m</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Boost medium-level stacking efficiency with ergonomic controls.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Lift: 4.5m</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Electric Tractor -->
+      <!-- 11. Electric Tractor -->
       <a href="product-spec.html?id=electric-tractor" class="product-card rounded-3xl overflow-hidden group" data-category="other">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Electric-Tractor.png" alt="Electric Tractor" class="w-full h-full" />
+          <img src="images/Electric-Tractor.png" alt="Electric Tractor" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">TOWING</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">TOWING SOLUTION</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Electric Tow Tractor</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Zero-emission industrial tugger for manufacturing assembly lines and airport baggage.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Tow: 3,000 kg</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Zero-emission towing solution for logistics and manufacturing floors.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Tow: 3,000 kg</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Electric Platform -->
+      <!-- 12. Electric Platform Truck -->
       <a href="product-spec.html?id=electric-platform" class="product-card rounded-3xl overflow-hidden group" data-category="other">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/Electric-Platform-Truck.png" alt="Electric Platform" class="w-full h-full" />
+          <img src="images/Electric-Platform-Truck.png" alt="Platform Truck" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">PLATFORM</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">FLATBED UTILITY</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Electric Platform Truck</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Heavy flatbed utility transporter for bulk cross-warehouse and plant equipment moves.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ OPEX Lease & Purchase</span>
-              <span>Maintenance Covered</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>Payload: 2,000 kg</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Versatile electric platform for efficient material movement across facilities.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>Payload: 2,000 kg</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
 
-      <!-- Stacking AGV -->
+      <!-- 13. Stacking AGV -->
       <a href="product-spec.html?id=stacking-agv" class="product-card rounded-3xl overflow-hidden group" data-category="other">
         <div class="aspect-[4/3] product-stage relative flex items-center justify-center p-6 border-b border-slate-100">
-          <img src="images/stacking-agv.png" alt="Stacking AGV" class="w-full h-full" />
+          <img src="images/stacking-agv.png" alt="Stacking AGV" class="w-full h-full object-contain" />
           <span class="absolute top-4 left-4 bg-gold text-obsidian text-[11px] font-bold px-3 py-1 rounded-full">ROBOTICS</span>
         </div>
         <div class="p-7">
           <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">AUTOMATION</div>
           <h3 class="font-heading font-bold text-xl text-obsidian mb-2">Stacking AGV</h3>
-          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">LiDAR SLAM guided autonomous vehicle for automated, 24/7 dark warehouse stacking.</p>
-          <div class="pt-4 border-t border-slate-100 space-y-2">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500">
-              <span class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">✓ Automation Lease</span>
-              <span>24/7 Deployment</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-obsidian pt-1">
-              <span>24/7 Operation</span>
-              <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
-            </div>
+          <p class="text-slate-500 text-xs font-light leading-relaxed mb-6">Autonomous guided vehicle for advanced warehouse automation and 24/7 operation.</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-obsidian">
+            <span>24/7 Operation</span>
+            <span class="text-brand group-hover:translate-x-1 transition-transform">Get Tailored Quote →</span>
           </div>
         </div>
       </a>
@@ -557,19 +390,18 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
-<!-- BOTTOM QUICK INQUIRY FORM -->
-<section class="py-24 bg-white border-t border-slate-200 text-center">
+<!-- STANDARDIZED INLINE EQUIPMENT FORM -->
+<section class="py-24 bg-primary-50 border-b border-slate-200 text-center">
   <div class="max-w-4xl mx-auto px-6 lg:px-10">
-    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">
-      Unsure Which Model Fits Your Warehouse?
-    </h2>
+    <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">Direct Commercial Enquiry</div>
+    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">Unsure Which Model Fits Your Warehouse?</h2>
     <p class="text-slate-500 text-sm font-light mb-10 max-w-2xl mx-auto leading-relaxed">
       Our technical engineers can evaluate your aisle dimensions, load weights, and shift cycles to provide a custom proposal.
     </p>
 
-    <form id="quickInquiryForm" class="bg-primary-50 p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
+    <form id="quickInquiryForm" class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
       <div class="sm:col-span-5 relative">
-        <select id="quickEquipSelect" name="equipment" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+        <select id="quickEquipSelect" name="equipment" class="w-full bg-slate-50 text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
           <option value="">Select Equipment Category</option>
           <option value="forklift">Electric Counterbalance Forklift (1.5 - 5.0T)</option>
           <option value="reach">Lithium Reach Trucks (Up to 10M Lift)</option>
@@ -579,9 +411,8 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           <option value="rental">Long-Term Fleet Equipment Rental</option>
         </select>
       </div>
-
       <div class="sm:col-span-4 relative">
-        <select id="quickLocSelect" name="location" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+        <select id="quickLocSelect" name="location" class="w-full bg-slate-50 text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
           <option value="">Select Singapore Location</option>
           <option value="west">West · Jurong / Tuas Industrial Hub</option>
           <option value="east">East · Changi / Airport Logistics Park</option>
@@ -589,7 +420,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           <option value="central">Central · City / Mezzanine Facilities</option>
         </select>
       </div>
-
       <div class="sm:col-span-3">
         <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
           INQUIRY →
@@ -599,7 +429,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- STANDARDIZED CONSISTENT FOOTER -->
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
     <div class="lg:col-span-2">
@@ -612,147 +442,53 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           <div class="text-[9px] text-brand font-bold tracking-[0.2em] mt-1">SINGAPORE</div>
         </div>
       </div>
-      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">Exclusive JAC electric forklift distributor in Singapore. High-performance, lithium-powered, ESG-compliant material handling solutions.</p>
-      <p class="text-xs text-slate-400 font-light">Email: sg@jacforklift.com | Phone: +65 XXXX XXXX</p>
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">
+        JAC Material Handling is Singapore’s exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
+      </p>
+      <div class="space-y-2 text-xs text-slate-400 font-light">
+        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> +65 6XXX XXXX</p>
+        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> sg@jacforklift.com</p>
+      </div>
     </div>
     <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Products</h4>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-xs font-light">
-        <li><a href="product-spec.html?id=he-series" class="hover:text-white transition-colors">HE Series Forklifts</a></li>
-        <li><a href="product-spec.html?id=l-series" class="hover:text-white transition-colors">L Series Electric</a></li>
-        <li><a href="product-spec.html?id=je-series" class="hover:text-white transition-colors">JE Heavy Electric</a></li>
-        <li><a href="products.html" class="hover:text-white transition-colors">All 13 Models</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Services</h4>
-      <ul class="space-y-2 text-xs font-light">
-        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
-        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">Lithium-Ion Tech</a></li>
-        <li><a href="solution.html" class="hover:text-white transition-colors">Material Solutions</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Company</h4>
-      <ul class="space-y-2 text-xs font-light">
+        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
         <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="solution.html" class="hover:text-white transition-colors">Solutions</a></li>
+        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">JAC Lithium-Ion</a></li>
+        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
         <li><a href="dealer-enquiry.html" class="hover:text-white transition-colors">Dealer Enquiry</a></li>
-        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Products</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium-Ion Forklifts</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Reach Trucks</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Warehouse Trucks</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Others & Stacking AGVs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Important Links</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+        <li><a href="vic.html" class="hover:text-white transition-colors">VIC Portal Login</a></li>
       </ul>
     </div>
   </div>
   <div class="border-t border-slate-800/80">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Material Handling. All Rights Reserved.</div>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-      </div>
+      <div class="flex gap-6"><a href="#" class="hover:text-white transition-colors">Privacy Policy</a><a href="#" class="hover:text-white transition-colors">Terms of Service</a></div>
     </div>
   </div>
 </footer>
 
-<script>
-const searchToggle = document.getElementById('searchToggle');
-const searchBox = document.getElementById('searchBox');
-if (searchToggle && searchBox) {
-  searchToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    searchBox.classList.toggle('hidden');
-    if (!searchBox.classList.contains('hidden')) {
-      setTimeout(() => searchBox.querySelector('input')?.focus(), 50);
-    }
-  });
-  document.addEventListener('click', (e) => {
-    if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
-      searchBox.classList.add('hidden');
-    }
-  });
-}
-const mobileSearchToggle = document.getElementById('mobileSearchToggle');
-const mobileSearchBox = document.getElementById('mobileSearchBox');
-if (mobileSearchToggle && mobileSearchBox) {
-  mobileSearchToggle.addEventListener('click', () => {
-    mobileSearchBox.classList.toggle('hidden');
-  });
-}
-document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileMenu')?.classList.toggle('hidden');
-});
-
-// Toggle Dropdown Menu visibility on click
-function toggleProductDropdown() {
-  const menu = document.getElementById('productDropdownMenu');
-  const chevron = document.getElementById('productDropdownChevron');
-  menu.classList.toggle('hidden');
-  chevron.classList.toggle('rotate-180');
-}
-
-// Category Filter action
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    // Update active label text
-    document.getElementById('activeProductFilterText').textContent = btn.textContent;
-
-    // Auto-hide menu after selection
-    document.getElementById('productDropdownMenu').classList.add('hidden');
-    document.getElementById('productDropdownChevron').classList.remove('rotate-180');
-
-    const f = btn.dataset.filter;
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.style.display = (f === 'all' || card.dataset.category === f) ? 'block' : 'none';
-    });
-  });
-});
-
-// Roll-up / Roll-down behavior on scroll for products filter bar
-let lastProductScroll = 0;
-const productDropdownMenu = document.getElementById('productDropdownMenu');
-const productChevron = document.getElementById('productDropdownChevron');
-
-window.addEventListener('scroll', function() {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-  
-  if (currentScroll > 200) {
-    if (currentScroll > lastProductScroll) {
-      // Scrolling DOWN -> Collapse dropdown options list
-      if(!productDropdownMenu.classList.contains('hidden')) {
-        productDropdownMenu.classList.add('hidden');
-        productChevron.classList.remove('rotate-180');
-      }
-    }
-  }
-  lastProductScroll = currentScroll <= 0 ? 0 : currentScroll;
-}, { passive: true });
-
-// Quick Inquiry Submission Handler to contact.html
-function handleQuickInquiry(e) {
-  if (e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  const equip = document.getElementById('quickEquipSelect')?.value || '';
-  const loc = document.getElementById('quickLocSelect')?.value || '';
-
-  try {
-    sessionStorage.setItem('pending_equip', equip);
-    sessionStorage.setItem('pending_loc', loc);
-  } catch(err) {}
-
-  const params = new URLSearchParams();
-  if (equip) params.set('equipment', equip);
-  if (loc) params.set('location', loc);
-
-  const queryStr = params.toString() ? '?' + params.toString() : '';
-  window.location.href = 'contact.html' + queryStr;
-}
-</script>
-
+<script src="main.js"></script>
 <script src="search.js"></script>
 <script src="ai-chat.js"></script>
-<script src="form-handler.js"></script>
 </body>
 </html>

@@ -1,0 +1,582 @@
+/* =========================================================================
+   JAC Forklift Singapore - Global Master Stylesheet (Pure CSS)
+   ======================================================================== */
+
+/* =========================================================================
+   1. ROOT THEME VARIABLES & GLOBAL EMERALD PRIORITY OVERRIDES
+   ========================================================================= */
+:root {
+  --brand-main: #047857;       /* Deep Forest Emerald 700 */
+  --brand-dark: #065f46;       /* Deep Forest 800 */
+  --brand-light: #059669;      /* Emerald 600 */
+  --brand-glow: #10B981;       /* Bright Mint Accent */
+  --footer-bg: #03130e;        /* Deep Pine Black-Green */
+  --cta-bg: #03140e;           /* Moody Dark Forest Overlay */
+}
+
+/* Force dark emerald on all general brand text classes */
+html body .text-brand,
+html body [class*="text-brand"],
+html body .text-emerald-600,
+html body .text-emerald-700 {
+  color: #047857 !important;
+}
+
+/* Force dark emerald on standard brand backgrounds */
+html body .bg-brand,
+html body [class*="bg-brand"] {
+  background-color: #047857 !important;
+}
+
+/* Standard Button Hovers */
+html body .bg-brand:hover,
+html body [class*="bg-brand"]:hover,
+html body .hover\:bg-brand-dark:hover,
+html body .hover\:bg-brand:hover {
+  background-color: #065f46 !important;
+}
+
+/* Standard Brand Borders */
+html body .border-brand,
+html body [class*="border-brand"] {
+  border-color: #047857 !important;
+}
+
+html body .hover\:border-brand:hover {
+  border-color: #047857 !important;
+}
+
+html body .hover\:text-brand:hover {
+  color: #047857 !important;
+}
+
+/* Global Soft Glow Shadow */
+html body .shadow-soft-glow {
+  box-shadow: 0 12px 30px -8px rgba(4, 120, 87, 0.45) !important;
+}
+
+/* =========================================================================
+   2. UNIVERSAL MOODY DARK FOREST CTA & INQUIRY OVERLAY (Matches Image 2)
+   ========================================================================= */
+.cta-vivid-faded-bg,
+#contact.cta-vivid-faded-bg,
+section#contact,
+.quick-inquiry-bar,
+section[class*="quick-inquiry-bar"],
+section.quick-inquiry-bar {
+  position: relative !important;
+  background-color: #03140e !important;
+  background-image: 
+    linear-gradient(180deg, rgba(3, 20, 14, 0.82) 0%, rgba(4, 30, 22, 0.90) 50%, #041d15 100%),
+    url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  color: #FFFFFF !important;
+}
+
+/* Eyebrow / Tag Styling (Bright Glowing Mint Emerald) */
+#contact .text-brand,
+#contact div:first-child,
+#contact [class*="tracking-widest"],
+.quick-inquiry-bar [class*="tracking-widest"],
+section[class*="quick-inquiry-bar"] [class*="tracking-widest"] {
+  color: #10B981 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+}
+
+/* Headlines & Paragraphs inside Dark Banners: Crisp White & Subtle Mint */
+#contact h2,
+#contact h3,
+.quick-inquiry-bar h2,
+.quick-inquiry-bar h3,
+section[class*="quick-inquiry-bar"] h2,
+section[class*="quick-inquiry-bar"] h3 {
+  color: #FFFFFF !important;
+}
+
+#contact p,
+.quick-inquiry-bar p,
+section[class*="quick-inquiry-bar"] p {
+  color: rgba(226, 252, 240, 0.9) !important;
+}
+
+/* Universal Pill CTA Buttons: Vivid Emerald with Soft Green Glow */
+#contact a.bg-brand,
+#contact a[href*="contact.html"],
+.quick-inquiry-bar button[type="submit"],
+section[class*="quick-inquiry-bar"] button[type="submit"] {
+  background: #059669 !important;
+  background-color: #059669 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 14px 35px -6px rgba(16, 185, 129, 0.5) !important;
+  border-radius: 9999px !important;
+  padding: 0.9rem 2.25rem !important;
+  font-weight: 700 !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#contact a.bg-brand:hover,
+#contact a[href*="contact.html"]:hover,
+.quick-inquiry-bar button[type="submit"]:hover,
+section[class*="quick-inquiry-bar"] button[type="submit"]:hover {
+  background: #047857 !important;
+  background-color: #047857 !important;
+  transform: scale(1.03) !important;
+}
+
+/* =========================================================================
+   3. UNIVERSAL DEEP PINE FOOTER (Matches Image 2)
+   ========================================================================= */
+footer.bg-obsidian,
+footer {
+  background-color: #03130e !important;
+  border-top: 1px solid rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Footer Brand Logo Text */
+footer .text-white {
+  color: #FFFFFF !important;
+}
+
+/* Footer "SINGAPORE" subtitle tag under logo */
+footer .text-brand,
+footer [class*="text-[9px]"] {
+  color: #10B981 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.25em !important;
+}
+
+/* Footer Phone and Email SVG Icons */
+footer svg.text-brand,
+footer svg,
+footer svg path {
+  color: #10B981 !important;
+  stroke: #10B981 !important;
+}
+
+/* Footer Text & Links */
+footer p,
+footer a,
+footer span,
+footer li a {
+  color: #94A3B8 !important;
+  transition: color 0.2s ease !important;
+}
+
+footer a:hover,
+footer li a:hover {
+  color: #34D399 !important;
+}
+
+footer h4 {
+  color: #F8FAFC !important;
+}
+
+/* Footer Bottom Copyright Line */
+footer .border-t {
+  border-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Top utility bar accent line & status indicator */
+.bg-obsidian span.text-brand,
+.bg-obsidian span[class*="text-brand"] {
+  color: #10B981 !important;
+}
+.bg-obsidian span.bg-brand {
+  background-color: #10B981 !important;
+}
+
+/* =========================================================================
+   4. FLOATING AI CHAT LAUNCHER OVERRIDES
+   ========================================================================= */
+#jacChatLauncher,
+button#jacChatLauncher,
+.fixed #jacChatLauncher {
+  background: #047857 !important;
+  background-color: #047857 !important;
+  box-shadow: 0 12px 30px -4px rgba(4, 120, 87, 0.5) !important;
+}
+
+#jacChatLauncher:hover {
+  background: #065f46 !important;
+  background-color: #065f46 !important;
+}
+
+/* =========================================================================
+   5. BASE STRUCTURE, RESET, & TYPOGRAPHY
+   ========================================================================= */
+*, :after, :before {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
+
+html { 
+  scroll-behavior: smooth; 
+  -webkit-text-size-adjust: 100%;
+}
+
+body { 
+  font-family: 'Inter', sans-serif; 
+  background-color: #FFFFFF; 
+  color: #334155; 
+  margin: 0;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 { 
+  font-family: 'Montserrat', sans-serif; 
+  letter-spacing: -0.025em; 
+}
+
+/* =========================================================================
+   6. NAVBAR & GLASSMORPHISM
+   ========================================================================= */
+.glass-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999 !important;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================================================
+   7. PAGE BACKGROUND OVERLAYS & HEROES
+   ========================================================================= */
+.page-hero-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.35) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-vivid-faded-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 18%, rgba(255, 255, 255, 0) 82%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 36%, rgba(255, 255, 255, 0.30) 65%, rgba(255, 255, 255, 0.75) 100%),
+    url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.products-vivid-faded-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.35) 15%, rgba(255, 255, 255, 0.35) 85%, #FFFFFF 100%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.78) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dealers-vivid-faded-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.35) 20%, rgba(255, 255, 255, 0.35) 80%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0.40) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-vivid-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.35) 20%, rgba(255, 255, 255, 0.35) 80%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0.35) 80%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.team-vivid-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 15%, rgba(255, 255, 255, 0.4) 85%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 40%, rgba(255, 255, 255, 0.35) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.portal-login-bg {
+  background-color: #FFFFFF;
+  background-image: 
+    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.4) 80%, #FFFFFF 100%),
+    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.85) 40%, rgba(255, 255, 255, 0.45) 75%, #FFFFFF 100%),
+    url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+/* =========================================================================
+   8. CARDS, GRIDS, BADGES & INTERACTION
+   ========================================================================= */
+.glass-card-light {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-light:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.1);
+}
+
+.product-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  text-decoration: none;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: #047857;
+  box-shadow: 0 24px 50px -8px rgba(4, 120, 87, 0.22);
+}
+
+.solution-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.solution-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(4, 120, 87, 0.5);
+  box-shadow: 0 24px 50px -8px rgba(4, 120, 87, 0.2);
+}
+.solution-card:hover .card-img {
+  transform: scale(1.04);
+}
+.solution-card:hover .card-badge {
+  background-color: #047857;
+  color: #FFFFFF;
+  border-color: #047857;
+}
+
+.filter-btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border: 1px solid #E2E8F0;
+  color: #475569;
+  background: #FFFFFF;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.filter-btn:hover {
+  border-color: #047857;
+  color: #047857;
+}
+.filter-btn.active {
+  background: #047857;
+  color: #FFFFFF;
+  border-color: #047857;
+  box-shadow: 0 10px 25px -5px rgba(4, 120, 87, 0.45);
+}
+
+.mode-toggle-btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border: 1px solid #E2E8F0;
+  color: #64748B;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+.mode-toggle-btn.active {
+  background: #0B0F17;
+  color: #FFFFFF;
+  border-color: #0B0F17;
+  box-shadow: 0 4px 15px rgba(11, 15, 23, 0.15);
+}
+
+.input-field {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1.25rem;
+  color: #0B0F17;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  outline: none;
+}
+.input-field:focus {
+  border-color: #047857;
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.25);
+}
+
+.product-showcase {
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+}
+.product-showcase img {
+  object-fit: contain;
+  padding: 2.5rem;
+}
+
+.thumbs img {
+  background: #F8FAFC;
+  object-fit: contain;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+.thumbs img:hover, .thumbs img.active {
+  border-color: #047857;
+  box-shadow: 0 4px 15px rgba(4, 120, 87, 0.25);
+}
+
+.spec-row {
+  border-bottom: 1px solid #F1F5F9;
+  transition: background 0.2s;
+}
+.spec-row:hover {
+  background: #F8FAFC;
+}
+
+.product-stage {
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+}
+.product-stage img {
+  object-fit: contain;
+  padding: 1.5rem;
+  transition: transform 0.5s ease;
+}
+.product-card:hover .product-stage img {
+  transform: scale(1.05);
+}
+
+.step-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: #CBD5E1;
+  transition: color 0.3s;
+}
+.step-item.active .step-number {
+  color: #047857;
+}
+
+#dealerMap {
+  position: relative !important;
+  z-index: 1 !important;
+  isolation: isolate !important;
+}
+.leaflet-container { z-index: 1 !important; }
+.leaflet-pane, .leaflet-top, .leaflet-bottom { z-index: 2 !important; }
+.leaflet-control { z-index: 3 !important; }
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* =========================================================================
+   FORCE THE INQUIRY / REQUEST SECTION INTO DEEP MOODY EMERALD BANNER
+   ========================================================================= */
+
+/* 1. Force the entire inquiry section background into the dark emerald gradient */
+section:has(#quickInquiryForm),
+section.py-24.bg-primary-50.border-b:has(form),
+section:has(#quickEquipSelect) {
+  background: linear-gradient(135deg, #031c14 0%, #042d20 50%, #021610 100%) !important;
+  border-top: 1px solid rgba(16, 185, 129, 0.2) !important;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2) !important;
+  color: #FFFFFF !important;
+  position: relative !important;
+}
+
+/* 2. Top eyebrow tag: Bright mint accent */
+section:has(#quickInquiryForm) .text-brand,
+section:has(#quickEquipSelect) .text-brand {
+  color: #34D399 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+}
+
+/* 3. Heading & Paragraphs inside the inquiry section */
+section:has(#quickInquiryForm) h2,
+section:has(#quickInquiryForm) h3,
+section:has(#quickEquipSelect) h2 {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+section:has(#quickInquiryForm) p,
+section:has(#quickEquipSelect) p {
+  color: rgba(226, 252, 240, 0.85) !important;
+}
+
+/* 4. The form container card: Sleek semi-transparent dark-tint card */
+section:has(#quickInquiryForm) form#quickInquiryForm,
+section:has(#quickEquipSelect) form {
+  background: rgba(3, 20, 14, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 5. Select dropdowns inside the form */
+section:has(#quickInquiryForm) select#quickEquipSelect,
+section:has(#quickInquiryForm) select#quickLocSelect,
+section:has(#quickEquipSelect) select {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+  font-weight: 600 !important;
+}
+
+section:has(#quickInquiryForm) select:focus,
+section:has(#quickEquipSelect) select:focus {
+  border-color: #059669 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* 6. The submit button inside the inquiry form */
+section:has(#quickInquiryForm) button[type="submit"],
+section:has(#quickEquipSelect) button[type="submit"] {
+  background: #059669 !important;
+  background-color: #059669 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.5) !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+}
+
+section:has(#quickInquiryForm) button[type="submit"]:hover,
+section:has(#quickEquipSelect) button[type="submit"]:hover {
+  background: #047857 !important;
+  background-color: #047857 !important;
+  transform: scale(1.02) !important;
+}

@@ -5,117 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Industry & Material Solutions | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="global.css" />
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
       colors: {
         primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#FF3B47', DEFAULT: '#E11D2A', dark: '#B8141F' },
+        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' }, // Deep Forest Emerald
         obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
         gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
       },
       fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
       boxShadow: {
-        'soft-glow': '0 12px 30px -8px rgba(225, 29, 42, 0.25)',
+        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.35)',
         'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
         'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
       }
     }
   }
 };
-</script>
-<style>
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #334155; }
-h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em; }
-
-.glass-nav {
-  position: sticky;
-  top: 0;
-  z-index: 9999 !important;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-.page-hero-bg {
-  background-color: #FFFFFF;
-  background-image: 
-    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, #FFFFFF 100%),
-    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.35) 75%, #FFFFFF 100%),
-    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center;
-}
-
-.filter-btn {
-  padding: 0.60rem 1.25rem;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: all 0.25s ease;
-  border: 1px solid #E2E8F0;
-  color: #475569;
-  background: #FFFFFF;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.filter-btn:hover {
-  border-color: #E11D2A;
-  color: #E11D2A;
-}
-.filter-btn.active {
-  background: #E11D2A;
-  color: #FFFFFF;
-  border-color: #E11D2A;
-  box-shadow: 0 10px 25px -5px rgba(225, 29, 42, 0.3);
-}
-
-.solution-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-.solution-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(225, 29, 42, 0.4);
-  box-shadow: 0 24px 50px -8px rgba(15, 23, 42, 0.14);
-}
-.solution-card:hover .card-img {
-  transform: scale(1.04);
-}
-.solution-card:hover .card-badge {
-  background-color: #E11D2A;
-  color: #FFFFFF;
-  border-color: #E11D2A;
-}
-
-.quick-inquiry-bar {
-  background: linear-gradient(135deg, #E11D2A 0%, #B8141F 100%);
-}
-</style>
+</script>>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
-<!-- ICON LIBRARY -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
   <symbol id="icon-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
   <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></symbol>
   <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
   <symbol id="icon-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
 </svg>
 
-<!-- STANDARDIZED TOP UTILITY BANNER -->
+<!-- TOP UTILITY BANNER -->
 <div class="bg-obsidian text-slate-300 text-[11px] font-medium tracking-wide border-b border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-2.5 flex justify-between items-center">
     <div class="flex items-center gap-4">
@@ -145,7 +69,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
         <div class="text-[9px] font-bold text-brand tracking-[0.25em] mt-1">SINGAPORE</div>
       </div>
     </a>
-
     <nav class="hidden lg:flex items-center gap-7 flex-1 justify-center">
       <a href="products.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">PRODUCTS</a>
       <a href="solution.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
@@ -156,53 +79,12 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <a href="equipment-rental.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">EQUIPMENT RENTAL</a>
       <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
-
     <div class="hidden lg:flex items-center gap-3 shrink-0">
-      <div class="relative">
-        <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
-          <svg class="w-4 h-4"><use href="#icon-search"/></svg>
-        </button>
-        <div id="searchBox" class="hidden absolute right-0 top-full mt-3 w-80 z-50">
-          <div class="bg-white border border-slate-200 rounded-xl p-2 shadow-luxe">
-            <form action="products.html" method="get" class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
-              <input type="text" name="search" placeholder="Search equipment, solutions..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-2 focus:outline-none" />
-            </form>
-          </div>
-        </div>
-      </div>
-      <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 hover:border-brand hover:text-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm hover:scale-[1.02] whitespace-nowrap">
-        INQUIRY
-      </a>
-      <a href="dealer-enquiry.html" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs tracking-wider uppercase py-3 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
-        DEALER ENQUIRY
-      </a>
+      <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 font-heading font-bold text-xs uppercase py-3 px-5 rounded-xl shadow-sm">INQUIRY</a>
+      <a href="dealer-enquiry.html" class="bg-brand text-white font-heading font-bold text-xs uppercase py-3 px-6 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
-
     <div class="lg:hidden flex items-center gap-2">
-      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
-        <svg class="w-5 h-5"><use href="#icon-search"/></svg>
-      </button>
       <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
-    </div>
-  </div>
-
-  <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
-    <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
-      <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
-      <input type="text" name="search" placeholder="Search solutions..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-1.5 focus:outline-none" />
-    </form>
-  </div>
-
-  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 shadow-xl space-y-4">
-    <a href="products.html" class="block font-bold text-slate-800 text-sm">PRODUCTS</a>
-    <a href="solution.html" class="block font-bold text-brand text-sm">SOLUTIONS</a>
-    <a href="lithium-ion.html" class="block font-bold text-slate-800 text-sm">JAC LITHIUM-ION</a>
-    <a href="equipment-rental.html" class="block font-bold text-slate-800 text-sm">EQUIPMENT RENTAL</a>
-    <a href="about.html" class="block font-bold text-slate-800 text-sm">ABOUT US</a>
-    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
-      <a href="contact.html" class="block text-center border border-slate-300 text-obsidian font-bold py-3 rounded-xl">INQUIRY</a>
-      <a href="dealer-enquiry.html" class="block text-center bg-brand text-white font-bold py-3 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
   </div>
 </header>
@@ -222,13 +104,11 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
-<!-- DROPDOWN & ROLL-UP FILTER BAR -->
+<!-- FILTER BAR -->
 <section id="solutionFilterSection" class="py-3.5 bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-20 z-30 shadow-sm transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    
-    <!-- Dropdown Toggle Bar Trigger -->
     <div class="flex items-center justify-between">
-      <button id="filterDropdownToggle" onclick="toggleDropdownMenu()" class="flex items-center justify-between w-full lg:w-auto bg-slate-50 hover:bg-slate-100 border border-slate-200 text-obsidian px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all mx-auto lg:mx-0">
+      <button id="filterDropdownToggle" onclick="toggleDropdownMenu()" class="flex items-center justify-between w-full lg:w-auto bg-slate-50 hover:bg-slate-100 border border-slate-200 text-obsidian px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all mx-auto lg:mx-0 cursor-pointer">
         <span class="flex items-center gap-2">
           <svg class="w-4 h-4 text-brand"><use href="#icon-filter"/></svg>
           Filter Solution: <span id="activeFilterText" class="text-brand">All Solutions (6)</span>
@@ -237,7 +117,6 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       </button>
     </div>
 
-    <!-- Expandable Filter Menu Options -->
     <div id="filterDropdownMenu" class="hidden max-w-7xl mx-auto pt-3 pb-1 transition-all duration-300 border-t border-slate-100 mt-3">
       <div class="flex flex-wrap gap-2.5 items-center justify-start lg:justify-center">
         <button class="filter-btn active" data-filter="all">All Solutions (6)</button>
@@ -249,313 +128,199 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
         <button class="filter-btn" data-filter="logistics">High-Bay 3PL</button>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- SOLUTIONS GRID -->
+<!-- SOLUTIONS GRID (ALL 6 CARDS) -->
 <section class="py-20 bg-primary-50 min-h-[600px]">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    
     <div id="solutionsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- 1. COLD CHAIN -->
-      <div onclick="openModal('coldchain')" onkeydown="if(event.key==='Enter')openModal('coldchain')" role="button" tabindex="0" class="solution-card rounded-3xl overflow-hidden group" data-category="coldchain">
-        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover transition-transform duration-500" alt="Cold Chain Warehouse" />
-          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200 transition-colors shadow-sm">COLD CHAIN & FOOD</span>
+      
+      <!-- 1. Cold Chain -->
+      <div onclick="openModal('coldchain')" class="solution-card rounded-3xl overflow-hidden group" data-category="coldchain">
+        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover" alt="Cold Chain" />
+          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200">COLD CHAIN & FOOD</span>
         </div>
         <div class="p-8 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3 group-hover:text-brand transition-colors">Sub-Zero Storage Logistics</h3>
-            
+            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3">Sub-Zero Storage Logistics</h3>
             <div class="bg-red-50/60 border border-red-200/60 rounded-2xl p-4 mb-4">
-              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Operating in -25°C blast freezers rapidly degrades lead-acid batteries and causes condensation in electronic controllers.
-              </p>
+              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Operating in -25°C freezers degrades batteries and causes condensation.</p>
             </div>
-
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-5">
-              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                IP67-sealed CATL LFP battery with internal thermal heaters. Zero emissions over food supplies.
-              </p>
+              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">IP67-sealed CATL LFP battery with internal thermal heaters.</p>
             </div>
           </div>
-
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-xs font-bold text-slate-500">HE25 / Stand Reach</span>
-            <span class="text-brand font-bold text-xs group-hover:underline flex items-center gap-1">
-              View Solution Details →
-            </span>
+            <span class="text-brand font-bold text-xs group-hover:underline">View Details →</span>
           </div>
         </div>
       </div>
 
-      <!-- 2. STEEL & HEAVY METAL -->
-      <div onclick="openModal('heavy')" onkeydown="if(event.key==='Enter')openModal('heavy')" role="button" tabindex="0" class="solution-card rounded-3xl overflow-hidden group" data-category="heavy">
-        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover transition-transform duration-500" alt="Steel Operations" />
-          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200 transition-colors shadow-sm">HEAVY METAL & STEEL</span>
+      <!-- 2. Steel & Heavy Metal -->
+      <div onclick="openModal('heavy')" class="solution-card rounded-3xl overflow-hidden group" data-category="heavy">
+        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover" alt="Steel" />
+          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200">HEAVY METAL & STEEL</span>
         </div>
         <div class="p-8 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3 group-hover:text-brand transition-colors">Steel Coils & Heavy Billets</h3>
-            
+            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3">Steel Coils & Heavy Billets</h3>
             <div class="bg-red-50/60 border border-red-200/60 rounded-2xl p-4 mb-4">
-              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Transporting 4–5 ton steel bundles demands instant starting torque on steep yard ramps without engine lag.
-              </p>
+              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Transporting 4–5 ton steel bundles demands instant starting torque on ramps.</p>
             </div>
-
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-5">
-              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                JE Series (4.5–5.0T) with dual high-output AC motors providing 100% full torque from 0 RPM.
-              </p>
+              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">JE Series with dual high-output AC motors providing 100% full torque.</p>
             </div>
           </div>
-
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-xs font-bold text-slate-500">JE50 (5.0T Electric)</span>
-            <span class="text-brand font-bold text-xs group-hover:underline flex items-center gap-1">
-              View Solution Details →
-            </span>
+            <span class="text-brand font-bold text-xs group-hover:underline">View Details →</span>
           </div>
         </div>
       </div>
 
-      <!-- 3. STONE & CERAMICS -->
-      <div onclick="openModal('stone')" onkeydown="if(event.key==='Enter')openModal('stone')" role="button" tabindex="0" class="solution-card rounded-3xl overflow-hidden group" data-category="stone">
-        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover transition-transform duration-500" alt="Stone Handling" />
-          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200 transition-colors shadow-sm">STONE & CERAMIC</span>
+      <!-- 3. Stone & Ceramic -->
+      <div onclick="openModal('stone')" class="solution-card rounded-3xl overflow-hidden group" data-category="stone">
+        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover" alt="Stone" />
+          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200">STONE & CERAMIC</span>
         </div>
         <div class="p-8 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3 group-hover:text-brand transition-colors">Abrasive Dust & Tile Slabs</h3>
-            
+            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3">Abrasive Dust & Tile Slabs</h3>
             <div class="bg-red-50/60 border border-red-200/60 rounded-2xl p-4 mb-4">
-              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Abrasive stone dust destroys engine air filters and alternator belts, causing frequent breakdown shutdowns.
-              </p>
+              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Abrasive stone dust destroys engine air filters and alternator belts.</p>
             </div>
-
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-5">
-              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Enclosed brushless AC motors with zero belts or filters to clog. Proportional micro-hydraulic valves prevent slab cracks.
-              </p>
+              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Enclosed brushless AC motors with zero belts or filters to clog.</p>
             </div>
           </div>
-
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-xs font-bold text-slate-500">HE35 (3.5T Heavy)</span>
-            <span class="text-brand font-bold text-xs group-hover:underline flex items-center gap-1">
-              View Solution Details →
-            </span>
+            <span class="text-brand font-bold text-xs group-hover:underline">View Details →</span>
           </div>
         </div>
       </div>
 
-      <!-- 4. PAPER & RECYCLING -->
-      <div onclick="openModal('dusty')" onkeydown="if(event.key==='Enter')openModal('dusty')" role="button" tabindex="0" class="solution-card rounded-3xl overflow-hidden group" data-category="dusty">
-        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover transition-transform duration-500" alt="Paper & Recycling" />
-          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200 transition-colors shadow-sm">PAPER & RECYCLING</span>
+      <!-- 4. Paper & Recycling -->
+      <div onclick="openModal('dusty')" class="solution-card rounded-3xl overflow-hidden group" data-category="dusty">
+        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover" alt="Paper" />
+          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200">PAPER & RECYCLING</span>
         </div>
         <div class="p-8 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3 group-hover:text-brand transition-colors">Combustible Dust & Paper Bales</h3>
-            
+            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3">Combustible Dust & Paper Bales</h3>
             <div class="bg-red-50/60 border border-red-200/60 rounded-2xl p-4 mb-4">
-              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Hot diesel exhaust pipes present fire risks around combustible scrap paper and shredding dust.
-              </p>
+              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Hot diesel exhaust pipes present fire risks around scrap paper.</p>
             </div>
-
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-5">
-              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                100% zero-exhaust electric operation. Fast opportunity charging enables continuous 22-hour multi-shift recycling yards.
-              </p>
+              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">100% zero-exhaust electric operation with fast opportunity charging.</p>
             </div>
           </div>
-
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-xs font-bold text-slate-500">HE30 / Bale Clamp</span>
-            <span class="text-brand font-bold text-xs group-hover:underline flex items-center gap-1">
-              View Solution Details →
-            </span>
+            <span class="text-brand font-bold text-xs group-hover:underline">View Details →</span>
           </div>
         </div>
       </div>
 
-      <!-- 5. CHEMICAL & CLEANROOM -->
-      <div onclick="openModal('chemical')" onkeydown="if(event.key==='Enter')openModal('chemical')" role="button" tabindex="0" class="solution-card rounded-3xl overflow-hidden group" data-category="chemical">
-        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover transition-transform duration-500" alt="Chemical Cleanroom" />
-          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200 transition-colors shadow-sm">CHEMICAL & CLEANROOM</span>
+      <!-- 5. Chemical & Cleanroom -->
+      <div onclick="openModal('chemical')" class="solution-card rounded-3xl overflow-hidden group" data-category="chemical">
+        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop" class="card-img w-full h-full object-cover" alt="Chemical" />
+          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200">CHEMICAL & CLEANROOM</span>
         </div>
         <div class="p-8 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3 group-hover:text-brand transition-colors">Non-Gassing Chemical Facilities</h3>
-            
+            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3">Non-Gassing Chemical Facilities</h3>
             <div class="bg-red-50/60 border border-red-200/60 rounded-2xl p-4 mb-4">
-              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Lead-acid battery rooms release flammable hydrogen fumes during charging, requiring expensive explosion-proof ventilation.
-              </p>
+              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Lead-acid rooms release flammable hydrogen fumes during charging.</p>
             </div>
-
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-5">
-              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Sealed LiFePO4 cells emit zero hydrogen gas during charging. Eliminates battery rooms; chargers can be placed anywhere.
-              </p>
+              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Sealed LiFePO4 cells emit zero hydrogen gas during charging.</p>
             </div>
           </div>
-
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-xs font-bold text-slate-500">L20 Lithium Electric</span>
-            <span class="text-brand font-bold text-xs group-hover:underline flex items-center gap-1">
-              View Solution Details →
-            </span>
+            <span class="text-brand font-bold text-xs group-hover:underline">View Details →</span>
           </div>
         </div>
       </div>
 
-      <!-- 6. HIGH-BAY 3PL & AGV -->
-      <div onclick="openModal('agv')" onkeydown="if(event.key==='Enter')openModal('agv')" role="button" tabindex="0" class="solution-card rounded-3xl overflow-hidden group" data-category="logistics">
-        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-          <img src="images/Stand-type-Reach-Truck-1.5T.png" class="card-img w-full h-full object-contain p-6 transition-transform duration-500" alt="3PL High-Bay Racking" />
-          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200 transition-colors shadow-sm">HIGH-BAY 3PL & AGV</span>
+      <!-- 6. High-Bay 3PL -->
+      <div onclick="openModal('agv')" class="solution-card rounded-3xl overflow-hidden group" data-category="logistics">
+        <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
+          <img src="images/Stand-type-Reach-Truck-1.5T.png" class="card-img w-full h-full object-contain p-6" alt="3PL" />
+          <span class="card-badge absolute top-4 left-4 bg-white/95 text-brand text-xs font-bold px-3 py-1 rounded-full border border-slate-200">HIGH-BAY 3PL & AGV</span>
         </div>
         <div class="p-8 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3 group-hover:text-brand transition-colors">Narrow-Aisle 10M High Stacking</h3>
-            
+            <h3 class="font-heading font-extrabold text-xl text-obsidian mb-3">Narrow-Aisle 10M High Stacking</h3>
             <div class="bg-red-50/60 border border-red-200/60 rounded-2xl p-4 mb-4">
-              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                High Singapore warehouse land lease rates force operators into 10-meter vertical heights where standard counterbalance trucks waste 40% of floor space.
-              </p>
+              <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Client Pain Points</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">High land lease rates force 10-meter heights where standard trucks waste space.</p>
             </div>
-
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-5">
-              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5">
-                <svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution
-              </div>
-              <p class="text-slate-600 text-xs font-light leading-relaxed">
-                Stand Reach Trucks and LiDAR-guided Stacking AGVs operating in 1.8m aisles, boosting cubic storage capacity by up to 35%.
-              </p>
+              <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1.5"><svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Solution</div>
+              <p class="text-slate-600 text-xs font-light leading-relaxed">Stand Reach Trucks and LiDAR AGVs operating in 1.8m aisles.</p>
             </div>
           </div>
-
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-xs font-bold text-slate-500">Reach 1.5T / Stacking AGV</span>
-            <span class="text-brand font-bold text-xs group-hover:underline flex items-center gap-1">
-              View Solution Details →
-            </span>
+            <span class="text-brand font-bold text-xs group-hover:underline">View Details →</span>
           </div>
         </div>
       </div>
 
     </div>
-
   </div>
 </section>
 
 <!-- INTERACTIVE MODAL -->
-<div id="detailModal" class="fixed inset-0 z-[99999] bg-obsidian/70 backdrop-blur-sm hidden items-center justify-center p-4 sm:p-6">
-  <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-200 shadow-2xl relative">
-    <button onclick="closeModal()" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors z-10" aria-label="Close">
-      <svg class="w-5 h-5"><use href="#icon-close"/></svg>
-    </button>
-
-    <div class="p-8 sm:p-12">
-      <span id="modalIndustryBadge" class="inline-block px-3 py-1 bg-red-50 text-brand text-xs font-bold rounded-full mb-3 uppercase tracking-wider">INDUSTRY CASE STUDY</span>
-      <h2 id="modalTitle" class="font-heading font-extrabold text-2xl sm:text-3xl text-obsidian mb-6">Ceramic & Stone Solution</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6 mb-8">
-        <div class="bg-red-50/60 border border-red-200/80 rounded-2xl p-5">
-          <div class="flex items-center gap-2 text-brand font-bold text-xs uppercase tracking-wider mb-2">
-            <svg class="w-4 h-4 shrink-0"><use href="#icon-alert"/></svg> Customer Pain Points & Needs
-          </div>
-          <p id="modalPainPoints" class="text-slate-600 text-xs font-light leading-relaxed">
-            The facility runs continuous 22-hour three-shift forklift operations with heavy loads and attachments. Standard combustion trucks choke on abrasive dust, overheat, and fail frequently.
-          </p>
-        </div>
-
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
-          <div class="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-2">
-            <svg class="w-4 h-4 shrink-0"><use href="#icon-check"/></svg> JAC Forklift Solution
-          </div>
-          <p id="modalSolution" class="text-slate-600 text-xs font-light leading-relaxed">
-            Customized heavy-duty electric models with sealed motor units, high-capacity fast-charging battery packs, and 3-year factory warranties to deliver 24/7 continuous operation.
-          </p>
-        </div>
+<div id="detailModal" class="fixed inset-0 z-[99999] bg-obsidian/70 backdrop-blur-sm hidden items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 relative shadow-2xl">
+    <button onclick="closeModal()" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center cursor-pointer">✕</button>
+    <span id="modalIndustryBadge" class="inline-block px-3 py-1 bg-emerald-50 text-brand text-xs font-bold rounded-full mb-3 uppercase">INDUSTRY CASE STUDY</span>
+    <h2 id="modalTitle" class="font-heading font-extrabold text-2xl sm:text-3xl text-obsidian mb-6">Solution Title</h2>
+    <div class="grid sm:grid-cols-2 gap-6 mb-8">
+      <div class="bg-red-50/60 border border-red-200 rounded-2xl p-5">
+        <div class="text-brand font-bold text-xs uppercase tracking-wider mb-2">Pain Points</div>
+        <p id="modalPainPoints" class="text-slate-600 text-xs leading-relaxed">...</p>
       </div>
-
-      <div class="bg-primary-50 rounded-2xl p-6 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Recommended Deployment</div>
-          <div id="modalEquipment" class="font-heading font-bold text-lg text-obsidian">HE Series 3.5T Lithium-Ion</div>
-        </div>
-        <div class="flex gap-3">
-          <a id="modalSpecLink" href="product-spec.html?id=he-series" class="bg-white border border-slate-300 hover:border-brand hover:text-brand text-obsidian text-xs font-heading font-bold uppercase px-5 py-3 rounded-xl transition-all shadow-sm">
-            View Specs →
-          </a>
-          <a href="contact.html" class="bg-brand hover:bg-brand-dark text-white text-xs font-heading font-bold uppercase px-5 py-3 rounded-xl shadow-soft-glow transition-all">
-            Consult Engineer
-          </a>
-        </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+        <div class="text-emerald-700 font-bold text-xs uppercase tracking-wider mb-2">JAC Solution</div>
+        <p id="modalSolution" class="text-slate-600 text-xs leading-relaxed">...</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- QUICK INQUIRY BAR -->
-<section class="quick-inquiry-bar py-12 px-6 lg:px-10 text-white">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-8">
-      <h3 class="font-heading font-extrabold text-2xl lg:text-3xl text-white">
-        Want More Solution Details? Send Us An Inquiry
-      </h3>
-      <p class="text-white/80 text-xs font-light mt-1">
-        Select your required equipment category and operating zone for instant engineer callback.
-      </p>
-    </div>
+<!-- STANDARDIZED INLINE EQUIPMENT & LOCATION FORM -->
+<section class="py-24 bg-primary-50 border-b border-slate-200 text-center">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">Direct Commercial Enquiry</div>
+    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">Want More Solution Details? Send Us An Inquiry</h2>
+    <p class="text-slate-500 text-sm font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+      Select your required equipment category and operating zone for instant engineer callback.
+    </p>
 
-    <form id="quickInquiryForm" class="max-w-4xl mx-auto grid md:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
-      <div class="md:col-span-5 relative">
-        <select id="quickEquipSelect" name="equipment" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none shadow-sm cursor-pointer">
+    <form id="quickInquiryForm" class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
+      <div class="sm:col-span-5 relative">
+        <select id="quickEquipSelect" name="equipment" class="w-full bg-slate-50 text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
           <option value="">Select Equipment Category</option>
           <option value="forklift">Electric Counterbalance Forklift (1.5 - 5.0T)</option>
           <option value="reach">Lithium Reach Trucks (Up to 10M Lift)</option>
@@ -565,9 +330,8 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           <option value="rental">Long-Term Fleet Equipment Rental</option>
         </select>
       </div>
-
-      <div class="md:col-span-4 relative">
-        <select id="quickLocSelect" name="location" class="w-full bg-white text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none shadow-sm cursor-pointer">
+      <div class="sm:col-span-4 relative">
+        <select id="quickLocSelect" name="location" class="w-full bg-slate-50 text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
           <option value="">Select Singapore Location</option>
           <option value="west">West · Jurong / Tuas Industrial Hub</option>
           <option value="east">East · Changi / Airport Logistics Park</option>
@@ -575,9 +339,8 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           <option value="central">Central · City / Mezzanine Facilities</option>
         </select>
       </div>
-
-      <div class="md:col-span-3">
-        <button type="submit" class="w-full bg-brand-dark hover:bg-black text-white border border-white/30 font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl transition-all shadow-md">
+      <div class="sm:col-span-3">
+        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
           INQUIRY →
         </button>
       </div>
@@ -585,7 +348,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- STANDARDIZED CONSISTENT FOOTER -->
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
     <div class="lg:col-span-2">
@@ -598,251 +361,53 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           <div class="text-[9px] text-brand font-bold tracking-[0.2em] mt-1">SINGAPORE</div>
         </div>
       </div>
-      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">Exclusive JAC electric forklift distributor in Singapore. High-performance, lithium-powered, ESG-compliant material handling solutions.</p>
-      <p class="text-xs text-slate-400 font-light">Email: sg@jacforklift.com | Phone: +65 XXXX XXXX</p>
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">
+        JAC Material Handling is Singapore’s exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
+      </p>
+      <div class="space-y-2 text-xs text-slate-400 font-light">
+        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> +65 6XXX XXXX</p>
+        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> sg@jacforklift.com</p>
+      </div>
     </div>
     <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Products</h4>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-xs font-light">
-        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Forklifts</a></li>
-        <li><a href="products.html" class="hover:text-white transition-colors">Reach Trucks</a></li>
-        <li><a href="products.html" class="hover:text-white transition-colors">Pallet Trucks</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Services</h4>
-      <ul class="space-y-2 text-xs font-light">
-        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
-        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">Lithium-Ion Tech</a></li>
-        <li><a href="solution.html" class="hover:text-white transition-colors">Material Solutions</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Company</h4>
-      <ul class="space-y-2 text-xs font-light">
+        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
         <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="solution.html" class="hover:text-white transition-colors">Solutions</a></li>
+        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">JAC Lithium-Ion</a></li>
+        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
         <li><a href="dealer-enquiry.html" class="hover:text-white transition-colors">Dealer Enquiry</a></li>
-        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Products</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium-Ion Forklifts</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Reach Trucks</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Warehouse Trucks</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Others & Stacking AGVs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Important Links</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+        <li><a href="vic.html" class="hover:text-white transition-colors">VIC Portal Login</a></li>
       </ul>
     </div>
   </div>
   <div class="border-t border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex justify-between items-center text-xs text-slate-500 font-light">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Material Handling. All Rights Reserved.</div>
+      <div class="flex gap-6"><a href="#" class="hover:text-white transition-colors">Privacy Policy</a><a href="#" class="hover:text-white transition-colors">Terms of Service</a></div>
     </div>
   </div>
 </footer>
 
-<script>
-// Search Toggles
-const searchToggle = document.getElementById('searchToggle');
-const searchBox = document.getElementById('searchBox');
-if (searchToggle && searchBox) {
-  searchToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    searchBox.classList.toggle('hidden');
-    if (!searchBox.classList.contains('hidden')) {
-      setTimeout(() => searchBox.querySelector('input')?.focus(), 50);
-    }
-  });
-  document.addEventListener('click', (e) => {
-    if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
-      searchBox.classList.add('hidden');
-    }
-  });
-}
-const mobileSearchToggle = document.getElementById('mobileSearchToggle');
-const mobileSearchBox = document.getElementById('mobileSearchBox');
-if (mobileSearchToggle && mobileSearchBox) {
-  mobileSearchToggle.addEventListener('click', () => {
-    mobileSearchBox.classList.toggle('hidden');
-  });
-}
-document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileMenu')?.classList.toggle('hidden');
-});
-
-// Dropdown Menu Toggle Control
-function toggleDropdownMenu() {
-  const menu = document.getElementById('filterDropdownMenu');
-  const chevron = document.getElementById('dropdownChevron');
-  menu.classList.toggle('hidden');
-  chevron.classList.toggle('rotate-180');
-}
-
-// Single-Filter Logic
-function setFilter(filterVal, updateHistory = true) {
-  const targetBtn = document.querySelector(`.filter-btn[data-filter="${filterVal}"]`) || document.querySelector('.filter-btn[data-filter="all"]');
-  if (!targetBtn) return;
-
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  targetBtn.classList.add('active');
-  
-  // Update active label on the dropdown trigger button
-  document.getElementById('activeFilterText').textContent = targetBtn.textContent;
-
-  // Auto hide the menu after selecting an option
-  const menu = document.getElementById('filterDropdownMenu');
-  const chevron = document.getElementById('dropdownChevron');
-  menu.classList.add('hidden');
-  chevron.classList.remove('rotate-180');
-
-  document.querySelectorAll('.solution-card').forEach(card => {
-    card.style.display = (filterVal === 'all' || card.dataset.category === filterVal) ? 'flex' : 'none';
-  });
-
-  try {
-    sessionStorage.setItem('active_jac_filter', filterVal);
-    if (updateHistory && window.location.protocol.startsWith('http')) {
-      history.replaceState(null, '', filterVal === 'all' ? window.location.pathname : '#' + filterVal);
-    }
-  } catch(e) {}
-}
-
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    setFilter(this.dataset.filter, true);
-  });
-});
-
-function restoreSavedFilter() {
-  try {
-    const hash = window.location.hash.replace('#', '');
-    const saved = sessionStorage.getItem('active_jac_filter');
-    const target = hash || saved || 'all';
-    setFilter(target, false);
-  } catch(e) {
-    setFilter('all', false);
-  }
-}
-
-window.addEventListener('DOMContentLoaded', restoreSavedFilter);
-window.addEventListener('pageshow', restoreSavedFilter);
-window.addEventListener('popstate', restoreSavedFilter);
-
-function handleQuickInquiry(e) {
-  if (e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  const equip = document.getElementById('quickEquipSelect')?.value || '';
-  const loc = document.getElementById('quickLocSelect')?.value || '';
-
-  try {
-    sessionStorage.setItem('pending_equip', equip);
-    sessionStorage.setItem('pending_loc', loc);
-  } catch(err) {}
-
-  const params = new URLSearchParams();
-  if (equip) params.set('equipment', equip);
-  if (loc) params.set('location', loc);
-
-  const queryStr = params.toString() ? '?' + params.toString() : '';
-  window.location.href = 'contact.html' + queryStr;
-}
-
-// Modal Data
-const MODAL_DATA = {
-  coldchain: {
-    badge: "COLD CHAIN & FOOD",
-    title: "Sub-Zero Storage Logistics (-25°C)",
-    pain: "Operating in -25°C blast freezers rapidly degrades traditional battery life and causes condensation in electronic controllers. Exhaust fumes are prohibited around open food pallets.",
-    solution: "Sealed IP67 CATL LFP battery system with internal heating blankets. Maintains 100% full lift and drive speed with zero emissions and anti-corrosive stainless mast components.",
-    equipment: "JAC HE25 (2.5T) or Stand-Type Reach Truck 10M",
-    link: "product-spec.html?id=he-series"
-  },
-  heavy: {
-    badge: "HEAVY METAL & STEEL",
-    title: "Steel Coils & Heavy Billets Handling",
-    pain: "Transporting 4–5 ton dense steel bundles demands massive starting torque on steep yard ramps without engine lag, while diesel engines incur deafening noise and high fuel bills.",
-    solution: "JE Series (4.5–5.0T) with dual high-output AC drive motors delivering 100% torque from 0 RPM. Cuts fuel costs by 60% with zero emissions.",
-    equipment: "JAC JE50 Heavy-Duty Electric (5.0 Ton)",
-    link: "product-spec.html?id=je-series"
-  },
-  stone: {
-    badge: "STONE & CERAMIC",
-    title: "Abrasive Dust & Heavy Tile Slabs",
-    pain: "Granite and ceramic dust destroys engine air filters, alternator belts, and radiator fins. Heavy ceramic pallets require micro-inching hydraulic control to prevent cracking.",
-    solution: "Enclosed brushless AC motors with zero belts, radiators, or filters to clog. Proportional micro-hydraulic valves ensure smooth, shock-free pallet handling.",
-    equipment: "JAC HE35 (3.5T Counterbalance)",
-    link: "product-spec.html?id=he-series"
-  },
-  dusty: {
-    badge: "PAPER & RECYCLING",
-    title: "Combustible Dust & Paper Bales",
-    pain: "Hot diesel exhaust pipes present severe fire risks around combustible scrap paper and shredding dust. 22-hour non-stop recycling yards suffer battery swapping downtime.",
-    solution: "Zero-exhaust electric operation eliminates fire ignition points. Fast 1.5-hour opportunity charging powers non-stop multi-shift schedules without battery swaps.",
-    equipment: "JAC HE30 with Paper Roll / Bale Clamp",
-    link: "product-spec.html?id=he-series"
-  },
-  chemical: {
-    badge: "CHEMICAL & CLEANROOM",
-    title: "Non-Gassing Chemical Facilities",
-    pain: "Lead-acid battery charging rooms release hazardous explosive hydrogen gas. Cleanrooms cannot tolerate acid vapors, hydraulic oil leaks, or diesel soot.",
-    solution: "Completely dry, sealed Lithium Iron Phosphate battery packs emit zero hydrogen gas during charging. Can be charged anywhere in the facility without dedicated charging rooms.",
-    equipment: "JAC L20 Smart Warehouse Lithium Forklift",
-    link: "product-spec.html?id=l-series"
-  },
-  agv: {
-    badge: "HIGH-BAY 3PL & AUTOMATION",
-    title: "Narrow-Aisle 10M Stacking & AGVs",
-    pain: "High Singapore warehouse land lease costs force facilities into 10-meter vertical heights where standard counterbalance trucks waste 40% of floor space.",
-    solution: "Stand-type Reach Trucks and LiDAR SLAM-guided Autonomous Stacking AGVs operating in narrow 1.8-meter aisles for 24/7 dark warehouse logistics.",
-    equipment: "Stand Reach 1.5T / LiDAR Stacking AGV",
-    link: "product-spec.html?id=reach-truck-stand"
-  }
-};
-
-function openModal(key) {
-  const data = MODAL_DATA[key];
-  if (!data) return;
-
-  document.getElementById('modalIndustryBadge').textContent = data.badge;
-  document.getElementById('modalTitle').textContent = data.title;
-  document.getElementById('modalPainPoints').textContent = data.pain;
-  document.getElementById('modalSolution').textContent = data.solution;
-  document.getElementById('modalEquipment').textContent = data.equipment;
-  document.getElementById('modalSpecLink').href = data.link;
-
-  const modal = document.getElementById('detailModal');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-}
-
-function closeModal() {
-  const modal = document.getElementById('detailModal');
-  modal.classList.remove('flex');
-  modal.classList.add('hidden');
-}
-
-document.getElementById('detailModal')?.addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-// Roll-up / Roll-down behavior on scroll for the Dropdown Bar
-let lastScrollTop = 0;
-const filterDropdownMenu = document.getElementById('filterDropdownMenu');
-const dropdownChevron = document.getElementById('dropdownChevron');
-const solSection = document.getElementById('solutionFilterSection');
-
-window.addEventListener('scroll', function() {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-  
-  if (currentScroll > 200) {
-    if (currentScroll > lastScrollTop) {
-      // Scrolling DOWN -> Automatically hide expanded options dropdown list
-      if(!filterDropdownMenu.classList.contains('hidden')) {
-        filterDropdownMenu.classList.add('hidden');
-        dropdownChevron.classList.remove('rotate-180');
-      }
-    }
-  }
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-}, { passive: true });
-</script>
-
+<script src="main.js"></script>
 <script src="search.js"></script>
 <script src="ai-chat.js"></script>
-<script src="form-handler.js"></script>
 </body>
 </html>

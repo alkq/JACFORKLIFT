@@ -1,5 +1,5 @@
 // =========================================================================
-// ai-chat.js - JAC Forklift Singapore AI Auto-Reply Chat Widget
+// ai-chat.js - JAC Forklift Singapore AI Auto-Reply Chat Widget with Saved History
 // =========================================================================
 
 (function () {
@@ -11,6 +11,8 @@
     inquiryPage: "contact.html",
     apiEndpoint: "https://jac-chat-ai.allenliewkq.workers.dev",
   };
+
+  const STORAGE_KEY = 'jac_chat_conversation_history';
 
   // INJECT CSS STYLES
   const style = document.createElement('style');
@@ -140,7 +142,7 @@
         </svg>
         <span style="position:absolute;top:-2px;right:-2px;width:7px;height:7px;background:#4ADE80;border-radius:50%;border:1px solid #FFF;"></span>
       </span>
-      <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">AI Chat</span>
+      <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">Assistant</span>
     `;
 
     // 2. Chat Window Container
@@ -160,7 +162,10 @@
             </div>
           </div>
         </div>
-        <button id="jacChatClose" style="background:none;border:none;color:#94A3B8;cursor:pointer;padding:4px;font-size:16px;line-height:1;" aria-label="Close Chat">✕</button>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <button id="jacChatClear" title="Clear History" style="background:none;border:none;color:#94A3B8;cursor:pointer;padding:4px;font-size:13px;" aria-label="Clear History">🗑️</button>
+          <button id="jacChatClose" style="background:none;border:none;color:#94A3B8;cursor:pointer;padding:4px;font-size:16px;line-height:1;" aria-label="Close Chat">✕</button>
+        </div>
       </div>
 
       <!-- Quick Action Chips -->
@@ -195,19 +200,44 @@
     document.body.appendChild(launcher);
     document.body.appendChild(container);
 
-    // Initial greeting
-    addBotMessage(CONFIG.welcomeMessage);
+    // Load or initialize conversation history from localStorage
+    let savedHistory = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (!savedHistory || !Array.isArray(savedHistory) || savedHistory.length === 0) {
+      savedHistory = [{ sender: 'bot', text: CONFIG.welcomeMessage }];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(savedHistory));
+    }
+
+    // Render loaded history
+    const historyBox = document.getElementById('jacChatHistory');
+    historyBox.innerHTML = '';
+    savedHistory.forEach(msg => {
+      if (msg.sender === 'user') {
+        appendUserMessageToDOM(msg.text, false);
+      } else {
+        appendBotMessageToDOM(msg.text, false);
+      }
+    });
 
     // Event Listeners
     launcher.addEventListener('click', () => {
       container.classList.toggle('active');
       if (container.classList.contains('active')) {
         document.getElementById('jacChatInput').focus();
+        const hist = document.getElementById('jacChatHistory');
+        hist.scrollTop = hist.scrollHeight;
       }
     });
 
     document.getElementById('jacChatClose').addEventListener('click', () => {
       container.classList.remove('active');
+    });
+
+    // Clear history handler
+    document.getElementById('jacChatClear').addEventListener('click', () => {
+      const freshHistory = [{ sender: 'bot', text: CONFIG.welcomeMessage }];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(freshHistory));
+      historyBox.innerHTML = '';
+      appendBotMessageToDOM(CONFIG.welcomeMessage, true);
     });
 
     document.querySelectorAll('.jac-chip-btn').forEach(btn => {
@@ -227,36 +257,41 @@
     });
   }
 
-  // MARKDOWN FORMATTER: Converts AI Markdown to Clean Styled HTML
+  // Helpers to save state to localStorage
+  function saveMessageToStorage(sender, text) {
+    let saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    saved.push({ sender, text });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  }
+
+  // MARKDOWN FORMATTER
   function formatMarkdown(text) {
     if (!text) return "";
     return text
-      // Convert Markdown links [Label](url) to styled clickable links without displaying .html
       .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-red-600 font-bold underline hover:text-red-800 transition-colors inline-block my-1">$1 →</a>')
-      // Convert **bold** to <strong>
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      // Convert list dashes or asterisks to clean bullets
       .replace(/^\s*[\-\*]\s+(.*)$/gm, '• $1')
-      // Convert newlines to HTML linebreaks
       .replace(/\n/g, '<br>');
   }
 
-  function addUserMessage(text) {
+  function appendUserMessageToDOM(text, save = true) {
     const history = document.getElementById('jacChatHistory');
     const div = document.createElement('div');
     div.className = 'jac-chat-bubble-user';
     div.textContent = text;
     history.appendChild(div);
     history.scrollTop = history.scrollHeight;
+    if (save) saveMessageToStorage('user', text);
   }
 
-  function addBotMessage(text) {
+  function appendBotMessageToDOM(text, save = true) {
     const history = document.getElementById('jacChatHistory');
     const div = document.createElement('div');
     div.className = 'jac-chat-bubble-bot';
     div.innerHTML = formatMarkdown(text);
     history.appendChild(div);
     history.scrollTop = history.scrollHeight;
+    if (save) saveMessageToStorage('bot', text);
   }
 
   function showTypingIndicator() {
@@ -279,14 +314,14 @@
     if (indicator) indicator.remove();
   }
 
-  // MESSAGE DISPATCHER (Cloudflare Worker with Offline Graceful Fallback)
+  // MESSAGE DISPATCHER (Cloudflare Worker + Local Fallback)
   async function handleUserSend(text) {
-    addUserMessage(text);
+    appendUserMessageToDOM(text, true);
     showTypingIndicator();
 
     let replied = false;
 
-    // 1. Call Cloudflare Worker
+    // 1. Call Cloudflare Worker API
     if (CONFIG.apiEndpoint) {
       try {
         const res = await fetch(CONFIG.apiEndpoint, {
@@ -299,7 +334,7 @@
           const data = await res.json();
           if (data && data.reply) {
             hideTypingIndicator();
-            addBotMessage(data.reply);
+            appendBotMessageToDOM(data.reply, true);
             replied = true;
             return;
           }
@@ -309,7 +344,7 @@
       }
     }
 
-    // 2. Fallback Response (Used if offline or during temporary network disconnects)
+    // 2. Fallback Response (if offline)
     if (!replied) {
       setTimeout(() => {
         hideTypingIndicator();
@@ -328,7 +363,7 @@
           fallbackReply = "Hello! 👋 I'm your JAC Singapore assistant. You can ask me about our 13 electric forklift models, rental plans, or [Request a Quote](contact.html).";
         }
 
-        addBotMessage(fallbackReply);
+        appendBotMessageToDOM(fallbackReply, true);
       }, 500);
     }
   }

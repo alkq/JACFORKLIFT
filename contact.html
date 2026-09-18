@@ -5,20 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Inquiry & Request A Quote | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="global.css" />
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
       colors: {
         primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#FF3B47', DEFAULT: '#E11D2A', dark: '#B8141F' },
+        brand: { light: '#34D399', DEFAULT: '#047857', dark: '#065f46' },
         obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
         gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
       },
       fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
       boxShadow: {
-        'soft-glow': '0 12px 30px -8px rgba(225, 29, 42, 0.25)',
+        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.45)',
         'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
         'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
       }
@@ -26,111 +27,17 @@ tailwind.config = {
   }
 };
 </script>
-<style>
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; color: #334155; }
-h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em; }
-
-.glass-nav {
-  position: sticky;
-  top: 0;
-  z-index: 9999 !important;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-.page-hero-bg {
-  background-color: #FFFFFF;
-  background-image: 
-    linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, #FFFFFF 100%),
-    linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.35) 75%, #FFFFFF 100%),
-    url('https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2070&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center;
-}
-
-.input-field {
-  width: 100%;
-  background: #FFFFFF;
-  border: 1px solid #CBD5E1;
-  border-radius: 0.75rem;
-  padding: 0.95rem 1.25rem;
-  color: #0B0F17;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-  outline: none;
-}
-.input-field:focus {
-  border-color: #E11D2A;
-  box-shadow: 0 0 0 3px rgba(225, 29, 42, 0.1);
-}
-
-.glass-card-light {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-card-light:hover {
-  transform: translateY(-4px);
-  border-color: #CBD5E1;
-  box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.1);
-}
-
-.step-number {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 2.5rem;
-  line-height: 1;
-  color: #CBD5E1;
-  transition: color 0.3s;
-}
-.step-item.active .step-number {
-  color: #E11D2A;
-}
-
-.mode-toggle-btn {
-  padding: 0.65rem 1.25rem;
-  border-radius: 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: all 0.25s ease;
-  border: 1px solid #E2E8F0;
-  color: #64748B;
-  background: #FFFFFF;
-  cursor: pointer;
-}
-.mode-toggle-btn.active {
-  background: #0B0F17;
-  color: #FFFFFF;
-  border-color: #0B0F17;
-  box-shadow: 0 4px 15px rgba(11, 15, 23, 0.15);
-}
-
-#dealerMap {
-  position: relative !important;
-  z-index: 1 !important;
-  isolation: isolate !important;
-}
-.leaflet-container { z-index: 1 !important; }
-.leaflet-pane, .leaflet-top, .leaflet-bottom { z-index: 2 !important; }
-.leaflet-control { z-index: 3 !important; }
-</style>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
 <!-- ICON LIBRARY -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
   <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
   <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7 7-12a7 7 0 10-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
 </svg>
 
-<!-- STANDARDIZED TOP UTILITY BANNER -->
+<!-- TOP UTILITY BANNER -->
 <div class="bg-obsidian text-slate-300 text-[11px] font-medium tracking-wide border-b border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-2.5 flex justify-between items-center">
     <div class="flex items-center gap-4">
@@ -181,19 +88,13 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           </div>
         </div>
       </div>
-      <!-- Active INQUIRY Button -->
-      <a href="contact.html" class="bg-slate-100 text-brand border border-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm whitespace-nowrap">
-        INQUIRY
-      </a>
-      <a href="dealer-enquiry.html" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs tracking-wider uppercase py-3 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
-        DEALER ENQUIRY
-      </a>
+      <!-- INQUIRY active in Navbar -->
+      <a href="contact.html" class="bg-slate-100 text-brand border border-brand font-heading font-bold text-xs tracking-wider uppercase py-3 px-5 rounded-xl transition-all shadow-sm whitespace-nowrap">INQUIRY</a>
+      <a href="dealer-enquiry.html" class="bg-brand text-white font-heading font-bold text-xs uppercase py-3 px-6 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
 
     <div class="lg:hidden flex items-center gap-2">
-      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search">
-        <svg class="w-5 h-5"><use href="#icon-search"/></svg>
-      </button>
+      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search"><svg class="w-5 h-5"><use href="#icon-search"/></svg></button>
       <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
     </div>
   </div>
@@ -201,7 +102,7 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
   <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
     <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
       <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
-      <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-1.5 focus:outline-none" />
+      <input type="text" name="search" placeholder="Search equipment..." class="flex-1 bg-transparent border-0 text-slate-800 text-sm px-2 py-1.5 focus:outline-none" />
     </form>
   </div>
 
@@ -236,14 +137,9 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 <!-- QUOTE REQUEST SECTION -->
 <section id="inquiry-form-section" class="py-24 bg-white border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-    
-    <!-- LEFT: Stepper & Contact Info -->
     <div class="lg:col-span-4 space-y-10 lg:sticky lg:top-28">
-      
-      <!-- Stepper Box -->
       <div class="bg-primary-50 rounded-3xl p-8 border border-slate-200 shadow-sm">
         <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Commercial Process</h3>
-
         <div class="space-y-8">
           <div class="step-item active flex gap-4">
             <div class="step-number">1</div>
@@ -252,19 +148,15 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
               <p class="text-slate-500 text-xs font-light leading-relaxed">Submit your operational requirements and contact details.</p>
             </div>
           </div>
-
           <div class="pl-5 text-slate-300">↓</div>
-
           <div class="step-item flex gap-4">
             <div class="step-number">2</div>
             <div>
               <h4 class="font-heading font-bold text-obsidian text-base mb-1">Get A Quote</h4>
-              <p class="text-slate-500 text-xs font-light leading-relaxed">Our Singapore engineer calculates TCO and delivers your customized proposal within 24 hours.</p>
+              <p class="text-slate-500 text-xs font-light leading-relaxed">Our Singapore engineer calculates TCO and delivers your proposal within 24 hours.</p>
             </div>
           </div>
-
           <div class="pl-5 text-slate-300">↓</div>
-
           <div class="step-item flex gap-4">
             <div class="step-number">3</div>
             <div>
@@ -275,21 +167,19 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
         </div>
       </div>
 
-      <!-- Quick Contact Info Cards -->
       <div class="space-y-4">
         <div class="glass-card-light rounded-2xl p-6">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand flex items-center justify-center shrink-0"><svg class="w-5 h-5"><use href="#icon-pin"/></svg></div>
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand flex items-center justify-center shrink-0"><svg class="w-5 h-5"><use href="#icon-pin"/></svg></div>
             <div>
               <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Singapore Hub</div>
               <div class="text-xs font-semibold text-obsidian">Jurong Industrial Estate, Singapore</div>
             </div>
           </div>
         </div>
-
         <div class="glass-card-light rounded-2xl p-6">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand flex items-center justify-center shrink-0"><svg class="w-5 h-5"><use href="#icon-phone"/></svg></div>
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand flex items-center justify-center shrink-0"><svg class="w-5 h-5"><use href="#icon-phone"/></svg></div>
             <div>
               <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Direct Hotline</div>
               <div class="text-xs font-semibold text-obsidian">+65 6XXX XXXX (24h Tech Desk)</div>
@@ -297,39 +187,27 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           </div>
         </div>
       </div>
-
     </div>
 
-    <!-- RIGHT: Dynamic Quote / Inquiry Form -->
+    <!-- RIGHT: Form (Defaults visually to Plain Inquiry Mode) -->
     <div class="lg:col-span-8">
       <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-luxe">
-        
-        <!-- Header & Mode Switcher -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-slate-100 mb-8">
           <div>
-            <h2 id="formMainTitle" class="text-2xl sm:text-3xl font-heading font-extrabold text-obsidian">Request A Quote</h2>
-            <p id="formSubTitle" class="text-slate-500 text-xs sm:text-sm font-light mt-1">Select your equipment parameters or submit a general technical inquiry.</p>
+            <h2 id="formMainTitle" class="text-2xl sm:text-3xl font-heading font-extrabold text-obsidian">General Technical Inquiry</h2>
+            <p id="formSubTitle" class="text-slate-500 text-xs sm:text-sm font-light mt-1">Submit your general question and our Singapore engineering desk will reply within 1 business day.</p>
           </div>
-          
-          <div class="flex bg-slate-100 p-1 rounded-2xl shrink-0 self-start sm:self-auto">
-            <button type="button" id="btnModeEquipment" onclick="setInquiryMode('equipment')" class="mode-toggle-btn active">
-              Equipment Quote
-            </button>
-            <button type="button" id="btnModePlain" onclick="setInquiryMode('plain')" class="mode-toggle-btn">
-              Plain Inquiry
-            </button>
+          <div class="flex bg-slate-100 p-1 rounded-2xl shrink-0">
+            <button type="button" id="btnModeEquipment" class="mode-toggle-btn">Equipment Quote</button>
+            <button type="button" id="btnModePlain" class="mode-toggle-btn active">Plain Inquiry</button>
           </div>
         </div>
 
-        <!-- The Form -->
         <form class="space-y-6">
-          
-          <!-- ROW 1: Equipment Category & Location -->
-          <div id="equipmentLocationRow" class="grid sm:grid-cols-2 gap-5 transition-all">
+          <!-- Equipment Location Row (Hidden by default for Plain Inquiry) -->
+          <div id="equipmentLocationRow" class="grid sm:grid-cols-2 gap-5 transition-all" style="display: none;">
             <div>
-              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-                Equipment Category <span class="text-brand">*</span>
-              </label>
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Equipment Category <span class="text-brand">*</span></label>
               <select id="selectEquipment" name="equipment_category" class="input-field text-slate-800 cursor-pointer">
                 <option value="">-- Select Equipment Category --</option>
                 <option value="forklift">Electric Counterbalance Forklifts (1.5 - 5.0T)</option>
@@ -340,114 +218,62 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
                 <option value="rental">Long-Term Fleet Equipment Rental</option>
               </select>
             </div>
-
             <div>
-              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-                Project / Facility Location <span class="text-brand">*</span>
-              </label>
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Project / Facility Location <span class="text-brand">*</span></label>
               <select id="selectLocation" name="facility_location" class="input-field text-slate-800 cursor-pointer">
                 <option value="">-- Select Singapore Region --</option>
                 <option value="west">West · Jurong / Tuas Industrial Hub</option>
                 <option value="east">East · Changi / Airport Logistics Park</option>
                 <option value="north">North · Woodlands Industrial Corridor</option>
                 <option value="central">Central · City / Mezzanine Facilities</option>
-                <option value="other">Regional Export / Cross-Border</option>
               </select>
             </div>
           </div>
 
-          <!-- ROW 2: Contact Name & Phone -->
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
-              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-                Contact Name <span class="text-brand">*</span>
-              </label>
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Contact Name <span class="text-brand">*</span></label>
               <input type="text" name="contact_name" placeholder="Your Full Name" class="input-field" required />
             </div>
-
             <div>
-              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-                Contact Phone / Mobile <span class="text-brand">*</span>
-              </label>
-              <div class="flex rounded-xl border border-slate-300 bg-white overflow-hidden focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/10 transition-all">
-                <select name="country_code" class="bg-slate-50 border-r border-slate-200 px-3 py-3.5 text-xs font-bold text-slate-700 outline-none cursor-pointer hover:bg-slate-100 transition-colors shrink-0">
-                  <option value="+65" selected>🇸🇬 +65 (SG)</option>
-                  <option value="+60">🇲🇾 +60 (MY)</option>
-                  <option value="+62">🇮🇩 +62 (ID)</option>
-                  <option value="+66">🇹🇭 +66 (TH)</option>
-                  <option value="+84">🇻🇳 +84 (VN)</option>
-                  <option value="+86">🇨🇳 +86 (CN)</option>
-                  <option value="+852">🇭🇰 +852 (HK)</option>
-                  <option value="+61">🇦🇺 +61 (AU)</option>
-                  <option value="+1">🇺🇸 +1 (US)</option>
-                  <option value="+44">🇬🇧 +44 (UK)</option>
-                </select>
-                
-                <input 
-                  type="tel" 
-                  name="phone_number" 
-                  placeholder="9123 4567" 
-                  class="w-full bg-transparent px-4 py-3.5 text-slate-800 placeholder-slate-400 text-sm outline-none font-medium" 
-                  required 
-                />
-              </div>
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Contact Phone / Mobile <span class="text-brand">*</span></label>
+              <input type="tel" name="phone_number" placeholder="9123 4567" class="input-field" required />
             </div>
           </div>
 
-          <!-- ROW 3: Email & Company Name -->
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
-              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-                Business Email <span class="text-brand">*</span>
-              </label>
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Business Email <span class="text-brand">*</span></label>
               <input type="email" name="business_email" placeholder="work.email@company.com" class="input-field" required />
             </div>
-
             <div>
-              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-                Company Name
-              </label>
-              <input type="text" name="company_name" placeholder="Company / Organization Name" class="input-field" />
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Company Name</label>
+              <input type="text" name="company_name" placeholder="Company Name" class="input-field" />
             </div>
           </div>
 
-          <!-- ROW 4: Timeframe -->
-          <div id="timeframeRow">
-            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-              Purchase / Deployment Timeframe
-            </label>
+          <!-- Timeframe Row (Hidden by default for Plain Inquiry) -->
+          <div id="timeframeRow" style="display: none;">
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Purchase / Deployment Timeframe</label>
             <select name="deployment_timeframe" class="input-field text-slate-700 cursor-pointer">
               <option value="">-- Select Target Implementation Timeframe --</option>
               <option>Immediate (Ready stock deployment within 7 days)</option>
               <option>1 – 3 Months (Current quarter deployment)</option>
-              <option>3 – 6 Months (Planning phase / Facility expansion)</option>
               <option>Long-Term Equipment Rental Only (OPEX)</option>
             </select>
           </div>
 
-          <!-- ROW 5: More Specifics (Pre-Filled with Model) -->
           <div>
-            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
-              More Specifics
-            </label>
-            <textarea id="inquiryMessage" name="message" placeholder="Please fill in more details about your inquiry (e.g. load weights, racking aisle widths, duty cycle hours)..." rows="4" class="input-field" required></textarea>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">More Specifics</label>
+            <textarea id="inquiryMessage" name="message" placeholder="Please fill in more details about your inquiry..." rows="4" class="input-field" required></textarea>
           </div>
 
-          <!-- Privacy Checkbox -->
-          <label class="flex items-start gap-3 text-xs text-slate-500 font-light cursor-pointer pt-2">
-            <input type="checkbox" required class="mt-1 accent-brand" />
-            <span>I agree that my data from the contact form is processed to answer my inquiry (<a href="#" class="text-brand font-semibold underline">Privacy Policy</a>).</span>
-          </label>
-
-          <!-- Submit Button -->
-          <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-soft-glow transition-all hover:scale-[1.01]">
+          <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-soft-glow transition-all cursor-pointer">
             Send Inquiry →
           </button>
         </form>
-
       </div>
     </div>
-
   </div>
 </section>
 
@@ -458,33 +284,13 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
       <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">Regional Coverage</div>
       <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian">Authorised Service Network</h2>
     </div>
-
-    <div class="bg-white rounded-3xl p-3 mb-12 border border-slate-200 shadow-luxe overflow-hidden relative" style="z-index: 1; isolation: isolate;">
-      <div id="dealerMap" class="rounded-2xl overflow-hidden aspect-[16/9] w-full" style="background:#0E1A2B; position: relative; z-index: 1; isolation: isolate;"></div>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="glass-card-light rounded-2xl p-6">
-        <h4 class="font-heading font-bold text-obsidian text-base mb-2">Central Region</h4>
-        <p class="text-slate-500 text-xs font-light">Industrial Ave 1, Singapore<br/>Tel: +65 6XXX XXXX</p>
-      </div>
-      <div class="glass-card-light rounded-2xl p-6">
-        <h4 class="font-heading font-bold text-obsidian text-base mb-2">East Logistics Park</h4>
-        <p class="text-slate-500 text-xs font-light">Changi Industrial Park<br/>Tel: +65 6XXX XXXX</p>
-      </div>
-      <div class="glass-card-light rounded-2xl p-6">
-        <h4 class="font-heading font-bold text-obsidian text-base mb-2">West Manufacturing Hub</h4>
-        <p class="text-slate-500 text-xs font-light">Jurong Industrial Estate<br/>Tel: +65 6XXX XXXX</p>
-      </div>
-      <div class="glass-card-light rounded-2xl p-6">
-        <h4 class="font-heading font-bold text-obsidian text-base mb-2">North Gateway</h4>
-        <p class="text-slate-500 text-xs font-light">Woodlands Industrial Park<br/>Tel: +65 6XXX XXXX</p>
-      </div>
+    <div class="bg-white rounded-3xl p-3 border border-slate-200 shadow-luxe overflow-hidden relative">
+      <div id="dealerMap" class="rounded-2xl overflow-hidden aspect-[16/9] w-full" style="background:#0E1A2B;"></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- STANDARDIZED CONSISTENT FOOTER -->
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
     <div class="lg:col-span-2">
@@ -497,37 +303,47 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
           <div class="text-[9px] text-brand font-bold tracking-[0.2em] mt-1">SINGAPORE</div>
         </div>
       </div>
-      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">Exclusive JAC electric forklift distributor in Singapore. High-performance, lithium-powered, ESG-compliant material handling solutions.</p>
-      <p class="text-xs text-slate-400 font-light">Email: sg@jacforklift.com | Phone: +65 XXXX XXXX</p>
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">
+        JAC Material Handling is Singapore’s exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
+      </p>
+      <div class="space-y-2 text-xs text-slate-400 font-light">
+        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> +65 6XXX XXXX</p>
+        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> sg@jacforklift.com</p>
+      </div>
     </div>
     <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Products</h4>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-xs font-light">
-        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Forklifts</a></li>
-        <li><a href="products.html" class="hover:text-white transition-colors">Reach Trucks</a></li>
-        <li><a href="products.html" class="hover:text-white transition-colors">Pallet Trucks</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Services</h4>
-      <ul class="space-y-2 text-xs font-light">
-        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
-        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">Lithium-Ion Tech</a></li>
-        <li><a href="solution.html" class="hover:text-white transition-colors">Material Solutions</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Company</h4>
-      <ul class="space-y-2 text-xs font-light">
+        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
         <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="solution.html" class="hover:text-white transition-colors">Solutions</a></li>
+        <li><a href="lithium-ion.html" class="hover:text-white transition-colors">JAC Lithium-Ion</a></li>
+        <li><a href="equipment-rental.html" class="hover:text-white transition-colors">Equipment Rental</a></li>
         <li><a href="dealer-enquiry.html" class="hover:text-white transition-colors">Dealer Enquiry</a></li>
-        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Products</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium-Ion Forklifts</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Reach Trucks</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Lithium Warehouse Trucks</a></li>
+        <li><a href="products.html" class="hover:text-white transition-colors">Others & Stacking AGVs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Important Links</h4>
+      <ul class="space-y-2 text-xs font-light">
+        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+        <li><a href="vic.html" class="hover:text-white transition-colors">VIC Portal Login</a></li>
       </ul>
     </div>
   </div>
   <div class="border-t border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex justify-between items-center text-xs text-slate-500 font-light">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Material Handling. All Rights Reserved.</div>
+      <div class="flex gap-6"><a href="#" class="hover:text-white transition-colors">Privacy Policy</a><a href="#" class="hover:text-white transition-colors">Terms of Service</a></div>
     </div>
   </div>
 </footer>
@@ -537,164 +353,8 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.025em
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
 <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.20/leaflet-maplibre-gl.js"></script>
-
-<!-- SMART INQUIRY LOGIC -->
-<script>
-// Search Toggles
-const searchToggle = document.getElementById('searchToggle');
-const searchBox = document.getElementById('searchBox');
-if (searchToggle && searchBox) {
-  searchToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    searchBox.classList.toggle('hidden');
-    if (!searchBox.classList.contains('hidden')) {
-      setTimeout(() => searchBox.querySelector('input')?.focus(), 50);
-    }
-  });
-  document.addEventListener('click', (e) => {
-    if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
-      searchBox.classList.add('hidden');
-    }
-  });
-}
-const mobileSearchToggle = document.getElementById('mobileSearchToggle');
-const mobileSearchBox = document.getElementById('mobileSearchBox');
-if (mobileSearchToggle && mobileSearchBox) {
-  mobileSearchToggle.addEventListener('click', () => {
-    mobileSearchBox.classList.toggle('hidden');
-  });
-}
-document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileMenu')?.classList.toggle('hidden');
-});
-
-// Mode Switcher
-function setInquiryMode(mode) {
-  const equipRow = document.getElementById('equipmentLocationRow');
-  const timeframeRow = document.getElementById('timeframeRow');
-  const btnEquip = document.getElementById('btnModeEquipment');
-  const btnPlain = document.getElementById('btnModePlain');
-  const mainTitle = document.getElementById('formMainTitle');
-  const subTitle = document.getElementById('formSubTitle');
-
-  if (mode === 'plain') {
-    equipRow.style.display = 'none';
-    timeframeRow.style.display = 'none';
-    btnPlain.classList.add('active');
-    btnEquip.classList.remove('active');
-    mainTitle.textContent = 'General Technical Inquiry';
-    subTitle.textContent = 'Submit your general question and our Singapore engineering desk will reply within 1 business day.';
-  } else {
-    equipRow.style.display = 'grid';
-    timeframeRow.style.display = 'block';
-    btnEquip.classList.add('active');
-    btnPlain.classList.remove('active');
-    mainTitle.textContent = 'Request A Quote';
-    subTitle.textContent = 'Select your equipment parameters or submit a general technical inquiry.';
-  }
-}
-
-// Automatically Read Query Parameters and Pre-fill the Form
-window.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const equipParam = params.get('equipment');
-  const locParam = params.get('location');
-  const modelParam = params.get('model');
-  const modeParam = params.get('mode');
-
-  // If coming from index.html (mode=equipment) OR from a product page
-  if (equipParam || locParam || modelParam || modeParam === 'equipment') {
-    // 1. Switch to Equipment Quote mode
-    setInquiryMode('equipment');
-
-    // 2. Only select category IF a specific equipment was actually passed
-    if (equipParam) {
-      const selectEquip = document.getElementById('selectEquipment');
-      const target = equipParam.toLowerCase().trim();
-
-      const categoryMap = {
-        'forklifts': 'forklift',
-        'forklift': 'forklift',
-        'reach': 'reach',
-        'pallet': 'pallet',
-        'stacker': 'stacker',
-        'agv': 'agv',
-        'other': 'agv',
-        'rental': 'rental'
-      };
-
-      const mappedVal = categoryMap[target] || target;
-
-      for (let i = 1; i < selectEquip.options.length; i++) {
-        const optVal = selectEquip.options[i].value.toLowerCase();
-        const optText = selectEquip.options[i].text.toLowerCase();
-
-        if (optVal === mappedVal || optVal.includes(target) || optText.includes(target)) {
-          selectEquip.selectedIndex = i;
-          break;
-        }
-      }
-    } else {
-      // Keep '-- Select Equipment Category --' as default if no equipment was chosen
-      const selectEquip = document.getElementById('selectEquipment');
-      if (selectEquip) selectEquip.selectedIndex = 0;
-    }
-
-    // 3. Auto-select Location dropdown (if passed)
-    if (locParam) {
-      const selectLoc = document.getElementById('selectLocation');
-      const targetLoc = locParam.toLowerCase().trim();
-      for (let j = 1; j < selectLoc.options.length; j++) {
-        const optVal = selectLoc.options[j].value.toLowerCase();
-        const optText = selectLoc.options[j].text.toLowerCase();
-
-        if (optVal === targetLoc || optText.includes(targetLoc)) {
-          selectLoc.selectedIndex = j;
-          break;
-        }
-      }
-    }
-
-    // 4. Auto-populate specific model into the Message textarea (if passed)
-    if (modelParam) {
-      const textarea = document.getElementById('inquiryMessage') || document.querySelector('textarea');
-      if (textarea) {
-        textarea.value = `Interested in quotation for: ${modelParam}.\nPlease provide pricing, lease availability, and delivery lead times.`;
-      }
-    }
-
-    // 5. Smooth scroll down to the form
-    document.getElementById('inquiry-form-section')?.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    setInquiryMode('plain');
-  }
-});
-
-// Map init
-(function(){
-  const map = L.map('dealerMap', { zoomControl: false, attributionControl: false, scrollWheelZoom: false }).setView([1.3521, 103.8198], 11);
-  L.maplibreGL({ style: 'https://tiles.openfreemap.org/styles/dark' }).addTo(map);
-  const icon = L.divIcon({
-    className: '',
-    html: '<div style="width:16px;height:16px;background:#E11D2A;border-radius:50%;border:2px solid #FFFFFF;box-shadow:0 0 20px rgba(225,29,42,0.9);cursor:pointer;"></div>',
-    iconSize: [16, 16],
-    iconAnchor: [8, 8]
-  });
-  const dealers = [
-    { lat: 1.2900, lng: 103.8500, name: 'Central Hub', addr: 'Industrial Ave 1, Singapore' },
-    { lat: 1.3400, lng: 103.9500, name: 'East Hub', addr: 'Changi Industrial Park' },
-    { lat: 1.3300, lng: 103.7000, name: 'West Hub', addr: 'Jurong Industrial Estate' },
-    { lat: 1.4300, lng: 103.8000, name: 'North Hub', addr: 'Woodlands Industrial' }
-  ];
-  dealers.forEach(d => {
-    L.marker([d.lat, d.lng], { icon }).addTo(map).bindPopup(`<div style="font-family:Inter,sans-serif;padding:4px;"><strong style="color:#E11D2A;">${d.name}</strong><br/><span style="font-size:12px;">${d.addr}</span></div>`);
-  });
-  setTimeout(() => map.invalidateSize(), 500);
-})();
-</script>
-
+<script src="main.js"></script>
 <script src="search.js"></script>
-  <script src="ai-chat.js"></script>
-  <script src="form-handler.js"></script>
+<script src="ai-chat.js"></script>
 </body>
 </html>
