@@ -3,36 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dealer Enquiry | JAC Forklift Singapore</title>
+<title>Dealer & Channel Partner Enquiry | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="global.css" />
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' }, // Deep Forest Emerald
-        obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
-        gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
-      },
-      fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
-      boxShadow: {
-        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.35)',
-        'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
-        'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
-      }
-    }
-  }
-};
-</script>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
   <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
 </svg>
 
 <!-- TOP UTILITY BANNER -->
@@ -47,8 +28,9 @@ tailwind.config = {
       <span class="hidden md:inline text-slate-400">Next-Gen Lithium-Ion Material Handling Equipment</span>
     </div>
     <div class="flex items-center gap-6">
-      <a href="tel:+65" class="hover:text-white transition-colors">Direct Desk: +65 6XXX XXXX</a>
-      <a href="vic.html" class="text-gold font-semibold hover:text-white transition-colors">VIC Portal →</a>
+      <a href="vic.html" class="text-gold hover:text-white font-semibold flex items-center gap-1 transition-colors">
+        VIC Portal →
+      </a>
     </div>
   </div>
 </div>
@@ -73,11 +55,45 @@ tailwind.config = {
       <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
     <div class="hidden lg:flex items-center gap-3 shrink-0">
+      <div class="relative">
+        <button id="searchToggle" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-obsidian hover:bg-slate-100 transition-colors" aria-label="Search">
+          <svg class="w-4 h-4"><use href="#icon-search"/></svg>
+        </button>
+        <div id="searchBox" class="hidden absolute right-0 top-full mt-3 w-80 z-50">
+          <div class="bg-white border border-slate-200 rounded-xl p-2 shadow-luxe">
+            <form action="products.html" method="get" class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+              <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-2 focus:outline-none" />
+            </form>
+          </div>
+        </div>
+      </div>
       <a href="contact.html" class="bg-white hover:bg-slate-50 text-obsidian border border-slate-300 font-heading font-bold text-xs uppercase py-3 px-5 rounded-xl shadow-sm">INQUIRY</a>
       <a href="dealer-enquiry.html" class="bg-brand text-white font-heading font-bold text-xs uppercase py-3 px-6 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
+
     <div class="lg:hidden flex items-center gap-2">
+      <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search"><svg class="w-5 h-5"><use href="#icon-search"/></svg></button>
       <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
+    </div>
+  </div>
+
+  <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
+    <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
+      <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
+      <input type="text" name="search" placeholder="Search equipment..." class="flex-1 bg-transparent border-0 text-slate-800 text-sm px-2 py-1.5 focus:outline-none" />
+    </form>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-6 shadow-xl space-y-4">
+    <a href="products.html" class="block font-bold text-slate-800 text-sm">PRODUCTS</a>
+    <a href="solution.html" class="block font-bold text-slate-800 text-sm">SOLUTIONS</a>
+    <a href="lithium-ion.html" class="block font-bold text-slate-800 text-sm">JAC LITHIUM-ION</a>
+    <a href="equipment-rental.html" class="block font-bold text-slate-800 text-sm">EQUIPMENT RENTAL</a>
+    <a href="about.html" class="block font-bold text-slate-800 text-sm">ABOUT US</a>
+    <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+      <a href="contact.html" class="block text-center border border-brand text-brand font-bold py-3 rounded-xl bg-slate-50">INQUIRY</a>
+      <a href="dealer-enquiry.html" class="block text-center bg-brand text-white font-bold py-3 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
     </div>
   </div>
 </header>
@@ -97,53 +113,137 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- FORM -->
-<section class="py-20 bg-primary-50 border-b border-slate-200">
-  <div class="max-w-4xl mx-auto px-6 lg:px-10">
-    <div class="bg-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-slate-200 shadow-luxe">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-obsidian mb-4">
-          Become a JAC <span class="text-brand">Dealer Partner</span>
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
-          Interested in partnering with JAC? Fill in your details below and our team will get in touch to discuss dealership opportunities, requirements, and next steps.
+<!-- DEALER ADVANTAGES -->
+<section class="py-24 bg-primary-50 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-16">
+      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-2">Channel Partnership</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight">Why Partner With JAC Singapore</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-luxe">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand flex items-center justify-center font-heading font-extrabold text-lg mb-6">
+          01
+        </div>
+        <h3 class="font-heading font-bold text-xl text-obsidian mb-3">Strong Distributor Margins</h3>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">
+          Access competitive wholesale pricing, transparent unit rebate structures, and high recurring margins on genuine spare parts and consumable attachments.
         </p>
       </div>
 
-      <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you for your dealership enquiry. Our management team will contact you shortly.');">
-        <div class="grid sm:grid-cols-2 gap-5">
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contact Name</label>
-            <input type="text" placeholder="Contact Name" class="input-field" required />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1.5">Company Name</label>
-            <input type="text" placeholder="Company Name" class="input-field" required />
-          </div>
+      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-luxe">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand flex items-center justify-center font-heading font-extrabold text-lg mb-6">
+          02
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contact Number</label>
-          <input type="text" placeholder="Contact Number" class="input-field" required />
+        <h3 class="font-heading font-bold text-xl text-obsidian mb-3">Singapore Parts Inventory</h3>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">
+          No waiting weeks for international freight. Over 10,000 line items of motors, CATL battery modules, and hydraulic cylinders stocked directly in Singapore.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-luxe">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand flex items-center justify-center font-heading font-extrabold text-lg mb-6">
+          03
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Email Address</label>
-          <input type="email" placeholder="Email Address" class="input-field" required />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Tell us more about your enquiry</label>
-          <textarea placeholder="Tell us more about your enquiry" rows="5" class="input-field" required></textarea>
-        </div>
-        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-soft-glow transition-all">
-          ENQUIRY NOW
-        </button>
-      </form>
+        <h3 class="font-heading font-bold text-xl text-obsidian mb-3">Certified Technician Training</h3>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">
+          Comprehensive OEM certification for your workshop mechanics. Direct access to JAC CAN-bus diagnostic software, wiring schematics, and factory engineers.
+        </p>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- DEALER APPLICATION FORM -->
+<section class="py-24 bg-white border-b border-slate-200">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-2">Application Form</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight mb-4">Apply for Authorized Dealer Status</h2>
+      <p class="text-slate-500 text-xs font-light leading-relaxed">
+        Please complete the corporate profile below. Our regional commercial director will review and schedule an initial workshop or showroom evaluation within 48 hours.
+      </p>
+    </div>
+
+    <form id="dealerForm" class="bg-primary-50 rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-luxe space-y-6">
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Registered Company Name *</label>
+          <input type="text" name="companyName" required placeholder="e.g. Apex Industrial Machinery Pte Ltd" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Business Registration / UEN *</label>
+          <input type="text" name="uen" required placeholder="e.g. 201812345K" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Contact Person *</label>
+          <input type="text" name="contactPerson" required placeholder="Full Name" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Job Designation *</label>
+          <input type="text" name="designation" required placeholder="e.g. Managing Director / Sales Head" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Business Email *</label>
+          <input type="email" name="email" required placeholder="name@company.com" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Direct Phone / WhatsApp *</label>
+          <input type="tel" name="phone" required placeholder="+65 9123 4567" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Current Machinery Brands Handled</label>
+          <input type="text" name="existingBrands" placeholder="e.g. Toyota, Nichiyu, Mitsubishi, None" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Target Territory / Focus Sector</label>
+          <select name="targetSector" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 focus:border-brand focus:outline-none">
+            <option value="singapore-general">Singapore General Industrial & Logistics</option>
+            <option value="jurong-heavy">West Singapore / Jurong & Tuas Heavy Industry</option>
+            <option value="changi-airfreight">East Singapore / Changi & Airfreight Logistics</option>
+            <option value="regional-export">Regional Re-Export (Malaysia / Indonesia / SEA)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-obsidian mb-2">Workshop & Facility Overview</label>
+        <textarea name="facilityDetails" rows="4" placeholder="Briefly describe your existing sales team, workshop size, or forklift rental fleet capacity..." class="w-full bg-white border border-slate-200 rounded-xl p-4 text-sm text-slate-800 focus:border-brand focus:outline-none"></textarea>
+      </div>
+
+      <!-- PRIVACY POLICY -->
+      <div id="formPrivacyContainer" class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 transition-all shadow-sm">
+        <input type="checkbox" id="formPrivacyCheckbox" class="mt-1 w-4 h-4 text-brand rounded accent-brand cursor-pointer shrink-0" onchange="handleFormCheckboxChange(this)" />
+        <label for="formPrivacyCheckbox" class="text-xs sm:text-sm text-slate-700 font-medium cursor-pointer select-none leading-relaxed">
+          I have read and understood this <button type="button" onclick="openPrivacyModal(false, 'view', 'dealer')" class="text-brand font-bold underline hover:text-brand-dark transition-colors inline cursor-pointer">Privacy Policy</button>, and consent to the processing of my corporate enquiry details under Singapore PDPA regulations.
+        </label>
+      </div>
+
+      <div class="pt-2">
+        <button type="button" id="dealerSubmitBtn" onclick="handleDealerSubmitClick()" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-soft-glow transition-all hover:scale-[1.01] cursor-pointer">
+          Submit Channel Partner Application →
+        </button>
+      </div>
+      <div id="dealerMsg" class="hidden p-4 rounded-xl text-center text-sm font-bold"></div>
+    </form>
   </div>
 </section>
 
 <!-- STANDARDIZED CONSISTENT FOOTER -->
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+
+    <!-- Column 1 & 2: Brand Info & Contact -->
     <div class="lg:col-span-2">
       <div class="flex items-center gap-3 mb-6">
         <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm">
@@ -154,14 +254,32 @@ tailwind.config = {
           <div class="text-[9px] text-brand font-bold tracking-[0.2em] mt-1">SINGAPORE</div>
         </div>
       </div>
-      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-sm">
-        JAC Material Handling is Singapore’s exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
+
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 max-w-md">
+        JAC Material Handling is Singapore's exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
       </p>
+
+      <!-- Registered Entity -->
+      <div class="mb-6">
+        <div class="text-[10px] font-bold text-emerald-400 tracking-[0.2em] uppercase mb-1">HQ SG</div>
+        <div class="font-heading font-bold text-white text-sm mb-0.5">
+          JAC EQUIPMENT PTE. LTD. <span class="text-slate-400 font-normal text-xs">(202621058N)</span>
+        </div>
+      </div>
+
       <div class="space-y-2 text-xs text-slate-400 font-light">
-        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> +65 6XXX XXXX</p>
-        <p class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> sg@jacforklift.com</p>
+        <p class="flex items-start gap-2">
+          <svg class="w-3.5 h-3.5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <span>Mobile / WhatsApp: <a href="tel:+60138188181" class="hover:text-white transition-colors">+60 13-818 8181</a></span>
+        </p>
+        <p class="flex items-start gap-2">
+          <svg class="w-3.5 h-3.5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Email: <a href="mailto:alvincslim@gmail.com" class="hover:text-white transition-colors">alvincslim@gmail.com</a></span>
+        </p>
       </div>
     </div>
+
+    <!-- Column 3: Quick Links -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -173,6 +291,8 @@ tailwind.config = {
         <li><a href="dealer-enquiry.html" class="hover:text-white transition-colors">Dealer Enquiry</a></li>
       </ul>
     </div>
+
+    <!-- Column 4: Our Products -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Products</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -182,22 +302,195 @@ tailwind.config = {
         <li><a href="products.html" class="hover:text-white transition-colors">Others & Stacking AGVs</a></li>
       </ul>
     </div>
+
+    <!-- Column 5: Our Locations -->
     <div>
-      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Important Links</h4>
-      <ul class="space-y-2 text-xs font-light">
-        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-        <li><a href="#" class="hover:text-white transition-colors">Terms & Conditions</a></li>
-        <li><a href="vic.html" class="hover:text-white transition-colors">VIC Portal Login</a></li>
-      </ul>
+      <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Locations</h4>
+      <div class="space-y-4 text-xs font-light">
+        <div>
+          <div class="text-[10px] font-bold text-emerald-400 tracking-[0.15em] uppercase mb-1">HQ SG</div>
+          <p class="text-slate-400 leading-relaxed">
+            60 Paya Lebar Road,<br/>
+            #06-28, Paya Lebar Square,<br/>
+            Singapore 409051
+          </p>
+        </div>
+        <div class="border-t border-slate-800/60 pt-3">
+          <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Fabrication Workshop</div>
+          <p class="text-slate-400 leading-relaxed">
+            15 Pioneer Road North<br/>
+            #01-79 Singapore 628464
+          </p>
+        </div>
+        <div class="border-t border-slate-800/60 pt-3">
+          <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Forklift Centre</div>
+          <p class="text-slate-400 leading-relaxed">
+            The Index, 110 Tuas Ave 3<br/>
+            #03-04 Singapore 637369
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Authorized Signatory Bar -->
+  <div class="border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+      <div class="text-center sm:text-left">
+        <div class="font-heading font-extrabold text-white tracking-wider text-sm">ALVIN C. S. LIM</div>
+        <div class="text-emerald-400 italic text-xs mt-0.5">Executive Director</div>
+      </div>
+      <div class="text-slate-500 text-[11px] text-center sm:text-right">
+        <span class="text-slate-400">Registered Entity:</span> JAC Equipment Pte. Ltd. · UEN 202621058N
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright Bar -->
   <div class="border-t border-slate-800/80">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
-      <div>Copyright © 2026 JAC Material Handling. All Rights Reserved.</div>
-      <div class="flex gap-6"><a href="#" class="hover:text-white transition-colors">Privacy Policy</a><a href="#" class="hover:text-white transition-colors">Terms of Service</a></div>
+      <div>Copyright © 2026 JAC Equipment Pte. Ltd. All Rights Reserved.</div>
+      <div class="flex gap-6">
+        <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="privacy-policy.html" class="hover:text-white transition-colors">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>
+
+<!-- PRIVACY POLICY VERIFICATION MODAL POPUP -->
+<div id="privacyModal" style="display: none;" onclick="if(event.target === this) closePrivacyModal()" class="fixed inset-0 z-[10000] items-center justify-center p-4 sm:p-6 bg-obsidian/75 backdrop-blur-sm transition-opacity duration-200">
+  <div class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[90vh]">
+    <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50 shrink-0">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand border border-emerald-200 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div>
+          <div id="modalBadge" class="inline-flex items-center gap-1.5 text-[10px] font-bold text-brand uppercase tracking-wider">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+            Singapore PDPA Compliance
+          </div>
+          <h3 id="modalTitle" class="font-heading font-extrabold text-obsidian text-base leading-tight">Privacy & Data Protection Policy</h3>
+        </div>
+      </div>
+      <button type="button" onclick="closePrivacyModal()" class="w-8 h-8 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition-colors text-sm font-bold cursor-pointer" aria-label="Close modal">
+        ✕
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 sm:p-8 bg-slate-50/50 space-y-6 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 max-h-[50vh] sm:max-h-[55vh]">
+      <div id="modalNoticeBox" class="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-4 flex items-start gap-3">
+        <div class="w-8 h-8 rounded-xl bg-emerald-100 text-brand flex items-center justify-center shrink-0 mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div id="modalNoticeText" class="text-xs text-emerald-950 font-light leading-relaxed">
+          <strong class="font-bold text-emerald-900 block mb-0.5">Singapore Personal Data Protection Act (PDPA) Compliance</strong>
+          By submitting your enquiry or dealer application, you agree to the collection, usage, and disclosure of your business contact information in accordance with this Privacy & Data Protection Policy.
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">1</span>
+          Introduction & Overview
+        </h4>
+        <p class="text-slate-600 font-light pl-7">
+          JAC Material Handling Singapore ("we", "our", "us") values your privacy and is committed to protecting the corporate and personal information of our clients, dealers, and site visitors under Singapore’s Personal Data Protection Act 2012 (PDPA).
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">2</span>
+          Information We Collect
+        </h4>
+        <p class="text-slate-600 font-light pl-7 mb-2">
+          When you register for dealership assessments or submit equipment enquiries, we collect only data necessary to process your commercial application, including:
+        </p>
+        <ul class="list-disc pl-12 space-y-1 text-slate-600 font-light">
+          <li>Corporate entity details (Company Name, Singapore UEN, Registered Address).</li>
+          <li>Designated contact person details (Full Name, Job Title, Business Email, Direct Telephone/WhatsApp).</li>
+          <li>Operational scope (Target market segment, existing handling brands, workshop facility capacity).</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">3</span>
+          Purpose of Data Processing
+        </h4>
+        <p class="text-slate-600 font-light pl-7 mb-2">
+          We strictly utilize your data for the following commercial purposes:
+        </p>
+        <ul class="list-disc pl-12 space-y-1 text-slate-600 font-light">
+          <li>Evaluating channel partner qualifications, dealer tiers, and discount structure approvals.</li>
+          <li>Dispatching official technical specifications, wholesale dealer price lists, and warranty programs.</li>
+          <li>Coordinating technical mechanic trainings and JAC CAN-bus diagnostic software access.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">4</span>
+          Confidentiality & Data Protection
+        </h4>
+        <p class="text-slate-600 font-light pl-7">
+          We implement rigorous technical and administrative security safeguards. We do not sell, rent, or lease corporate data to third-party marketing entities.
+        </p>
+      </div>
+
+      <div class="bg-slate-100/80 rounded-2xl p-4 border border-slate-200 text-xs">
+        <strong class="text-obsidian font-bold block mb-1">Contacting Our Data Protection Officer (DPO)</strong>
+        <p class="text-slate-600 font-light">
+          If you have questions regarding our data policies or wish to update your corporate records, please email <a href="mailto:alvincslim@gmail.com" class="text-brand font-semibold underline">alvincslim@gmail.com</a> (Attention: Data Protection Officer).
+        </p>
+      </div>
+    </div>
+
+    <div class="p-5 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+      <div id="modalFooterNote" class="text-xs text-slate-500 font-light text-center sm:text-left">
+        By proceeding, you consent to JAC Singapore PDPA processing terms.
+      </div>
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <button type="button" onclick="closePrivacyModal()" id="modalCancelBtn" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-heading font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer">
+          Close
+        </button>
+        <button type="button" onclick="handleModalConfirmAction()" id="modalPrimaryBtn" class="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-wider shadow-soft-glow transition-all hover:scale-[1.01] cursor-pointer">
+          I Agree & Continue →
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS CONFIRMATION MODAL -->
+<div id="successModal" style="display: none;" onclick="if(event.target === this) closeSuccessModal()" class="fixed inset-0 z-[10001] items-center justify-center p-4 sm:p-6 bg-obsidian/80 backdrop-blur-sm transition-opacity duration-200">
+  <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-200 overflow-hidden p-8 text-center">
+    <div class="w-16 h-16 bg-emerald-100 text-brand rounded-full flex items-center justify-center mx-auto mb-5 shadow-soft-glow">
+      <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <div class="text-[10px] font-bold text-brand uppercase tracking-[0.2em] mb-1">JAC SINGAPORE COMMERCIAL DESK</div>
+    <h3 class="font-heading font-extrabold text-obsidian text-2xl mb-3">Application Received!</h3>
+    <p class="text-slate-600 text-xs sm:text-sm font-light leading-relaxed mb-6">
+      Thank you for your application to become an authorized JAC Forklift channel partner. Our regional commercial director will review your profile and contact you within <strong>24–48 hours</strong>.
+    </p>
+    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-6 text-left space-y-2.5 text-xs text-slate-600">
+      <div class="flex items-center gap-2 font-medium text-slate-800">
+        <span class="w-2 h-2 rounded-full bg-brand shrink-0"></span> Dealership application logged securely
+      </div>
+      <div class="flex items-center gap-2 font-medium text-slate-800">
+        <span class="w-2 h-2 rounded-full bg-brand shrink-0"></span> Wholesale dealer pricing schedule dispatched
+      </div>
+      <div class="flex items-center gap-2 font-medium text-slate-800">
+        <span class="w-2 h-2 rounded-full bg-brand shrink-0"></span> Certified technician training catalog assigned
+      </div>
+    </div>
+    <button type="button" onclick="closeSuccessModal()" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 rounded-xl shadow-soft-glow transition-all hover:scale-[1.01] cursor-pointer">
+      Close Window
+    </button>
+  </div>
+</div>
 
 <script src="main.js"></script>
 <script src="search.js"></script>
