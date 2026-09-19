@@ -688,11 +688,14 @@ async function executeContactSubmission() {
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
+
+  // ⚠️ Web3Forms Access Key — public by design (routes to Alvin's inbox only)
+  data.access_key = '998be744-6cf3-4e44-97b2-19946bb985ba';
   data.from_name = 'JAC Singapore Web Inquiry';
   data.subject = 'New Equipment Inquiry from Website';
 
   try {
-    const response = await fetch('/api/submit', {
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -736,11 +739,14 @@ async function executeDealerSubmission() {
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
+
+  // ⚠️ Web3Forms Access Key — public by design
+  data.access_key = '998be744-6cf3-4e44-97b2-19946bb985ba';
   data.from_name = 'JAC Singapore Dealer Application';
   data.subject = 'New Channel Partner / Dealership Application';
 
   try {
-    const response = await fetch('/api/submit', {
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
