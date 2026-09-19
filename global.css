@@ -481,18 +481,28 @@ h1, h2, h3, h4 {
   padding: 2.5rem;
 }
 
-.thumbs img {
-  background: #F8FAFC;
-  object-fit: contain;
-  padding: 0.5rem;
-  border-radius: 0.75rem;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.3s;
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
 }
-.thumbs img:hover, .thumbs img.active {
-  border-color: #047857;
-  box-shadow: 0 4px 15px rgba(4, 120, 87, 0.25);
+
+.thumbs img {
+  width: 100% !important;
+  height: 85px !important;       /* Set a fixed height for all thumbnails */
+  object-fit: contain !important; /* Keeps the aspect ratio without cropping */
+  background: #F8FAFC !important;
+  padding: 0.5rem !important;
+  border-radius: 0.75rem !important;
+  cursor: pointer !important;
+  border: 2px solid transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.thumbs img:hover, 
+.thumbs img.active {
+  border-color: #047857 !important;
+  box-shadow: 0 4px 15px rgba(4, 120, 87, 0.25) !important;
 }
 
 .spec-row {

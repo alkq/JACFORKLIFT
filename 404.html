@@ -3,40 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VIC Partner Portal | JAC Forklift Singapore</title>
+<title>404 - Page Not Found | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="global.css" />
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' }, // Deep Forest Emerald
-        obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
-        gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
-      },
-      fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
-      boxShadow: {
-        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.35)',
-        'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
-        'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
-      }
-    }
-  }
-};
-</script>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
+<body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white flex flex-col min-h-screen bg-primary-50">
 
 <!-- ICON LIBRARY -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="icon-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
   <symbol id="icon-forklift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h10V9H7l-4 4v4z"/><circle cx="7" cy="19" r="2"/><circle cx="15" cy="19" r="2"/><path d="M17 17V5M21 8h-4M21 12h-4M21 16h-4"/></symbol>
-  <symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 105.6 5.6L21 21l-2 2-9.1-9.1a4 4 0 01-5.6-5.6L6.5 6l3 3"/></symbol>
-  <symbol id="icon-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></symbol>
-  <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
   <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
 </svg>
 
@@ -99,7 +78,6 @@ tailwind.config = {
         DEALER ENQUIRY
       </a>
     </div>
-
     <div class="lg:hidden flex items-center gap-2">
       <button id="mobileSearchToggle" class="text-slate-600 p-2" aria-label="Search"><svg class="w-5 h-5"><use href="#icon-search"/></svg></button>
       <button id="menuBtn" class="text-obsidian text-2xl p-2">☰</button>
@@ -126,145 +104,78 @@ tailwind.config = {
   </div>
 </header>
 
-<!-- 1. LOGIN STATE -->
-<div id="loginState" class="portal-login-bg min-h-[85vh] flex items-center justify-center p-6">
-  <div class="max-w-md w-full">
-    <div class="text-center mb-8">
-      <div class="text-gold text-xs font-bold tracking-widest uppercase mb-1">VIP & Enterprise Tier</div>
-      <h1 class="text-3xl font-extrabold text-obsidian mb-2">VIC Partner Access</h1>
-      <p class="text-slate-500 text-xs font-light">Dedicated executive portal for equipment telemetry, priority dispatch, and account management.</p>
+<!-- 404 MAIN HERO BODY -->
+<main class="flex-1 flex items-center justify-center py-20 px-6 lg:px-10">
+  <div class="max-w-3xl w-full text-center">
+    
+    <!-- Status Badge -->
+    <div class="inline-flex items-center gap-2 bg-emerald-50 border border-brand/20 px-4 py-1.5 rounded-full text-xs font-bold text-brand tracking-widest uppercase mb-6 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+      Telemetry Route Lost · Error 404
     </div>
 
-    <form id="vicLoginForm" onsubmit="handleVicLogin(event)" class="bg-white rounded-3xl p-8 lg:p-10 border border-slate-200 shadow-luxe space-y-4">
-      
-      <!-- Error Alert Box (Hidden by default) -->
-      <div id="loginErrorAlert" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 flex items-center gap-2">
-        <svg class="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-        <span id="loginErrorText">Invalid corporate credentials. Please check your email and password.</span>
+    <!-- Big 404 Display -->
+    <div class="relative select-none mb-6">
+      <div class="font-heading font-black text-8xl sm:text-9xl tracking-tight text-slate-200/90 leading-none">
+        404
       </div>
-
-      <div>
-        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Corporate Email</label>
-        <input type="email" id="vicEmail" value="partner@logistics.com.sg" class="input-field" required />
-      </div>
-
-      <div>
-        <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Access Password</label>
-        <div class="relative">
-          <input type="password" id="vicPassword" value="VIC-Singapore2026!" class="input-field pr-12" required />
-          <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors focus:outline-none cursor-pointer" aria-label="Toggle password visibility">
-            <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-            </svg>
-          </button>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white border border-slate-200 shadow-luxe flex items-center justify-center text-brand">
+          <svg class="w-10 h-10 sm:w-12 sm:h-12"><use href="#icon-forklift"/></svg>
         </div>
-      </div>
-
-      <button type="submit" id="vicLoginBtn" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-soft-glow transition-all hover:scale-[1.01] cursor-pointer">
-        Log In to VIC Portal →
-      </button>
-
-      <div class="text-center text-xs text-slate-400 pt-3 border-t border-slate-100">
-        New Corporate Equipment Partner? <a href="contact.html" class="text-brand font-bold hover:underline">Apply for VIC Access</a>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- 2. DASHBOARD STATE -->
-<div id="dashboardState" style="display:none" class="min-h-screen bg-primary-50">
-  <div class="bg-white border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
-      <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1 text-emerald-700 text-xs font-semibold">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Telemetry Active · Real-Time Link
-      </div>
-      <button onclick="document.getElementById('loginState').style.display='flex'; document.getElementById('dashboardState').style.display='none';" class="text-xs font-bold text-slate-500 hover:text-brand cursor-pointer">Logout</button>
-    </div>
-  </div>
-
-  <main class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
-    <div class="mb-10">
-      <div class="text-gold text-xs font-bold tracking-widest uppercase mb-1">Executive Equipment Dashboard</div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-obsidian">Welcome Back, Enterprise Partner</h1>
-      <p class="text-slate-500 text-sm font-light">Operational status across your Jurong Logistics Facility.</p>
-    </div>
-
-    <!-- Stat Metrics -->
-    <div class="grid md:grid-cols-4 gap-6 mb-12">
-      <div class="glass-card-light rounded-2xl p-6">
-        <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-forklift"/></svg></div>
-          <span class="text-xs text-slate-400 font-bold uppercase">Active Equipment</span>
-        </div>
-        <div class="text-3xl font-heading font-extrabold text-obsidian mb-1">5 Units</div>
-        <div class="text-xs text-slate-500">100% Operational Status</div>
-      </div>
-      <div class="glass-card-light rounded-2xl p-6">
-        <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-tool"/></svg></div>
-          <span class="text-xs text-slate-400 font-bold uppercase">Open Request</span>
-        </div>
-        <div class="text-3xl font-heading font-extrabold text-brand mb-1">1 Item</div>
-        <div class="text-xs text-slate-500">Routine 250h Service</div>
-      </div>
-      <div class="glass-card-light rounded-2xl p-6">
-        <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-package"/></svg></div>
-          <span class="text-xs text-slate-400 font-bold uppercase">Parts Order</span>
-        </div>
-        <div class="text-3xl font-heading font-extrabold text-obsidian mb-1">2 Sets</div>
-        <div class="text-xs text-slate-500">Polyurethane Drive Tires</div>
-      </div>
-      <div class="glass-card-light rounded-2xl p-6 border-gold/30">
-        <div class="flex items-center justify-between mb-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-50 text-gold flex items-center justify-center"><svg class="w-5 h-5"><use href="#icon-calendar"/></svg></div>
-          <span class="text-xs text-gold font-bold uppercase">Next Inspection</span>
-        </div>
-        <div class="text-3xl font-heading font-extrabold text-gold mb-1">15 Oct</div>
-        <div class="text-xs text-slate-500">Scheduled On-Site</div>
       </div>
     </div>
 
-    <!-- Dedicated Executive Director -->
-    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-luxe mb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-      <div>
-        <div class="text-gold text-xs font-bold uppercase tracking-widest mb-1">Your Dedicated Executive Director</div>
-        <h3 class="font-heading font-bold text-xl text-obsidian">Alvin C. S. Lim · Executive Director</h3>
-        <p class="text-slate-500 text-xs font-light mt-1">
-          Mobile / WhatsApp: <a href="tel:+60138188181" class="text-brand font-semibold hover:underline">+60 13-818 8181</a>
-          <span class="text-slate-300 mx-1.5">|</span>
-          Email: <a href="mailto:alvincslim@gmail.com" class="text-brand font-semibold hover:underline">alvincslim@gmail.com</a>
-        </p>
-      </div>
-      <a href="tel:+60138188181" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl shadow-soft-glow transition-all whitespace-nowrap">
-        Call 24/7 Priority Hotline →
+    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-obsidian mb-4">
+      Page Out of Operation
+    </h1>
+    <p class="text-slate-600 text-sm sm:text-base font-light max-w-lg mx-auto leading-relaxed mb-8">
+      The equipment specification, page, or telemetry log you are attempting to access has moved, been renamed, or does not exist.
+    </p>
+
+    <!-- Embedded Search Bar -->
+    <div class="max-w-md mx-auto mb-10">
+      <form action="products.html" method="get" class="bg-white border border-slate-200 rounded-2xl p-2 shadow-luxe flex items-center gap-2">
+        <svg class="w-5 h-5 text-slate-400 ml-3 shrink-0"><use href="#icon-search"/></svg>
+        <input 
+          type="text" 
+          name="search" 
+          placeholder="Search models (e.g. HE25, Reach Truck, AGV)..." 
+          class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-2 focus:outline-none" 
+        />
+        <button type="submit" class="bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-soft-glow whitespace-nowrap">
+          Search
+        </button>
+      </form>
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+      <a href="index.html" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02]">
+        <svg class="w-4 h-4"><use href="#icon-home"/></svg>
+        Return to Home
+      </a>
+      <a href="products.html" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-obsidian border border-slate-300 hover:border-brand hover:text-brand font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all shadow-sm">
+        Browse 13 Models →
       </a>
     </div>
 
-    <!-- Recent Logs -->
-    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-luxe">
-      <h3 class="font-heading font-bold text-lg text-obsidian mb-6">Recent Equipment Telemetry & Service Logs</h3>
-      <div class="space-y-4 text-xs">
-        <div class="flex justify-between pb-3 border-b border-slate-100">
-          <span class="font-semibold text-obsidian">Unit #HE-0892: Full 100% Opportunity Charge Cycle Complete</span>
-          <span class="text-slate-400">10:45 AM Today</span>
-        </div>
-        <div class="flex justify-between pb-3 border-b border-slate-100">
-          <span class="font-semibold text-obsidian">Unit #RT-0112: 500-Hour Hydraulic Pressure Certification Passed</span>
-          <span class="text-slate-400">Yesterday</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="font-semibold text-obsidian">Singapore Central Spares Hub: 48-Hour Dispatch Scheduled</span>
-          <span class="text-slate-400">3 Days Ago</span>
-        </div>
+    <!-- Popular Shortcuts -->
+    <div class="pt-8 border-t border-slate-200 max-w-xl mx-auto">
+      <div class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Popular Destinations</div>
+      <div class="flex flex-wrap justify-center gap-2">
+        <a href="product-spec.html?id=he-series" class="bg-white border border-slate-200 text-slate-700 hover:border-brand hover:text-brand text-xs px-3.5 py-1.5 rounded-full transition-all shadow-sm">HE Series Forklifts</a>
+        <a href="product-spec.html?id=reach-truck-stand" class="bg-white border border-slate-200 text-slate-700 hover:border-brand hover:text-brand text-xs px-3.5 py-1.5 rounded-full transition-all shadow-sm">Reach Trucks (10M Lift)</a>
+        <a href="equipment-rental.html" class="bg-white border border-slate-200 text-slate-700 hover:border-brand hover:text-brand text-xs px-3.5 py-1.5 rounded-full transition-all shadow-sm">Equipment Rental Plans</a>
+        <a href="contact.html" class="bg-white border border-slate-200 text-slate-700 hover:border-brand hover:text-brand text-xs px-3.5 py-1.5 rounded-full transition-all shadow-sm">Technical Inquiry</a>
       </div>
     </div>
-  </main>
-</div>
+
+  </div>
+</main>
 
 <!-- STANDARDIZED CONSISTENT FOOTER -->
-<footer class="bg-obsidian text-slate-400 border-t border-slate-800">
+<footer class="bg-obsidian text-slate-400 border-t border-slate-800 mt-auto">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
     <!-- Column 1 & 2: Brand Info & Contact -->
@@ -330,9 +241,7 @@ tailwind.config = {
     <!-- Column 5: Our Locations -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Locations</h4>
-
       <div class="space-y-4 text-xs font-light">
-        <!-- HQ SG -->
         <div>
           <div class="text-[10px] font-bold text-emerald-400 tracking-[0.15em] uppercase mb-1">HQ SG</div>
           <p class="text-slate-400 leading-relaxed">
@@ -341,7 +250,6 @@ tailwind.config = {
             Singapore 409051
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Fabrication Workshop</div>
           <p class="text-slate-400 leading-relaxed">
@@ -349,7 +257,6 @@ tailwind.config = {
             #01-79 Singapore 628464
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Forklift Centre</div>
           <p class="text-slate-400 leading-relaxed">
@@ -359,7 +266,6 @@ tailwind.config = {
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- Authorized Signatory Bar -->
@@ -380,8 +286,8 @@ tailwind.config = {
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Equipment Pte. Ltd. All Rights Reserved.</div>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="privacy-policy.html" class="hover:text-white transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>

@@ -405,26 +405,161 @@ tailwind.config = {
 </footer>
 
 <script>
-// Specific Product Data Rendering for product-spec.html
+// Specific Product Data Rendering with multi-image support for product-spec.html
 const PRODUCTS = {
-  "he-series": { name: "HE Series", tonnage: "2.5 – 3.8 TON", subtitle: "Heavy-Duty Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", image: "images/HE-Series-2.5-3.8T.png", description: "The HE Series is engineered to replace traditional diesel trucks with massive lithium-ion power and zero emissions. Built for the most demanding warehouse and industrial environments.", highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], specs: { headers: ["HE25","HE30","HE35","HE38"], rows: [["Load Capacity","2,500 kg","3,000 kg","3,500 kg","3,800 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","80V / 500Ah","80V / 600Ah","80V / 700Ah","80V / 800Ah"],["Charging Time","1.5 hrs","2 hrs","2 hrs","2.5 hrs"],["Runtime (typical)","6–8 hrs","8–10 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","2,200 mm","2,300 mm","2,400 mm","2,500 mm"],["Max Speed","16 km/h","18 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } },
-  "l-series": { name: "L Series", tonnage: "1.5 – 3.5 TON", subtitle: "Smart Warehouse Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", image: "images/L-Series-1.5-3.5T.png", description: "The L Series is the ultimate smart warehouse solution for versatile indoor and outdoor work. Designed for precision, efficiency, and 24/7 reliability.", highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], specs: { headers: ["L15","L20","L30","L35"], rows: [["Load Capacity","1,500 kg","2,000 kg","3,000 kg","3,500 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah","80V / 600Ah","80V / 700Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","1,900 mm","2,000 mm","2,200 mm","2,300 mm"],["Max Speed","15 km/h","15 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } },
-  "je-series": { name: "JE Series", tonnage: "4.5 – 5.0 TON", subtitle: "Heavy-Duty Electric Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", image: "images/JE-Series-4.5-5.0T.png", description: "Heavy-duty electric forklift for the most demanding industrial operations. Delivers diesel-grade power without the emissions.", highlights: [{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "5.0 T", subtitle: "Max Capacity" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], specs: { headers: ["JE45","JE50"], rows: [["Load Capacity","4,500 kg","5,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","80V / 800Ah","96V / 900Ah"],["Charging Time","2 hrs","2.5 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Turning Radius","2,600 mm","2,700 mm"],["Max Speed","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } },
-  "three-wheel": { name: "Three Wheel", tonnage: "1.5 – 2.0 TON", subtitle: "Compact Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", image: "images/Three-Wheel-1.5-2.0T.png", description: "Compact lithium forklift for tight spaces and precision handling. Ideal for narrow aisles and confined warehouse zones.", highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "1.7 m", subtitle: "Turning Radius" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], specs: { headers: ["TW15","TW20"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Turning Radius","1,700 mm","1,750 mm"],["Max Speed","14 km/h","14 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } },
-  "reach-truck-stand": { name: "Stand Type Reach Truck", tonnage: "1.5 TON", subtitle: "Vertical Storage Reach Truck", category: "Reach Trucks", categorySlug: "reach", image: "images/Stand-type-Reach-Truck-1.5T.png", description: "Maximise your vertical storage space without sacrificing aisle width. The Stand Type Reach Truck is built for high-density warehouse layouts.", highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "1.8 m", subtitle: "Aisle Width" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], specs: { headers: ["Stand Type 1.5T"], rows: [["Load Capacity","1,500 kg"],["Lift Height (max)","10,000 mm"],["Battery Capacity","48V / 500Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","8–10 hrs"],["Aisle Width Required","1,800 mm"],["Max Speed","10 km/h"],["Noise Level","<70 dB"],["Warranty","3 Years / 4,000 Hours"]] } },
-  "reach-truck-sit": { name: "Sit Type Reach Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Long-Shift Reach Truck", category: "Reach Trucks", categorySlug: "reach", image: "images/Sit-type-Reach-Truck-1.5-2.0T.png", description: "Designed for intensive, long-shift warehouse operations. Sit-down comfort and all-day productivity.", highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Sit-Down", subtitle: "Ergonomic" },{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], specs: { headers: ["Sit Type 1.5T","Sit Type 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","10,000 mm","10,000 mm"],["Battery Capacity","48V / 600Ah","48V / 700Ah"],["Charging Time","2 hrs","2 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Aisle Width Required","1,900 mm","2,000 mm"],["Max Speed","10 km/h","10 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } },
-  "walkie-pallet": { name: "Walkie Pallet Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Lithium Battery Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", image: "images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png", description: "Compact and efficient lithium-powered pallet truck for tight-space operations. Ideal for retail, logistics, and light manufacturing.", highlights: [{ icon: "icon-bolt", title: "1 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "Lithium", subtitle: "Battery" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], specs: { headers: ["Walkie 1.5T","Walkie 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Fork Length","1,150 mm","1,150 mm"],["Battery","48V / 20Ah Lithium","48V / 30Ah Lithium"],["Charging Time","1 hr","1 hr"],["Runtime (typical)","4–6 hrs","4–6 hrs"],["Max Speed","5 km/h","5 km/h"],["Warranty","2 Years","2 Years"]] } },
-  "rider-pallet": { name: "Rider Pallet Truck", tonnage: "2.0 – 3.0 TON", subtitle: "Long-Distance Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", image: "images/Rider-Pallet-Truck-2.0–3.0T.png", description: "Accelerate your cross-warehouse transportation. Built for heavier loads and long distances with fold-down platform for operator comfort.", highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-truck", title: "Fold-Down", subtitle: "Platform" },{ icon: "icon-package", title: "3.0 T", subtitle: "Max Load" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], specs: { headers: ["Rider 2.0T","Rider 3.0T"], rows: [["Load Capacity","2,000 kg","3,000 kg"],["Fork Length","1,150 mm","1,200 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","8 km/h","8 km/h"],["Warranty","2 Years","2 Years"]] } },
-  "straddle-stacker": { name: "Straddle-type Rider Electric Stacker", tonnage: "1.0 – 1.5 TON", subtitle: "Heavy-Duty Electric Stacker", category: "Stackers", categorySlug: "stacker", image: "images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png", description: "Straddle-type design for enhanced stability and heavy-duty stacking efficiency. Ideal for dense storage operations.", highlights: [{ icon: "icon-target", title: "5.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Straddle", subtitle: "Type" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], specs: { headers: ["Straddle 1.0T","Straddle 1.5T"], rows: [["Load Capacity","1,000 kg","1,500 kg"],["Lift Height (max)","5,500 mm","5,500 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h"],["Warranty","2 Years","2 Years"]] } },
-  "electric-stacker": { name: "Electric Rider Stacker", tonnage: "1.0 – 2.0 TON", subtitle: "Standard Electric Stacker", category: "Stackers", categorySlug: "stacker", image: "images/Electric-Rider-Stacker1.0-2.0T.png", description: "Boost your medium-level stacking efficiency with this standard electric stacker. Ergonomic, powerful, and reliable.", highlights: [{ icon: "icon-target", title: "4.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], specs: { headers: ["E-Stacker 1.0T","E-Stacker 1.5T","E-Stacker 2.0T"], rows: [["Load Capacity","1,000 kg","1,500 kg","2,000 kg"],["Lift Height (max)","4,500 mm","4,500 mm","4,500 mm"],["Battery","48V / 200Ah","48V / 250Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h","6 km/h"],["Warranty","2 Years","2 Years","2 Years"]] } },
-  "electric-tractor": { name: "Electric Tractor", tonnage: "TOWING SOLUTION", subtitle: "Zero-Emission Towing", category: "Tractor & Platform", categorySlug: "other", image: "images/Electric-Tractor.png", description: "Zero-emission towing solution for logistics and manufacturing floors. Reliable, powerful, and built for continuous operation.", highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-target", title: "Heavy", subtitle: "Towing" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], specs: { headers: ["Electric Tractor"], rows: [["Towing Capacity","3,000 kg"],["Battery","48V / 400Ah"],["Charging Time","2 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","12 km/h"],["Warranty","2 Years"]] } },
-  "electric-platform": { name: "Electric Platform Truck", tonnage: "FLATBED PLATFORM", subtitle: "Versatile Material Movement", category: "Tractor & Platform", categorySlug: "other", image: "images/Electric-Platform-Truck.png", description: "Versatile electric platform for efficient material movement across facilities. Ideal for logistics, manufacturing, and 3PL operations.", highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-package", title: "Large", subtitle: "Platform" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], specs: { headers: ["Electric Platform Truck"], rows: [["Load Capacity","2,000 kg"],["Platform Size","1,500 x 1,000 mm"],["Battery","48V / 300Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","10 km/h"],["Warranty","2 Years"]] } },
-  "stacking-agv": { name: "Stacking AGV", tonnage: "AUTONOMOUS GUIDED VEHICLE", subtitle: "24/7 Automated Stacking", category: "Automation", categorySlug: "other", image: "images/stacking-agv.png", description: "Autonomous guided vehicle for advanced warehouse automation and 24/7 operation. Fully integrated with WMS and warehouse robotics.", highlights: [{ icon: "icon-target", title: "Autonomous", subtitle: "Operation" },{ icon: "icon-bolt", title: "LiDAR", subtitle: "Navigation" },{ icon: "icon-battery", title: "24/7", subtitle: "Runtime" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], specs: { headers: ["Stacking AGV"], rows: [["Load Capacity","1,000 kg"],["Lift Height (max)","3,000 mm"],["Navigation","LiDAR + SLAM"],["Battery","48V / 200Ah Lithium"],["Charging Time","1 hr (auto-dock)"],["Runtime","24/7 (opportunity charge)"],["Warranty","2 Years"]] } }
+  "he-series": { 
+    name: "HE Series", tonnage: "2.5 – 3.8 TON", subtitle: "Heavy-Duty Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
+    images: [
+      "images/HE-Series-2.5-3.8T.png", 
+      "images/he-series/back.png", 
+      "images/he-series/topleft.png", 
+      "images/he-series/front.png"],
+    description: "The HE Series is engineered to replace traditional diesel trucks with massive lithium-ion power and zero emissions. Built for the most demanding warehouse and industrial environments.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["HE25","HE30","HE35","HE38"], rows: [["Load Capacity","2,500 kg","3,000 kg","3,500 kg","3,800 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","80V / 500Ah","80V / 600Ah","80V / 700Ah","80V / 800Ah"],["Charging Time","1.5 hrs","2 hrs","2 hrs","2.5 hrs"],["Runtime (typical)","6–8 hrs","8–10 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","2,200 mm","2,300 mm","2,400 mm","2,500 mm"],["Max Speed","16 km/h","18 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "l-series": { 
+    name: "L Series", tonnage: "1.5 – 3.5 TON", subtitle: "Smart Warehouse Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
+    images: [
+      "images/L-Series-1.5-3.5T.png", 
+      "images/l-series/front.png", 
+      "images/l-series/topright.png", 
+      "images/l-series/upper.png"],
+    description: "The L Series is the ultimate smart warehouse solution for versatile indoor and outdoor work. Designed for precision, efficiency, and 24/7 reliability.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["L15","L20","L30","L35"], rows: [["Load Capacity","1,500 kg","2,000 kg","3,000 kg","3,500 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah","80V / 600Ah","80V / 700Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","1,900 mm","2,000 mm","2,200 mm","2,300 mm"],["Max Speed","15 km/h","15 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "je-series": { 
+    name: "JE Series", tonnage: "4.5 – 5.0 TON", subtitle: "Heavy-Duty Electric Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
+    images: [
+      "images/JE-Series-4.5-5.0T.png", 
+      "images/je-series/btmleft.png", 
+      "images/je-series/topright.png", 
+      "images/je-series/front.png"],
+    description: "Heavy-duty electric forklift for the most demanding industrial operations. Delivers diesel-grade power without the emissions.", 
+    highlights: [{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "5.0 T", subtitle: "Max Capacity" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["JE45","JE50"], rows: [["Load Capacity","4,500 kg","5,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","80V / 800Ah","96V / 900Ah"],["Charging Time","2 hrs","2.5 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Turning Radius","2,600 mm","2,700 mm"],["Max Speed","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "three-wheel": { 
+    name: "Three Wheel", tonnage: "1.5 – 2.0 TON", subtitle: "Compact Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
+    images: [
+      "images/Three-Wheel-1.5-2.0T.png", 
+      "images/three-wheel/back.png", 
+      "images/three-wheel/topright.png", 
+      "images/three-wheel/front.png"],
+    description: "Compact lithium forklift for tight spaces and precision handling. Ideal for narrow aisles and confined warehouse zones.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "1.7 m", subtitle: "Turning Radius" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["TW15","TW20"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Turning Radius","1,700 mm","1,750 mm"],["Max Speed","14 km/h","14 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "reach-truck-stand": { 
+    name: "Stand Type Reach Truck", tonnage: "1.5 TON", subtitle: "Vertical Storage Reach Truck", category: "Reach Trucks", categorySlug: "reach", 
+    // UPDATED WITH 4 UNIQUE IMAGES FOR STAND TYPE REACH TRUCK
+    images: [
+      "images/Stand-type-Reach-Truck-1.5T.png", 
+      "images/stand-type/front.png", 
+      "images/stand-type/topleft.png", 
+      "images/stand-type/upper.png"
+    ],
+    description: "Maximise your vertical storage space without sacrificing aisle width. The Stand Type Reach Truck is built for high-density warehouse layouts.", 
+    highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "1.8 m", subtitle: "Aisle Width" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Stand Type 1.5T"], rows: [["Load Capacity","1,500 kg"],["Lift Height (max)","10,000 mm"],["Battery Capacity","48V / 500Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","8–10 hrs"],["Aisle Width Required","1,800 mm"],["Max Speed","10 km/h"],["Noise Level","<70 dB"],["Warranty","3 Years / 4,000 Hours"]] } 
+  },
+  "reach-truck-sit": { 
+    name: "Sit Type Reach Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Long-Shift Reach Truck", category: "Reach Trucks", categorySlug: "reach", 
+    images: [
+      "images/Sit-type-Reach-Truck-1.5-2.0T.png", 
+      "images/sit-type/topright.png", 
+      "images/sit-type/topleft.png", 
+      "images/sit-type/btmleft.png"],
+    description: "Designed for intensive, long-shift warehouse operations. Sit-down comfort and all-day productivity.", 
+    highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Sit-Down", subtitle: "Ergonomic" },{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Sit Type 1.5T","Sit Type 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","10,000 mm","10,000 mm"],["Battery Capacity","48V / 600Ah","48V / 700Ah"],["Charging Time","2 hrs","2 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Aisle Width Required","1,900 mm","2,000 mm"],["Max Speed","10 km/h","10 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "walkie-pallet": { 
+    name: "Walkie Pallet Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Lithium Battery Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", 
+    images: [
+      "images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png", 
+      "images/walkie/bckleft.png", 
+      "images/walkie/bckright.png", 
+      "images/walkie/topright.png"],
+    description: "Compact and efficient lithium-powered pallet truck for tight-space operations. Ideal for retail, logistics, and light manufacturing.", 
+    highlights: [{ icon: "icon-bolt", title: "1 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "Lithium", subtitle: "Battery" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Walkie 1.5T","Walkie 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Fork Length","1,150 mm","1,150 mm"],["Battery","48V / 20Ah Lithium","48V / 30Ah Lithium"],["Charging Time","1 hr","1 hr"],["Runtime (typical)","4–6 hrs","4–6 hrs"],["Max Speed","5 km/h","5 km/h"],["Warranty","2 Years","2 Years"]] } 
+  },
+  "rider-pallet": { 
+    name: "Rider Pallet Truck", tonnage: "2.0 – 3.0 TON", subtitle: "Long-Distance Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", 
+    images: [
+      "images/Rider-Pallet-Truck-2.0–3.0T.png", 
+      "images/rider-pallet/upper.png", 
+      "images/rider-pallet/topleft.png", 
+      "images/rider-pallet/topright.png"],
+    description: "Accelerate your cross-warehouse transportation. Built for heavier loads and long distances with fold-down platform for operator comfort.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-truck", title: "Fold-Down", subtitle: "Platform" },{ icon: "icon-package", title: "3.0 T", subtitle: "Max Load" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Rider 2.0T","Rider 3.0T"], rows: [["Load Capacity","2,000 kg","3,000 kg"],["Fork Length","1,150 mm","1,200 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","8 km/h","8 km/h"],["Warranty","2 Years","2 Years"]] } 
+  },
+  "straddle-stacker": { 
+    name: "Straddle-type Rider Electric Stacker", tonnage: "1.0 – 1.5 TON", subtitle: "Heavy-Duty Electric Stacker", category: "Stackers", categorySlug: "stacker", 
+    images: [
+      "images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png", 
+      "images/straddle-type/btmleft.png", 
+      "images/straddle-type/topleft.png", 
+      "images/straddle-type/topright.png"],
+    description: "Straddle-type design for enhanced stability and heavy-duty stacking efficiency. Ideal for dense storage operations.", 
+    highlights: [{ icon: "icon-target", title: "5.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Straddle", subtitle: "Type" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Straddle 1.0T","Straddle 1.5T"], rows: [["Load Capacity","1,000 kg","1,500 kg"],["Lift Height (max)","5,500 mm","5,500 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h"],["Warranty","2 Years","2 Years"]] } 
+  },
+  "electric-stacker": { 
+    name: "Electric Rider Stacker", tonnage: "1.0 – 2.0 TON", subtitle: "Standard Electric Stacker", category: "Stackers", categorySlug: "stacker", 
+    images: [
+      "images/Electric-Rider-Stacker1.0-2.0T.png", 
+      "images/electric-rider/btmleft.png", 
+      "images/electric-rider/topleft.png", 
+      "images/electric-rider/topright.png"],
+    description: "Boost your medium-level stacking efficiency with this standard electric stacker. Ergonomic, powerful, and reliable.", 
+    highlights: [{ icon: "icon-target", title: "4.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["E-Stacker 1.0T","E-Stacker 1.5T","E-Stacker 2.0T"], rows: [["Load Capacity","1,000 kg","1,500 kg","2,000 kg"],["Lift Height (max)","4,500 mm","4,500 mm","4,500 mm"],["Battery","48V / 200Ah","48V / 250Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h","6 km/h"],["Warranty","2 Years","2 Years","2 Years"]] } 
+  },
+  "electric-tractor": { 
+    name: "Electric Tractor", tonnage: "TOWING SOLUTION", subtitle: "Zero-Emission Towing", category: "Tractor & Platform", categorySlug: "other", 
+    images: [
+      "images/Electric-Tractor.png", 
+      "images/electric-tractor/btmleft.png", 
+      "images/electric-tractor/topleft.png", 
+      "images/electric-tractor/topright.png"],
+    description: "Zero-emission towing solution for logistics and manufacturing floors. Reliable, powerful, and built for continuous operation.", 
+    highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-target", title: "Heavy", subtitle: "Towing" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Electric Tractor"], rows: [["Towing Capacity","3,000 kg"],["Battery","48V / 400Ah"],["Charging Time","2 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","12 km/h"],["Warranty","2 Years"]] } 
+  },
+  "electric-platform": { 
+    name: "Electric Platform Truck", tonnage: "FLATBED PLATFORM", subtitle: "Versatile Material Movement", category: "Tractor & Platform", categorySlug: "other", 
+    images: [
+      "images/Electric-Platform-Truck.png", 
+      "images/electric-platform/btmleft.png", 
+      "images/electric-platform/topleft.png", 
+      "images/electric-platform/upper.png"],
+    description: "Versatile electric platform for efficient material movement across facilities. Ideal for logistics, manufacturing, and 3PL operations.", 
+    highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-package", title: "Large", subtitle: "Platform" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Electric Platform Truck"], rows: [["Load Capacity","2,000 kg"],["Platform Size","1,500 x 1,000 mm"],["Battery","48V / 300Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","10 km/h"],["Warranty","2 Years"]] } 
+  },
+  "stacking-agv": { 
+    name: "Stacking AGV", tonnage: "AUTONOMOUS GUIDED VEHICLE", subtitle: "24/7 Automated Stacking", category: "Automation", categorySlug: "other", 
+    images: [
+      "images/stacking-agv.png", 
+      "images/stacking-agv/btmright.png", 
+      "images/stacking-agv/front.png", 
+      "images/stacking-agv/upper.png"],
+    description: "Autonomous guided vehicle for advanced warehouse automation and 24/7 operation. Fully integrated with WMS and warehouse robotics.", 
+    highlights: [{ icon: "icon-target", title: "Autonomous", subtitle: "Operation" },{ icon: "icon-bolt", title: "LiDAR", subtitle: "Navigation" },{ icon: "icon-battery", title: "24/7", subtitle: "Runtime" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Stacking AGV"], rows: [["Load Capacity","1,000 kg"],["Lift Height (max)","3,000 mm"],["Navigation","LiDAR + SLAM"],["Battery","48V / 200Ah Lithium"],["Charging Time","1 hr (auto-dock)"],["Runtime","24/7 (opportunity charge)"],["Warranty","2 Years"]] } 
+  }
 };
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id') || 'he-series';
 const product = PRODUCTS[id] || PRODUCTS['he-series'];
+
+// Fallback if 'images' array isn't defined on older entries
+const imgList = product.images || [product.image, product.image, product.image, product.image];
 
 document.title = `${product.name} | JAC Forklift Singapore`;
 document.getElementById('breadcrumbCategory').textContent = product.category;
@@ -434,9 +569,19 @@ document.getElementById('productTonnage').textContent = product.tonnage;
 document.getElementById('productSubtitle').textContent = product.subtitle;
 document.getElementById('productDescription').textContent = product.description;
 document.getElementById('categoryBadge').textContent = product.category.toUpperCase();
-document.getElementById('mainImage').src = product.image;
+
+// Set default main image to first array item
+document.getElementById('mainImage').src = imgList[0];
 document.getElementById('mainImage').alt = product.name;
-['thumb1','thumb2','thumb3','thumb4'].forEach(t => { document.getElementById(t).src = product.image; });
+
+// Populate all 4 thumbnails dynamically from the array
+['thumb1','thumb2','thumb3','thumb4'].forEach((thumbId, index) => {
+  const thumbEl = document.getElementById(thumbId);
+  if (thumbEl) {
+    thumbEl.src = imgList[index] || imgList[0]; // fallback to first image if array is short
+    thumbEl.alt = `${product.name} view ${index + 1}`;
+  }
+});
 
 const quoteLink = `contact.html?equipment=forklift&model=${encodeURIComponent(product.name + ' (' + product.tonnage + ')')}`;
 document.getElementById('quoteBtn').href = quoteLink;
@@ -470,7 +615,7 @@ const related = allProducts.slice(0, 3);
 document.getElementById('relatedGrid').innerHTML = related.map(([k, p]) => `
   <a href="product-spec.html?id=${k}" class="product-card rounded-3xl overflow-hidden">
     <div class="aspect-[4/3] product-showcase relative flex items-center justify-center p-6 border-b border-slate-100">
-      <img src="${p.image}" alt="${p.name}" class="w-full h-full object-contain" />
+      <img src="${p.images ? p.images[0] : p.image}" alt="${p.name}" class="w-full h-full object-contain" />
       <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">${p.category.toUpperCase()}</span>
     </div>
     <div class="p-6">

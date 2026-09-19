@@ -8,16 +8,35 @@ if (window.tailwind) {
     theme: {
       extend: {
         colors: {
+          primary: { 
+            50: '#F8FAFC', 
+            100: '#F1F5F9', 
+            DEFAULT: '#FFFFFF' 
+          },
           brand: {
             light: '#059669',    /* Emerald 600 */
             DEFAULT: '#047857',  /* Deep Forest Emerald 700 */
             dark: '#065f46'      /* Deep Forest 800 */
           },
-          obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
-          gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
+          obsidian: { 
+            DEFAULT: '#0B0F17', 
+            surface: '#161F2E', 
+            muted: '#475569', 
+            light: '#64748B' 
+          },
+          gold: { 
+            DEFAULT: '#C5A059', 
+            light: '#D4AF37' 
+          }
+        },
+        fontFamily: { 
+          heading: ['Montserrat', 'sans-serif'], 
+          body: ['Inter', 'sans-serif'] 
         },
         boxShadow: {
-          'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.45)'
+          'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.45)',
+          'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
+          'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
         }
       }
     }
@@ -421,7 +440,7 @@ document.addEventListener('click', (e) => {
 });
 
 // =========================================================================
-// FULL MODAL DATA & HANDLERS FOR solution.html (Image 1 Restored)
+// FULL MODAL DATA & HANDLERS FOR solution.html
 // =========================================================================
 const MODAL_DATA = {
   coldchain: {
@@ -632,12 +651,6 @@ function handleContactSubmitClick() {
   executeContactSubmission();
 }
 
-// =========================================================================
-// REAL EMAIL DISPATCHERS (Web3Forms API -> alvincslim@gmail.com)
-// =========================================================================
-
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY_HERE'; // <-- Paste your key here
-
 async function executeContactSubmission() {
   const form = document.getElementById('contactForm');
   const btn = document.getElementById('contactSubmitBtn');
@@ -647,16 +660,20 @@ async function executeContactSubmission() {
     btn.textContent = 'Submitting Request...';
   }
 
-  // 1. Gather all form inputs into a FormData object
+  // Convert form data to clean JSON payload
   const formData = new FormData(form);
-  formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-  formData.append('from_name', 'JAC Singapore Web Inquiry');
-  formData.append('subject', 'New Equipment Inquiry from Website');
+  const data = Object.fromEntries(formData.entries());
+  data.from_name = 'JAC Singapore Web Inquiry';
+  data.subject = 'New Equipment Inquiry from Website';
 
   try {
-    const response = await fetch('https://api.web3forms.com/submit', {
+    const response = await fetch('/api/submit', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
 
     const result = await response.json();
@@ -670,11 +687,11 @@ async function executeContactSubmission() {
       }
       openSuccessModal();
     } else {
-      alert('There was an issue sending your inquiry: ' + (result.message || 'Please try again.'));
+      alert('Error submitting inquiry: ' + (result.message || 'Please try again.'));
     }
   } catch (error) {
     console.error('Submission error:', error);
-    alert('Connection error. Please check your internet or contact us directly via WhatsApp.');
+    alert('Connection error. Please check your connection or contact us via WhatsApp.');
   } finally {
     if (btn) {
       btn.disabled = false;
@@ -692,16 +709,19 @@ async function executeDealerSubmission() {
     btn.textContent = 'Submitting Application...';
   }
 
-  // 1. Gather all dealer application inputs
   const formData = new FormData(form);
-  formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-  formData.append('from_name', 'JAC Singapore Dealer Application');
-  formData.append('subject', 'New Channel Partner / Dealership Application');
+  const data = Object.fromEntries(formData.entries());
+  data.from_name = 'JAC Singapore Dealer Application';
+  data.subject = 'New Channel Partner / Dealership Application';
 
   try {
-    const response = await fetch('https://api.web3forms.com/submit', {
+    const response = await fetch('/api/submit', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
 
     const result = await response.json();
@@ -715,15 +735,102 @@ async function executeDealerSubmission() {
       }
       openSuccessModal();
     } else {
-      alert('There was an issue submitting your application: ' + (result.message || 'Please try again.'));
+      alert('Error submitting application: ' + (result.message || 'Please try again.'));
     }
   } catch (error) {
     console.error('Submission error:', error);
-    alert('Connection error. Please check your internet or contact us directly via WhatsApp.');
+    alert('Connection error. Please check your connection or contact us via WhatsApp.');
   } finally {
     if (btn) {
       btn.disabled = false;
       btn.textContent = 'Submit Channel Partner Application →';
     }
+  }
+}
+
+// =========================================================================
+// Strict VIC Portal Login Verification Handler
+// =========================================================================
+function handleVicLogin(e) {
+  e.preventDefault();
+  
+  const emailInput = document.getElementById('vicEmail');
+  const passwordInput = document.getElementById('vicPassword');
+  const errorAlert = document.getElementById('loginErrorAlert');
+  const errorText = document.getElementById('loginErrorText');
+  const loginBtn = document.getElementById('vicLoginBtn');
+
+  if (!emailInput || !passwordInput) return;
+
+  const email = emailInput.value.trim().toLowerCase();
+  const password = passwordInput.value.trim();
+
+  // Define allowed valid corporate partner accounts & password criteria
+  const validPartners = [
+    "partner@logistics.com.sg",
+    "executive@jacforklift.sg",
+    "alvincslim@gmail.com",
+    "director@juronglogistics.com.sg"
+  ];
+
+  // Show loading state
+  if (loginBtn) {
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Authenticating Telemetry...';
+  }
+
+  setTimeout(() => {
+    // Strict Verification check
+    const isValidEmail = validPartners.includes(email);
+    const isValidPasswordLength = password.length >= 8 && password !== "12345678" && password !== "password";
+
+    if (isValidEmail && isValidPasswordLength) {
+      // Success: Hide error, transition to dashboard
+      if (errorAlert) errorAlert.classList.add('hidden');
+      document.getElementById('loginState').style.display = 'none';
+      document.getElementById('dashboardState').style.display = 'block';
+      window.scrollTo(0, 0);
+    } else {
+      // Failure: Show error message
+      if (errorAlert && errorText) {
+        if (!isValidEmail) {
+          errorText.textContent = "Access Denied: Unrecognized corporate enterprise domain or email.";
+        } else {
+          errorText.textContent = "Incorrect VIC access password. Minimum 8 secure characters required.";
+        }
+        errorAlert.classList.remove('hidden');
+      }
+    }
+
+    // Reset button state
+    if (loginBtn) {
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Log In to VIC Portal →';
+    }
+  }, 400); // 400ms simulated secure server handshake delay
+}
+
+// =========================================================================
+// Password Visibility Toggle (Show / Hide Eye Icon)
+// =========================================================================
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById('vicPassword');
+  const eyeIcon = document.getElementById('eyeIcon');
+  
+  if (!passwordInput || !eyeIcon) return;
+
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    // Switch icon to "eye-off" (hidden state)
+    eyeIcon.innerHTML = `
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+    `;
+  } else {
+    passwordInput.type = 'password';
+    // Switch icon back to standard "eye" (visible state)
+    eyeIcon.innerHTML = `
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+    `;
   }
 }

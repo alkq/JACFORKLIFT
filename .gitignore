@@ -1,5 +1,21 @@
-node_modules
-.next
+# Dependencies
+node_modules/
+
+# Next.js / Local builds (if any)
+.next/
+dist/
 .env*.local
-dist
+
+# Local backup & archive folders
+new/
 1st version/
+
+# Editor & OS settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Deployment cache
+.vercel/
