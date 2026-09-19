@@ -2,13 +2,18 @@
 // ai-chat.js - JAC Forklift Singapore AI Auto-Reply Chat Widget (Multi-Turn)
 // Features: Dynamic Markdown Parser, Autolink for WhatsApp, Emails & Maps
 // Theme: Dark Forest Emerald & Obsidian
+// Config: Endpoint can be overridden via window.JAC_CHAT_ENDPOINT (set in HTML)
 // =========================================================================
 
 (function () {
   const CONFIG = {
     botName: "JAC Singapore AI",
     welcomeMessage: "Hello! 👋 I'm your JAC Singapore Engineering Consultant. How can I assist with your equipment sizing, lithium charging, or quotation today?",
-    apiEndpoint: "https://jac-chat-ai.allenliewkq.workers.dev",
+    // Endpoint can be overridden by setting window.JAC_CHAT_ENDPOINT before loading this script.
+    // Example in HTML: <script>window.JAC_CHAT_ENDPOINT = "https://your-new-worker.workers.dev";</script>
+    apiEndpoint: (typeof window !== 'undefined' && window.JAC_CHAT_ENDPOINT) ? window.JAC_CHAT_ENDPOINT : "https://jac-chat-ai.allenliewkq.workers.dev",
+    // Timeout in milliseconds before falling back to local knowledge base
+    requestTimeoutMs: 8000,
     whatsappNumber: "60138188181"
   };
 
@@ -186,12 +191,12 @@
 
       <!-- Input Bar -->
       <form id="jacChatForm" style="padding:12px 14px;background:#FFFFFF;border-top:1px solid #E2E8F0;display:flex;gap:8px;align-items:center;">
-        <input 
-          id="jacChatInput" 
-          type="text" 
-          placeholder="Ask about Alvin Lim, Tuas/Paya Lebar, pricing..." 
-          style="flex:1;border:1px solid #CBD5E1;border-radius:12px;padding:10px 14px;font-size:12.5px;outline:none;background:#F8FAFC;" 
-          required 
+        <input
+          id="jacChatInput"
+          type="text"
+          placeholder="Ask about Alvin Lim, Tuas/Paya Lebar, pricing..."
+          style="flex:1;border:1px solid #CBD5E1;border-radius:12px;padding:10px 14px;font-size:12.5px;outline:none;background:#F8FAFC;"
+          required
           autocomplete="off"
         />
         <button type="submit" style="background:#047857;color:#FFF;border:none;border-radius:12px;padding:10px 14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" aria-label="Send Message">
@@ -237,7 +242,6 @@
       container.classList.remove('active');
     });
 
-    // Clear history handler
     document.getElementById('jacChatClear').addEventListener('click', () => {
       const freshHistory = [{ role: 'assistant', text: CONFIG.welcomeMessage }];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(freshHistory));
@@ -274,33 +278,28 @@
   function formatMarkdown(text) {
     if (!text) return "";
 
-    // 1. Process explicit markdown links: [Label](url)
     let formatted = text.replace(/\[(.*?)\]\((.*?)\)/g, (match, label, url) => {
       const isExternal = url.startsWith('http') || url.startsWith('mailto:') || url.startsWith('tel:');
       const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
       return `<a href="${url}" ${targetAttr} class="text-emerald-700 font-bold underline hover:text-emerald-900 transition-colors inline">${label} →</a>`;
     });
 
-    // 2. Bold and italic markdown
     formatted = formatted
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/^\s*[\-\*]\s+(.*)$/gm, '• $1')
       .replace(/\n/g, '<br>');
 
-    // 3. Autolink unlinked emails
     formatted = formatted.replace(
       /(?<!href=["']|">)([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
       '<a href="mailto:$1" class="text-emerald-700 font-bold underline hover:text-emerald-900 transition-colors inline">$1</a>'
     );
 
-    // 4. Autolink unlinked phone numbers (+60 13-818 8181) directly to WhatsApp
     formatted = formatted.replace(
       /(?<!href=["']|">)(\+60\s?13[-.\s]?818\s?8181)/g,
       '<a href="https://wa.me/60138188181" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold underline hover:text-emerald-900 transition-colors inline">$1 (WhatsApp)</a>'
     );
 
-    // 5. Autolink unlinked Singapore Addresses to Google Maps
     formatted = formatted.replace(
       /(?<!href=["']|">)(60 Paya Lebar Road[^<,\n]*(?:Singapore 409051)?)/gi,
       '<a href="https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2306-28+Paya+Lebar+Square+Singapore+409051" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold underline hover:text-emerald-900 transition-colors inline">$1 (Google Maps)</a>'
@@ -359,6 +358,25 @@
     if (indicator) indicator.remove();
   }
 
+  // LOCAL FALLBACK KNOWLEDGE BASE
+  function getLocalFallbackReply(text) {
+    const q = text.toLowerCase();
+
+    if (q.includes("boss") || q.includes("alvin") || q.includes("director")) {
+      return "Our Executive Director is **Alvin C. S. Lim**, who oversees the operations, fleet engineering, and corporate strategy of JAC Forklift Singapore.<br><br>You can reach him directly at:<br>• **WhatsApp / Mobile:** [+60 13-818 8181](https://wa.me/60138188181)<br>• **Email:** [alvincslim@gmail.com](mailto:alvincslim@gmail.com)<br><br>Or submit an enquiry via our [Online Quote Form](contact.html).";
+    }
+
+    if (q.includes("where") || q.includes("location") || q.includes("address") || q.includes("facility") || q.includes("facilities")) {
+      return "Our Singapore facilities are located at:<br><br>1. **Corporate Headquarters (HQ SG):**<br>[60 Paya Lebar Road, #06-28, Paya Lebar Square, Singapore 409051](https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2306-28+Paya+Lebar+Square+Singapore+409051)<br><br>2. **Fabrication Workshop:**<br>[15 Pioneer Road North, #01-79, Singapore 628464](https://www.google.com/maps/search/?api=1&query=15+Pioneer+Road+North+%2301-79+Singapore+628464) (heavy builds & mast modifications)<br><br>3. **Forklift Centre:**<br>[The Index, 110 Tuas Ave 3, #03-04, Singapore 637369](https://www.google.com/maps/search/?api=1&query=The+Index+110+Tuas+Ave+3+%2303-04+Singapore+637369) (showroom, demos & 10,000+ spares)<br><br>[View Regional Service Network on Map](contact.html#dealerMap)";
+    }
+
+    if (q.includes("price") || q.includes("cost") || q.includes("rent") || q.includes("quote")) {
+      return "Our equipment pricing and monthly rental rates depend on your required tonnage (1.5T to 5.0T), mast lifting height, and whether you prefer an outright purchase or a full-maintenance rental (12–60 months).<br><br>All long-term rentals include routine servicing, wear-and-tear parts, and a 24h Singapore technician SLA.<br><br>[Request a Formal Quote](contact.html) or WhatsApp Alvin Lim directly at [+60 13-818 8181](https://wa.me/60138188181).";
+    }
+
+    return "Hello! 👋 I'm your JAC Singapore assistant. You can ask me about our 13 electric forklift models, battery opportunity charging, rental plans, or [Request a Quote](contact.html). You can also WhatsApp Alvin Lim directly at [+60 13-818 8181](https://wa.me/60138188181).";
+  }
+
   // Multi-Turn Message Dispatcher
   async function handleUserSend(text) {
     appendUserMessageToDOM(text, true);
@@ -373,15 +391,21 @@
     let replied = false;
 
     if (CONFIG.apiEndpoint) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), CONFIG.requestTimeoutMs);
+
       try {
         const res = await fetch(CONFIG.apiEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
+          body: JSON.stringify({
             messages: formattedMessages,
-            message: text 
-          })
+            message: text
+          }),
+          signal: controller.signal
         });
+
+        clearTimeout(timeoutId);
 
         if (res.ok) {
           const data = await res.json();
@@ -393,28 +417,20 @@
           }
         }
       } catch (err) {
-        console.warn("Cloudflare Worker unreachable, switching to local knowledge fallback.", err);
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') {
+          console.warn("Chat request timed out after " + CONFIG.requestTimeoutMs + "ms — using local fallback.");
+        } else {
+          console.warn("Cloudflare Worker unreachable, switching to local knowledge fallback.", err);
+        }
       }
     }
 
-    // Local Fallback if network or Cloudflare is unreachable
+    // Local Fallback if network, timeout, or Cloudflare is unreachable
     if (!replied) {
       setTimeout(() => {
         hideTypingIndicator();
-        const q = text.toLowerCase();
-        let fallbackReply = null;
-
-        if (q.includes("boss") || q.includes("alvin") || q.includes("director")) {
-          fallbackReply = "Our Executive Director is **Alvin C. S. Lim**, who oversees the operations, fleet engineering, and corporate strategy of JAC Forklift Singapore.<br><br>You can reach him directly at:<br>• **WhatsApp / Mobile:** [+60 13-818 8181](https://wa.me/60138188181)<br>• **Email:** [alvincslim@gmail.com](mailto:alvincslim@gmail.com)<br><br>Or submit an enquiry via our [Online Quote Form](contact.html).";
-        } else if (q.includes("where") || q.includes("location") || q.includes("address") || q.includes("facility") || q.includes("facilities")) {
-          fallbackReply = "Our Singapore facilities are located at:<br><br>1. **Corporate Headquarters (HQ SG):**<br>[60 Paya Lebar Road, #06-28, Paya Lebar Square, Singapore 409051](https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2306-28+Paya+Lebar+Square+Singapore+409051)<br><br>2. **Fabrication Workshop:**<br>[15 Pioneer Road North, #01-79, Singapore 628464](https://www.google.com/maps/search/?api=1&query=15+Pioneer+Road+North+%2301-79+Singapore+628464) (heavy builds & mast modifications)<br><br>3. **Forklift Centre:**<br>[The Index, 110 Tuas Ave 3, #03-04, Singapore 637369](https://www.google.com/maps/search/?api=1&query=The+Index+110+Tuas+Ave+3+%2303-04+Singapore+637369) (showroom, demos & 10,000+ spares)<br><br>[View Regional Service Network on Map](contact.html#dealerMap)";
-        } else if (q.includes("price") || q.includes("cost") || q.includes("rent") || q.includes("quote")) {
-          fallbackReply = "Our equipment pricing and monthly rental rates depend on your required tonnage (1.5T to 5.0T), mast lifting height, and whether you prefer an outright purchase or a full-maintenance rental (12–60 months).<br><br>All long-term rentals include routine servicing, wear-and-tear parts, and a 24h Singapore technician SLA.<br><br>[Request a Formal Quote](contact.html) or WhatsApp Alvin Lim directly at [+60 13-818 8181](https://wa.me/60138188181).";
-        } else {
-          fallbackReply = "Hello! 👋 I'm your JAC Singapore assistant. You can ask me about our 13 electric forklift models, battery opportunity charging, rental plans, or [Request a Quote](contact.html). You can also WhatsApp Alvin Lim directly at [+60 13-818 8181](https://wa.me/60138188181).";
-        }
-
-        appendBotMessageToDOM(fallbackReply, true);
+        appendBotMessageToDOM(getLocalFallbackReply(text), true);
       }, 400);
     }
   }
@@ -431,29 +447,23 @@
 // Trigger Product AI Estimate from Spec Pages
 // =========================================================================
 window.triggerProductAiEstimate = function() {
-  // 1. Open the chat widget if closed
   const container = document.getElementById('jacChatContainer');
   const launcher = document.getElementById('jacChatLauncher');
-  
+
   if (container && !container.classList.contains('active')) {
     container.classList.add('active');
   }
 
-  // 2. Grab current product name and tonnage from the spec page DOM
   const productName = document.getElementById('productName')?.textContent || 'this equipment';
   const productTonnage = document.getElementById('productTonnage')?.textContent || '';
 
-  // 3. Construct a smart custom prompt
   const estimateQuery = `Hi! Can you give me an instant estimate or quote details for the ${productName} (${productTonnage})? What details do you need from my facility?`;
 
-  // 4. Automatically dispatch it to the chat handler if available, or fill the input box
   const chatInput = document.getElementById('jacChatInput');
   if (chatInput) {
     chatInput.value = estimateQuery;
-    // Optional: Automatically submit it so the user doesn't have to press enter
     const chatForm = document.getElementById('jacChatForm');
     if (chatForm) {
-      // Small timeout to ensure window opening animation finishes first
       setTimeout(() => {
         chatForm.requestSubmit();
       }, 250);

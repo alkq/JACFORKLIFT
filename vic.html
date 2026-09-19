@@ -13,7 +13,7 @@ tailwind.config = {
     extend: {
       colors: {
         primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' }, // Deep Forest Emerald
+        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' },
         obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
         gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
       },
@@ -136,7 +136,7 @@ tailwind.config = {
     </div>
 
     <form id="vicLoginForm" onsubmit="handleVicLogin(event)" class="bg-white rounded-3xl p-8 lg:p-10 border border-slate-200 shadow-luxe space-y-4">
-      
+
       <!-- Error Alert Box (Hidden by default) -->
       <div id="loginErrorAlert" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 flex items-center gap-2">
         <svg class="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
@@ -145,13 +145,13 @@ tailwind.config = {
 
       <div>
         <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Corporate Email</label>
-        <input type="email" id="vicEmail" value="partner@logistics.com.sg" class="input-field" required />
+        <input type="email" id="vicEmail" name="email" placeholder="name@company.com" autocomplete="username" class="input-field" required />
       </div>
 
       <div>
         <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Access Password</label>
         <div class="relative">
-          <input type="password" id="vicPassword" value="VIC-Singapore2026!" class="input-field pr-12" required />
+          <input type="password" id="vicPassword" name="password" placeholder="Enter your secure password" autocomplete="current-password" class="input-field pr-12" required />
           <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors focus:outline-none cursor-pointer" aria-label="Toggle password visibility">
             <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -179,7 +179,7 @@ tailwind.config = {
       <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1 text-emerald-700 text-xs font-semibold">
         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Telemetry Active · Real-Time Link
       </div>
-      <button onclick="document.getElementById('loginState').style.display='flex'; document.getElementById('dashboardState').style.display='none';" class="text-xs font-bold text-slate-500 hover:text-brand cursor-pointer">Logout</button>
+      <button onclick="handleVicLogout()" class="text-xs font-bold text-slate-500 hover:text-brand cursor-pointer">Logout</button>
     </div>
   </div>
 
@@ -187,7 +187,7 @@ tailwind.config = {
     <div class="mb-10">
       <div class="text-gold text-xs font-bold tracking-widest uppercase mb-1">Executive Equipment Dashboard</div>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-obsidian">Welcome Back, Enterprise Partner</h1>
-      <p class="text-slate-500 text-sm font-light">Operational status across your Jurong Logistics Facility.</p>
+      <p class="text-slate-500 text-sm font-light">Live operational status across your registered facility equipment.</p>
     </div>
 
     <!-- Stat Metrics -->
@@ -267,7 +267,6 @@ tailwind.config = {
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
-    <!-- Column 1 & 2: Brand Info & Contact -->
     <div class="lg:col-span-2">
       <div class="flex items-center gap-3 mb-6">
         <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm">
@@ -283,7 +282,6 @@ tailwind.config = {
         JAC Material Handling is Singapore's exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
       </p>
 
-      <!-- Registered Entity -->
       <div class="mb-6">
         <div class="text-[10px] font-bold text-emerald-400 tracking-[0.2em] uppercase mb-1">HQ SG</div>
         <div class="font-heading font-bold text-white text-sm mb-0.5">
@@ -303,7 +301,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Column 3: Quick Links -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -316,7 +313,6 @@ tailwind.config = {
       </ul>
     </div>
 
-    <!-- Column 4: Our Products -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Products</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -327,12 +323,9 @@ tailwind.config = {
       </ul>
     </div>
 
-    <!-- Column 5: Our Locations -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Locations</h4>
-
       <div class="space-y-4 text-xs font-light">
-        <!-- HQ SG -->
         <div>
           <div class="text-[10px] font-bold text-emerald-400 tracking-[0.15em] uppercase mb-1">HQ SG</div>
           <p class="text-slate-400 leading-relaxed">
@@ -341,7 +334,6 @@ tailwind.config = {
             Singapore 409051
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Fabrication Workshop</div>
           <p class="text-slate-400 leading-relaxed">
@@ -349,7 +341,6 @@ tailwind.config = {
             #01-79 Singapore 628464
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Forklift Centre</div>
           <p class="text-slate-400 leading-relaxed">
@@ -359,10 +350,8 @@ tailwind.config = {
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- Authorized Signatory Bar -->
   <div class="border-t border-slate-800/60">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
       <div class="text-center sm:text-left">
@@ -375,13 +364,12 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- Copyright Bar -->
   <div class="border-t border-slate-800/80">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Equipment Pte. Ltd. All Rights Reserved.</div>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>
@@ -389,6 +377,7 @@ tailwind.config = {
 
 <script src="main.js"></script>
 <script src="search.js"></script>
+<script>window.JAC_CHAT_ENDPOINT = "https://jac-chat-ai.allenliewkq.workers.dev";</script>
 <script src="ai-chat.js"></script>
 </body>
 </html>

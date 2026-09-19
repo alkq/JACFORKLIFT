@@ -221,11 +221,11 @@
         <textarea name="facilityDetails" rows="4" placeholder="Briefly describe your existing sales team, workshop size, or forklift rental fleet capacity..." class="w-full bg-white border border-slate-200 rounded-xl p-4 text-sm text-slate-800 focus:border-brand focus:outline-none"></textarea>
       </div>
 
-      <!-- PRIVACY POLICY -->
+      <!-- PRIVACY POLICY + TERMS OF SERVICE CHECKBOX -->
       <div id="formPrivacyContainer" class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 transition-all shadow-sm">
         <input type="checkbox" id="formPrivacyCheckbox" class="mt-1 w-4 h-4 text-brand rounded accent-brand cursor-pointer shrink-0" onchange="handleFormCheckboxChange(this)" />
         <label for="formPrivacyCheckbox" class="text-xs sm:text-sm text-slate-700 font-medium cursor-pointer select-none leading-relaxed">
-          I have read and understood this <button type="button" onclick="openPrivacyModal(false, 'view', 'dealer')" class="text-brand font-bold underline hover:text-brand-dark transition-colors inline cursor-pointer">Privacy Policy</button>, and consent to the processing of my corporate enquiry details under Singapore PDPA regulations.
+          I have read and understood this <button type="button" onclick="openPrivacyModal(false, 'view', 'dealer')" class="text-brand font-bold underline hover:text-brand-dark transition-colors inline cursor-pointer">Privacy Policy</button> and <a href="terms-of-service.html" target="_blank" class="text-brand font-bold underline hover:text-brand-dark transition-colors inline">Terms of Service</a>, and consent to the processing of my corporate enquiry details under Singapore PDPA regulations.
         </label>
       </div>
 
@@ -243,7 +243,6 @@
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
-    <!-- Column 1 & 2: Brand Info & Contact -->
     <div class="lg:col-span-2">
       <div class="flex items-center gap-3 mb-6">
         <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm">
@@ -259,7 +258,6 @@
         JAC Material Handling is Singapore's exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
       </p>
 
-      <!-- Registered Entity -->
       <div class="mb-6">
         <div class="text-[10px] font-bold text-emerald-400 tracking-[0.2em] uppercase mb-1">HQ SG</div>
         <div class="font-heading font-bold text-white text-sm mb-0.5">
@@ -279,7 +277,6 @@
       </div>
     </div>
 
-    <!-- Column 3: Quick Links -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -292,7 +289,6 @@
       </ul>
     </div>
 
-    <!-- Column 4: Our Products -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Products</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -303,7 +299,6 @@
       </ul>
     </div>
 
-    <!-- Column 5: Our Locations -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Locations</h4>
       <div class="space-y-4 text-xs font-light">
@@ -333,7 +328,6 @@
     </div>
   </div>
 
-  <!-- Authorized Signatory Bar -->
   <div class="border-t border-slate-800/60">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
       <div class="text-center sm:text-left">
@@ -346,13 +340,12 @@
     </div>
   </div>
 
-  <!-- Copyright Bar -->
   <div class="border-t border-slate-800/80">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Equipment Pte. Ltd. All Rights Reserved.</div>
       <div class="flex gap-6">
         <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="privacy-policy.html" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>
@@ -379,7 +372,7 @@
       </button>
     </div>
 
-    <div class="flex-1 overflow-y-auto p-6 sm:p-8 bg-slate-50/50 space-y-6 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 max-h-[50vh] sm:max-h-[55vh]">
+    <div class="flex-1 overflow-y-auto p-6 sm:p-8 bg-slate-50/50 space-y-6 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 max-h-[55vh] sm:max-h-[60vh]">
       <div id="modalNoticeBox" class="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-4 flex items-start gap-3">
         <div class="w-8 h-8 rounded-xl bg-emerald-100 text-brand flex items-center justify-center shrink-0 mt-0.5">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -387,6 +380,7 @@
         <div id="modalNoticeText" class="text-xs text-emerald-950 font-light leading-relaxed">
           <strong class="font-bold text-emerald-900 block mb-0.5">Singapore Personal Data Protection Act (PDPA) Compliance</strong>
           By submitting your enquiry or dealer application, you agree to the collection, usage, and disclosure of your business contact information in accordance with this Privacy & Data Protection Policy.
+          <div class="mt-2 text-[11px] text-emerald-800/80 font-medium">Effective Date: 1 January 2026 · PDPA 2012 Compliant</div>
         </div>
       </div>
 
@@ -396,7 +390,7 @@
           Introduction & Overview
         </h4>
         <p class="text-slate-600 font-light pl-7">
-          JAC Material Handling Singapore ("we", "our", "us") values your privacy and is committed to protecting the corporate and personal information of our clients, dealers, and site visitors under Singapore’s Personal Data Protection Act 2012 (PDPA).
+          JAC Material Handling Singapore ("we", "our", "us") values your privacy and is committed to protecting the corporate and personal information of our clients, dealers, and site visitors under Singapore's Personal Data Protection Act 2012 (PDPA).
         </p>
       </div>
 
@@ -412,6 +406,7 @@
           <li>Corporate entity details (Company Name, Singapore UEN, Registered Address).</li>
           <li>Designated contact person details (Full Name, Job Title, Business Email, Direct Telephone/WhatsApp).</li>
           <li>Operational scope (Target market segment, existing handling brands, workshop facility capacity).</li>
+          <li>Technical logs (IP address, device telemetry, browser type, navigation timestamps).</li>
         </ul>
       </div>
 
@@ -427,30 +422,68 @@
           <li>Evaluating channel partner qualifications, dealer tiers, and discount structure approvals.</li>
           <li>Dispatching official technical specifications, wholesale dealer price lists, and warranty programs.</li>
           <li>Coordinating technical mechanic trainings and JAC CAN-bus diagnostic software access.</li>
+          <li>Fulfilling corporate legal, tax, and auditing requirements under Singapore regulations.</li>
         </ul>
+        <div class="mt-3 ml-7 p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl text-xs text-emerald-900 font-medium">
+          <strong>Our Guarantee:</strong> We do NOT sell, lease, or monetize your commercial or personal data to marketing aggregators or unauthorized third parties under any circumstances.
+        </div>
       </div>
 
       <div>
         <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
           <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">4</span>
-          Confidentiality & Data Protection
+          Disclosure & Data Transfer
+        </h4>
+        <p class="text-slate-600 font-light pl-7 mb-2">
+          We may share your data solely on a strict need-to-know basis with:
+        </p>
+        <ul class="list-disc pl-12 space-y-1 text-slate-600 font-light">
+          <li><strong>Authorized Service Teams:</strong> Field maintenance technicians and logistics dispatchers in Singapore.</li>
+          <li><strong>Financing & Leasing Partners:</strong> Certified financial institutions (only when you explicitly request lease financing options).</li>
+          <li><strong>Regulatory Authorities:</strong> When mandatory under Singapore law or court subpoena.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">5</span>
+          Security & Storage Safeguards
         </h4>
         <p class="text-slate-600 font-light pl-7">
-          We implement rigorous technical and administrative security safeguards. We do not sell, rent, or lease corporate data to third-party marketing entities.
+          We deploy multi-tiered administrative, physical, and digital safeguards — including TLS/SSL transport encryption, access control policies, and periodic security reviews — to protect your records from loss, theft, and unauthorized access. Data is retained only for as long as necessary to fulfill the business purposes for which it was gathered.
         </p>
       </div>
 
-      <div class="bg-slate-100/80 rounded-2xl p-4 border border-slate-200 text-xs">
-        <strong class="text-obsidian font-bold block mb-1">Contacting Our Data Protection Officer (DPO)</strong>
-        <p class="text-slate-600 font-light">
-          If you have questions regarding our data policies or wish to update your corporate records, please email <a href="mailto:alvincslim@gmail.com" class="text-brand font-semibold underline">alvincslim@gmail.com</a> (Attention: Data Protection Officer).
+      <div>
+        <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">6</span>
+          Cookies & Tracking
+        </h4>
+        <p class="text-slate-600 font-light pl-7">
+          Our website utilizes essential session cookies and performance telemetry to maintain security, preserve user search queries, and optimize page load speeds. You can configure your browser to decline cookies, though certain interactive features (e.g., instant quotation filters) may perform with reduced functionality.
         </p>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-bold text-obsidian text-sm sm:text-base mb-2 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand/10 text-brand text-xs font-bold inline-flex items-center justify-center">7</span>
+          Your Rights & Data Protection Officer (DPO)
+        </h4>
+        <p class="text-slate-600 font-light pl-7 mb-3">
+          Under the Singapore PDPA, you are entitled to request access to or correction of your personal records, or to withdraw consent for marketing correspondence at any time.
+        </p>
+        <div class="ml-7 bg-slate-100/80 rounded-2xl p-4 border border-slate-200 text-xs">
+          <strong class="text-obsidian font-bold block mb-1">Contacting Our Data Protection Officer (DPO)</strong>
+          <p class="text-slate-600 font-light">
+            If you have questions regarding our data policies or wish to update your corporate records, please email <a href="mailto:alvincslim@gmail.com" class="text-brand font-semibold underline">alvincslim@gmail.com</a> (Attention: Data Protection Officer).
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="p-5 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
       <div id="modalFooterNote" class="text-xs text-slate-500 font-light text-center sm:text-left">
-        By proceeding, you consent to JAC Singapore PDPA processing terms.
+        By proceeding, you consent to our <a href="privacy-policy.html" target="_blank" class="text-brand font-semibold underline">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank" class="text-brand font-semibold underline">Terms of Service</a>.
       </div>
       <div class="flex items-center gap-3 w-full sm:w-auto">
         <button type="button" onclick="closePrivacyModal()" id="modalCancelBtn" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-heading font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer">
@@ -494,6 +527,7 @@
 
 <script src="main.js"></script>
 <script src="search.js"></script>
+<script>window.JAC_CHAT_ENDPOINT = "https://jac-chat-ai.allenliewkq.workers.dev";</script>
 <script src="ai-chat.js"></script>
 </body>
 </html>

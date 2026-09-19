@@ -8,30 +8,30 @@ if (window.tailwind) {
     theme: {
       extend: {
         colors: {
-          primary: { 
-            50: '#F8FAFC', 
-            100: '#F1F5F9', 
-            DEFAULT: '#FFFFFF' 
+          primary: {
+            50: '#F8FAFC',
+            100: '#F1F5F9',
+            DEFAULT: '#FFFFFF'
           },
           brand: {
             light: '#059669',    /* Emerald 600 */
             DEFAULT: '#047857',  /* Deep Forest Emerald 700 */
             dark: '#065f46'      /* Deep Forest 800 */
           },
-          obsidian: { 
-            DEFAULT: '#0B0F17', 
-            surface: '#161F2E', 
-            muted: '#475569', 
-            light: '#64748B' 
+          obsidian: {
+            DEFAULT: '#0B0F17',
+            surface: '#161F2E',
+            muted: '#475569',
+            light: '#64748B'
           },
-          gold: { 
-            DEFAULT: '#C5A059', 
-            light: '#D4AF37' 
+          gold: {
+            DEFAULT: '#C5A059',
+            light: '#D4AF37'
           }
         },
-        fontFamily: { 
-          heading: ['Montserrat', 'sans-serif'], 
-          body: ['Inter', 'sans-serif'] 
+        fontFamily: {
+          heading: ['Montserrat', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
         },
         boxShadow: {
           'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.45)',
@@ -62,7 +62,6 @@ function setInquiryMode(mode) {
     if (mainTitle) mainTitle.textContent = 'Request A Quote';
     if (subTitle) subTitle.textContent = 'Select your equipment parameters or submit a general technical inquiry.';
   } else {
-    // Default: Plain Inquiry
     if (equipRow) equipRow.style.display = 'none';
     if (timeframeRow) timeframeRow.style.display = 'none';
     btnPlain.classList.add('active');
@@ -185,12 +184,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const map = L.map('dealerMap', {
       zoomControl: false,
       attributionControl: false,
-      scrollWheelZoom: false
+      scrollWheelZoom: false,
+      dragging: !L.Browser.mobile
     }).setView([1.3400, 103.8000], 11);
 
-    if (typeof L.maplibreGL !== 'undefined') {
-      L.maplibreGL({ style: 'https://tiles.openfreemap.org/styles/dark' }).addTo(map);
-    }
+    L.control.zoom({ position: 'topright' }).addTo(map);
+
+    map.on('click', () => {
+      map.scrollWheelZoom.enable();
+    });
+
+    map.on('mouseout', () => {
+      map.scrollWheelZoom.disable();
+    });
+
+    L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 16,
+      attribution: 'Esri'
+    }).addTo(map);
 
     const makeIcon = (color = '#047857') => L.divIcon({
       className: '',
@@ -250,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initWhatsAppButton() {
   if (document.getElementById('jacWhatsAppFloat')) return;
 
-  const phoneClean = "60138188181"; // Alvin's WhatsApp direct number
+  const phoneClean = "60138188181";
   const defaultText = encodeURIComponent("Hello Alvin, I am interested in JAC electric forklifts and would like to learn more about your equipment options.");
 
   const waBtn = document.createElement('a');
@@ -535,7 +546,7 @@ let activeFormType = 'contact';
 function openPrivacyModal(isFinalSubmit = false, mode = 'view', formType = 'contact') {
   currentModalMode = mode;
   activeFormType = formType;
-  
+
   const modal = document.getElementById('privacyModal');
   const badge = document.getElementById('modalBadge');
   const title = document.getElementById('modalTitle');
@@ -550,7 +561,7 @@ function openPrivacyModal(isFinalSubmit = false, mode = 'view', formType = 'cont
     if (badge) badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> Privacy & PDPA Policy Consent';
     if (title) title.textContent = 'Privacy & Data Protection Policy';
     if (noticeBox) noticeBox.className = 'bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-4 flex items-start gap-3';
-    if (noticeText) noticeText.innerHTML = '<strong class="font-bold text-emerald-900 block mb-0.5">Singapore Personal Data Protection Act (PDPA) Compliance</strong>Please review and consent to the privacy policy to complete your request.';
+    if (noticeText) noticeText.innerHTML = '<strong class="font-bold text-emerald-900 block mb-0.5">Singapore Personal Data Protection Act (PDPA) Compliance</strong>Please review and consent to the privacy policy and terms of service to complete your request.';
     if (footerNote) footerNote.textContent = 'By proceeding, you consent to JAC Singapore PDPA processing terms.';
     if (cancelBtn) cancelBtn.textContent = 'Cancel';
     if (primaryBtn) primaryBtn.textContent = 'I Agree & Submit →';
@@ -598,7 +609,7 @@ function handleModalConfirmAction() {
     formCheckbox.checked = true;
     handleFormCheckboxChange(formCheckbox);
   }
-  
+
   closePrivacyModal();
 
   if (currentModalMode === 'submit_pending') {
@@ -651,16 +662,30 @@ function handleContactSubmitClick() {
   executeContactSubmission();
 }
 
+function handleDealerSubmitClick() {
+  activeFormType = 'dealer';
+  const formCheckbox = document.getElementById('formPrivacyCheckbox');
+  if (!formCheckbox || !formCheckbox.checked) {
+    openPrivacyModal(true, 'submit_pending', 'dealer');
+    return;
+  }
+  const form = document.getElementById('dealerForm');
+  if (form && !form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  executeDealerSubmission();
+}
+
 async function executeContactSubmission() {
   const form = document.getElementById('contactForm');
   const btn = document.getElementById('contactSubmitBtn');
-  
+
   if (btn) {
     btn.disabled = true;
     btn.textContent = 'Submitting Request...';
   }
 
-  // Convert form data to clean JSON payload
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
   data.from_name = 'JAC Singapore Web Inquiry';
@@ -703,7 +728,7 @@ async function executeContactSubmission() {
 async function executeDealerSubmission() {
   const form = document.getElementById('dealerForm');
   const btn = document.getElementById('dealerSubmitBtn');
-  
+
   if (btn) {
     btn.disabled = true;
     btn.textContent = 'Submitting Application...';
@@ -749,85 +774,200 @@ async function executeDealerSubmission() {
 }
 
 // =========================================================================
-// Strict VIC Portal Login Verification Handler
+// VIC Portal Login Handler
+// -------------------------------------------------------------------------
+// Production: Calls POST /api/vic-login (backend must validate credentials)
+//
+// ⚠️ DEMO MODE (CURRENT): Uses ONE demo account for client presentation.
+//    Demo credentials:  demo@jacforklift.sg  /  demo1234
+//    Remove this block once /api/vic-login is live in production.
 // =========================================================================
-function handleVicLogin(e) {
-  e.preventDefault();
-  
-  const emailInput = document.getElementById('vicEmail');
+const VIC_DEMO_EMAIL    = "demo@jacforklift.sg";
+const VIC_DEMO_PASSWORD = "demo1234";
+
+const VIC_CRED_KEY      = "jac_vic_saved_credentials";  // { email, password }
+const VIC_SESSION_KEY   = "jac_vic_logged_in";          // true | false
+
+// -------------------------------------------------------------------------
+// Apply session state on vic.html page load
+// -------------------------------------------------------------------------
+function applyVicSessionOnLoad() {
+  const loginState     = document.getElementById('loginState');
+  const dashboardState = document.getElementById('dashboardState');
+  if (!loginState || !dashboardState) return; // Not on vic.html — bail
+
+  // 1. Check if user is already logged in
+  const loggedIn = localStorage.getItem(VIC_SESSION_KEY) === 'true';
+
+  if (loggedIn) {
+    loginState.style.display = 'none';
+    dashboardState.style.display = 'block';
+    return; // Skip pre-fill; user is already in
+  }
+
+  // 2. Not logged in — show login form and pre-fill saved credentials
+  loginState.style.display = 'flex';
+  dashboardState.style.display = 'none';
+
+  const emailInput    = document.getElementById('vicEmail');
   const passwordInput = document.getElementById('vicPassword');
-  const errorAlert = document.getElementById('loginErrorAlert');
-  const errorText = document.getElementById('loginErrorText');
-  const loginBtn = document.getElementById('vicLoginBtn');
+  if (!emailInput || !passwordInput) return;
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(VIC_CRED_KEY));
+    if (saved && saved.email && saved.password) {
+      emailInput.value = saved.email;
+      passwordInput.value = saved.password;
+
+      // Visual hint: subtle green tint to show fields were auto-filled
+      [emailInput, passwordInput].forEach(el => {
+        el.classList.add('bg-emerald-50', 'border-brand/40');
+        el.addEventListener('input', function handler() {
+          el.classList.remove('bg-emerald-50', 'border-brand/40');
+          el.removeEventListener('input', handler);
+        });
+      });
+    }
+  } catch (err) {
+    localStorage.removeItem(VIC_CRED_KEY);
+  }
+}
+
+// -------------------------------------------------------------------------
+// Save / clear session state
+// -------------------------------------------------------------------------
+function saveVicCredentials(email, password) {
+  try {
+    localStorage.setItem(VIC_CRED_KEY, JSON.stringify({ email, password }));
+  } catch (err) {}
+}
+
+function markVicSessionActive() {
+  try {
+    localStorage.setItem(VIC_SESSION_KEY, 'true');
+  } catch (err) {}
+}
+
+function clearVicSession() {
+  try {
+    localStorage.removeItem(VIC_SESSION_KEY);
+    localStorage.removeItem(VIC_CRED_KEY);
+  } catch (err) {}
+}
+
+// Auto-run on page load (both on initial and after DOM ready)
+document.addEventListener('DOMContentLoaded', applyVicSessionOnLoad);
+if (document.readyState !== 'loading') applyVicSessionOnLoad();
+
+// -------------------------------------------------------------------------
+// Main login handler
+// -------------------------------------------------------------------------
+async function handleVicLogin(e) {
+  e.preventDefault();
+
+  const emailInput    = document.getElementById('vicEmail');
+  const passwordInput = document.getElementById('vicPassword');
+  const errorAlert    = document.getElementById('loginErrorAlert');
+  const errorText     = document.getElementById('loginErrorText');
+  const loginBtn      = document.getElementById('vicLoginBtn');
 
   if (!emailInput || !passwordInput) return;
 
-  const email = emailInput.value.trim().toLowerCase();
-  const password = passwordInput.value.trim();
+  const email    = emailInput.value.trim().toLowerCase();
+  const password = passwordInput.value;
 
-  // Define allowed valid corporate partner accounts & password criteria
-  const validPartners = [
-    "partner@logistics.com.sg",
-    "executive@jacforklift.sg",
-    "alvincslim@gmail.com",
-    "director@juronglogistics.com.sg"
-  ];
+  if (!email || !password) {
+    if (errorAlert && errorText) {
+      errorText.textContent = "Please enter both your corporate email and password.";
+      errorAlert.classList.remove('hidden');
+    }
+    return;
+  }
 
-  // Show loading state
   if (loginBtn) {
     loginBtn.disabled = true;
     loginBtn.textContent = 'Authenticating Telemetry...';
   }
 
-  setTimeout(() => {
-    // Strict Verification check
-    const isValidEmail = validPartners.includes(email);
-    const isValidPasswordLength = password.length >= 8 && password !== "12345678" && password !== "password";
+  // Simulate a brief server round-trip
+  await new Promise(resolve => setTimeout(resolve, 500));
 
-    if (isValidEmail && isValidPasswordLength) {
-      // Success: Hide error, transition to dashboard
-      if (errorAlert) errorAlert.classList.add('hidden');
-      document.getElementById('loginState').style.display = 'none';
-      document.getElementById('dashboardState').style.display = 'block';
-      window.scrollTo(0, 0);
-    } else {
-      // Failure: Show error message
-      if (errorAlert && errorText) {
-        if (!isValidEmail) {
-          errorText.textContent = "Access Denied: Unrecognized corporate enterprise domain or email.";
-        } else {
-          errorText.textContent = "Incorrect VIC access password. Minimum 8 secure characters required.";
-        }
-        errorAlert.classList.remove('hidden');
-      }
-    }
+  // ⚠️ DEMO MODE — remove once /api/vic-login is live
+  const isValid =
+    email === VIC_DEMO_EMAIL &&
+    password === VIC_DEMO_PASSWORD;
 
-    // Reset button state
-    if (loginBtn) {
-      loginBtn.disabled = false;
-      loginBtn.textContent = 'Log In to VIC Portal →';
+  /*
+  // PRODUCTION: Uncomment this block, delete the demo check above
+  let isValid = false;
+  try {
+    const response = await fetch('/api/vic-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const result = await response.json();
+    isValid = result.success === true;
+  } catch (err) {
+    console.error('VIC login error:', err);
+  }
+  */
+
+  if (isValid) {
+    saveVicCredentials(email, password);   // remember for next time
+    markVicSessionActive();                // stay logged in across pages
+
+    if (errorAlert) errorAlert.classList.add('hidden');
+    document.getElementById('loginState').style.display = 'none';
+    document.getElementById('dashboardState').style.display = 'block';
+    window.scrollTo(0, 0);
+  } else {
+    if (errorAlert && errorText) {
+      errorText.textContent = "Invalid corporate credentials. Please check your email and password.";
+      errorAlert.classList.remove('hidden');
     }
-  }, 400); // 400ms simulated secure server handshake delay
+  }
+
+  if (loginBtn) {
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'Log In to VIC Portal →';
+  }
 }
 
-// =========================================================================
-// Password Visibility Toggle (Show / Hide Eye Icon)
-// =========================================================================
+// -------------------------------------------------------------------------
+// Logout handler — clears session AND saved credentials
+// -------------------------------------------------------------------------
+function handleVicLogout() {
+  // Clear saved credentials so the login form starts blank next time
+  clearVicSession();
+
+  // Reset the login form fields
+  const emailInput = document.getElementById('vicEmail');
+  const passwordInput = document.getElementById('vicPassword');
+  if (emailInput) emailInput.value = '';
+  if (passwordInput) passwordInput.value = '';
+
+  // Show login, hide dashboard
+  document.getElementById('loginState').style.display = 'flex';
+  document.getElementById('dashboardState').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+// -------------------------------------------------------------------------
+// Password visibility toggle
+// -------------------------------------------------------------------------
 function togglePasswordVisibility() {
   const passwordInput = document.getElementById('vicPassword');
-  const eyeIcon = document.getElementById('eyeIcon');
-  
+  const eyeIcon       = document.getElementById('eyeIcon');
   if (!passwordInput || !eyeIcon) return;
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    // Switch icon to "eye-off" (hidden state)
     eyeIcon.innerHTML = `
       <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
     `;
   } else {
     passwordInput.type = 'password';
-    // Switch icon back to standard "eye" (visible state)
     eyeIcon.innerHTML = `
       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
       <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>

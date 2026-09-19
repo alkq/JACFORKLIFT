@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About Us | JAC Forklift Singapore</title>
+<title>Privacy Policy | JAC Forklift Singapore</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="global.css" />
 <script src="https://cdn.tailwindcss.com"></script>
@@ -13,13 +13,13 @@ tailwind.config = {
     extend: {
       colors: {
         primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#34D399', DEFAULT: '#047857', dark: '#065f46' },
+        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' },
         obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
         gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
       },
       fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
       boxShadow: {
-        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.45)',
+        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.35)',
         'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
         'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
       }
@@ -30,9 +30,10 @@ tailwind.config = {
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
+<!-- ICON LIBRARY -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
-  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 3a2 2 0 01-.4 2L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012-.4c1 .3 2 .5 3 .6a2 2 0 011.7 2z"/></symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
 </svg>
 
 <!-- TOP UTILITY BANNER -->
@@ -71,10 +72,7 @@ tailwind.config = {
       <a href="solution.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">SOLUTIONS</a>
       <a href="lithium-ion.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">JAC LITHIUM-ION</a>
       <a href="equipment-rental.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">EQUIPMENT RENTAL</a>
-      <a href="about.html" class="relative text-xs font-bold uppercase tracking-widest text-brand">
-        ABOUT US
-        <span class="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand rounded-full"></span>
-      </a>
+      <a href="about.html" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand transition-colors">ABOUT US</a>
     </nav>
     <div class="hidden lg:flex items-center gap-3 shrink-0">
       <div class="relative">
@@ -103,7 +101,7 @@ tailwind.config = {
   <div id="mobileSearchBox" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-3">
     <form action="products.html" method="get" class="bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center gap-2">
       <svg class="w-4 h-4 text-slate-400 ml-2 shrink-0"><use href="#icon-search"/></svg>
-      <input type="text" name="search" placeholder="Search equipment..." class="flex-1 bg-transparent border-0 text-slate-800 text-sm px-2 py-1.5 focus:outline-none" />
+      <input type="text" name="search" placeholder="Search equipment, models..." class="flex-1 bg-transparent border-0 text-slate-800 placeholder-slate-400 text-sm px-2 py-1.5 focus:outline-none" />
     </form>
   </div>
 
@@ -112,7 +110,7 @@ tailwind.config = {
     <a href="solution.html" class="block font-bold text-slate-800 text-sm">SOLUTIONS</a>
     <a href="lithium-ion.html" class="block font-bold text-slate-800 text-sm">JAC LITHIUM-ION</a>
     <a href="equipment-rental.html" class="block font-bold text-slate-800 text-sm">EQUIPMENT RENTAL</a>
-    <a href="about.html" class="block font-bold text-brand text-sm">ABOUT US</a>
+    <a href="about.html" class="block font-bold text-slate-800 text-sm">ABOUT US</a>
     <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
       <a href="contact.html" class="block text-center border border-slate-300 text-obsidian font-bold py-3 rounded-xl">INQUIRY</a>
       <a href="dealer-enquiry.html" class="block text-center bg-brand text-white font-bold py-3 rounded-xl shadow-soft-glow">DEALER ENQUIRY</a>
@@ -122,99 +120,134 @@ tailwind.config = {
 
 <!-- HERO -->
 <section class="page-hero-bg py-24 border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 text-center">
     <div class="inline-flex items-center gap-2 bg-white/95 border border-slate-200 px-4 py-1.5 rounded-full text-xs font-bold text-brand tracking-widest uppercase mb-6 shadow-sm">
-      <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span> Corporate Heritage
+      <svg class="w-3.5 h-3.5 text-brand"><use href="#icon-shield"/></svg> Legal Compliance & Data Protection
     </div>
-    <h1 class="text-obsidian text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 max-w-3xl">
-      Internationally Proven. <br/><span class="text-brand">Locally Driven.</span>
+    <h1 class="text-obsidian text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+      Privacy & Cookies Policy
     </h1>
-    <p class="text-slate-600 text-lg sm:text-xl font-light max-w-2xl">
-      The exclusive distributor of JAC lithium-ion electric forklifts in Singapore — backed by 60+ years of automotive and heavy machinery engineering excellence.
+    <p class="text-slate-600 text-sm sm:text-base font-light max-w-2xl mx-auto">
+      Effective Date: 1 January 2026 · Compliant with Singapore Personal Data Protection Act (PDPA 2012)
     </p>
   </div>
 </section>
 
-<!-- BRAND STORY -->
-<section class="py-24 bg-white border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
-    <div class="aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 shadow-luxe bg-slate-100">
-      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Global Engineering" />
-    </div>
-    <div>
-      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-2">Our Origins</div>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight mb-6">A Global Brand, Reimagined for Singapore</h2>
-      <div class="space-y-4 text-slate-600 text-sm font-light leading-relaxed">
-        <p>JAC Material Handling is the exclusive distributor of JAC electric forklifts in Singapore. We specialize in zero-emission, energy-efficient equipment designed specifically for modern high-density logistics and humid industrial environments.</p>
-        <p>As part of Anhui Jianghuai Automobile Group Corp., Ltd. (JAC Motors), we deliver globally proven solutions adapted to regional compliance requirements. Founded in 1964 and listed on the Shanghai Stock Exchange, JAC is a comprehensive manufacturing group producing commercial transports, advanced powertrains, and specialized logistics machinery.</p>
-        <p>Supported by 60+ years of engineering rigor, JAC units are constructed with state-of-the-art robotic welding, German-designed masts, and rigorous multi-stage quality inspections before arrival at our Singapore distribution hub.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- POLICY CONTENT -->
+<section class="py-20 bg-primary-50 border-b border-slate-200 min-h-[600px]">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 space-y-8">
 
-<!-- VISION & MISSION -->
-<section class="py-24 bg-primary-50 border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-8">
-    <div class="glass-card-light rounded-3xl p-10">
-      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-3">Our Vision</div>
-      <h3 class="font-heading font-bold text-2xl text-obsidian mb-4">To be Singapore’s most dependable green logistics partner.</h3>
-      <p class="text-slate-500 text-xs font-light leading-relaxed">Delivering reliable, zero-emission material handling equipment that accelerates warehouse productivity, reduces operational expenditures, and drives ESG innovation across Southeast Asia.</p>
+    <!-- 1. Commitment to Your Privacy -->
+    <div class="glass-card-light rounded-3xl p-8">
+      <h2 class="font-heading font-extrabold text-xl text-obsidian mb-3 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand"></span> 1. Commitment to Your Privacy
+      </h2>
+      <p class="text-slate-600 text-sm font-light leading-relaxed mb-3">
+        JAC Forklift Singapore (hereinafter referred to as <strong>"JAC", "we", "us", or "our"</strong>) respects your personal privacy and is committed to protecting the confidential business and personal information you share with us.
+      </p>
+      <p class="text-slate-600 text-sm font-light leading-relaxed">
+        This Privacy Policy outlines how we collect, use, disclose, and protect personal data gathered through our website, equipment inquiry forms, dealership registrations, and direct commercial correspondence in compliance with the <strong>Singapore Personal Data Protection Act 2012 (PDPA)</strong>.
+      </p>
     </div>
-    <div class="glass-card-light rounded-3xl p-10 border-gold/30">
-      <div class="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-3">Our Mission</div>
-      <h3 class="font-heading font-bold text-2xl text-obsidian mb-4">Empowering businesses to operate faster, cleaner, and safer.</h3>
-      <p class="text-slate-500 text-xs font-light leading-relaxed">We provide turnkey material handling solutions — from technical sizing and direct equipment sales to long-term rental and guaranteed 24-hour maintenance coverage throughout Singapore.</p>
-    </div>
-  </div>
-</section>
 
-<!-- CORE VALUES -->
-<section class="team-vivid-bg py-24 border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="max-w-3xl mb-16">
-      <div class="text-brand text-xs font-bold tracking-[0.2em] uppercase mb-2">Corporate Pillars</div>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-obsidian leading-tight">Our Core Values</h2>
+    <!-- 2. Personal Information We Collect -->
+    <div class="glass-card-light rounded-3xl p-8">
+      <h2 class="font-heading font-extrabold text-xl text-obsidian mb-3 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand"></span> 2. Personal Information We Collect
+      </h2>
+      <p class="text-slate-600 text-sm font-light leading-relaxed mb-4">
+        When you interact with our platforms or request commercial consultations, we may collect the following data categories:
+      </p>
+      <div class="grid sm:grid-cols-2 gap-4 text-xs font-medium text-slate-700">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-2.5">
+          <span class="text-brand font-bold">✓</span>
+          <div><strong>Contact Details:</strong> Full Name, Corporate Email Address, Mobile / Office Contact Numbers.</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-2.5">
+          <span class="text-brand font-bold">✓</span>
+          <div><strong>Enterprise Information:</strong> Company Name, UEN, Facility Operating Zone (West/East/North/Central).</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-2.5">
+          <span class="text-brand font-bold">✓</span>
+          <div><strong>Operational Requirements:</strong> Equipment of interest (HE Forklifts, Reach Trucks), duty cycles, lease terms.</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-start gap-2.5">
+          <span class="text-brand font-bold">✓</span>
+          <div><strong>Technical Logs:</strong> IP address, device telemetry, browser type, and navigation timestamps.</div>
+        </div>
+      </div>
     </div>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">01</div>
-        <div><h4 class="font-heading font-bold text-lg text-obsidian mb-2">Quality First</h4><p class="text-slate-500 text-xs font-light leading-relaxed">Rigorous factory testing, structural FEA simulation, and precision manufacturing across every tonnage chassis.</p></div>
-      </div>
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">02</div>
-        <div><h4 class="font-heading font-bold text-lg text-obsidian mb-2">Innovation Driven</h4><p class="text-slate-500 text-xs font-light leading-relaxed">Continuous R&D investment into intelligent battery telemetry, autonomous AGVs, and energy recuperation systems.</p></div>
-      </div>
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">03</div>
-        <div><h4 class="font-heading font-bold text-lg text-obsidian mb-2">Customer Focus</h4><p class="text-slate-500 text-xs font-light leading-relaxed">Understanding specific floor constraints, rack depths, and duty cycles to engineer custom commercial outcomes.</p></div>
-      </div>
-      <div class="glass-card-light rounded-3xl p-8 flex gap-6">
-        <div class="text-brand font-heading font-extrabold text-3xl">04</div>
-        <div><h4 class="font-heading font-bold text-lg text-obsidian mb-2">Integrity & Reliability</h4><p class="text-slate-500 text-xs font-light leading-relaxed">Transparent specifications, straightforward pricing, and rapid response SLAs that safeguard customer uptime.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- CONNECTED PLAIN INQUIRY JUMP SECTION (DARK EMERALD BANNER) -->
-<section class="quick-inquiry-bar py-20 px-6 lg:px-10 text-center">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-emerald-300 text-xs font-bold tracking-widest uppercase mb-3">
-      Corporate & Partner Desk
+    <!-- 3. How We Use Your Data -->
+    <div class="glass-card-light rounded-3xl p-8">
+      <h2 class="font-heading font-extrabold text-xl text-obsidian mb-3 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand"></span> 3. How We Use Your Data
+      </h2>
+      <p class="text-slate-600 text-sm font-light leading-relaxed mb-3">
+        Your data is processed strictly for legitimate corporate purposes, including:
+      </p>
+      <ul class="space-y-2 text-xs text-slate-600 font-light leading-relaxed">
+        <li class="flex items-center gap-2"><span class="text-brand font-bold">•</span> Formulating accurate technical specifications, equipment proposals, and commercial rental quotations.</li>
+        <li class="flex items-center gap-2"><span class="text-brand font-bold">•</span> Evaluating and processing Authorized Dealership (B2B Partner) registrations.</li>
+        <li class="flex items-center gap-2"><span class="text-brand font-bold">•</span> Coordinating on-site forklift trials, facility visits, and 24-hour maintenance SLA dispatches in Singapore.</li>
+        <li class="flex items-center gap-2"><span class="text-brand font-bold">•</span> Fulfilling corporate legal, tax, and auditing requirements under Singapore regulations.</li>
+      </ul>
+      <div class="mt-4 p-3.5 bg-emerald-50/70 border border-emerald-200 rounded-xl text-xs text-emerald-900 font-medium">
+        <strong>Our Guarantee:</strong> We do NOT sell, lease, or monetize your commercial or personal data to marketing aggregators or unauthorized third parties under any circumstances.
+      </div>
     </div>
-    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-white mb-4">
-      Have a Question for Our Singapore Team?
-    </h2>
-    <p class="text-emerald-100/90 text-sm font-light mb-8 max-w-2xl mx-auto leading-relaxed">
-      Submit a general inquiry or speak directly with our regional management team regarding corporate accounts, facility partnerships, and logistics inquiries.
-    </p>
 
-    <div class="flex justify-center">
-      <a href="contact.html?mode=plain#inquiry-form-section" class="inline-flex items-center gap-2 bg-[#059669] hover:bg-[#047857] text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-[0_14px_35px_-6px_rgba(16,185,129,0.5)] transition-all hover:scale-105">
-        Send General Inquiry →
-      </a>
+    <!-- 4. Disclosure & Data Transfer -->
+    <div class="glass-card-light rounded-3xl p-8">
+      <h2 class="font-heading font-extrabold text-xl text-obsidian mb-3 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand"></span> 4. Disclosure & Data Transfer
+      </h2>
+      <p class="text-slate-600 text-sm font-light leading-relaxed mb-3">
+        We may share your data solely on a strict need-to-know basis with:
+      </p>
+      <ul class="space-y-2 text-xs text-slate-600 font-light leading-relaxed mb-3">
+        <li class="flex items-center gap-2"><span class="text-brand font-bold">•</span> <strong>Authorized Service Teams:</strong> Field maintenance technicians and logistics dispatchers in Singapore.</li>
+        <li class="flex items-center gap-2"><span class="text-brand font-bold">•</span> <strong>Financing & Leasing Partners:</strong> Certified financial institutions (only when you explicitly request lease financing options).</li>
+        <li class="flex items-center gap-2"><span class="text-brand font-bold">•</span> <strong>Regulatory Authorities:</strong> When mandatory under Singapore law or court subpoena.</li>
+      </ul>
     </div>
+
+    <!-- 5. Security & Storage Safeguards -->
+    <div class="glass-card-light rounded-3xl p-8">
+      <h2 class="font-heading font-extrabold text-xl text-obsidian mb-3 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand"></span> 5. Security & Storage Safeguards
+      </h2>
+      <p class="text-slate-600 text-sm font-light leading-relaxed">
+        We deploy multi-tiered administrative, physical, and digital safeguards—including TLS/SSL transport encryption, access control policies, and periodic security reviews—to protect your records from loss, theft, and unauthorized access. Data is retained only for as long as necessary to fulfill the business purposes for which it was gathered.
+      </p>
+    </div>
+
+    <!-- 6. Cookies & Tracking -->
+    <div class="glass-card-light rounded-3xl p-8">
+      <h2 class="font-heading font-extrabold text-xl text-obsidian mb-3 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand"></span> 6. Cookies & Tracking
+      </h2>
+      <p class="text-slate-600 text-sm font-light leading-relaxed">
+        Our website utilizes essential session cookies and performance telemetry to maintain security, preserve user search queries, and optimize page load speeds. You can configure your browser to decline cookies, though certain interactive features (e.g., instant quotation filters) may perform with reduced functionality.
+      </p>
+    </div>
+
+    <!-- 7. Your Rights & Data Protection Officer (DPO) -->
+    <div class="glass-card-light rounded-3xl p-8 border-brand/40">
+      <h2 class="font-heading font-extrabold text-xl text-obsidian mb-3 flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand"></span> 7. Your Rights & Data Protection Officer (DPO)
+      </h2>
+      <p class="text-slate-600 text-sm font-light leading-relaxed mb-4">
+        Under the Singapore PDPA, you are entitled to request access to or correction of your personal records, or to withdraw consent for marketing correspondence at any time.
+      </p>
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-2 text-xs text-slate-700">
+        <div><strong>Data Protection Officer:</strong> Compliance & Legal Affairs Desk</div>
+        <div><strong>Entity:</strong> JAC Equipment Pte. Ltd. (UEN 202621058N)</div>
+        <div><strong>Email:</strong> <a href="mailto:alvincslim@gmail.com" class="text-brand font-semibold hover:underline">alvincslim@gmail.com</a> (Subject: Attention DPO)</div>
+        <div><strong>Hotline:</strong> <a href="tel:+60138188181" class="text-brand font-semibold hover:underline">+60 13-818 8181</a></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -335,7 +368,7 @@ tailwind.config = {
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Equipment Pte. Ltd. All Rights Reserved.</div>
       <div class="flex gap-6">
-        <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="privacy-policy.html" class="text-white font-semibold transition-colors">Privacy Policy</a>
         <a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
       </div>
     </div>
