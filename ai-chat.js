@@ -426,3 +426,37 @@
     createChatWidget();
   }
 })();
+
+// =========================================================================
+// Trigger Product AI Estimate from Spec Pages
+// =========================================================================
+window.triggerProductAiEstimate = function() {
+  // 1. Open the chat widget if closed
+  const container = document.getElementById('jacChatContainer');
+  const launcher = document.getElementById('jacChatLauncher');
+  
+  if (container && !container.classList.contains('active')) {
+    container.classList.add('active');
+  }
+
+  // 2. Grab current product name and tonnage from the spec page DOM
+  const productName = document.getElementById('productName')?.textContent || 'this equipment';
+  const productTonnage = document.getElementById('productTonnage')?.textContent || '';
+
+  // 3. Construct a smart custom prompt
+  const estimateQuery = `Hi! Can you give me an instant estimate or quote details for the ${productName} (${productTonnage})? What details do you need from my facility?`;
+
+  // 4. Automatically dispatch it to the chat handler if available, or fill the input box
+  const chatInput = document.getElementById('jacChatInput');
+  if (chatInput) {
+    chatInput.value = estimateQuery;
+    // Optional: Automatically submit it so the user doesn't have to press enter
+    const chatForm = document.getElementById('jacChatForm');
+    if (chatForm) {
+      // Small timeout to ensure window opening animation finishes first
+      setTimeout(() => {
+        chatForm.requestSubmit();
+      }, 250);
+    }
+  }
+};
