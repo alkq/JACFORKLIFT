@@ -56,7 +56,7 @@ html body .shadow-soft-glow {
 }
 
 /* =========================================================================
-   2. UNIVERSAL MOODY DARK FOREST CTA & INQUIRY OVERLAY (Matches Image 2)
+   2. UNIVERSAL MOODY DARK FOREST CTA & INQUIRY OVERLAY
    ========================================================================= */
 .cta-vivid-faded-bg,
 #contact.cta-vivid-faded-bg,
@@ -74,7 +74,7 @@ section.quick-inquiry-bar {
   color: #FFFFFF !important;
 }
 
-/* Eyebrow / Tag Styling (Bright Glowing Mint Emerald) */
+/* Eyebrow / Tag Styling (Bright Mint Accent) */
 #contact .text-brand,
 #contact div:first-child,
 #contact [class*="tracking-widest"],
@@ -101,7 +101,7 @@ section[class*="quick-inquiry-bar"] p {
   color: rgba(226, 252, 240, 0.9) !important;
 }
 
-/* Universal Pill CTA Buttons: Vivid Emerald with Soft Green Glow */
+/* Universal Pill CTA Buttons */
 #contact a.bg-brand,
 #contact a[href*="contact.html"],
 .quick-inquiry-bar button[type="submit"],
@@ -131,7 +131,7 @@ section[class*="quick-inquiry-bar"] a:hover {
 }
 
 /* =========================================================================
-   3. UNIVERSAL DEEP PINE FOOTER (Matches Image 2)
+   3. UNIVERSAL DEEP PINE FOOTER
    ========================================================================= */
 footer.bg-obsidian,
 footer {
@@ -139,12 +139,10 @@ footer {
   border-top: 1px solid rgba(16, 185, 129, 0.15) !important;
 }
 
-/* Footer Brand Logo Text */
 footer .text-white {
   color: #FFFFFF !important;
 }
 
-/* Footer "SINGAPORE" subtitle tag under logo */
 footer .text-brand,
 footer [class*="text-[9px]"] {
   color: #10B981 !important;
@@ -152,7 +150,6 @@ footer [class*="text-[9px]"] {
   letter-spacing: 0.25em !important;
 }
 
-/* Footer Phone and Email SVG Icons */
 footer svg.text-brand,
 footer svg,
 footer svg path {
@@ -160,7 +157,6 @@ footer svg path {
   stroke: #10B981 !important;
 }
 
-/* Footer Text & Links */
 footer p,
 footer a,
 footer span,
@@ -178,12 +174,10 @@ footer h4 {
   color: #F8FAFC !important;
 }
 
-/* Footer Bottom Copyright Line */
 footer .border-t {
   border-color: rgba(16, 185, 129, 0.1) !important;
 }
 
-/* Top utility bar accent line & status indicator */
 .bg-obsidian span.text-brand,
 .bg-obsidian span[class*="text-brand"] {
   color: #10B981 !important;
@@ -473,6 +467,9 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.25);
 }
 
+/* =========================================================================
+   10. PRODUCT SPECIFICATION & THUMBNAILS (Moved from product-spec.html)
+   ========================================================================= */
 .product-showcase {
   background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
 }
@@ -489,8 +486,8 @@ h1, h2, h3, h4 {
 
 .thumbs img {
   width: 100% !important;
-  height: 85px !important;       /* Set a fixed height for all thumbnails */
-  object-fit: contain !important; /* Keeps the aspect ratio without cropping */
+  height: 85px !important;
+  object-fit: contain !important;
   background: #F8FAFC !important;
   padding: 0.5rem !important;
   border-radius: 0.75rem !important;
@@ -556,7 +553,7 @@ h1, h2, h3, h4 {
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* =========================================================================
-   10. FORCE THE INQUIRY / REQUEST SECTION INTO DEEP MOODY EMERALD BANNER
+   11. INQUIRY / REQUEST SECTION DEEP EMERALD BANNER
    ========================================================================= */
 section:has(#quickInquiryForm),
 section.py-24.bg-primary-50.border-b:has(form),
@@ -636,7 +633,7 @@ section:has(#quickEquipSelect) button[type="submit"]:hover {
 }
 
 .leaflet-control-zoom a {
-  background-color: #161F2E !important; /* Obsidian Surface */
+  background-color: #161F2E !important;
   color: #FFFFFF !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   width: 34px !important;
@@ -647,7 +644,7 @@ section:has(#quickEquipSelect) button[type="submit"]:hover {
 }
 
 .leaflet-control-zoom a:hover {
-  background-color: #047857 !important; /* Brand Emerald */
+  background-color: #047857 !important;
   color: #FFFFFF !important;
 }
 
@@ -655,7 +652,6 @@ section:has(#quickEquipSelect) button[type="submit"]:hover {
   border-bottom: none !important;
 }
 
-/* Transforms the map into a clean dark mode matching your site theme */
 #dealerMap .leaflet-tile-pane {
   filter: brightness(0.6) invert(1) contrast(1.3) hue-rotate(200deg) saturate(0.3);
 }

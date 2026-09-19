@@ -414,11 +414,15 @@ tailwind.config = {
       </div>
       <div class="sm:col-span-4 relative">
         <select id="quickLocSelect" name="location" class="w-full bg-slate-50 text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
-          <option value="">Select Singapore Location</option>
-          <option value="west">West · Jurong / Tuas Industrial Hub</option>
-          <option value="east">East · Changi / Airport Logistics Park</option>
-          <option value="north">North · Woodlands Industrial Corridor</option>
-          <option value="central">Central · City / Mezzanine Facilities</option>
+          <option value="">Select Destination Country</option>
+          <option value="Singapore" selected>🇸🇬 Singapore</option>
+          <option value="Malaysia">🇲🇾 Malaysia</option>
+          <option value="Indonesia">🇮🇩 Indonesia</option>
+          <option value="Thailand">🇹🇭 Thailand</option>
+          <option value="Vietnam">🇻🇳 Vietnam</option>
+          <option value="Philippines">🇵🇭 Philippines</option>
+          <option value="Australia">🇦🇺 Australia</option>
+          <option value="Other">🌐 Other International</option>
         </select>
       </div>
       <div class="sm:col-span-3">
@@ -434,7 +438,6 @@ tailwind.config = {
 <footer class="bg-obsidian text-slate-400 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
-    <!-- Column 1 & 2: Brand Info & Contact -->
     <div class="lg:col-span-2">
       <div class="flex items-center gap-3 mb-6">
         <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm">
@@ -450,7 +453,6 @@ tailwind.config = {
         JAC Material Handling is Singapore's exclusive provider of JAC electric forklifts. We specialize in energy-efficient, lithium-powered equipment designed for modern logistics and sustainable industrial operations.
       </p>
 
-      <!-- Registered Entity -->
       <div class="mb-6">
         <div class="text-[10px] font-bold text-emerald-400 tracking-[0.2em] uppercase mb-1">HQ SG</div>
         <div class="font-heading font-bold text-white text-sm mb-0.5">
@@ -470,7 +472,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Column 3: Quick Links -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -483,7 +484,6 @@ tailwind.config = {
       </ul>
     </div>
 
-    <!-- Column 4: Our Products -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Products</h4>
       <ul class="space-y-2 text-xs font-light">
@@ -494,12 +494,9 @@ tailwind.config = {
       </ul>
     </div>
 
-    <!-- Column 5: Our Locations -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Locations</h4>
-
       <div class="space-y-4 text-xs font-light">
-        <!-- HQ SG -->
         <div>
           <div class="text-[10px] font-bold text-emerald-400 tracking-[0.15em] uppercase mb-1">HQ SG</div>
           <p class="text-slate-400 leading-relaxed">
@@ -508,7 +505,6 @@ tailwind.config = {
             Singapore 409051
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Fabrication Workshop</div>
           <p class="text-slate-400 leading-relaxed">
@@ -516,7 +512,6 @@ tailwind.config = {
             #01-79 Singapore 628464
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Forklift Centre</div>
           <p class="text-slate-400 leading-relaxed">
@@ -526,10 +521,8 @@ tailwind.config = {
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- Authorized Signatory Bar -->
   <div class="border-t border-slate-800/60">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
       <div class="text-center sm:text-left">
@@ -542,7 +535,6 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- Copyright Bar -->
   <div class="border-t border-slate-800/80">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-light gap-4">
       <div>Copyright © 2026 JAC Equipment Pte. Ltd. All Rights Reserved.</div>

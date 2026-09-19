@@ -143,8 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (locParam) {
         const selectLoc = document.getElementById('selectLocation');
         if (selectLoc) {
+          const searchParam = locParam.toLowerCase().trim();
           for (let j = 0; j < selectLoc.options.length; j++) {
-            if (selectLoc.options[j].value.toLowerCase() === locParam.toLowerCase()) {
+            const optVal = selectLoc.options[j].value.toLowerCase().trim();
+            const optText = selectLoc.options[j].text.toLowerCase().trim();
+            if (optVal === searchParam || optText.includes(searchParam)) {
               selectLoc.selectedIndex = j;
               break;
             }
@@ -253,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initHeroSlider();
+  initProductSpecPage();
 });
 
 // =========================================================================
@@ -689,6 +693,11 @@ async function executeContactSubmission() {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
+  // Merge country code with phone number for clean email notification
+  if (data.phone_country_code && data.phone_number) {
+    data.full_contact_phone = `${data.phone_country_code} ${data.phone_number}`;
+  }
+
   // ⚠️ Web3Forms Access Key — public by design (routes to Alvin's inbox only)
   data.access_key = '998be744-6cf3-4e44-97b2-19946bb985ba';
   data.from_name = 'JAC Singapore Web Inquiry';
@@ -740,6 +749,11 @@ async function executeDealerSubmission() {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
+  // Merge country code with phone number for clean email notification
+  if (data.phone_country_code && data.phone) {
+    data.full_contact_phone = `${data.phone_country_code} ${data.phone}`;
+  }
+
   // ⚠️ Web3Forms Access Key — public by design
   data.access_key = '998be744-6cf3-4e44-97b2-19946bb985ba';
   data.from_name = 'JAC Singapore Dealer Application';
@@ -781,12 +795,6 @@ async function executeDealerSubmission() {
 
 // =========================================================================
 // VIC Portal Login Handler
-// -------------------------------------------------------------------------
-// Production: Calls POST /api/vic-login (backend must validate credentials)
-//
-// ⚠️ DEMO MODE (CURRENT): Uses ONE demo account for client presentation.
-//    Demo credentials:  demo@jacforklift.sg  /  demo1234
-//    Remove this block once /api/vic-login is live in production.
 // =========================================================================
 const VIC_DEMO_EMAIL    = "demo@jacforklift.sg";
 const VIC_DEMO_PASSWORD = "demo1234";
@@ -794,24 +802,19 @@ const VIC_DEMO_PASSWORD = "demo1234";
 const VIC_CRED_KEY      = "jac_vic_saved_credentials";  // { email, password }
 const VIC_SESSION_KEY   = "jac_vic_logged_in";          // true | false
 
-// -------------------------------------------------------------------------
-// Apply session state on vic.html page load
-// -------------------------------------------------------------------------
 function applyVicSessionOnLoad() {
   const loginState     = document.getElementById('loginState');
   const dashboardState = document.getElementById('dashboardState');
-  if (!loginState || !dashboardState) return; // Not on vic.html — bail
+  if (!loginState || !dashboardState) return;
 
-  // 1. Check if user is already logged in
   const loggedIn = localStorage.getItem(VIC_SESSION_KEY) === 'true';
 
   if (loggedIn) {
     loginState.style.display = 'none';
     dashboardState.style.display = 'block';
-    return; // Skip pre-fill; user is already in
+    return;
   }
 
-  // 2. Not logged in — show login form and pre-fill saved credentials
   loginState.style.display = 'flex';
   dashboardState.style.display = 'none';
 
@@ -825,7 +828,6 @@ function applyVicSessionOnLoad() {
       emailInput.value = saved.email;
       passwordInput.value = saved.password;
 
-      // Visual hint: subtle green tint to show fields were auto-filled
       [emailInput, passwordInput].forEach(el => {
         el.classList.add('bg-emerald-50', 'border-brand/40');
         el.addEventListener('input', function handler() {
@@ -839,9 +841,6 @@ function applyVicSessionOnLoad() {
   }
 }
 
-// -------------------------------------------------------------------------
-// Save / clear session state
-// -------------------------------------------------------------------------
 function saveVicCredentials(email, password) {
   try {
     localStorage.setItem(VIC_CRED_KEY, JSON.stringify({ email, password }));
@@ -861,13 +860,9 @@ function clearVicSession() {
   } catch (err) {}
 }
 
-// Auto-run on page load (both on initial and after DOM ready)
 document.addEventListener('DOMContentLoaded', applyVicSessionOnLoad);
 if (document.readyState !== 'loading') applyVicSessionOnLoad();
 
-// -------------------------------------------------------------------------
-// Main login handler
-// -------------------------------------------------------------------------
 async function handleVicLogin(e) {
   e.preventDefault();
 
@@ -895,33 +890,13 @@ async function handleVicLogin(e) {
     loginBtn.textContent = 'Authenticating Telemetry...';
   }
 
-  // Simulate a brief server round-trip
   await new Promise(resolve => setTimeout(resolve, 500));
 
-  // ⚠️ DEMO MODE — remove once /api/vic-login is live
-  const isValid =
-    email === VIC_DEMO_EMAIL &&
-    password === VIC_DEMO_PASSWORD;
-
-  /*
-  // PRODUCTION: Uncomment this block, delete the demo check above
-  let isValid = false;
-  try {
-    const response = await fetch('/api/vic-login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-    const result = await response.json();
-    isValid = result.success === true;
-  } catch (err) {
-    console.error('VIC login error:', err);
-  }
-  */
+  const isValid = email === VIC_DEMO_EMAIL && password === VIC_DEMO_PASSWORD;
 
   if (isValid) {
-    saveVicCredentials(email, password);   // remember for next time
-    markVicSessionActive();                // stay logged in across pages
+    saveVicCredentials(email, password);
+    markVicSessionActive();
 
     if (errorAlert) errorAlert.classList.add('hidden');
     document.getElementById('loginState').style.display = 'none';
@@ -940,28 +915,19 @@ async function handleVicLogin(e) {
   }
 }
 
-// -------------------------------------------------------------------------
-// Logout handler — clears session AND saved credentials
-// -------------------------------------------------------------------------
 function handleVicLogout() {
-  // Clear saved credentials so the login form starts blank next time
   clearVicSession();
 
-  // Reset the login form fields
   const emailInput = document.getElementById('vicEmail');
   const passwordInput = document.getElementById('vicPassword');
   if (emailInput) emailInput.value = '';
   if (passwordInput) passwordInput.value = '';
 
-  // Show login, hide dashboard
   document.getElementById('loginState').style.display = 'flex';
   document.getElementById('dashboardState').style.display = 'none';
   window.scrollTo(0, 0);
 }
 
-// -------------------------------------------------------------------------
-// Password visibility toggle
-// -------------------------------------------------------------------------
 function togglePasswordVisibility() {
   const passwordInput = document.getElementById('vicPassword');
   const eyeIcon       = document.getElementById('eyeIcon');
@@ -978,5 +944,222 @@ function togglePasswordVisibility() {
       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
       <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
     `;
+  }
+}
+
+// =========================================================================
+// PRODUCT SPECIFICATION & DATA ENGINE (Extracted from product-spec.html)
+// =========================================================================
+const PRODUCTS = {
+  "he-series": { 
+    name: "HE Series", tonnage: "2.5 – 3.8 TON", subtitle: "Heavy-Duty Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklift", 
+    images: ["images/HE-Series-2.5-3.8T.png", "images/he-series/back.png", "images/he-series/topleft.png", "images/he-series/front.png"],
+    description: "The HE Series is engineered to replace traditional diesel trucks with massive lithium-ion power and zero emissions. Built for the most demanding warehouse and industrial environments.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["HE25","HE30","HE35","HE38"], rows: [["Load Capacity","2,500 kg","3,000 kg","3,500 kg","3,800 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","80V / 500Ah","80V / 600Ah","80V / 700Ah","80V / 800Ah"],["Charging Time","1.5 hrs","2 hrs","2 hrs","2.5 hrs"],["Runtime (typical)","6–8 hrs","8–10 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","2,200 mm","2,300 mm","2,400 mm","2,500 mm"],["Max Speed","16 km/h","18 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "l-series": { 
+    name: "L Series", tonnage: "1.5 – 3.5 TON", subtitle: "Smart Warehouse Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklift", 
+    images: ["images/L-Series-1.5-3.5T.png", "images/l-series/front.png", "images/l-series/topright.png", "images/l-series/upper.png"],
+    description: "The L Series is the ultimate smart warehouse solution for versatile indoor and outdoor work. Designed for precision, efficiency, and 24/7 reliability.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["L15","L20","L30","L35"], rows: [["Load Capacity","1,500 kg","2,000 kg","3,000 kg","3,500 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah","80V / 600Ah","80V / 700Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","1,900 mm","2,000 mm","2,200 mm","2,300 mm"],["Max Speed","15 km/h","15 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "je-series": { 
+    name: "JE Series", tonnage: "4.5 – 5.0 TON", subtitle: "Heavy-Duty Electric Forklift", category: "Lithium Forklifts", categorySlug: "forklift", 
+    images: ["images/JE-Series-4.5-5.0T.png", "images/je-series/btmleft.png", "images/je-series/topright.png", "images/je-series/front.png"],
+    description: "Heavy-duty electric forklift for the most demanding industrial operations. Delivers diesel-grade power without the emissions.", 
+    highlights: [{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "5.0 T", subtitle: "Max Capacity" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["JE45","JE50"], rows: [["Load Capacity","4,500 kg","5,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","80V / 800Ah","96V / 900Ah"],["Charging Time","2 hrs","2.5 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Turning Radius","2,600 mm","2,700 mm"],["Max Speed","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "three-wheel": { 
+    name: "Three Wheel", tonnage: "1.5 – 2.0 TON", subtitle: "Compact Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklift", 
+    images: ["images/Three-Wheel-1.5-2.0T.png", "images/three-wheel/back.png", "images/three-wheel/topright.png", "images/three-wheel/front.png"],
+    description: "Compact lithium forklift for tight spaces and precision handling. Ideal for narrow aisles and confined warehouse zones.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "1.7 m", subtitle: "Turning Radius" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["TW15","TW20"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Turning Radius","1,700 mm","1,750 mm"],["Max Speed","14 km/h","14 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "reach-truck-stand": { 
+    name: "Stand Type Reach Truck", tonnage: "1.5 TON", subtitle: "Vertical Storage Reach Truck", category: "Reach Trucks", categorySlug: "reach", 
+    images: ["images/Stand-type-Reach-Truck-1.5T.png", "images/stand-type/front.png", "images/stand-type/topleft.png", "images/stand-type/upper.png"],
+    description: "Maximise your vertical storage space without sacrificing aisle width. The Stand Type Reach Truck is built for high-density warehouse layouts.", 
+    highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "1.8 m", subtitle: "Aisle Width" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Stand Type 1.5T"], rows: [["Load Capacity","1,500 kg"],["Lift Height (max)","10,000 mm"],["Battery Capacity","48V / 500Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","8–10 hrs"],["Aisle Width Required","1,800 mm"],["Max Speed","10 km/h"],["Noise Level","<70 dB"],["Warranty","3 Years / 4,000 Hours"]] } 
+  },
+  "reach-truck-sit": { 
+    name: "Sit Type Reach Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Long-Shift Reach Truck", category: "Reach Trucks", categorySlug: "reach", 
+    images: ["images/Sit-type-Reach-Truck-1.5-2.0T.png", "images/sit-type/topright.png", "images/sit-type/topleft.png", "images/sit-type/btmleft.png"],
+    description: "Designed for intensive, long-shift warehouse operations. Sit-down comfort and all-day productivity.", 
+    highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Sit-Down", subtitle: "Ergonomic" },{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Sit Type 1.5T","Sit Type 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","10,000 mm","10,000 mm"],["Battery Capacity","48V / 600Ah","48V / 700Ah"],["Charging Time","2 hrs","2 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Aisle Width Required","1,900 mm","2,000 mm"],["Max Speed","10 km/h","10 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
+  },
+  "walkie-pallet": { 
+    name: "Walkie Pallet Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Lithium Battery Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", 
+    images: ["images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png", "images/walkie/bckleft.png", "images/walkie/bckright.png", "images/walkie/topright.png"],
+    description: "Compact and efficient lithium-powered pallet truck for tight-space operations. Ideal for retail, logistics, and light manufacturing.", 
+    highlights: [{ icon: "icon-bolt", title: "1 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "Lithium", subtitle: "Battery" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Walkie 1.5T","Walkie 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Fork Length","1,150 mm","1,150 mm"],["Battery","48V / 20Ah Lithium","48V / 30Ah Lithium"],["Charging Time","1 hr","1 hr"],["Runtime (typical)","4–6 hrs","4–6 hrs"],["Max Speed","5 km/h","5 km/h"],["Warranty","2 Years","2 Years"]] } 
+  },
+  "rider-pallet": { 
+    name: "Rider Pallet Truck", tonnage: "2.0 – 3.0 TON", subtitle: "Long-Distance Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", 
+    images: ["images/Rider-Pallet-Truck-2.0–3.0T.png", "images/rider-pallet/upper.png", "images/rider-pallet/topleft.png", "images/rider-pallet/topright.png"],
+    description: "Accelerate your cross-warehouse transportation. Built for heavier loads and long distances with fold-down platform for operator comfort.", 
+    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-truck", title: "Fold-Down", subtitle: "Platform" },{ icon: "icon-package", title: "3.0 T", subtitle: "Max Load" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Rider 2.0T","Rider 3.0T"], rows: [["Load Capacity","2,000 kg","3,000 kg"],["Fork Length","1,150 mm","1,200 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","8 km/h","8 km/h"],["Warranty","2 Years","2 Years"]] } 
+  },
+  "straddle-stacker": { 
+    name: "Straddle-type Rider Electric Stacker", tonnage: "1.0 – 1.5 TON", subtitle: "Heavy-Duty Electric Stacker", category: "Stackers", categorySlug: "stacker", 
+    images: ["images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png", "images/straddle-type/btmleft.png", "images/straddle-type/topleft.png", "images/straddle-type/topright.png"],
+    description: "Straddle-type design for enhanced stability and heavy-duty stacking efficiency. Ideal for dense storage operations.", 
+    highlights: [{ icon: "icon-target", title: "5.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Straddle", subtitle: "Type" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Straddle 1.0T","Straddle 1.5T"], rows: [["Load Capacity","1,000 kg","1,500 kg"],["Lift Height (max)","5,500 mm","5,500 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h"],["Warranty","2 Years","2 Years"]] } 
+  },
+  "electric-stacker": { 
+    name: "Electric Rider Stacker", tonnage: "1.0 – 2.0 TON", subtitle: "Standard Electric Stacker", category: "Stackers", categorySlug: "stacker", 
+    images: ["images/Electric-Rider-Stacker1.0-2.0T.png", "images/electric-rider/btmleft.png", "images/electric-rider/topleft.png", "images/electric-rider/topright.png"],
+    description: "Boost your medium-level stacking efficiency with this standard electric stacker. Ergonomic, powerful, and reliable.", 
+    highlights: [{ icon: "icon-target", title: "4.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["E-Stacker 1.0T","E-Stacker 1.5T","E-Stacker 2.0T"], rows: [["Load Capacity","1,000 kg","1,500 kg","2,000 kg"],["Lift Height (max)","4,500 mm","4,500 mm","4,500 mm"],["Battery","48V / 200Ah","48V / 250Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h","6 km/h"],["Warranty","2 Years","2 Years","2 Years"]] } 
+  },
+  "electric-tractor": { 
+    name: "Electric Tractor", tonnage: "TOWING SOLUTION", subtitle: "Zero-Emission Towing", category: "Tractor & Platform", categorySlug: "other", 
+    images: ["images/Electric-Tractor.png", "images/electric-tractor/btmleft.png", "images/electric-tractor/topleft.png", "images/electric-tractor/topright.png"],
+    description: "Zero-emission towing solution for logistics and manufacturing floors. Reliable, powerful, and built for continuous operation.", 
+    highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-target", title: "Heavy", subtitle: "Towing" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Electric Tractor"], rows: [["Towing Capacity","3,000 kg"],["Battery","48V / 400Ah"],["Charging Time","2 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","12 km/h"],["Warranty","2 Years"]] } 
+  },
+  "electric-platform": { 
+    name: "Electric Platform Truck", tonnage: "FLATBED PLATFORM", subtitle: "Versatile Material Movement", category: "Tractor & Platform", categorySlug: "other", 
+    images: ["images/Electric-Platform-Truck.png", "images/electric-platform/btmleft.png", "images/electric-platform/topleft.png", "images/electric-platform/upper.png"],
+    description: "Versatile electric platform for efficient material movement across facilities. Ideal for logistics, manufacturing, and 3PL operations.", 
+    highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-package", title: "Large", subtitle: "Platform" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Electric Platform Truck"], rows: [["Load Capacity","2,000 kg"],["Platform Size","1,500 x 1,000 mm"],["Battery","48V / 300Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","10 km/h"],["Warranty","2 Years"]] } 
+  },
+  "stacking-agv": { 
+    name: "Stacking AGV", tonnage: "AUTONOMOUS GUIDED VEHICLE", subtitle: "24/7 Automated Stacking", category: "Automation", categorySlug: "agv", 
+    images: ["images/stacking-agv.png", "images/stacking-agv/btmright.png", "images/stacking-agv/front.png", "images/stacking-agv/upper.png"],
+    description: "Autonomous guided vehicle for advanced warehouse automation and 24/7 operation. Fully integrated with WMS and warehouse robotics.", 
+    highlights: [{ icon: "icon-target", title: "Autonomous", subtitle: "Operation" },{ icon: "icon-bolt", title: "LiDAR", subtitle: "Navigation" },{ icon: "icon-battery", title: "24/7", subtitle: "Runtime" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
+    specs: { headers: ["Stacking AGV"], rows: [["Load Capacity","1,000 kg"],["Lift Height (max)","3,000 mm"],["Navigation","LiDAR + SLAM"],["Battery","48V / 200Ah Lithium"],["Charging Time","1 hr (auto-dock)"],["Runtime","24/7 (opportunity charge)"],["Warranty","2 Years"]] } 
+  }
+};
+
+// Thumbnail Switcher function exposed globally to window
+window.swapImage = function(thumb) {
+  const mainImg = document.getElementById('mainImage');
+  if (mainImg) mainImg.src = thumb.src;
+  document.querySelectorAll('.thumbs img').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+};
+
+// Main Product Spec Renderer
+function initProductSpecPage() {
+  const specHeader = document.getElementById('specHeader');
+  const specBody = document.getElementById('specBody');
+  if (!specHeader || !specBody) return; // Exit cleanly if not on product-spec.html
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id') || 'he-series';
+  const product = PRODUCTS[id] || PRODUCTS['he-series'];
+
+  const imgList = product.images || [product.image, product.image, product.image, product.image];
+
+  document.title = `${product.name} | JAC Forklift Singapore`;
+  
+  const bCat = document.getElementById('breadcrumbCategory');
+  if (bCat) bCat.textContent = product.category;
+  
+  const bName = document.getElementById('breadcrumbName');
+  if (bName) bName.textContent = product.name;
+  
+  const pName = document.getElementById('productName');
+  if (pName) pName.textContent = product.name;
+  
+  const pTonnage = document.getElementById('productTonnage');
+  if (pTonnage) pTonnage.textContent = product.tonnage;
+  
+  const pSubtitle = document.getElementById('productSubtitle');
+  if (pSubtitle) pSubtitle.textContent = product.subtitle;
+  
+  const pDesc = document.getElementById('productDescription');
+  if (pDesc) pDesc.textContent = product.description;
+  
+  const cBadge = document.getElementById('categoryBadge');
+  if (cBadge) cBadge.textContent = product.category.toUpperCase();
+
+  const mainImg = document.getElementById('mainImage');
+  if (mainImg) {
+    mainImg.src = imgList[0];
+    mainImg.alt = product.name;
+  }
+
+  ['thumb1', 'thumb2', 'thumb3', 'thumb4'].forEach((thumbId, index) => {
+    const thumbEl = document.getElementById(thumbId);
+    if (thumbEl) {
+      thumbEl.src = imgList[index] || imgList[0];
+      thumbEl.alt = `${product.name} view ${index + 1}`;
+    }
+  });
+
+  const categoryParam = product.categorySlug || 'forklift';
+  const quoteBtn = document.getElementById('quoteBtn');
+  if (quoteBtn) {
+    quoteBtn.href = `contact.html?equipment=${encodeURIComponent(categoryParam)}&model=${encodeURIComponent(product.name + ' (' + product.tonnage + ')')}`;
+  }
+
+  const quickEquipSelect = document.getElementById('quickEquipSelect');
+  if (quickEquipSelect && categoryParam) {
+    for (let i = 0; i < quickEquipSelect.options.length; i++) {
+      if (quickEquipSelect.options[i].value.toLowerCase() === categoryParam.toLowerCase()) {
+        quickEquipSelect.selectedIndex = i;
+        break;
+      }
+    }
+  }
+
+  const keyHighlights = document.getElementById('keyHighlights');
+  if (keyHighlights && product.highlights) {
+    keyHighlights.innerHTML = product.highlights.map(h => `
+      <div class="glass-card-light rounded-2xl p-4 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5"><use href="#${h.icon}"/></svg>
+        </div>
+        <div>
+          <div class="text-obsidian font-heading font-bold text-sm">${h.title}</div>
+          <div class="text-slate-400 text-xs">${h.subtitle}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  specHeader.innerHTML = `
+    <th class="py-5 px-8 text-xs font-bold text-slate-500 uppercase tracking-wider">Specification</th>
+    ${product.specs.headers.map(h => `<th class="py-5 px-8 text-xs font-bold text-brand uppercase tracking-wider">${h}</th>`).join('')}
+  `;
+
+  specBody.innerHTML = product.specs.rows.map(row => `
+    <tr class="spec-row">
+      <td class="py-4 px-8 font-semibold text-obsidian">${row[0]}</td>
+      ${row.slice(1).map(c => `<td class="py-4 px-8 text-slate-600">${c}</td>`).join('')}
+    </tr>
+  `).join('');
+
+  const relatedGrid = document.getElementById('relatedGrid');
+  if (relatedGrid) {
+    const allProducts = Object.entries(PRODUCTS).filter(([k]) => k !== id);
+    const related = allProducts.slice(0, 3);
+    relatedGrid.innerHTML = related.map(([k, p]) => `
+      <a href="product-spec.html?id=${k}" class="product-card rounded-3xl overflow-hidden">
+        <div class="aspect-[4/3] product-showcase relative flex items-center justify-center p-6 border-b border-slate-100">
+          <img src="${p.images ? p.images[0] : p.image}" alt="${p.name}" class="w-full h-full object-contain" />
+          <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">${p.category.toUpperCase()}</span>
+        </div>
+        <div class="p-6">
+          <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">${p.tonnage}</div>
+          <h3 class="font-heading font-bold text-lg text-obsidian mb-2">${p.name}</h3>
+          <span class="text-brand text-xs font-bold">View Specs →</span>
+        </div>
+      </a>
+    `).join('');
   }
 }

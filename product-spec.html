@@ -7,26 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="global.css" />
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: { 50: '#F8FAFC', 100: '#F1F5F9', DEFAULT: '#FFFFFF' },
-        brand: { light: '#059669', DEFAULT: '#047857', dark: '#065f46' }, // Deep Forest Emerald
-        obsidian: { DEFAULT: '#0B0F17', surface: '#161F2E', muted: '#475569', light: '#64748B' },
-        gold: { DEFAULT: '#C5A059', light: '#D4AF37' }
-      },
-      fontFamily: { heading: ['Montserrat', 'sans-serif'], body: ['Inter', 'sans-serif'] },
-      boxShadow: {
-        'soft-glow': '0 12px 30px -8px rgba(4, 120, 87, 0.35)',
-        'luxe': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04)',
-        'luxe-hover': '0 24px 50px -10px rgba(15, 23, 42, 0.14), 0 8px 20px -4px rgba(15, 23, 42, 0.06)'
-      }
-    }
-  }
-};
-</script>
 </head>
 <body class="antialiased overflow-x-hidden selection:bg-brand selection:text-white">
 
@@ -151,7 +131,7 @@ tailwind.config = {
       <div>
         <div class="inline-flex items-center gap-2 bg-emerald-50 border border-brand/20 text-brand text-xs font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full mb-6">
           <span class="w-2 h-2 bg-brand rounded-full animate-pulse"></span>
-          Ready for Dispatch · Singapore Inventory
+          Ready for Dispatch · Global Delivery Available
         </div>
         <h1 id="productName" class="text-obsidian text-4xl sm:text-5xl font-extrabold leading-tight mb-3">...</h1>
         <div class="flex flex-wrap items-center gap-3 mb-6">
@@ -173,7 +153,7 @@ tailwind.config = {
             </span>
           </div>
           <p class="text-xs text-slate-500 leading-relaxed font-light mb-3">
-            Pricing is custom-formulated based on your facility's mast lifting height, battery capacity, and rental tenure (Outright Purchase or 12–60 month full-maintenance lease).
+            Pricing is formulated dynamically based on your facility's mast lifting height, battery capacity, destination country, and rental/purchase terms (Outright Purchase or 12–60 month lease).
           </p>
           <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600 font-medium">
             <div class="flex items-center gap-1.5"><span class="text-emerald-500">✓</span> 0% Upfront Capital Option</div>
@@ -189,15 +169,15 @@ tailwind.config = {
             Request Tailored Quotation →
           </a>
           <button onclick="triggerProductAiEstimate()" class="bg-obsidian hover:bg-slate-800 text-white font-heading font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all shadow-sm cursor-pointer">
-          一》 Ask AI for Instant Estimate
+            Ask AI for Instant Estimate
           </button>
         </div>
 
         <div class="flex flex-wrap gap-6 pt-6 border-t border-slate-100 text-xs text-slate-500 font-medium">
           <div class="flex items-center gap-2"><span class="text-brand font-bold">✓</span> Zero Carbon Emissions</div>
-          <div class="flex items-center gap-2"><span class="text-brand font-bold">✓</span> 24h Singapore Tech Team</div>
-          <div class="flex items-center gap-2"><span class="text-brand font-bold">✓</span> Local Spares in Stock</div>
-          <div class="flex items-center gap-2"><span class="text-brand font-bold">✓</span> Flexible Equipment Rental Available</div>
+          <div class="flex items-center gap-2"><span class="text-brand font-bold">✓</span> Factory-Trained Engineers</div>
+          <div class="flex items-center gap-2"><span class="text-brand font-bold">✓</span> Genuine OEM Spares Stock</div>
+          <div class="flex items-center gap-2"><span class="text-brand font-bold">✓</span> Regional & Global Freight</div>
         </div>
       </div>
 
@@ -250,7 +230,7 @@ tailwind.config = {
       <div class="glass-card-light rounded-3xl p-8">
         <div class="w-12 h-12 rounded-xl bg-emerald-50 text-brand flex items-center justify-center mb-6"><svg class="w-6 h-6"><use href="#icon-shield"/></svg></div>
         <h3 class="font-heading font-bold text-lg text-obsidian mb-2">3-Year Factory Warranty</h3>
-        <p class="text-slate-500 text-xs font-light leading-relaxed">Complete factory warranty backed by direct Singapore replacement parts and certified field engineers.</p>
+        <p class="text-slate-500 text-xs font-light leading-relaxed">Complete factory warranty backed by direct replacement parts and certified field engineers.</p>
       </div>
       <div class="glass-card-light rounded-3xl p-8">
         <div class="w-12 h-12 rounded-xl bg-emerald-50 text-brand flex items-center justify-center mb-6"><svg class="w-6 h-6"><use href="#icon-leaf"/></svg></div>
@@ -277,6 +257,49 @@ tailwind.config = {
       <a href="products.html" class="text-brand font-heading font-bold text-xs uppercase tracking-widest hover:underline">View All Models →</a>
     </div>
     <div id="relatedGrid" class="grid md:grid-cols-3 gap-8"></div>
+  </div>
+</section>
+
+<!-- STANDARDIZED INLINE EQUIPMENT & DESTINATION COUNTRY INQUIRY FORM -->
+<section class="py-24 bg-primary-50 border-b border-slate-200 text-center">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="text-brand text-xs font-bold tracking-widest uppercase mb-2">Direct Commercial Enquiry</div>
+    <h2 class="font-heading font-extrabold text-3xl md:text-4xl text-obsidian mb-4">Request a Tailored Quote for Your Facility</h2>
+    <p class="text-slate-500 text-sm font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+      Select your required equipment category and target country for custom pricing and fast engineer consultation.
+    </p>
+
+    <form id="quickInquiryForm" class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-luxe max-w-3xl mx-auto grid sm:grid-cols-12 gap-3" onsubmit="handleQuickInquiry(event)">
+      <div class="sm:col-span-5 relative">
+        <select id="quickEquipSelect" name="equipment" class="w-full bg-slate-50 text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Equipment Category</option>
+          <option value="forklift" selected>Electric Counterbalance Forklift (1.5 - 5.0T)</option>
+          <option value="reach">Lithium Reach Trucks (Up to 10M Lift)</option>
+          <option value="pallet">Pallet Transporters & Walkies</option>
+          <option value="stacker">Electric Rider & Straddle Stackers</option>
+          <option value="agv">Autonomous Stacking AGVs</option>
+          <option value="rental">Long-Term Fleet Equipment Rental</option>
+        </select>
+      </div>
+      <div class="sm:col-span-4 relative">
+        <select id="quickLocSelect" name="location" class="w-full bg-slate-50 text-slate-800 rounded-xl px-4 py-3.5 text-xs font-semibold border border-slate-200 focus:border-brand focus:outline-none shadow-sm cursor-pointer" required>
+          <option value="">Select Destination Country</option>
+          <option value="Singapore" selected>🇸🇬 Singapore</option>
+          <option value="Malaysia">🇲🇾 Malaysia</option>
+          <option value="Indonesia">🇮🇩 Indonesia</option>
+          <option value="Thailand">🇹🇭 Thailand</option>
+          <option value="Vietnam">🇻🇳 Vietnam</option>
+          <option value="Philippines">🇵🇭 Philippines</option>
+          <option value="Australia">🇦🇺 Australia</option>
+          <option value="Other">🌐 Other International</option>
+        </select>
+      </div>
+      <div class="sm:col-span-3">
+        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-heading font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-soft-glow transition-all hover:scale-[1.02] whitespace-nowrap">
+          INQUIRY →
+        </button>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -347,9 +370,7 @@ tailwind.config = {
     <!-- Column 5: Our Locations -->
     <div>
       <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-white mb-4">Our Locations</h4>
-
       <div class="space-y-4 text-xs font-light">
-        <!-- HQ SG -->
         <div>
           <div class="text-[10px] font-bold text-emerald-400 tracking-[0.15em] uppercase mb-1">HQ SG</div>
           <p class="text-slate-400 leading-relaxed">
@@ -358,7 +379,6 @@ tailwind.config = {
             Singapore 409051
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Fabrication Workshop</div>
           <p class="text-slate-400 leading-relaxed">
@@ -366,7 +386,6 @@ tailwind.config = {
             #01-79 Singapore 628464
           </p>
         </div>
-
         <div class="border-t border-slate-800/60 pt-3">
           <div class="text-[10px] font-bold text-slate-300 tracking-[0.15em] uppercase mb-1">Forklift Centre</div>
           <p class="text-slate-400 leading-relaxed">
@@ -404,235 +423,7 @@ tailwind.config = {
   </div>
 </footer>
 
-<script>
-// Specific Product Data Rendering with multi-image support for product-spec.html
-const PRODUCTS = {
-  "he-series": { 
-    name: "HE Series", tonnage: "2.5 – 3.8 TON", subtitle: "Heavy-Duty Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
-    images: [
-      "images/HE-Series-2.5-3.8T.png", 
-      "images/he-series/back.png", 
-      "images/he-series/topleft.png", 
-      "images/he-series/front.png"],
-    description: "The HE Series is engineered to replace traditional diesel trucks with massive lithium-ion power and zero emissions. Built for the most demanding warehouse and industrial environments.", 
-    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["HE25","HE30","HE35","HE38"], rows: [["Load Capacity","2,500 kg","3,000 kg","3,500 kg","3,800 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","80V / 500Ah","80V / 600Ah","80V / 700Ah","80V / 800Ah"],["Charging Time","1.5 hrs","2 hrs","2 hrs","2.5 hrs"],["Runtime (typical)","6–8 hrs","8–10 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","2,200 mm","2,300 mm","2,400 mm","2,500 mm"],["Max Speed","16 km/h","18 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
-  },
-  "l-series": { 
-    name: "L Series", tonnage: "1.5 – 3.5 TON", subtitle: "Smart Warehouse Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
-    images: [
-      "images/L-Series-1.5-3.5T.png", 
-      "images/l-series/front.png", 
-      "images/l-series/topright.png", 
-      "images/l-series/upper.png"],
-    description: "The L Series is the ultimate smart warehouse solution for versatile indoor and outdoor work. Designed for precision, efficiency, and 24/7 reliability.", 
-    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-quiet", title: "<70 dB", subtitle: "Whisper Quiet" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["L15","L20","L30","L35"], rows: [["Load Capacity","1,500 kg","2,000 kg","3,000 kg","3,500 kg"],["Lift Height (max)","6,000 mm","6,000 mm","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah","80V / 600Ah","80V / 700Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","8–10 hrs","8–10 hrs"],["Turning Radius","1,900 mm","2,000 mm","2,200 mm","2,300 mm"],["Max Speed","15 km/h","15 km/h","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
-  },
-  "je-series": { 
-    name: "JE Series", tonnage: "4.5 – 5.0 TON", subtitle: "Heavy-Duty Electric Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
-    images: [
-      "images/JE-Series-4.5-5.0T.png", 
-      "images/je-series/btmleft.png", 
-      "images/je-series/topright.png", 
-      "images/je-series/front.png"],
-    description: "Heavy-duty electric forklift for the most demanding industrial operations. Delivers diesel-grade power without the emissions.", 
-    highlights: [{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "5.0 T", subtitle: "Max Capacity" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["JE45","JE50"], rows: [["Load Capacity","4,500 kg","5,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","80V / 800Ah","96V / 900Ah"],["Charging Time","2 hrs","2.5 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Turning Radius","2,600 mm","2,700 mm"],["Max Speed","18 km/h","18 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
-  },
-  "three-wheel": { 
-    name: "Three Wheel", tonnage: "1.5 – 2.0 TON", subtitle: "Compact Lithium Forklift", category: "Lithium Forklifts", categorySlug: "forklifts", 
-    images: [
-      "images/Three-Wheel-1.5-2.0T.png", 
-      "images/three-wheel/back.png", 
-      "images/three-wheel/topright.png", 
-      "images/three-wheel/front.png"],
-    description: "Compact lithium forklift for tight spaces and precision handling. Ideal for narrow aisles and confined warehouse zones.", 
-    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "3,000+", subtitle: "Charge Cycles" },{ icon: "icon-target", title: "1.7 m", subtitle: "Turning Radius" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["TW15","TW20"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","6,000 mm","6,000 mm"],["Battery Capacity","48V / 400Ah","48V / 500Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Turning Radius","1,700 mm","1,750 mm"],["Max Speed","14 km/h","14 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
-  },
-  "reach-truck-stand": { 
-    name: "Stand Type Reach Truck", tonnage: "1.5 TON", subtitle: "Vertical Storage Reach Truck", category: "Reach Trucks", categorySlug: "reach", 
-    // UPDATED WITH 4 UNIQUE IMAGES FOR STAND TYPE REACH TRUCK
-    images: [
-      "images/Stand-type-Reach-Truck-1.5T.png", 
-      "images/stand-type/front.png", 
-      "images/stand-type/topleft.png", 
-      "images/stand-type/upper.png"
-    ],
-    description: "Maximise your vertical storage space without sacrificing aisle width. The Stand Type Reach Truck is built for high-density warehouse layouts.", 
-    highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "1.8 m", subtitle: "Aisle Width" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Stand Type 1.5T"], rows: [["Load Capacity","1,500 kg"],["Lift Height (max)","10,000 mm"],["Battery Capacity","48V / 500Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","8–10 hrs"],["Aisle Width Required","1,800 mm"],["Max Speed","10 km/h"],["Noise Level","<70 dB"],["Warranty","3 Years / 4,000 Hours"]] } 
-  },
-  "reach-truck-sit": { 
-    name: "Sit Type Reach Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Long-Shift Reach Truck", category: "Reach Trucks", categorySlug: "reach", 
-    images: [
-      "images/Sit-type-Reach-Truck-1.5-2.0T.png", 
-      "images/sit-type/topright.png", 
-      "images/sit-type/topleft.png", 
-      "images/sit-type/btmleft.png"],
-    description: "Designed for intensive, long-shift warehouse operations. Sit-down comfort and all-day productivity.", 
-    highlights: [{ icon: "icon-target", title: "10 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Sit-Down", subtitle: "Ergonomic" },{ icon: "icon-bolt", title: "2 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "3 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Sit Type 1.5T","Sit Type 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Lift Height (max)","10,000 mm","10,000 mm"],["Battery Capacity","48V / 600Ah","48V / 700Ah"],["Charging Time","2 hrs","2 hrs"],["Runtime (typical)","8–10 hrs","8–10 hrs"],["Aisle Width Required","1,900 mm","2,000 mm"],["Max Speed","10 km/h","10 km/h"],["Noise Level","<70 dB","<70 dB"],["Warranty","3 Years / 4,000 Hours","3 Years / 4,000 Hours"]] } 
-  },
-  "walkie-pallet": { 
-    name: "Walkie Pallet Truck", tonnage: "1.5 – 2.0 TON", subtitle: "Lithium Battery Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", 
-    images: [
-      "images/Walkie-Pallet-Truck-with-Lithium-Battery-1.5-2.0T.png", 
-      "images/walkie/bckleft.png", 
-      "images/walkie/bckright.png", 
-      "images/walkie/topright.png"],
-    description: "Compact and efficient lithium-powered pallet truck for tight-space operations. Ideal for retail, logistics, and light manufacturing.", 
-    highlights: [{ icon: "icon-bolt", title: "1 hr", subtitle: "Fast Charge" },{ icon: "icon-battery", title: "Lithium", subtitle: "Battery" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Walkie 1.5T","Walkie 2.0T"], rows: [["Load Capacity","1,500 kg","2,000 kg"],["Fork Length","1,150 mm","1,150 mm"],["Battery","48V / 20Ah Lithium","48V / 30Ah Lithium"],["Charging Time","1 hr","1 hr"],["Runtime (typical)","4–6 hrs","4–6 hrs"],["Max Speed","5 km/h","5 km/h"],["Warranty","2 Years","2 Years"]] } 
-  },
-  "rider-pallet": { 
-    name: "Rider Pallet Truck", tonnage: "2.0 – 3.0 TON", subtitle: "Long-Distance Pallet Truck", category: "Pallet Trucks", categorySlug: "pallet", 
-    images: [
-      "images/Rider-Pallet-Truck-2.0–3.0T.png", 
-      "images/rider-pallet/upper.png", 
-      "images/rider-pallet/topleft.png", 
-      "images/rider-pallet/topright.png"],
-    description: "Accelerate your cross-warehouse transportation. Built for heavier loads and long distances with fold-down platform for operator comfort.", 
-    highlights: [{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-truck", title: "Fold-Down", subtitle: "Platform" },{ icon: "icon-package", title: "3.0 T", subtitle: "Max Load" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Rider 2.0T","Rider 3.0T"], rows: [["Load Capacity","2,000 kg","3,000 kg"],["Fork Length","1,150 mm","1,200 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","8 km/h","8 km/h"],["Warranty","2 Years","2 Years"]] } 
-  },
-  "straddle-stacker": { 
-    name: "Straddle-type Rider Electric Stacker", tonnage: "1.0 – 1.5 TON", subtitle: "Heavy-Duty Electric Stacker", category: "Stackers", categorySlug: "stacker", 
-    images: [
-      "images/Straddle-type-Rider-Electric-Stacker-1.0-1.5T.png", 
-      "images/straddle-type/btmleft.png", 
-      "images/straddle-type/topleft.png", 
-      "images/straddle-type/topright.png"],
-    description: "Straddle-type design for enhanced stability and heavy-duty stacking efficiency. Ideal for dense storage operations.", 
-    highlights: [{ icon: "icon-target", title: "5.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Straddle", subtitle: "Type" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Straddle 1.0T","Straddle 1.5T"], rows: [["Load Capacity","1,000 kg","1,500 kg"],["Lift Height (max)","5,500 mm","5,500 mm"],["Battery","48V / 200Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h"],["Warranty","2 Years","2 Years"]] } 
-  },
-  "electric-stacker": { 
-    name: "Electric Rider Stacker", tonnage: "1.0 – 2.0 TON", subtitle: "Standard Electric Stacker", category: "Stackers", categorySlug: "stacker", 
-    images: [
-      "images/Electric-Rider-Stacker1.0-2.0T.png", 
-      "images/electric-rider/btmleft.png", 
-      "images/electric-rider/topleft.png", 
-      "images/electric-rider/topright.png"],
-    description: "Boost your medium-level stacking efficiency with this standard electric stacker. Ergonomic, powerful, and reliable.", 
-    highlights: [{ icon: "icon-target", title: "4.5 m", subtitle: "Max Lift" },{ icon: "icon-forklift", title: "Compact", subtitle: "Design" },{ icon: "icon-bolt", title: "1.5 hr", subtitle: "Fast Charge" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["E-Stacker 1.0T","E-Stacker 1.5T","E-Stacker 2.0T"], rows: [["Load Capacity","1,000 kg","1,500 kg","2,000 kg"],["Lift Height (max)","4,500 mm","4,500 mm","4,500 mm"],["Battery","48V / 200Ah","48V / 250Ah","48V / 300Ah"],["Charging Time","1.5 hrs","1.5 hrs","2 hrs"],["Runtime (typical)","6–8 hrs","6–8 hrs","6–8 hrs"],["Max Speed","6 km/h","6 km/h","6 km/h"],["Warranty","2 Years","2 Years","2 Years"]] } 
-  },
-  "electric-tractor": { 
-    name: "Electric Tractor", tonnage: "TOWING SOLUTION", subtitle: "Zero-Emission Towing", category: "Tractor & Platform", categorySlug: "other", 
-    images: [
-      "images/Electric-Tractor.png", 
-      "images/electric-tractor/btmleft.png", 
-      "images/electric-tractor/topleft.png", 
-      "images/electric-tractor/topright.png"],
-    description: "Zero-emission towing solution for logistics and manufacturing floors. Reliable, powerful, and built for continuous operation.", 
-    highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-target", title: "Heavy", subtitle: "Towing" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Electric Tractor"], rows: [["Towing Capacity","3,000 kg"],["Battery","48V / 400Ah"],["Charging Time","2 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","12 km/h"],["Warranty","2 Years"]] } 
-  },
-  "electric-platform": { 
-    name: "Electric Platform Truck", tonnage: "FLATBED PLATFORM", subtitle: "Versatile Material Movement", category: "Tractor & Platform", categorySlug: "other", 
-    images: [
-      "images/Electric-Platform-Truck.png", 
-      "images/electric-platform/btmleft.png", 
-      "images/electric-platform/topleft.png", 
-      "images/electric-platform/upper.png"],
-    description: "Versatile electric platform for efficient material movement across facilities. Ideal for logistics, manufacturing, and 3PL operations.", 
-    highlights: [{ icon: "icon-bolt", title: "Zero", subtitle: "Emissions" },{ icon: "icon-battery", title: "Lithium", subtitle: "Powered" },{ icon: "icon-package", title: "Large", subtitle: "Platform" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Electric Platform Truck"], rows: [["Load Capacity","2,000 kg"],["Platform Size","1,500 x 1,000 mm"],["Battery","48V / 300Ah"],["Charging Time","1.5 hrs"],["Runtime (typical)","6–8 hrs"],["Max Speed","10 km/h"],["Warranty","2 Years"]] } 
-  },
-  "stacking-agv": { 
-    name: "Stacking AGV", tonnage: "AUTONOMOUS GUIDED VEHICLE", subtitle: "24/7 Automated Stacking", category: "Automation", categorySlug: "other", 
-    images: [
-      "images/stacking-agv.png", 
-      "images/stacking-agv/btmright.png", 
-      "images/stacking-agv/front.png", 
-      "images/stacking-agv/upper.png"],
-    description: "Autonomous guided vehicle for advanced warehouse automation and 24/7 operation. Fully integrated with WMS and warehouse robotics.", 
-    highlights: [{ icon: "icon-target", title: "Autonomous", subtitle: "Operation" },{ icon: "icon-bolt", title: "LiDAR", subtitle: "Navigation" },{ icon: "icon-battery", title: "24/7", subtitle: "Runtime" },{ icon: "icon-shield", title: "2 Years", subtitle: "Warranty" }], 
-    specs: { headers: ["Stacking AGV"], rows: [["Load Capacity","1,000 kg"],["Lift Height (max)","3,000 mm"],["Navigation","LiDAR + SLAM"],["Battery","48V / 200Ah Lithium"],["Charging Time","1 hr (auto-dock)"],["Runtime","24/7 (opportunity charge)"],["Warranty","2 Years"]] } 
-  }
-};
-
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id') || 'he-series';
-const product = PRODUCTS[id] || PRODUCTS['he-series'];
-
-// Fallback if 'images' array isn't defined on older entries
-const imgList = product.images || [product.image, product.image, product.image, product.image];
-
-document.title = `${product.name} | JAC Forklift Singapore`;
-document.getElementById('breadcrumbCategory').textContent = product.category;
-document.getElementById('breadcrumbName').textContent = product.name;
-document.getElementById('productName').textContent = product.name;
-document.getElementById('productTonnage').textContent = product.tonnage;
-document.getElementById('productSubtitle').textContent = product.subtitle;
-document.getElementById('productDescription').textContent = product.description;
-document.getElementById('categoryBadge').textContent = product.category.toUpperCase();
-
-// Set default main image to first array item
-document.getElementById('mainImage').src = imgList[0];
-document.getElementById('mainImage').alt = product.name;
-
-// Populate all 4 thumbnails dynamically from the array
-['thumb1','thumb2','thumb3','thumb4'].forEach((thumbId, index) => {
-  const thumbEl = document.getElementById(thumbId);
-  if (thumbEl) {
-    thumbEl.src = imgList[index] || imgList[0]; // fallback to first image if array is short
-    thumbEl.alt = `${product.name} view ${index + 1}`;
-  }
-});
-
-const quoteLink = `contact.html?equipment=forklift&model=${encodeURIComponent(product.name + ' (' + product.tonnage + ')')}`;
-document.getElementById('quoteBtn').href = quoteLink;
-
-document.getElementById('keyHighlights').innerHTML = product.highlights.map(h => `
-  <div class="glass-card-light rounded-2xl p-4 flex items-center gap-3">
-    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-brand flex items-center justify-center shrink-0">
-      <svg class="w-5 h-5"><use href="#${h.icon}"/></svg>
-    </div>
-    <div>
-      <div class="text-obsidian font-heading font-bold text-sm">${h.title}</div>
-      <div class="text-slate-400 text-xs">${h.subtitle}</div>
-    </div>
-  </div>
-`).join('');
-
-document.getElementById('specHeader').innerHTML = `
-  <th class="py-5 px-8 text-xs font-bold text-slate-500 uppercase tracking-wider">Specification</th>
-  ${product.specs.headers.map(h => `<th class="py-5 px-8 text-xs font-bold text-brand uppercase tracking-wider">${h}</th>`).join('')}
-`;
-
-document.getElementById('specBody').innerHTML = product.specs.rows.map(row => `
-  <tr class="spec-row">
-    <td class="py-4 px-8 font-semibold text-obsidian">${row[0]}</td>
-    ${row.slice(1).map(c => `<td class="py-4 px-8 text-slate-600">${c}</td>`).join('')}
-  </tr>
-`).join('');
-
-const allProducts = Object.entries(PRODUCTS).filter(([k]) => k !== id);
-const related = allProducts.slice(0, 3);
-document.getElementById('relatedGrid').innerHTML = related.map(([k, p]) => `
-  <a href="product-spec.html?id=${k}" class="product-card rounded-3xl overflow-hidden">
-    <div class="aspect-[4/3] product-showcase relative flex items-center justify-center p-6 border-b border-slate-100">
-      <img src="${p.images ? p.images[0] : p.image}" alt="${p.name}" class="w-full h-full object-contain" />
-      <span class="absolute top-4 left-4 bg-white text-obsidian text-[11px] font-bold px-3 py-1 rounded-full border border-slate-200">${p.category.toUpperCase()}</span>
-    </div>
-    <div class="p-6">
-      <div class="text-brand text-xs font-bold tracking-wider uppercase mb-1">${p.tonnage}</div>
-      <h3 class="font-heading font-bold text-lg text-obsidian mb-2">${p.name}</h3>
-      <span class="text-brand text-xs font-bold">View Specs →</span>
-    </div>
-  </a>
-`).join('');
-
-function swapImage(thumb) {
-  document.getElementById('mainImage').src = thumb.src;
-  document.querySelectorAll('.thumbs img').forEach(t => t.classList.remove('active'));
-  thumb.classList.add('active');
-}
-</script>
-
+<!-- External Scripts Only -->
 <script src="main.js"></script>
 <script src="search.js"></script>
 <script>window.JAC_CHAT_ENDPOINT = "https://jac-chat-ai.allenliewkq.workers.dev";</script>

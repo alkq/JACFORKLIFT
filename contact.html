@@ -111,7 +111,7 @@
       Power Your Operations With <span class="text-brand">JAC Forklifts.</span>
     </h1>
     <p class="text-slate-600 text-lg sm:text-xl font-light max-w-2xl">
-      Contact our regional engineering desk to receive transparent quotations, arrange on-site facility demos, or size your lithium battery setup.
+      Contact our regional engineering desk to receive transparent quotations, arrange on-site facility demos, or size your lithium battery setup worldwide.
     </p>
   </div>
 </section>
@@ -137,7 +137,7 @@
             <div class="step-number text-brand">2</div>
             <div>
               <h4 class="font-heading font-bold text-obsidian text-base mb-1">Get A Quote</h4>
-              <p class="text-slate-500 text-xs font-light leading-relaxed">Our Singapore engineer calculates TCO and delivers your customized proposal within 24 hours.</p>
+              <p class="text-slate-500 text-xs font-light leading-relaxed">Our commercial engineering desk calculates TCO and delivers your customized proposal within 24 hours.</p>
             </div>
           </div>
           <div class="pl-5 text-emerald-600 font-bold">↓</div>
@@ -188,7 +188,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-slate-100 mb-8">
           <div>
             <h2 id="formMainTitle" class="text-2xl sm:text-3xl font-heading font-extrabold text-obsidian">General Technical Inquiry</h2>
-            <p id="formSubTitle" class="text-slate-500 text-xs sm:text-sm font-light mt-1">Submit your general question and our Singapore engineering desk will reply within 1 business day.</p>
+            <p id="formSubTitle" class="text-slate-500 text-xs sm:text-sm font-light mt-1">Submit your question and our engineering desk will reply within 1 business day.</p>
           </div>
           <div class="flex bg-slate-100 p-1 rounded-2xl shrink-0">
             <button type="button" id="btnModeEquipment" class="mode-toggle-btn">Equipment Quote</button>
@@ -197,6 +197,7 @@
         </div>
 
         <form id="contactForm" class="space-y-6">
+          <!-- Equipment & Country Row -->
           <div id="equipmentLocationRow" class="grid sm:grid-cols-2 gap-5 transition-all" style="display: none;">
             <div>
               <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Equipment Category <span class="text-brand">*</span></label>
@@ -211,17 +212,47 @@
               </select>
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Project / Facility Location <span class="text-brand">*</span></label>
-              <select id="selectLocation" name="facility_location" class="input-field text-slate-800 cursor-pointer">
-                <option value="">-- Select Singapore Region --</option>
-                <option value="west">West · Jurong / Tuas Industrial Hub</option>
-                <option value="east">East · Changi / Airport Logistics Park</option>
-                <option value="north">North · Woodlands Industrial Corridor</option>
-                <option value="central">Central · City / Mezzanine Facilities</option>
+              <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Project / Facility Country <span class="text-brand">*</span></label>
+              <select id="selectLocation" name="facility_country" class="input-field text-slate-800 cursor-pointer">
+                <option value="">-- Select Country / Destination --</option>
+                <optgroup label="Popular / Primary">
+                  <option value="Singapore" selected>🇸🇬 Singapore</option>
+                  <option value="Malaysia">🇲🇾 Malaysia</option>
+                  <option value="Indonesia">🇮🇩 Indonesia</option>
+                  <option value="Thailand">🇹🇭 Thailand</option>
+                  <option value="Vietnam">🇻🇳 Vietnam</option>
+                  <option value="Philippines">🇵🇭 Philippines</option>
+                  <option value="Australia">🇦🇺 Australia</option>
+                </optgroup>
+                <optgroup label="Asia Pacific & Middle East">
+                  <option value="Brunei">🇧🇳 Brunei</option>
+                  <option value="Myanmar">🇲🇲 Myanmar</option>
+                  <option value="Cambodia">🇰🇭 Cambodia</option>
+                  <option value="New Zealand">🇳🇿 New Zealand</option>
+                  <option value="China">🇨🇳 China</option>
+                  <option value="Hong Kong">🇭🇰 Hong Kong</option>
+                  <option value="Taiwan">🇹🇼 Taiwan</option>
+                  <option value="Japan">🇯🇵 Japan</option>
+                  <option value="South Korea">🇰🇷 South Korea</option>
+                  <option value="India">🇮🇳 India</option>
+                  <option value="United Arab Emirates">🇦🇪 United Arab Emirates</option>
+                  <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                  <option value="Qatar">🇶🇦 Qatar</option>
+                </optgroup>
+                <optgroup label="Europe, Americas & Global">
+                  <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                  <option value="United States">🇺🇸 United States</option>
+                  <option value="Canada">🇨🇦 Canada</option>
+                  <option value="Germany">🇩🇪 Germany</option>
+                  <option value="Netherlands">🇳🇱 Netherlands</option>
+                  <option value="France">🇫🇷 France</option>
+                  <option value="Other">🌐 Other International Destination</option>
+                </optgroup>
               </select>
             </div>
           </div>
 
+          <!-- Contact Name & International Phone Number Row -->
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Contact Name <span class="text-brand">*</span></label>
@@ -229,10 +260,41 @@
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Contact Phone / Mobile <span class="text-brand">*</span></label>
-              <input type="tel" name="phone_number" placeholder="+65 9123 4567" class="input-field" required />
+              <div class="flex gap-2">
+                <select name="phone_country_code" class="w-32 sm:w-36 bg-white border border-slate-300 rounded-xl px-2.5 py-3.5 text-xs text-slate-800 font-semibold focus:border-brand focus:outline-none cursor-pointer shrink-0 shadow-sm">
+                  <option value="+65" selected>🇸🇬 +65</option>
+                  <option value="+60">🇲🇾 +60</option>
+                  <option value="+62">🇮🇩 +62</option>
+                  <option value="+66">🇹🇭 +66</option>
+                  <option value="+84">🇻🇳 +84</option>
+                  <option value="+63">🇵🇭 +63</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+64">🇳🇿 +64</option>
+                  <option value="+673">🇧🇳 +673</option>
+                  <option value="+95">🇲🇲 +95</option>
+                  <option value="+855">🇰🇭 +855</option>
+                  <option value="+86">🇨🇳 +86</option>
+                  <option value="+852">🇭🇰 +852</option>
+                  <option value="+886">🇹🇼 +886</option>
+                  <option value="+81">🇯🇵 +81</option>
+                  <option value="+82">🇰🇷 +82</option>
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+974">🇶🇦 +974</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+31">🇳🇱 +31</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="other">🌐 Other</option>
+                </select>
+                <input type="tel" name="phone_number" placeholder="Phone / WhatsApp Number" class="input-field flex-1" required />
+              </div>
             </div>
           </div>
 
+          <!-- Business Email & Company Name Row -->
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Business Email <span class="text-brand">*</span></label>
