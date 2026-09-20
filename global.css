@@ -655,3 +655,22 @@ section:has(#quickEquipSelect) button[type="submit"]:hover {
 #dealerMap .leaflet-tile-pane {
   filter: brightness(0.6) invert(1) contrast(1.3) hue-rotate(200deg) saturate(0.3);
 }
+
+/* =========================================================================
+   FIX CTA TEXT CONTRAST (Ensure high-visibility white text on dark green)
+   ========================================================================= */
+.cta-vivid-faded-bg h2,
+.cta-vivid-faded-bg h3,
+.cta-vivid-faded-bg h1,
+#contact.cta-vivid-faded-bg h2,
+section#contact h2,
+section#contact h3,
+section#contact h1 {
+  color: #FFFFFF !important;
+}
+
+.cta-vivid-faded-bg p,
+#contact.cta-vivid-faded-bg p,
+section#contact p {
+  color: #E2E8F0 !important; /* Soft light slate-gray for clear readability */
+}
